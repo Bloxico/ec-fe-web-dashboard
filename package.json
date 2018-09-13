@@ -51,8 +51,10 @@
     "test": "node scripts/test.js --env=jsdom",
     "format": "./node_modules/.bin/prettier --config=\".prettierrc.json\" --write \"src/**/*.js\" \"config/**/*.js\""
   },
-  "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": "format"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format"
+    }
   },
   "jest": {
     "collectCoverageFrom": [
@@ -98,7 +100,6 @@
   },
   "devDependencies": {
     "husky": "^0.14.3",
-    "lint-staged": "^7.2.2",
     "node-sass": "^4.9.3",
     "prettier": "^1.14.2",
     "sass-loader": "^7.1.0"
