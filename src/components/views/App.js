@@ -1,17 +1,17 @@
-import React, {Component} from 'react';
+import React  from 'react';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
-import {AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX} from "../../constants";
+
+import {AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX} from "src/constants";
+import Header from '@partials/Header';
+
 import Auth from './Auth';
 import Portal from './Portal';
-import Header from './partials/Header';
 
 import './App.scss';
 
 const baseClass = `${THEME_PREFIX}-app`;
 
-class App extends Component {
-  render() {
-    return (
+const App = () => (
       <BrowserRouter>
         <div className={baseClass}>
           <Header />
@@ -23,7 +23,4 @@ class App extends Component {
         </div>
       </BrowserRouter>
     );
-  }
-}
-
 export default App;

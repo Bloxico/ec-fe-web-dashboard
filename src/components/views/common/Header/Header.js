@@ -1,8 +1,8 @@
 import React  from 'react';
 import { Link} from 'react-router-dom';
 
-import {AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX} from "../../../../constants";
-import logo from '../../../../logo.svg';
+import {AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX} from "src/constants";
+import logo from '@images/react-logo.svg';
 
 import './Header.scss';
 
