@@ -4,6 +4,8 @@ import { Link} from 'react-router-dom';
 import {AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX} from "../../../../constants";
 import logo from '../../../../logo.svg';
 
+import './Header.scss';
+
 const baseClass = `${THEME_PREFIX}-header`;
 
 const Header = () => (
