@@ -52,10 +52,7 @@
     "format": "./node_modules/.bin/prettier --config=\".prettierrc.json\" --write \"src/**/*.js\" \"config/**/*.js\""
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "format",
-      "git add"
-    ]
+    "src/**/*.{js,jsx,json,css}": "format"
   },
   "jest": {
     "collectCoverageFrom": [
