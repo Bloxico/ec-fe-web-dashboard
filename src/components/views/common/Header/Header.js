@@ -1,7 +1,7 @@
-import React  from 'react';
-import { Link} from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import {AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX} from "src/constants";
+import { AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX } from 'src/constants';
 import logo from '@images/react-logo.svg';
 
 import './Header.scss';
@@ -10,7 +10,7 @@ const baseClass = `${THEME_PREFIX}-header`;
 
 const Header = () => (
   <header className={baseClass}>
-    <img src={logo} className={`${baseClass}__logo`} alt="logo"/>
+    <img src={logo} className={`${baseClass}__logo`} alt="logo" />
     <h1 className={`${baseClass}__title`}>React App</h1>
     <nav className={`${baseClass}__nav`}>
       <ul>
