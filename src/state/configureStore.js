@@ -15,4 +15,4 @@ export default (initialState: Object) => {
   sagaMiddleware.run(sagas);
 
   return { store };
-}
+};

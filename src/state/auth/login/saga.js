@@ -8,7 +8,6 @@ import { PORTAL_PAGE } from 'src/constants';
 import * as actions from './actions';
 
 export function* login$(): Generator<*, *, *> {
-
   yield console.log(PORTAL_PAGE);
   // yield put()
 }
