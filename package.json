@@ -59,7 +59,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run format"
+      "pre-commit": "yarn run format",
+      "pre-push": "yarn run lint-prod && yarn run lint-styles"
     }
   },
   "jest": {
