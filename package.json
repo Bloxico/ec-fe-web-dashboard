@@ -49,11 +49,13 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "format": "./node_modules/.bin/prettier --config=\".prettierrc.json\" --write \"src/**/*.js\" \"config/**/*.js\"",
+    "format-js": "./node_modules/.bin/prettier --config=\".prettierrc.json\" --write \"src/**/*.js\" \"config/**/*.js\"",
+    "format-scss": "./node_modules/.bin/prettier --config=\".prettierrc-styles.json\" --write \"src/**/*.scss\"",
+    "format": "yarn run format-js && yarn run format-scss",
     "lint": "cross-env NODE_ENV=development eslint --cache --format=node_modules/eslint-formatter-pretty .",
-    "lint-fix": "yarn run lint -- --fix",
-    "lint-styles": "stylelint app/*.css app/components/*.css --syntax scss",
-    "lint-styles-fix": "stylefmt -r app/*.css app/components/*.css"
+    "lint-prod": "cross-env NODE_ENV=development eslint --cache --config .eslintrc-prod.json --format=node_modules/eslint-formatter-pretty .",
+    "lint-fix": "yarn run lint --fix",
+    "lint-styles": "cross-env NODE_ENV=development stylelint src/**/*.scss --syntax scss"
   },
   "husky": {
     "hooks": {
@@ -110,6 +112,9 @@
     "husky": "^1.0.0-rc.13",
     "node-sass": "^4.9.3",
     "prettier": "^1.14.2",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "stylelint": "^9.5.0",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-config-standard": "^18.2.0"
   }
 }
