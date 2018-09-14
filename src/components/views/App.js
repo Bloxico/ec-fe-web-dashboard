@@ -1,6 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
 
 import { AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX } from 'src/constants';
 
@@ -15,9 +16,9 @@ import './App.scss';
 
 const baseClass = `${THEME_PREFIX}-app`;
 
-const App = ({ store }: { store: StateT }) => (
+const App = ({ store, history }: { store: StateT, history: Object }) => (
   <Provider store={store}>
-    <BrowserRouter>
+    <ConnectedRouter history={history}>
       <div className={baseClass}>
         <Header />
         <Switch className={`${baseClass}__content`}>
@@ -26,7 +27,7 @@ const App = ({ store }: { store: StateT }) => (
           <Route path={AUTH_PAGE} component={Auth} />
         </Switch>
       </div>
-    </BrowserRouter>
+    </ConnectedRouter>
   </Provider>
 );
 export default App;

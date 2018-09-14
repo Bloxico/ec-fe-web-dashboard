@@ -4,6 +4,9 @@ import { render } from 'react-dom';
 import configureStore from 'src/state/configureStore';
 import App from 'src/components/views/App';
 
-const { store } = configureStore();
+const { store, history } = configureStore();
 
-render(<App store={store} />, document.getElementById('root'));
+render(
+  <App store={store} history={history} />,
+  document.getElementById('root'),
+);
