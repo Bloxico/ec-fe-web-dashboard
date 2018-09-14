@@ -49,7 +49,11 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "format": "./node_modules/.bin/prettier --config=\".prettierrc.json\" --write \"src/**/*.js\" \"config/**/*.js\""
+    "format": "./node_modules/.bin/prettier --config=\".prettierrc.json\" --write \"src/**/*.js\" \"config/**/*.js\"",
+    "lint": "cross-env NODE_ENV=development eslint --cache --format=node_modules/eslint-formatter-pretty .",
+    "lint-fix": "yarn run lint -- --fix",
+    "lint-styles": "stylelint app/*.css app/components/*.css --syntax scss",
+    "lint-styles-fix": "stylefmt -r app/*.css app/components/*.css"
   },
   "husky": {
     "hooks": {
@@ -99,6 +103,10 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-formatter-pretty": "^1.3.0",
     "husky": "^1.0.0-rc.13",
     "node-sass": "^4.9.3",
     "prettier": "^1.14.2",
