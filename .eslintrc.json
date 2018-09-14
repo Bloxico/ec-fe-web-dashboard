@@ -33,6 +33,7 @@
     "jest": true
   },
   "rules": {
+    "no-unused-vars": 1,
     "object-curly-spacing": 2,
     "import/first": 1,
     "import/extensions": 0,
