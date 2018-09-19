@@ -4,10 +4,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - [Folder Structure](#folder-structure)
 - [Available Scripts](#available-scripts)
-  - [npm start](#npm-start)
-  - [npm test](#npm-test)
-  - [npm run build](#npm-run-build)
-  - TODO@martins add all scripts
+  - [yarn start](#yarn-start)
+  - [yarn run build](#yarn-run-build)
+  - [yarn test](#yarn-test)
+  - [yarn run format-js](#yarn-run-format-js)
+  - [yarn run format-scss](#yarn-run-format-scss)
+  - [yarn run format](#yarn-run-format)
+  - [yarn run lint](#yarn-run-lint)
+  - [yarn run lint-prod](#yarn-run-lint-prod)
+  - [yarn run lint-fix](#yarn-run-lint-fix)
+  - [yarn run lint-styles](#yarn-run-lint-styles)
 - [Libraries used](#libraries-used)  
 - [Code Quality](#code-quality)  
   - [Linting](#linting)       
@@ -22,10 +28,14 @@ my-app/
   node_modules/
   package.json
   public/
-    index.html
-    favicon.ico
   src/
-    TODO@martins add project structure
+   assets/
+    images/
+    styles/ 
+  components/
+  constants/
+  state/
+  x
 ```
 
 For the project to build, **these files must exist with exact filenames**:
@@ -37,7 +47,7 @@ For the project to build, **these files must exist with exact filenames**:
 
 In the project directory, you can run:
 
-### `npm start`
+### `yarn start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -45,22 +55,43 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
+### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](#running-tests) for more information.
 
-### `npm run build`
+### `yarn run build`
 
-Builds the app for production to the `build` folder.<br>
+Builds the app for production to the build folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### `yarn run format-js`
 
-See the section about [deployment](#deployment) for more information.
+Formats `js` code. 
 
-TODO@martins add all scripts. 
+### `yarn run format-scss`
+
+Formats `scss` code. 
+
+### `yarn run format`
+
+Runs both [yarn run format-js](#yarn-run-format-js) and [yarn run format-scss](#yarn-run-format-scss).
+
+### `yarn run lint`
+
+Run ESLint in "dev" mode, meaning errors will be displayed in the console but app wont break.  
+
+### `yarn run lint-prod`
+
+Run ESLint in "prod" mode. Called on `git push`.
+
+### `yarn run lint-fix`
+
+Run ESLint while fixing problems in the code that are automatically fixable.
+
+### `yarn run lint-styles`
+
+Run ESLint on `scss` files. 
 
 # Libraries used
 
@@ -84,4 +115,11 @@ Automatic formatting is done using [Prettier](https://github.com/prettier/pretti
 ## Git hooks
 
 To maintain code quality, git hooks are set-up to trigger [lint](#linting) and [format](#formatting) scripts on `git commit` and `git push`.    
- (TODO@martins: add test hooks to doc)
+ 
+### Pre-commit 
+
+This hook triggers on `git commit` and run `yarn run format`. 
+
+### Pre-push 
+
+This hook triggers on `git push`, runs lint and test scripts and cancels the push if any of these breaks. 
