@@ -19,6 +19,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - [Linting](#linting)       
   - [Formatting](#formatting)
   - [Git hooks](#git-hooks)
+- [Contribution](#contribution)  
 
 ## Folder Structure
 
@@ -123,3 +124,14 @@ This hook triggers on `git commit` and run `yarn run format`.
 ### Pre-push 
 
 This hook triggers on `git push`, runs lint and test scripts and cancels the push if any of these breaks. 
+
+## Contribution
+
+Use [Git FLow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) workflow but, prefix feature branches with your initial instead  of `feature`. 
+So naming pattern for feature branches should be`<youe_initials>/<jira_task_id>`.
+Example: `MS/EC-33`
+
+Please follow ["How to Write a Git Commit Message"](https://chris.beams.io/posts/git-commit/)
+recommendations when writing commit messages.
+
+When development is done create a PR and wait for code review. After PR is approved, merge your branch.
