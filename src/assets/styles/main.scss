@@ -1,1 +1,84 @@
-@import "abstracts/index";
+/**
+ *
+ * CONTENTS
+ *
+ * TOOLS
+ * Mixins.................All mixins and functions.
+ *
+ * SETTINGS
+ * Colors..................Manage color palette in isolation.
+ * Fonts..................All fonts and font-sizes.
+ * Images.................All images in our app.
+ *
+ * BASE
+ * Body...................root styles.
+ * Animation..............All our animations.
+ *
+ * COMPONENTS (components are kinda like BASE just for every component, here should be classes that can be reused, and that won't be overridden)
+ * Layout.................layout, elements inside and their modifiers.
+ *
+ * PLACEHOLDERS
+ * placeholders...........All code that is repeating a lot should go here.
+ *
+ * SPECIFIC
+ * Helpers................Specific, more complex, unique classes.
+ *
+ * ICONS
+ * Icons..................All the icons in our app.
+ *
+ * MEDIA
+ * Media..................All @media for responsiveness.
+ *
+ * LIBRARY SPECIFIC(like bootstrap)
+ * Button.................All button classes for bootstrap.
+ *
+ * NOTE: Whoever continues editing this, NEVER OVERRIDE only if you must and only with specific styles and @media!! no style should override another style,
+ * it is always better to create another class then overriding.
+ *
+ */
+
+/**
+ * #TOOLS
+ */
+//all mixins and functions here
+
+/**
+ * #SETTINGS
+ */
+
+@import "settings/settings.all";
+
+/**
+ * #BASE
+ */
+@import "base/animations";
+
+/**
+ * #COMPONENTS
+ */
+//all components base classes
+
+/**
+ * #PLACEHOLDERS
+ */
+//all placeholders here
+
+/**
+ * #SPECIFIC
+ */
+//all specific classes that usually overrides other classes...here
+
+/**
+ * #ICONS
+ */
+//all icons here
+
+/**
+ * #MEDIA
+ */
+//all media queries here
+
+/**
+ * #LIBRARY SPECIFIC
+ */
+//all classes related to some framework or similar... here
