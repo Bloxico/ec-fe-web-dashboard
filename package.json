@@ -63,7 +63,9 @@
     "lint": "cross-env NODE_ENV=development eslint --cache --format=node_modules/eslint-formatter-pretty .",
     "lint-prod": "cross-env NODE_ENV=development eslint --cache --config .eslintrc-prod.json --format=node_modules/eslint-formatter-pretty .",
     "lint-fix": "yarn run lint --fix",
-    "lint-styles": "cross-env NODE_ENV=development stylelint src/**/*.scss --syntax scss"
+    "lint-styles": "cross-env NODE_ENV=development stylelint src/**/*.scss --syntax scss",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "husky": {
     "hooks": {
@@ -124,6 +126,10 @@
     "sass-loader": "^7.1.0",
     "stylelint": "^9.5.0",
     "stylelint-config-recommended": "^2.1.0",
-    "stylelint-config-standard": "^18.2.0"
+    "stylelint-config-standard": "^18.2.0",
+    "@storybook/react": "^3.4.11",
+    "@storybook/addon-actions": "^3.4.11",
+    "@storybook/addon-links": "^3.4.11",
+    "@storybook/addons": "^3.4.11"
   }
 }
