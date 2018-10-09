@@ -20,12 +20,7 @@ const Login = ({ isLoginInProgress, handleLogin, handleSubmit }: Props) => (
     <h1>Login</h1>
 
     <Form onSubmit={handleSubmit(handleLogin)}>
-      <Field
-        label="Email"
-        component={FormField}
-        name="username"
-        width="auto"
-      />
+      <Field label="Email" component={FormField} name="username" width="auto" />
 
       <Field
         label="Password"
