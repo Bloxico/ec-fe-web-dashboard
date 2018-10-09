@@ -6,8 +6,7 @@ import { push } from 'react-router-redux';
 
 import { PORTAL_PAGE } from 'src/constants';
 
-import * as actions from './actionCreators';
-import { LOGIN } from './actions';
+import * as actions from './actions';
 
 export function* login$(): Generator<*, *, *> {
   yield delay(500);
@@ -17,5 +16,5 @@ export function* login$(): Generator<*, *, *> {
 
 // $FlowIssue
 export default function*() {
-  yield all([takeEvery(LOGIN, login$)]);
+  yield all([takeEvery(actions.LOGIN, login$)]);
 }
