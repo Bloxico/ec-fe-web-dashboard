@@ -125,6 +125,12 @@ This hook triggers on `git commit` and run `yarn run format`.
 
 This hook triggers on `git push`, runs lint and test scripts and cancels the push if any of these breaks. 
 
+## Storybook
+
+All UI components should be described in [Storybook](https://storybook.js.org/). Stories should Follow the same folder structure as components they are describing. 
+
+ Open Storybook by typing `yarn run storybook`.
+
 ## Contribution
 
 Use [Git FLow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) workflow but, prefix feature branches with your initial instead  of `feature`. 
