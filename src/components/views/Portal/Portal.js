@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { THEME_PREFIX } from 'src/constants/ui';
-import Button from '../common/Button';
+import Button from '@partials/Button';
 
 const baseClass = `${THEME_PREFIX}-portal`;
 
