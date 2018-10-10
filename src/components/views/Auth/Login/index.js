@@ -27,8 +27,8 @@ export default compose(
     actions,
   ),
   withHandlers({
-    handleLogin: ({ login }) => () => {
-      login();
+    handleLogin: ({ login }) => values => {
+      login(values);
     },
   }),
 )(Login);

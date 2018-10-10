@@ -20,8 +20,8 @@ const Login = ({ isLoginInProgress, handleLogin, handleSubmit }: Props) => (
     <h1>Login</h1>
 
     <Form onSubmit={handleSubmit(handleLogin)}>
+      {/* TODO@martins add validatiors */}
       <Field label="Email" component={FormField} name="username" width="auto" />
-
       <Field
         label="Password"
         type="password"

@@ -8,7 +8,10 @@ import { PORTAL_PAGE } from 'src/constants';
 
 import * as actions from './actions';
 
-export function* login$(): Generator<*, *, *> {
+export function* login$({ payload }): Generator<*, *, *> {
+  // eslint-disable-next-line
+  console.log(payload);
+  // http request here
   yield delay(500);
   yield put(push(PORTAL_PAGE));
   yield put(actions.clearLoginState());
