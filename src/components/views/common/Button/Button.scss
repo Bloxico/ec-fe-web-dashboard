@@ -1,0 +1,32 @@
+@import "@common-styles";
+
+.#{$theme-prefix}-button {
+  transition: background-color 0.4s, box-shadow 0.4s ease;
+  position: relative;
+  padding: 0.4em 1.6em;
+  outline: 0;
+  cursor: pointer;
+
+  //&:focus {
+  //  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+  //    0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  //}
+  //shapes
+  &--round {
+    border-radius: 6px;
+  }
+  //colors
+  &--white {
+    background: $button_white;
+    border: 1px solid $button_white_border;
+
+    &:hover,
+    &:focus {
+      background: $white;
+    }
+
+    &:active {
+      background: $button_white_active;
+    }
+  }
+}
