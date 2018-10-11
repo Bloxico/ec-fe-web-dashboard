@@ -4,20 +4,13 @@ import React from 'react';
 
 import { THEME_PREFIX } from 'src/constants/ui';
 
-export type PropsT = {
-  handleLoginClick: Function,
-  isLoginInProgress: boolean,
-};
+import Login from './Login';
 
 const baseClass = `${THEME_PREFIX}-auth`;
 
-const Auth = ({ handleLoginClick, isLoginInProgress }: PropsT) => (
+const Auth = () => (
   <div className={baseClass}>
-    <h1>Auth page</h1>
-
-    <button onClick={handleLoginClick} disabled={isLoginInProgress}>
-      {isLoginInProgress ? 'Logging in' : 'Login'}
-    </button>
+    <Login />
   </div>
 );
 
