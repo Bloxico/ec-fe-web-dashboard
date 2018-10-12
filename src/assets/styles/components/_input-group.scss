@@ -12,8 +12,6 @@ $input-group-sufix-right: 0 !default;
 $input-group-sufix-bottom: 0 !default;
 $input-group-sufix-padding: rhythm(1.75) !default;
 
-
-
 .#{$namespace}-input-group {
   position: relative;
   overflow: visible;
@@ -41,7 +39,6 @@ $input-group-sufix-padding: rhythm(1.75) !default;
   }
 }
 
-
 .#{$namespace}-input-group__prefix,
 .#{$namespace}-input-group__sufix {
   display: inline-flex;
@@ -60,7 +57,6 @@ $input-group-sufix-padding: rhythm(1.75) !default;
   }
 }
 
-
 .#{$namespace}-input-group__prefix {
   top: $input-group-prefix-top;
   left: $input-group-prefix-left;
@@ -75,12 +71,10 @@ $input-group-sufix-padding: rhythm(1.75) !default;
   }
 }
 
-
 .#{$namespace}-input-group__field {
   margin: 0;
   padding: 0;
 }
-
 
 .#{$namespace}-input-group__sufix {
   top: $input-group-sufix-top;
@@ -95,5 +89,3 @@ $input-group-sufix-padding: rhythm(1.75) !default;
     border-bottom-left-radius: 0;
   }
 }
-
-

@@ -8,15 +8,15 @@ import 'src/assets/styles/main.scss';
 
 storiesOf('Button', module)
     .add('Default', () => (
-        <Fragment>
-            <div style={{ width: '320px', margin: '50px auto' }}>
-                <Button
-                  type="primary"
-                  width="full"
-                  onClick={action('clicked')}
-                >Primary button
-                </Button><span />
-                <Button onClick={action('clicked')} width="full" type="secondary">Secondary Button</Button>
-            </div>
-        </Fragment>
+      <Fragment>
+        <div style={{ width: '320px', margin: '50px auto' }}>
+          <Button
+            type="primary"
+            width="full"
+            onClick={action('clicked')}
+          >Primary button
+          </Button><span />
+          <Button onClick={action('clicked')} width="full" type="secondary">Secondary Button</Button>
+        </div>
+      </Fragment>
     ));

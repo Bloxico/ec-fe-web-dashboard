@@ -21,10 +21,16 @@ $default-background-clip: padding-box !default;
   // webkit and mozilla use the deprecated short [border | padding]
   $clip: unquote($clip);
   $deprecated: $clip;
-  @if $clip == padding-box { $deprecated: padding; }
-  @if $clip == border-box { $deprecated: border; }
+  @if $clip == padding-box {
+    $deprecated: padding;
+  }
+  @if $clip == border-box {
+    $deprecated: border;
+  }
   // Support for webkit and mozilla's use of the deprecated short form
-  @include experimental(background-clip, $deprecated,
+  @include experimental(
+    background-clip,
+    $deprecated,
     -moz,
     -webkit,
     not(-o),
@@ -32,7 +38,9 @@ $default-background-clip: padding-box !default;
     not(-khtml),
     not official
   );
-  @include experimental(background-clip, $clip,
+  @include experimental(
+    background-clip,
+    $clip,
     not(-moz),
     not(-webkit),
     not(-o),

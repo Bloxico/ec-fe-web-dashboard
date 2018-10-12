@@ -6,14 +6,14 @@ $form-footer-margin: rhythm(2) 0 0 0 !default;
 $form-messages-margin: 0 0 rhythm(2) 0 !default;
 
 $form-dialog-padding: rhythm(2.5) rhythm(3.5) !default;
-$form-dialog-background: map-get($background-colors, 'window') !default;
+$form-dialog-background: map-get($background-colors, "window") !default;
 $form-dialog-border: (
   width: 1px,
   style: solid,
   color: transparent,
   radius: $default-border-radius
 ) !default;
-$form-dialog-shadow: 0 2px 6px 0 rgba(0,0,0, 0.3) !default;
+$form-dialog-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3) !default;
 
 $form-sizes: (
   small: 400px,
@@ -21,28 +21,19 @@ $form-sizes: (
   large: 600px
 ) !default;
 
-
 /// Form
 
 .#{$namespace}-form {
-
 }
-
 
 .#{$namespace}-form--horizontal {
-
 }
-
 
 .#{$namespace}-form--vertical {
-
 }
-
 
 .#{$namespace}-form--flat {
-
 }
-
 
 /// Form sizes
 
@@ -58,61 +49,59 @@ $form-sizes: (
   width: map-get($form-sizes, large);
 }
 
+.#{$namespace}-form__header {
+  margin: $form-header-margin;
 
-  .#{$namespace}-form__header {
-    margin: $form-header-margin;
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      margin: 0;
-    }
-
-    &--left {
-      text-align: left;
-    }
-
-    &--right {
-      text-align: right;
-    }
-
-    &--center {
-      text-align: center;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
   }
 
-  .#{$namespace}-form__body {
-    padding-left: map-get($focus-shadow, spread);
-    padding-right: map-get($focus-shadow, spread);
+  &--left {
+    text-align: left;
   }
 
-  .#{$namespace}-form__footer {
-    margin: $form-footer-margin;
-
-    &--left {
-      text-align: left;
-    }
-
-    &--right {
-      text-align: right;
-    }
-
-    &--center {
-      text-align: center;
-    }
+  &--right {
+    text-align: right;
   }
 
-  .#{$namespace}-form__messages {
-    margin: $form-messages-margin;
+  &--center {
+    text-align: center;
+  }
+}
 
-    .#{$namespace}-notification {
-      margin: 0;
-    }
+.#{$namespace}-form__body {
+  padding-left: map-get($focus-shadow, spread);
+  padding-right: map-get($focus-shadow, spread);
+}
+
+.#{$namespace}-form__footer {
+  margin: $form-footer-margin;
+
+  &--left {
+    text-align: left;
   }
 
+  &--right {
+    text-align: right;
+  }
+
+  &--center {
+    text-align: center;
+  }
+}
+
+.#{$namespace}-form__messages {
+  margin: $form-messages-margin;
+
+  .#{$namespace}-notification {
+    margin: 0;
+  }
+}
 
 // Dialog like look & feel
 
@@ -123,16 +112,14 @@ $form-sizes: (
   box-shadow: $form-dialog-shadow;
 }
 
-
 // Fieldset
 
 .#{$namespace}-fieldset {
   border: 0;
-  padding: .01em 0 0 0;
+  padding: 0.01em 0 0 0;
   margin: 0;
   min-width: 0;
 }
-
 
 // Legend
 
@@ -140,9 +127,6 @@ $form-sizes: (
   padding: 0;
   display: table;
 }
-
-
-
 
 //$form-field-spacing: 1em !default;
 //$form-input-spacing: 1ex !default;

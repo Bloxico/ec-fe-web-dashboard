@@ -4,23 +4,21 @@ $transition-group-transition: width 200ms ease-in, height 200ms ease-in !default
 $transition-duration: 500ms !default;
 $transition-easing: ease-in-out !default;
 
-$transition-fade-enter: opacity .25s ease-in !default;
-$transition-fade-exit: opacity .25s ease-out !default;
+$transition-fade-enter: opacity 0.25s ease-in !default;
+$transition-fade-exit: opacity 0.25s ease-out !default;
 
-$transition-cube-enter: transform .5s ease-in-out, opacity .1s ease-in-out !default;
-$transition-cube-exit: transform .5s ease-in-out, opacity .1s ease-in-out .3s !default;
+$transition-cube-enter: transform 0.5s ease-in-out, opacity 0.1s ease-in-out !default;
+$transition-cube-exit: transform 0.5s ease-in-out, opacity 0.1s ease-in-out 0.3s !default;
 $transition-cube-transform-origin: center top -200px !default;
 
-$transition-flip-enter: transform .1s ease-in, opacity .1s ease-in-out !default;
-$transition-flip-exit: transform .1s ease-out .2s, opacity .1s ease-in-out !default;
+$transition-flip-enter: transform 0.1s ease-in, opacity 0.1s ease-in-out !default;
+$transition-flip-exit: transform 0.1s ease-out 0.2s, opacity 0.1s ease-in-out !default;
 
-$transition-scale-enter: transform .2s ease-in-out !default;
-$transition-scale-exit: transform .2s ease-in-out .2s !default;
-
+$transition-scale-enter: transform 0.2s ease-in-out !default;
+$transition-scale-exit: transform 0.2s ease-in-out 0.2s !default;
 
 .#{$namespace}-transition {
   will-change: transform, opacity;
-
 
   &-group,
   &-container {
@@ -28,11 +26,9 @@ $transition-scale-exit: transform .2s ease-in-out .2s !default;
     transition: $transition-group-transition;
   }
 
-
   &-group {
     perspective: 1000px;
   }
-
 
   &--slide-in {
     &-enter {
@@ -57,7 +53,6 @@ $transition-scale-exit: transform .2s ease-in-out .2s !default;
       //display: none;
     }
   }
-
 
   &--fade {
     &-appear,
@@ -88,7 +83,6 @@ $transition-scale-exit: transform .2s ease-in-out .2s !default;
     }
   }
 
-
   &--flip {
     transform: rotateY(360deg);
     transform-style: preserve-3d;
@@ -100,7 +94,8 @@ $transition-scale-exit: transform .2s ease-in-out .2s !default;
       backface-visibility: hidden;
       z-index: 1;
 
-      a, button {
+      a,
+      button {
         pointer-events: none;
       }
     }
@@ -123,7 +118,8 @@ $transition-scale-exit: transform .2s ease-in-out .2s !default;
       transition: $transition-flip-exit;
       z-index: 2;
 
-      a, button {
+      a,
+      button {
         pointer-events: none;
       }
     }
@@ -142,7 +138,6 @@ $transition-scale-exit: transform .2s ease-in-out .2s !default;
     }
   }
 
-
   &--cube-flip {
     transform-style: preserve-3d;
 
@@ -154,7 +149,8 @@ $transition-scale-exit: transform .2s ease-in-out .2s !default;
       top: 0;
       opacity: 0;
 
-      a, button {
+      a,
+      button {
         pointer-events: none;
       }
     }
@@ -175,12 +171,12 @@ $transition-scale-exit: transform .2s ease-in-out .2s !default;
       transition: $transition-cube-exit;
       opacity: 0;
 
-      a, button {
+      a,
+      button {
         pointer-events: none;
       }
     }
   }
-
 
   &--scale {
     transform-style: preserve-3d;

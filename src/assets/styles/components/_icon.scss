@@ -50,7 +50,6 @@
   }
 }
 
-
 @mixin generate-icon-sizes {
   @each $key, $value in $icon-sizes {
     .#{$namespace}-icon--#{$key} {
@@ -64,6 +63,5 @@
     }
   }
 }
-
 
 @include generate-icon-sizes;

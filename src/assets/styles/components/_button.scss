@@ -1,15 +1,15 @@
-$button-margin: rhythm(.125) 0 !default;
-$button-padding: .375 20px .375 20px !default;
+$button-margin: rhythm(0.125) 0 !default;
+$button-padding: 0.375 20px 0.375 20px !default;
 $button-spacing: 12px !default;
 $button-font-weight: 300 !default;
-$button-transition: all .15s ease-in-out 0s !default;
-$button-text-color: map-get($text-colors, 'button') !default;
-$button-text-shadow: 0 0 1px color('black', 'alpha', 20) !default;
+$button-transition: all 0.15s ease-in-out 0s !default;
+$button-text-color: map-get($text-colors, "white") !default;
+$button-text-shadow: 0 0 1px color("black", "alpha", 20) !default;
 $button-border: (
   side: all,
   width: $default-rhythm-border-width,
   radius: $default-border-radius,
-  color: map-get($border-colors, 'button')
+  color: map-get($border-colors, "button")
 ) !default;
 
 $button-small-height: rhythm(1) !default;
@@ -20,15 +20,15 @@ $button-small-border: (
 ) !default;
 
 $button-large-height: rhythm(2.25) !default;
-$button-large-font-size: map-get($font-sizes, 'large') !default;
+$button-large-font-size: map-get($font-sizes, "large") !default;
 $button-large-margin: 0 !default;
-$button-large-padding: .125 35px !default;
+$button-large-padding: 0.125 35px !default;
 $button-large-border: (
   width: $default-rhythm-border-width
 ) !default;
 
-$button-ghost-color: map-get($text-colors, 'dark') !default;
-$button-ghost-hover-color: map-get($text-colors, 'normal') !default;
+$button-ghost-color: map-get($text-colors, "dark") !default;
+$button-ghost-hover-color: map-get($text-colors, "normal") !default;
 
 $button-icon-size: rhythm(1.75) !default;
 $button-small-icon-size: rhythm(1) !default;
@@ -38,515 +38,484 @@ $button-colors: (
   primary: (
     default: (
       normal: (
-        text:       $button-text-color,
-        background: map-get($background-colors, 'button'),
-        border:     transparent,
+        text: $button-text-color,
+        background: map-get($background-colors, "primary"),
+        border: transparent
       ),
-
       disabled: (
-        text:       map-get($text-colors, 'hover'),
-        background: color('blue', 'alpha', 20),
-        border:     transparent,
+        text: map-get($text-colors, "hover"),
+        background: color("button", "alpha", 20),
+        border: transparent
       ),
-
       hover: (
-        text:       $button-text-color,
-        background: map-get($background-colors, 'hover'),
-        border:     transparent,
+        text: $button-text-color,
+        background: map-get($background-colors, "primarylight"),
+        border: transparent
       ),
-
       pressed: (
-        text:       $button-text-color,
-        background: map-get($background-colors, 'hover'),
-        border:     transparent,
-      ),
+        text: $button-text-color,
+        background: map-get($background-colors, "primarydark"),
+        border: transparent
+      )
     ),
-
     success: (
       normal: (
-        text:       $button-text-color,
-        background: map-get($background-colors, 'success'),
-        border:     transparent,
+        text: $button-text-color,
+        background: map-get($background-colors, "success"),
+        border: transparent
       ),
-
       disabled: (
-        text:       $button-text-color,
-        background: map-get($background-colors, 'success'),
-        border:     transparent,
+        text: $button-text-color,
+        background: map-get($background-colors, "success"),
+        border: transparent
       ),
-
       hover: (
-        text:       $button-text-color,
-        background: color('green', 'dark', 10),
-        border:     transparent,
+        text: $button-text-color,
+        background: color("green", "dark", 10),
+        border: transparent
       ),
-
       pressed: (
-        text:       $button-text-color,
-        background: color('green', 'dark', 10),
-        border:     transparent,
-      ),
+        text: $button-text-color,
+        background: color("green", "dark", 10),
+        border: transparent
+      )
     ),
-
     warning: (
       normal: (
-        text:       $button-text-color,
-        background: map-get($background-colors, 'warning'),
-        border:     transparent,
+        text: $button-text-color,
+        background: map-get($background-colors, "warning"),
+        border: transparent
       ),
-
       disabled: (
-        text:       $button-text-color,
-        background: map-get($background-colors, 'warning'),
-        border:     transparent,
+        text: $button-text-color,
+        background: map-get($background-colors, "warning"),
+        border: transparent
       ),
-
       hover: (
-        text:       $button-text-color,
-        background: color('orange', 'dark', 10),
-        border:     transparent,
+        text: $button-text-color,
+        background: color("orange", "dark", 10),
+        border: transparent
       ),
-
       pressed: (
-        text:       $button-text-color,
-        background: color('orange', 'dark', 10),
-        border:     transparent,
-      ),
+        text: $button-text-color,
+        background: color("orange", "dark", 10),
+        border: transparent
+      )
     ),
-
     alert: (
       normal: (
-        text:       $button-text-color,
-        background: map-get($background-colors, 'alert'),
-        border:     transparent,
+        text: $button-text-color,
+        background: map-get($background-colors, "alert"),
+        border: transparent
       ),
-
       disabled: (
-        text:       $button-text-color,
-        background: map-get($background-colors, 'alert'),
-        border:     transparent,
+        text: $button-text-color,
+        background: map-get($background-colors, "alert"),
+        border: transparent
       ),
-
       hover: (
-        text:       $button-text-color,
-        background: color('red', 'dark', 10),
-        border:     transparent,
+        text: $button-text-color,
+        background: color("red", "dark", 10),
+        border: transparent
       ),
-
       pressed: (
-        text:       $button-text-color,
-        background: color('red', 'dark', 10),
-        border:     transparent,
-      ),
+        text: $button-text-color,
+        background: color("red", "dark", 10),
+        border: transparent
+      )
     ),
-
     info: (
       normal: (
-        text:       $button-text-color,
-        background: map-get($background-colors, 'info'),
-        border:     transparent,
+        text: $button-text-color,
+        background: map-get($background-colors, "info"),
+        border: transparent
       ),
-
       disabled: (
-        text:       $button-text-color,
-        background: map-get($background-colors, 'info'),
-        border:     transparent,
+        text: $button-text-color,
+        background: map-get($background-colors, "info"),
+        border: transparent
       ),
-
       hover: (
-        text:       $button-text-color,
-        background: color('blue', 'dark', 10),
-        border:     transparent,
+        text: $button-text-color,
+        background: color("blue", "dark", 10),
+        border: transparent
       ),
-
       pressed: (
-        text:       $button-text-color,
-        background: color('blue', 'dark', 10),
-        border:     transparent,
-      ),
+        text: $button-text-color,
+        background: color("blue", "dark", 10),
+        border: transparent
+      )
     ),
-
     inverse: (
       normal: (
-        text:       $button-text-color,
-        background: color('black', 'alpha', 90),
-        border:     transparent,
+        text: $button-text-color,
+        background: color("black", "alpha", 90),
+        border: transparent
       ),
-
       disabled: (
-        text:       $button-text-color,
-        background: color('black', 'alpha', 90),
-        border:     transparent,
+        text: $button-text-color,
+        background: color("black", "alpha", 90),
+        border: transparent
       ),
-
       hover: (
-        text:       $button-text-color,
-        background: color('black'),
-        border:     transparent,
+        text: $button-text-color,
+        background: color("black"),
+        border: transparent
       ),
-
       pressed: (
-        text:       $button-text-color,
-        background: color('black'),
-        border:     transparent,
-      ),
-    ),
+        text: $button-text-color,
+        background: color("black"),
+        border: transparent
+      )
+    )
   ),
-
   secondary: (
     default: (
       normal: (
-        text:       map-get($text-colors, 'link'),
-        background: map-get($background-colors, 'control'),
-        border:     map-get($border-colors, 'button'),
+        text: map-get($text-colors, "white"),
+        background: map-get($background-colors, "secondary"),
+        border: transparent
       ),
-
       disabled: (
-        text:       map-get($text-colors, 'hover'),
-        background: map-get($background-colors, 'control'),
-        border:     map-get($border-colors, 'hover'),
+        text: map-get($text-colors, "white"),
+        background: map-get($background-colors, "control"),
+        border: transparent
       ),
-
       hover: (
-        text:       map-get($text-colors, 'hover'),
-        background: map-get($background-colors, 'control'),
-        border:     map-get($border-colors, 'hover'),
+        text: map-get($text-colors, "white"),
+        background: map-get($background-colors, "secondarylight"),
+        border: transparent
       ),
-
       pressed: (
-        text:       map-get($text-colors, 'hover'),
-        background: map-get($background-colors, 'control'),
-        border:     map-get($border-colors, 'hover'),
-      ),
+        text: map-get($text-colors, "white"),
+        background: map-get($background-colors, "secondarydark"),
+        border: transparent
+      )
     ),
-
     success: (
       normal: (
-        text:       map-get($text-colors, 'success'),
-        background: map-get($background-colors, 'control'),
-        border:     map-get($border-colors, 'success'),
+        text: map-get($text-colors, "success"),
+        background: map-get($background-colors, "control"),
+        border: map-get($border-colors, "success")
       ),
-
       disabled: (
-        text:       map-get($text-colors, 'success'),
-        background: map-get($background-colors, 'control'),
-        border:     map-get($border-colors, 'success'),
+        text: map-get($text-colors, "success"),
+        background: map-get($background-colors, "control"),
+        border: map-get($border-colors, "success")
       ),
-
       hover: (
-        text:       color('green', 'dark', 10),
-        background: map-get($background-colors, 'control'),
-        border:     color('green', 'dark', 10),
+        text: color("green", "dark", 10),
+        background: map-get($background-colors, "control"),
+        border: color("green", "dark", 10)
       ),
-
       pressed: (
-        text:       color('green', 'dark', 10),
-        background: map-get($background-colors, 'control'),
-        border:     color('green', 'dark', 10),
-      ),
+        text: color("green", "dark", 10),
+        background: map-get($background-colors, "control"),
+        border: color("green", "dark", 10)
+      )
     ),
-
     warning: (
       normal: (
-        text:       map-get($text-colors, 'warning'),
-        background: map-get($background-colors, 'control'),
-        border:     map-get($border-colors, 'warning'),
+        text: map-get($text-colors, "warning"),
+        background: map-get($background-colors, "control"),
+        border: map-get($border-colors, "warning")
       ),
-
       disabled: (
-        text:       map-get($text-colors, 'warning'),
-        background: map-get($background-colors, 'control'),
-        border:     map-get($border-colors, 'warning'),
+        text: map-get($text-colors, "warning"),
+        background: map-get($background-colors, "control"),
+        border: map-get($border-colors, "warning")
       ),
-
       hover: (
-        text:       color('orange', 'dark', 10),
-        background: map-get($background-colors, 'control'),
-        border:     color('orange', 'dark', 10),
+        text: color("orange", "dark", 10),
+        background: map-get($background-colors, "control"),
+        border: color("orange", "dark", 10)
       ),
-
       pressed: (
-        text:       color('orange', 'dark', 10),
-        background: map-get($background-colors, 'control'),
-        border:     color('orange', 'dark', 10),
-      ),
+        text: color("orange", "dark", 10),
+        background: map-get($background-colors, "control"),
+        border: color("orange", "dark", 10)
+      )
     ),
-
     alert: (
       normal: (
-        text:       map-get($text-colors, 'alert'),
-        background: map-get($background-colors, 'control'),
-        border:     map-get($border-colors, 'alert'),
+        text: map-get($text-colors, "alert"),
+        background: map-get($background-colors, "control"),
+        border: map-get($border-colors, "alert")
       ),
-
       disabled: (
-        text:       $button-text-color,
-        background: map-get($background-colors, 'control'),
-        border:     map-get($border-colors, 'alert'),
+        text: $button-text-color,
+        background: map-get($background-colors, "control"),
+        border: map-get($border-colors, "alert")
       ),
-
       hover: (
-        text:       color('red', 'dark', 10),
-        background: map-get($background-colors, 'control'),
-        border:     color('red', 'dark', 10),
+        text: color("red", "dark", 10),
+        background: map-get($background-colors, "control"),
+        border: color("red", "dark", 10)
       ),
-
       pressed: (
-        text:       color('red', 'dark', 10),
-        background: map-get($background-colors, 'control'),
-        border:     color('red', 'dark', 10),
-      ),
+        text: color("red", "dark", 10),
+        background: map-get($background-colors, "control"),
+        border: color("red", "dark", 10)
+      )
     ),
-
     info: (
       normal: (
-        text:       map-get($text-colors, 'info'),
-        background: map-get($background-colors, 'control'),
-        border:     map-get($border-colors, 'info'),
+        text: map-get($text-colors, "info"),
+        background: map-get($background-colors, "control"),
+        border: map-get($border-colors, "info")
       ),
-
       disabled: (
-        text:       map-get($text-colors, 'info'),
-        background: map-get($background-colors, 'control'),
-        border:     map-get($border-colors, 'info'),
+        text: map-get($text-colors, "info"),
+        background: map-get($background-colors, "control"),
+        border: map-get($border-colors, "info")
       ),
-
       hover: (
-        text:       color('blue', 'dark', 10),
-        background: map-get($background-colors, 'control'),
-        border:     color('blue', 'dark', 10),
+        text: color("blue", "dark", 10),
+        background: map-get($background-colors, "control"),
+        border: color("blue", "dark", 10)
       ),
-
       pressed: (
-        text:       color('blue', 'dark', 10),
-        background: map-get($background-colors, 'control'),
-        border:     color('blue', 'dark', 10),
-      ),
+        text: color("blue", "dark", 10),
+        background: map-get($background-colors, "control"),
+        border: color("blue", "dark", 10)
+      )
     ),
-
     inverse: (
       normal: (
-        text:       color('black', 'alpha', 90),
+        text: color("black", "alpha", 90),
         background: transparent,
-        border:     color('black', 'alpha', 90),
+        border: color("black", "alpha", 90)
       ),
-
       disabled: (
-        text:       color('black', 'alpha', 90),
+        text: color("black", "alpha", 90),
         background: transparent,
-        border:     color('black', 'alpha', 90),
+        border: color("black", "alpha", 90)
       ),
-
       hover: (
-        text:       color('black'),
+        text: color("black"),
         background: transparent,
-        border:     color('black'),
+        border: color("black")
       ),
-
       pressed: (
-        text:       color('black'),
+        text: color("black"),
         background: transparent,
-        border:     color('black'),
-      ),
-    ),
+        border: color("black")
+      )
+    )
   ),
-
   tertiary: (
     default: (
       normal: (
-        text:       color('tertiary'),
+        text: color("tertiary"),
         background: transparent,
-        border:     transparent,
+        border: transparent
       ),
-
       disabled: (
-        text:       color('tertiary'),
-        background: color('tertiary', 'alpha', 20),
-        border:     transparent,
+        text: color("tertiary"),
+        background: color("tertiary", "alpha", 20),
+        border: transparent
       ),
-
       hover: (
-        text:       map-get($text-colors, 'hover'),
-        background: color('blue', 'alpha', 10),
-        border:     transparent,
+        text: map-get($text-colors, "hover"),
+        background: color("blue", "alpha", 10),
+        border: transparent
       ),
-
       pressed: (
-        text:       map-get($text-colors, 'hover'),
-        background: color('blue', 'alpha', 10),
-        border:     transparent,
-      ),
+        text: map-get($text-colors, "hover"),
+        background: color("blue", "alpha", 10),
+        border: transparent
+      )
     ),
-
     success: (
       normal: (
-        text:       color('green', 'alpha', 70),
+        text: color("green", "alpha", 70),
         background: transparent,
-        border:     transparent,
+        border: transparent
       ),
-
       disabled: (
-        text:       map-get($text-colors, 'success'),
-        background: color('green', 'alpha', 10),
-        border:     transparent,
+        text: map-get($text-colors, "success"),
+        background: color("green", "alpha", 10),
+        border: transparent
       ),
-
       hover: (
-        text:       map-get($text-colors, 'success'),
-        background: color('green', 'alpha', 10),
-        border:     transparent,
+        text: map-get($text-colors, "success"),
+        background: color("green", "alpha", 10),
+        border: transparent
       ),
-
       pressed: (
-        text:       map-get($text-colors, 'success'),
-        background: color('green', 'alpha', 10),
-        border:     transparent,
-      ),
+        text: map-get($text-colors, "success"),
+        background: color("green", "alpha", 10),
+        border: transparent
+      )
     ),
-
     warning: (
       normal: (
-        text:       color('orange', 'alpha', 70),
+        text: color("orange", "alpha", 70),
         background: transparent,
-        border:     transparent,
+        border: transparent
       ),
-
       disabled: (
-        text:       map-get($text-colors, 'warning'),
-        background: color('orange', 'alpha', 10),
-        border:     transparent,
+        text: map-get($text-colors, "warning"),
+        background: color("orange", "alpha", 10),
+        border: transparent
       ),
-
       hover: (
-        text:       map-get($text-colors, 'warning'),
-        background: color('orange', 'alpha', 10),
-        border:     transparent,
+        text: map-get($text-colors, "warning"),
+        background: color("orange", "alpha", 10),
+        border: transparent
       ),
-
       pressed: (
-        text:       map-get($text-colors, 'warning'),
-        background: color('orange', 'alpha', 10),
-        border:     transparent,
-      ),
+        text: map-get($text-colors, "warning"),
+        background: color("orange", "alpha", 10),
+        border: transparent
+      )
     ),
-
     alert: (
       normal: (
-        text:       color('red', 'alpha', 70),
+        text: color("red", "alpha", 70),
         background: transparent,
-        border:     transparent,
+        border: transparent
       ),
-
       disabled: (
-        text:       map-get($text-colors, 'alert'),
-        background: color('red', 'alpha', 10),
-        border:     transparent,
+        text: map-get($text-colors, "alert"),
+        background: color("red", "alpha", 10),
+        border: transparent
       ),
-
       hover: (
-        text:       map-get($text-colors, 'alert'),
-        background: color('red', 'alpha', 10),
-        border:     transparent,
+        text: map-get($text-colors, "alert"),
+        background: color("red", "alpha", 10),
+        border: transparent
       ),
-
       pressed: (
-        text:       map-get($text-colors, 'alert'),
-        background: color('red', 'alpha', 10),
-        border:     transparent,
-      ),
+        text: map-get($text-colors, "alert"),
+        background: color("red", "alpha", 10),
+        border: transparent
+      )
     ),
-
     info: (
       normal: (
-        text:       color('blue', 'alpha', 70),
+        text: color("blue", "alpha", 70),
         background: transparent,
-        border:     transparent,
+        border: transparent
       ),
-
       disabled: (
-        text:       $button-text-color,
-        background: color('blue', 'alpha', 10),
-        border:     transparent,
+        text: $button-text-color,
+        background: color("blue", "alpha", 10),
+        border: transparent
       ),
-
       hover: (
-        text:       map-get($text-colors, 'info'),
-        background: color('blue', 'alpha', 10),
-        border:     transparent,
+        text: map-get($text-colors, "info"),
+        background: color("blue", "alpha", 10),
+        border: transparent
       ),
-
       pressed: (
-        text:       map-get($text-colors, 'info'),
-        background: color('blue', 'alpha', 10),
-        border:     transparent,
-      ),
+        text: map-get($text-colors, "info"),
+        background: color("blue", "alpha", 10),
+        border: transparent
+      )
     ),
-
     inverse: (
       normal: (
-        text:       color('black', 'alpha', 90),
+        text: color("black", "alpha", 90),
         background: transparent,
-        border:     transparent,
+        border: transparent
       ),
-
       disabled: (
-        text:       color('black'),
-        background: color('black', 'alpha', 10),
-        border:     transparent,
+        text: color("black"),
+        background: color("black", "alpha", 10),
+        border: transparent
       ),
-
       hover: (
-        text:       color('black'),
-        background: color('black', 'alpha', 10),
-        border:     transparent,
+        text: color("black"),
+        background: color("black", "alpha", 10),
+        border: transparent
       ),
-
       pressed: (
-        text:       color('black'),
-        background: color('black', 'alpha', 10),
-        border:     transparent,
-      ),
-    ),
+        text: color("black"),
+        background: color("black", "alpha", 10),
+        border: transparent
+      )
+    )
   )
 ) !default;
 
 $button-busy-animation: working 5s linear infinite !default;
 
-
 /// Button functions and mixins
 
-@mixin coloured-button($type: 'secondary', $color: 'default') {
-  color: map-deep-get($button-colors, $type, $color, 'normal', 'text');
-  background-color: map-deep-get($button-colors, $type, $color, 'normal', 'background');
-  border-color: map-deep-get($button-colors, $type, $color, 'normal', 'border');
+@mixin coloured-button($type: "secondary", $color: "default") {
+  color: map-deep-get($button-colors, $type, $color, "normal", "text");
+  background-color: map-deep-get(
+    $button-colors,
+    $type,
+    $color,
+    "normal",
+    "background"
+  );
+  border-color: map-deep-get($button-colors, $type, $color, "normal", "border");
 
   &[disabled] {
-    color: map-deep-get($button-colors, $type, $color, 'disabled', 'text');
-    background-color: map-deep-get($button-colors, $type, $color, 'disabled', 'background');
-    border-color: map-deep-get($button-colors, $type, $color, 'disabled', 'border');
+    color: map-deep-get($button-colors, $type, $color, "disabled", "text");
+    background-color: map-deep-get(
+      $button-colors,
+      $type,
+      $color,
+      "disabled",
+      "background"
+    );
+    border-color: map-deep-get(
+      $button-colors,
+      $type,
+      $color,
+      "disabled",
+      "border"
+    );
   }
 
   &:hover,
   &.#{$namespace}-button--hover {
     &:not([disabled]),
-    &:not([aria-disabled='true']) {
-      color: map-deep-get($button-colors, $type, $color, 'hover', 'text');
-      background-color: map-deep-get($button-colors, $type, $color, 'hover', 'background');
-      border-color: map-deep-get($button-colors, $type, $color, 'hover', 'border');
+    &:not([aria-disabled="true"]) {
+      color: map-deep-get($button-colors, $type, $color, "hover", "text");
+      background-color: map-deep-get(
+        $button-colors,
+        $type,
+        $color,
+        "hover",
+        "background"
+      );
+      border-color: map-deep-get(
+        $button-colors,
+        $type,
+        $color,
+        "hover",
+        "border"
+      );
     }
   }
 
   &:active,
-  &[aria-pressed='true'] {
+  &[aria-pressed="true"] {
     &:not([disabled]),
-    &:not([aria-disabled='true']) {
-      color: map-deep-get($button-colors, $type, $color, 'pressed', 'text');
-      background-color: map-deep-get($button-colors, $type, $color, 'pressed', 'background');
-      border-color: map-deep-get($button-colors, $type, $color, 'pressed', 'border');
+    &:not([aria-disabled="true"]) {
+      color: map-deep-get($button-colors, $type, $color, "pressed", "text");
+      background-color: map-deep-get(
+        $button-colors,
+        $type,
+        $color,
+        "pressed",
+        "background"
+      );
+      border-color: map-deep-get(
+        $button-colors,
+        $type,
+        $color,
+        "pressed",
+        "border"
+      );
     }
   }
 }
-
 
 /// Base button class
 
@@ -579,7 +548,7 @@ $button-busy-animation: working 5s linear infinite !default;
     text-decoration: none;
 
     &:not([disabled]),
-    &:not([aria-disabled='true']) {
+    &:not([aria-disabled="true"]) {
       transition: $button-transition;
     }
   }
@@ -590,7 +559,6 @@ $button-busy-animation: working 5s linear infinite !default;
     }
   }
 }
-
 
 /// Secondary button (default)
 
@@ -603,99 +571,96 @@ $button-busy-animation: working 5s linear infinite !default;
     margin-left: $button-spacing;
   }
 
-  @include coloured-button('secondary', 'default');
+  @include coloured-button("secondary", "default");
 
   /// Coloured buttons
 
   &.#{$namespace}-button--success {
-    @include coloured-button('secondary', 'success');
+    @include coloured-button("secondary", "success");
   }
 
   &.#{$namespace}-button--warning {
-    @include coloured-button('secondary', 'warning');
+    @include coloured-button("secondary", "warning");
   }
 
   &.#{$namespace}-button--info {
-    @include coloured-button('secondary', 'info');
+    @include coloured-button("secondary", "info");
   }
 
   &.#{$namespace}-button--alert,
   &.#{$namespace}-button--error {
-    @include coloured-button('secondary', 'alert');
+    @include coloured-button("secondary", "alert");
   }
 
   &.#{$namespace}-button--inverse {
-    @include coloured-button('secondary', 'inverse');
+    @include coloured-button("secondary", "inverse");
   }
 }
-
 
 /// Primary button
 
 .#{$namespace}-button--primary {
-  @include coloured-button('primary', 'default');
+  @include coloured-button("primary", "default");
 
   text-shadow: $button-text-shadow;
 
   /// Coloured buttons
 
   &.#{$namespace}-button--success {
-    @include coloured-button('primary', 'success');
+    @include coloured-button("primary", "success");
   }
 
   &.#{$namespace}-button--warning {
-    @include coloured-button('primary', 'warning');
+    @include coloured-button("primary", "warning");
   }
 
   &.#{$namespace}-button--info {
-    @include coloured-button('primary', 'info');
+    @include coloured-button("primary", "info");
   }
 
   &.#{$namespace}-button--alert,
   &.#{$namespace}-button--error {
-    @include coloured-button('primary', 'alert');
+    @include coloured-button("primary", "alert");
   }
 
   &.#{$namespace}-button--inverse {
-    @include coloured-button('primary', 'inverse');
+    @include coloured-button("primary", "inverse");
 
     mix-blend-mode: multiply;
   }
 }
 
-
 /// Tertiary button
 
 .#{$namespace}-button--flat,
 .#{$namespace}-button--tertiary {
-  @include coloured-button('tertiary', 'default');
+  @include coloured-button("tertiary", "default");
 
   text-shadow: $button-text-shadow;
 
   /// Coloured buttons
 
   &.#{$namespace}-button--success {
-    @include coloured-button('tertiary', 'success');
+    @include coloured-button("tertiary", "success");
   }
 
   &.#{$namespace}-button--warning {
-    @include coloured-button('tertiary', 'warning');
+    @include coloured-button("tertiary", "warning");
   }
 
   &.#{$namespace}-button--info {
-    @include coloured-button('tertiary', 'info');
+    @include coloured-button("tertiary", "info");
   }
 
   &.#{$namespace}-button--alert,
   &.#{$namespace}-button--error {
-    @include coloured-button('tertiary', 'alert');
+    @include coloured-button("tertiary", "alert");
   }
 
   &.#{$namespace}-button--inverse {
-    @include coloured-button('tertiary', 'inverse');
+    @include coloured-button("tertiary", "inverse");
   }
 }
-
 
 /// Ghost button
 
@@ -708,7 +673,7 @@ $button-busy-animation: working 5s linear infinite !default;
   &:focus,
   &:active {
     &:not([disabled]),
-    &:not([aria-disabled='true']) {
+    &:not([aria-disabled="true"]) {
       color: $button-ghost-hover-color;
       background-color: transparent;
       border-color: transparent;
@@ -720,13 +685,12 @@ $button-busy-animation: working 5s linear infinite !default;
 
   &:hover {
     &:not([disabled]),
-    &:not([aria-disabled='true']) {
+    &:not([aria-disabled="true"]) {
       color: $button-ghost-hover-color;
       filter: drop-shadow(0 0 0 $button-ghost-hover-color);
     }
   }
 }
-
 
 /// Small button
 
@@ -744,7 +708,6 @@ $button-busy-animation: working 5s linear infinite !default;
   }
 }
 
-
 /// Large button
 
 .#{$namespace}-button--large {
@@ -761,7 +724,6 @@ $button-busy-animation: working 5s linear infinite !default;
   }
 }
 
-
 /// Wide button
 
 .#{$namespace}-button--wide,
@@ -770,7 +732,6 @@ $button-busy-animation: working 5s linear infinite !default;
   width: 100%;
   text-align: center;
 }
-
 
 /// Button with only icon
 
@@ -818,13 +779,11 @@ $button-busy-animation: working 5s linear infinite !default;
   }
 }
 
-
 /// Round button
 
 .#{$namespace}-button--round {
   border-radius: 50%;
 }
-
 
 /// Pill button
 
@@ -834,7 +793,7 @@ $button-busy-animation: working 5s linear infinite !default;
 
   &:hover {
     &:not([disabled]),
-    &:not([aria-disabled='true']) {
+    &:not([aria-disabled="true"]) {
       background-color: transparent;
     }
   }

@@ -32,7 +32,9 @@ $default-has-layout-approach: zoom !default;
     // This makes ie6 get layout
     display: inline-block;
     // and this puts it back to block
-    & { display: block; }
+    & {
+      display: block;
+    }
   }
 }
 

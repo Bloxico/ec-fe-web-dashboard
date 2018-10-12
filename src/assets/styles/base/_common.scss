@@ -1,19 +1,16 @@
-$window-color: map-get($text-colors, 'normal') !default;
-$window-background: map-get($background-colors, 'window') !default;
-$selection-background: color('orange', 'alpha', 50) !default;
+$window-color: map-get($text-colors, "normal") !default;
+$window-background: map-get($background-colors, "window") !default;
+$selection-background: color("orange", "alpha", 50) !default;
 
 $scrollbar-size: map-get(map-get($application, scrollbar), size) !default;
-$scrollbar-background: map-get($background-colors, 'body') !default;
-$scrollbar-thumb: map-get($background-colors, 'window') !default;
-
+$scrollbar-background: map-get($background-colors, "body") !default;
+$scrollbar-thumb: map-get($background-colors, "window") !default;
 
 // Establishes a font baseline for the given font-size
 @include establish-baseline;
 
-
 // Icon selectors
 //@include generate-icons;
-
 
 ///
 /// Global pseudo classes
@@ -25,27 +22,22 @@ $scrollbar-thumb: map-get($background-colors, 'window') !default;
   background: $window-background;
 }
 
-
 :disabled {
   @extend %disabled;
 }
 
-
 :focus {
   outline: none;
 }
-
 
 ::before,
 ::after {
   box-sizing: border-box;
 }
 
-
 ::selection {
   background-color: $selection-background;
 }
-
 
 ///
 /// Global elements' attributes
@@ -55,12 +47,10 @@ $scrollbar-thumb: map-get($background-colors, 'window') !default;
   @extend %hidden;
 }
 
-
 [disabled],
-[aria-disabled='true'] {
+[aria-disabled="true"] {
   @extend %disabled;
 }
-
 
 ///
 /// Custom icon styling
@@ -70,7 +60,6 @@ $scrollbar-thumb: map-get($background-colors, 'window') !default;
 [icon-second]::after {
   @extend %icon;
 }
-
 
 ///
 /// Scrollbar styling
@@ -82,19 +71,18 @@ $scrollbar-thumb: map-get($background-colors, 'window') !default;
 
 ::-webkit-scrollbar-track {
   border-radius: 5px;
-  background: rgba(0, 0, 0, .05);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background: rgba(0, 0, 0, .05);
+  background: rgba(0, 0, 0, 0.05);
 
   &:window-inactive {
-    background: rgba(0, 0, 0, .05);
+    background: rgba(0, 0, 0, 0.05);
   }
 
   &:hover {
-    background: rgba(0, 0, 0, .1);
+    background: rgba(0, 0, 0, 0.1);
   }
 }
-
