@@ -61,7 +61,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "format-js": "./node_modules/.bin/prettier --config=\".prettierrc.json\" --write \"src/**/*.js\" \"config/**/*.js\"",
+    "format-js": "./node_modules/.bin/prettier --config=\".prettierrc.json\" --write \"src/**/*.js\" \"config/**/*.js\" \"stories/**/*.js\"",
     "format-scss": "./node_modules/.bin/prettier --config=\".prettierrc-styles.json\" --write \"src/**/*.scss\"",
     "format": "yarn run format-js && yarn run format-scss",
     "lint": "cross-env NODE_ENV=development eslint --cache --format=node_modules/eslint-formatter-pretty .",
