@@ -1,0 +1,60 @@
+%disabled {
+  opacity: $disabled-opacity;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+%focus {
+  outline: none;
+  text-decoration: none;
+
+  @if map-get($focus-shadow, inset) == true {
+    box-shadow: inset
+                map-get($focus-shadow, x)
+                map-get($focus-shadow, y)
+                map-get($focus-shadow, blur)
+                map-get($focus-shadow, spread)
+                map-get($focus-shadow, color);
+  }
+  @else {
+    box-shadow: map-get($focus-shadow, x)
+                map-get($focus-shadow, y)
+                map-get($focus-shadow, blur)
+                map-get($focus-shadow, spread)
+                map-get($focus-shadow, color);
+  }
+}
+
+
+%hidden {
+  display: none !important;
+}
+
+
+%icon {
+  display: inline-block;
+  box-sizing: border-box;
+  line-height: inherit;
+
+  font-family: $icon-font-family;
+  font-size: inherit;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-rendering: auto;
+  vertical-align: top;
+
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &[aria-busy='true'] {
+    @extend %icon--busy;
+  }
+}
+
+
+%icon--busy {
+  animation: pulsate 2s infinite linear;
+}

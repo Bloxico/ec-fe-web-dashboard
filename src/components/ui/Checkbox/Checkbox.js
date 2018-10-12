@@ -4,7 +4,7 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 
-const baseClass = 'gc-checkbox';
+const baseClass = 'enrg-checkbox';
 
 type PropsT = {
   id?: string,

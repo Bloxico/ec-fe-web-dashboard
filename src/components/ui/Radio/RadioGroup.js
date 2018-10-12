@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import Radio from './Radio';
 import Label from '../Label/Label';
 
-const baseClass = 'gc-radiogroup';
+const baseClass = 'enrg-radiogroup';
 
 type RadioArray = Array<{
   value: string,
@@ -111,7 +111,7 @@ class RadioGroup extends PureComponent<PropsT, StateT> {
           onFocus={onFocus}
         />
         {children}
-        {hint && <div className="gc-input__hint">{hint}</div>}
+        {hint && <div className="enrg-input__hint">{hint}</div>}
       </Label>
     );
   }
@@ -122,7 +122,7 @@ class RadioGroup extends PureComponent<PropsT, StateT> {
     const classes = classNames(
       baseClass,
       inline && `${baseClass}--inline`,
-      'gc-fieldset',
+      'enrg-fieldset',
       className,
     );
 

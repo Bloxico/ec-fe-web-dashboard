@@ -1,0 +1,130 @@
+///
+/// Color Palette generator configuration
+///
+///
+
+
+$palette-configuration: (
+  shades: (
+    'alpha-10':   .1,  // 10% opacity
+    'alpha-20':   .2,
+    'alpha-30':   .3,
+    'alpha-40':   .4,
+    'alpha-50':   .5,
+    'alpha-60':   .6,
+    'alpha-70':   .7,
+    'alpha-80':   .8,
+    'alpha-90':   .9,  // 90% opacity
+    'dark-90':  -90%,  // extra dark
+    'dark-80':  -80%,
+    'dark-70':  -70%,
+    'dark-60':  -60%,
+    'dark-50':  -50%,
+    'dark-40':  -40%,
+    'dark-30':  -30%,
+    'dark-20':  -20%,
+    'dark-10':  -10%,
+    'dark-5':   -5%,  // little dark
+    'light-5':   5%,  // little light
+    'light-10':  10%,
+    'light-20':  20%,
+    'light-30':  30%,
+    'light-40':  40%,
+    'light-50':  50%,
+    'light-60':  60%,
+    'light-70':  70%,
+    'light-80':  80%,
+    'light-90':  90%,  // extra light
+  ),
+
+  predefined: (
+    'primary':    #F7F9FC,
+    'secondary':  #C9D0DF,
+    'tertiary':   #A8B2CB,
+  ),
+
+  colors: (
+    'black':      #2A2D33,
+    'white':      #FFFFFF,
+    'red':        #F72D2D,
+    'orange':     #FF9D2E,
+    'green':      #22D682,
+    'cyan':       #0EA5F0,
+    'blue':       #005EBD,
+  )
+) !default;
+
+
+
+///
+/// Generating global color Palette
+///
+///
+@function generate-color-palette($predefined: null) {
+  $palette: ();
+  $shades: map-get($palette-configuration, shades);
+  $colors: map-merge(map-get($palette-configuration, predefined), map-get($palette-configuration, colors));
+
+  @each $name, $color in $colors {
+    $shade: 0;
+    $gradients: ();
+
+    $palette: map-merge($palette, ('#{$name}': to-rgba($color)));
+
+    @each $key, $value in $shades {
+      $value: to-number($value);
+
+      @if $value < 0 {
+        $shade: to-rgba(darken($color, -$value));
+      }
+      @else if $value > 0 and $value < 1 {
+        $shade: to-rgba($color, $value);
+      }
+      @else {
+        $shade: to-rgba(lighten($color, $value));
+      }
+
+      $gradients: map-merge($gradients, ('#{$name}--#{$key}': $shade));
+    }
+
+    $palette: map-merge($palette, $gradients);
+  }
+  //@debug $palette;
+
+  @return $palette;
+}
+
+
+$palette: generate-color-palette() !default;
+//@debug $palette;
+
+
+///
+/// Generate CSS color variables
+///
+///
+:root {
+  @each $name, $color in $palette {
+    //@debug '--color-#{$name}: #{$color}';
+    --color-#{$name}: #{$color};
+  }
+}
+
+
+///
+/// Get color from the palette
+///
+///
+@function color($name, $modifier: null, $value: null) {
+  @if $modifier == null {
+    @return var(--color-#{$name}, map-get($palette, $name));
+  }
+  @else {
+    @if $value == null {
+      @return var(--color-#{$name}--#{$modifier}, map-get($palette, #{$name}-#{$modifier}));
+    }
+    @else {
+      @return var(--color-#{$name}--#{$modifier}-#{$value}, map-get($palette, '#{$name}--#{$modifier}-#{$value}'));
+    }
+  }
+}

@@ -4,7 +4,7 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 
-const baseClass = 'gc-select';
+const baseClass = 'enrg-select';
 
 const selectWidths = {
   fixed: `${baseClass}--fixed`,

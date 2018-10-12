@@ -6,7 +6,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const baseClass = 'gc-label';
+const baseClass = 'enrg-label';
 
 type LabelWidths = 'auto' | 'wide' | 'fixed' | 'full';
 

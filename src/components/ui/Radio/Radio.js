@@ -4,7 +4,7 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 
-const baseClass = 'gc-radio';
+const baseClass = 'enrg-radio';
 
 type PropsT = {
   id?: string,

@@ -15,7 +15,7 @@ type PropsT = {
   className?: string,
 };
 
-const baseClass = 'gc-form';
+const baseClass = 'enrg-form';
 
 const Header = ({ align, children }: { align: string, children: any }) => {
   const classes = classNames(
@@ -25,7 +25,7 @@ const Header = ({ align, children }: { align: string, children: any }) => {
 
   return (
     <header className={classes}>
-      <h3 className="gc-heading">{children}</h3>
+      <h3 className="enrg-heading">{children}</h3>
     </header>
   );
 };
