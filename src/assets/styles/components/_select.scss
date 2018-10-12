@@ -4,11 +4,11 @@ $select-height: rhythm(1.75) !default;
 $select-margin: rhythm(0.125) 0 !default;
 $select-padding: 0.375 25px 0.375 10px !default;
 $select-font-weight: normal !default;
-$select-color: map-get($text-colors, "normal") !default;
+$select-color: map-get($text-colors, "white") !default;
 $select-placeholder-color: map-get($text-colors, "dark") !default;
 
 $select-background: (
-  color: map-get($background-colors, "control"),
+  color: map-get($background-colors, "secondary"),
   image:
     svg-url(
       (
@@ -36,13 +36,13 @@ $select-focus-border-color: transparent !default;
 
 $select-hover-border-color: map-get($border-colors, "hover") !default;
 $select-hover-background: (
-  color: map-get($background-colors, "control")
+  color: map-get($background-colors, "secondarylight")
 ) !default;
 
 $select-multiple-height: rhythm(7.5) !default;
 $select-multiple-padding: 0 !default;
 $select-multiple-background: (
-  color: map-get($background-colors, "control"),
+  color: map-get($background-colors, "secondary"),
   image: none
 ) !default;
 

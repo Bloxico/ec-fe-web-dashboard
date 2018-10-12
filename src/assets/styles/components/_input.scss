@@ -8,7 +8,7 @@ $input-padding: (
   left: 10px
 ) !default;
 $input-font-weight: normal !default;
-$input-color: map-get($text-colors, "normal") !default;
+$input-color: map-get($text-colors, "white") !default;
 $input-background: map-get($background-colors, "secondary") !default;
 $input-border: (
   width: 1px,

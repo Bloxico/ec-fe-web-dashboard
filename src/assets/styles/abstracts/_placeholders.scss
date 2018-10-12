@@ -8,20 +8,20 @@
   outline: none;
   text-decoration: none;
 
-  @if map-get($focus-shadow, inset) == true {
-    box-shadow: inset
-      map-get($focus-shadow, x)
-      map-get($focus-shadow, y)
-      map-get($focus-shadow, blur)
-      map-get($focus-shadow, spread)
-      map-get($focus-shadow, color);
-  } @else {
-    box-shadow: map-get($focus-shadow, x)
-      map-get($focus-shadow, y)
-      map-get($focus-shadow, blur)
-      map-get($focus-shadow, spread)
-      map-get($focus-shadow, color);
-  }
+  //@if map-get($focus-shadow, inset) == true {
+  //  box-shadow: inset
+  //    map-get($focus-shadow, x)
+  //    map-get($focus-shadow, y)
+  //    map-get($focus-shadow, blur)
+  //    map-get($focus-shadow, spread)
+  //    map-get($focus-shadow, color);
+  //} @else {
+  //  box-shadow: map-get($focus-shadow, x)
+  //    map-get($focus-shadow, y)
+  //    map-get($focus-shadow, blur)
+  //    map-get($focus-shadow, spread)
+  //    map-get($focus-shadow, color);
+  //}
 }
 
 %hidden {
