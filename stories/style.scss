@@ -1,0 +1,9 @@
+@import "@abstract-styles";
+
+.panel {
+  padding: rhythm(5);
+
+  &--dark {
+    background-color: color('black');
+  }
+}

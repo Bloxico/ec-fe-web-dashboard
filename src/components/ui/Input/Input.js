@@ -5,7 +5,7 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import type { InputTypesT } from '../Form/Field';
 
-const baseClass = 'gc-input';
+const baseClass = 'enrg-input';
 
 type InputSizes = 'small' | 'large';
 

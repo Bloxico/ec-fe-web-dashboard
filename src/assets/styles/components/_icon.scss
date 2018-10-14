@@ -1,0 +1,67 @@
+.#{$namespace}-icon {
+  @extend %icon;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  line-height: $base-line-height;
+  height: $base-line-height;
+
+  > img,
+  > svg {
+    width: map-get($icon-sizes, normal);
+    height: map-get($icon-sizes, normal);
+  }
+
+  > svg path {
+    fill: inherit;
+  }
+
+  &--inline {
+    display: inline;
+  }
+
+  &--left {
+    margin: 0 0 0 1ex;
+  }
+
+  &--right {
+    margin: 0 1ex 0 0;
+  }
+
+  &--both {
+    margin: 0 1ex;
+  }
+
+  &--top {
+    height: auto;
+    vertical-align: text-top;
+  }
+
+  &--middle {
+    height: auto;
+    vertical-align: middle;
+  }
+
+  &--bottom {
+    height: auto;
+    vertical-align: text-bottom;
+  }
+}
+
+@mixin generate-icon-sizes {
+  @each $key, $value in $icon-sizes {
+    .#{$namespace}-icon--#{$key} {
+      height: map-get($icon-sizes, $key);
+
+      > img,
+      > svg {
+        width: map-get($icon-sizes, $key);
+        height: map-get($icon-sizes, $key);
+      }
+    }
+  }
+}
+
+@include generate-icon-sizes;
