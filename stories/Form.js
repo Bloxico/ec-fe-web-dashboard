@@ -28,7 +28,7 @@ storiesOf('Form', module)
         <Field
           label="Disabled"
           component={FormField}
-          name="input1"
+          name="input2"
           placeholder="Disabled placeholder"
           disabled
         />
@@ -60,17 +60,13 @@ storiesOf('Form', module)
   .add('Checkbox', () => (
     <div className="panel panel--dark">
       <Form>
+        <Field label="Checkbox" type="checkbox" component={FormField} />
         <Field
-          label="Checkbox"
+          label="Disabled"
           type="checkbox"
+          disabled
           component={FormField}
         />
-          <Field
-            label="Disabled"
-            type="checkbox"
-            disabled
-            component={FormField}
-          />
       </Form>
     </div>
   ));
