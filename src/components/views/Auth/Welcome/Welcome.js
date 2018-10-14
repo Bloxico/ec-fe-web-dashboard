@@ -9,13 +9,13 @@ import { Container, Row, Col } from '@ui';
 // const baseClass = `${THEME_PREFIX}-welocme`;
 
 const Welcome = () => (
-    <Container>
-      <Row>
-        <Col>
-          <h1>Welcome page</h1>
-        </Col>
-      </Row>
-    </Container>
+  <Container>
+    <Row>
+      <Col>
+        <h1>Welcome page</h1>
+      </Col>
+    </Row>
+  </Container>
 );
 
 export default Welcome;
