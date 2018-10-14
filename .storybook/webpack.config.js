@@ -18,7 +18,7 @@ module.exports = {
       '@partials': path.join(paths.appSrc, 'components/views/common'),
       '@ui': path.join(paths.appSrc, 'components/ui'),
       '@styles': path.join(paths.appSrc, 'assets/styles'),
-      '@common-styles': path.join(paths.appSrc, 'assets/styles/main.scss'),
+      '@abstract-styles': path.join(paths.appSrc, 'assets/styles/abstracts/_index.scss'),
       '@images': path.join(paths.appSrc, 'assets/images'),
 
       // Support React Native Web

@@ -5,7 +5,6 @@
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import './Button.scss';
 
 // import Icon from '@components/Icon';
 // import svgBusy from '@images/icon-sync.svg';
