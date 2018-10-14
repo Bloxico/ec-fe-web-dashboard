@@ -1,5 +1,5 @@
 // @flow
-/* eslint-disable jsx-a11y/no-autofocus, eslint react/sort-comp: 0 */
+/* eslint-disable jsx-a11y/no-autofocus */
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
