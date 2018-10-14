@@ -17,7 +17,7 @@ type PropsT = {
   className?: string,
 };
 
-const baseClass = 'gc-input-group';
+const baseClass = 'enrg-input-group';
 
 const cloneElement = (element: any, props: Object = {}) => {
   if (!element || !React.isValidElement(element)) {
@@ -105,7 +105,7 @@ class InputGroup extends PureComponent<PropsT> {
 
     return (
       <div className={classes}>
-        {hint && <small className="gc-input__hint">{hint}</small>}
+        {hint && <small className="enrg-input__hint">{hint}</small>}
 
         {prefix && (
           <span className={`${baseClass}__prefix`} ref={this.prefixRef}>
@@ -123,8 +123,8 @@ class InputGroup extends PureComponent<PropsT> {
           </span>
         )}
 
-        {error && <div className="gc-input__message">{error}</div>}
-        {help && !error && <div className="gc-input__help">{help}</div>}
+        {error && <div className="enrg-input__message">{error}</div>}
+        {help && !error && <div className="enrg-input__help">{help}</div>}
       </div>
     );
   }

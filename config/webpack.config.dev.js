@@ -89,7 +89,10 @@ module.exports = {
       '@partials': path.join(paths.appSrc, 'components/views/common'),
       '@ui': path.join(paths.appSrc, 'components/ui'),
       '@styles': path.join(paths.appSrc, 'assets/styles'),
-      '@common-styles': path.join(paths.appSrc, 'assets/styles/main.scss'),
+      '@abstract-styles': path.join(
+        paths.appSrc,
+        'assets/styles/abstracts/_index.scss',
+      ),
       '@images': path.join(paths.appSrc, 'assets/images'),
 
       // Support React Native Web
@@ -162,7 +165,7 @@ module.exports = {
           // In production, we use a plugin to extract that CSS to a file, but
           // in development "style" loader enables hot editing of CSS.
           {
-            test: /\.scss$/,
+            test: /\.(scss|css)$/,
             use: [
               require.resolve('style-loader'),
               {
@@ -193,6 +196,9 @@ module.exports = {
               },
               {
                 loader: 'sass-loader',
+                options: {
+                  sourceMap: true,
+                },
               },
             ],
           },

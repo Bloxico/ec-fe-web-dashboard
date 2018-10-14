@@ -1,14 +1,20 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Button from '../src/components/views/common/Button';
+import Button from '../src/components/ui/Button';
 
-storiesOf('Button', module)
-.add('Default', () => (
-  <Fragment>
-    <Button onClick={action('clicked')}>Default Button</Button>
-    <Button onClick={action('clicked')} type="primary">Primary Button</Button>
-  </Fragment>
+storiesOf('Button', module).add('Button', () => (
+  <div className="panel panel--dark">
+    <div style={{ width: '320px', margin: '50px auto', padding: '0 10px' }}>
+      <Button type="primary" width="full" onClick={action('clicked')}>
+        Primary button
+      </Button>
+      <span />
+      <Button onClick={action('clicked')} width="full" type="secondary">
+        Secondary Button
+      </Button>
+    </div>
+  </div>
 ));

@@ -4,7 +4,7 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 
-const baseClass = 'gc-switch';
+const baseClass = 'enrg-switch';
 
 type PropsT = {
   id?: string,

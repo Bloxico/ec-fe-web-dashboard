@@ -4,7 +4,7 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 
-const baseClass = 'gc-textarea';
+const baseClass = 'enrg-textarea';
 
 type TextareaSizes = 'small' | 'large';
 

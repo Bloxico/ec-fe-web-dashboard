@@ -18,7 +18,7 @@ module.exports = {
       '@partials': path.join(paths.appSrc, 'components/views/common'),
       '@ui': path.join(paths.appSrc, 'components/ui'),
       '@styles': path.join(paths.appSrc, 'assets/styles'),
-      '@common-styles': path.join(paths.appSrc, 'assets/styles/main.scss'),
+      '@abstract-styles': path.join(paths.appSrc, 'assets/styles/abstracts/_index.scss'),
       '@images': path.join(paths.appSrc, 'assets/images'),
 
       // Support React Native Web
@@ -32,41 +32,45 @@ module.exports = {
   module: {
     rules: [
       // add your custom rules.
-      {
-        test: /\.scss$/,
-        use: [
-          require.resolve('style-loader'),
-          {
-            loader: require.resolve('css-loader'),
-            options: {
-              importLoaders: 1,
-            },
-          },
-          {
-            loader: require.resolve('postcss-loader'),
-            options: {
-              // Necessary for external CSS imports to work
-              // https://github.com/facebookincubator/create-react-app/issues/2677
-              ident: 'postcss',
-              plugins: () => [
-                require('postcss-flexbugs-fixes'),
-                autoprefixer({
-                  browsers: [
-                    '>1%',
-                    'last 4 versions',
-                    'Firefox ESR',
-                    'not ie < 9', // React doesn't support IE8 anyway
-                  ],
-                  flexbox: 'no-2009',
-                }),
-              ],
-            },
-          },
-          {
-            loader: 'sass-loader',
-          },
-        ],
-      },
+        {
+            test: /\.(scss|css)$/,
+            use: [
+                require.resolve('style-loader'),
+                {
+                    loader: require.resolve('css-loader'),
+                    options: {
+                        importLoaders: 1,
+                    },
+                },
+                {
+                    loader: require.resolve('postcss-loader'),
+                    options: {
+                        // Necessary for external CSS imports to work
+                        // https://github.com/facebookincubator/create-react-app/issues/2677
+                        ident: 'postcss',
+                        plugins: () => [
+                            require('postcss-flexbugs-fixes'),
+                            autoprefixer({
+                                browsers: [
+                                    '>1%',
+                                    'last 4 versions',
+                                    'Firefox ESR',
+                                    'not ie < 9', // React doesn't support IE8 anyway
+                                ],
+                                flexbox: 'no-2009',
+                            }),
+                        ],
+                    },
+                },
+                {
+                    loader: 'sass-loader'
+                },
+            ],
+        },
+        {
+            test: /\.(woff|woff2|eot|ttf|svg|gif|png)$/,
+            use: 'url-loader'
+        },
     ],
   },
 };

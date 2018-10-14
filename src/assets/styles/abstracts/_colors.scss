@@ -1,0 +1,147 @@
+///
+/// Color Palette generator configuration
+///
+///
+
+$palette-configuration: (
+  shades: (
+    "alpha-10": 0.1,
+    // 10% opacity
+      "alpha-20": 0.2,
+    "alpha-30": 0.3,
+    "alpha-40": 0.4,
+    "alpha-50": 0.5,
+    "alpha-60": 0.6,
+    "alpha-70": 0.7,
+    "alpha-80": 0.8,
+    "alpha-90": 0.9,
+    // 90% opacity
+      "dark-90": -90%,
+    // extra dark
+      "dark-80": -80%,
+    "dark-70": -70%,
+    "dark-60": -60%,
+    "dark-50": -50%,
+    "dark-40": -40%,
+    "dark-30": -30%,
+    "dark-20": -20%,
+    "dark-10": -10%,
+    "dark-5": -5%,
+    // little dark
+      "light-5": 5%,
+    // little light
+      "light-10": 10%,
+    "light-20": 20%,
+    "light-30": 30%,
+    "light-40": 40%,
+    "light-50": 50%,
+    "light-60": 60%,
+    "light-70": 70%,
+    "light-80": 80%,
+    "light-90": 90%,
+    // extra light
+  ),
+  predefined: (
+    "primary": #27cfc3,
+    "primarydark": darken(#27cfc3, 15%),
+    "primarylight": lighten(#27cfc3, 15%),
+    "secondary": #11152e,
+    "secondarydark": darken(#11152e, 15%),
+    "secondarylight": #151b3b,
+    "tertiary": #a8b2cb
+  ),
+  colors: (
+    "black": #0c0f21,
+    "white": #ffffff,
+    "red": #f72d2d,
+    "orange": #ff9d2e,
+    "green": #1be008,
+    "cyan": #0ea5f0,
+    "blue": #005ebd
+  )
+) !default;
+
+///
+/// Generating global color Palette
+///
+///
+@function generate-color-palette($predefined: null) {
+  $palette: ();
+  $shades: map-get($palette-configuration, shades);
+  $colors: map-merge(
+    map-get($palette-configuration, predefined),
+    map-get($palette-configuration, colors)
+  );
+
+  @each $name, $color in $colors {
+    $shade: 0;
+    $gradients: ();
+
+    $palette: map-merge(
+      $palette,
+      (
+        "#{$name}": to-rgba($color)
+      )
+    );
+
+    @each $key, $value in $shades {
+      $value: to-number($value);
+
+      @if $value < 0 {
+        $shade: to-rgba(darken($color, -$value));
+      } @else if $value > 0 and $value < 1 {
+        $shade: to-rgba($color, $value);
+      } @else {
+        $shade: to-rgba(lighten($color, $value));
+      }
+
+      $gradients: map-merge(
+        $gradients,
+        (
+          "#{$name}--#{$key}": $shade
+        )
+      );
+    }
+
+    $palette: map-merge($palette, $gradients);
+  }
+  //@debug $palette;
+
+  @return $palette;
+}
+
+$palette: generate-color-palette() !default;
+//@debug $palette;
+
+///
+/// Generate CSS color variables
+///
+///
+:root {
+  @each $name, $color in $palette {
+    //@debug '--color-#{$name}: #{$color}';
+    --color-#{$name}: #{$color};
+  }
+}
+
+///
+/// Get color from the palette
+///
+///
+@function color($name, $modifier: null, $value: null) {
+  @if $modifier == null {
+    @return var(--color-#{$name}, map-get($palette, $name));
+  } @else {
+    @if $value == null {
+      @return var(
+        --color-#{$name}--#{$modifier},
+        map-get($palette, #{$name}-#{$modifier})
+      );
+    } @else {
+      @return var(
+        --color-#{$name}--#{$modifier}-#{$value},
+        map-get($palette, "#{$name}--#{$modifier}-#{$value}")
+      );
+    }
+  }
+}

@@ -92,7 +92,7 @@ type PropsT = {
   className?: string,
 };
 
-const baseClass = 'gc-form-group';
+const baseClass = 'enrg-form-group';
 
 const omit = (obj: Object, keys: Array) =>
   Object.entries(obj)
@@ -181,8 +181,8 @@ class FormField extends PureComponent<PropsT> {
           !isRadio && (
             <Label {...this.props} id={id} text={label} disabled={disabled}>
               <InputField {...inputProps} />
-              {hint && <div className="gc-input__hint">{hint}</div>}
-              {error && <div className="gc-input__message">{error}</div>}
+              {hint && <div className="enrg-input__hint">{hint}</div>}
+              {error && <div className="enrg-input__message">{error}</div>}
             </Label>
           )}
 
@@ -195,8 +195,8 @@ class FormField extends PureComponent<PropsT> {
               disabled={disabled}
               inline={inline}
             >
-              {hint && <div className="gc-input__hint">{hint}</div>}
-              {error && <div className="gc-input__message">{error}</div>}
+              {hint && <div className="enrg-input__hint">{hint}</div>}
+              {error && <div className="enrg-input__message">{error}</div>}
             </RadioGroup>
           )}
       </div>
