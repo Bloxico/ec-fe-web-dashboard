@@ -1,11 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-import 'src/assets/styles/main.scss';
-import 'primereact/resources/themes/nova-light/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
+
 import configureStore from 'src/state/configureStore';
 import App from 'src/components/views/App';
+
+import 'src/assets/styles/main.scss';
 
 const { store, history } = configureStore();
 
