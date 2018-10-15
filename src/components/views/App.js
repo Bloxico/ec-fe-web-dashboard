@@ -5,8 +5,6 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import { AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX } from 'src/constants';
 
-import Header from '@partials/Header';
-
 import { StateT } from 'src/state/state';
 
 import Auth from './Auth';
@@ -20,7 +18,6 @@ const App = ({ store, history }: { store: StateT, history: Object }) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div className={baseClass}>
-        <Header />
         <Switch className={`${baseClass}__content`}>
           <Route exact path="/" component={() => <Redirect to={AUTH_PAGE} />} />
           <Route path={PORTAL_PAGE} component={Portal} />

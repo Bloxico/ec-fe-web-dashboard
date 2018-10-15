@@ -71,7 +71,7 @@ $text-colors: (
   "inverse": color("white"),
   "active": color("cyan"),
   "opaque": color("black", "alpha", 80),
-  "link": color("cyan"),
+  "link": color("primary"),
   "hover": color("blue"),
   "button": color("white"),
   "alert": color("red"),
@@ -82,6 +82,7 @@ $text-colors: (
 ) !default;
 
 $background-colors: (
+  "black": color("black"),
   "normal": color("primary"),
   "window": color("white"),
   "body": color("white"),
