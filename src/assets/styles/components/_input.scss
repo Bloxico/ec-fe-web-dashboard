@@ -31,8 +31,11 @@ $input-large-padding: (
 $input-placeholder-color: map-get($text-colors, "dark") !default;
 $input-hover-border-color: map-get($border-colors, "hover") !default;
 
-$input-autofill-color: map-get($text-colors, "normal") !default;
-$input-autofill-background: map-get($background-colors, "body") !default;
+$input-autofill-color: map-get($text-colors, "white") !default;
+$input-autofill-background: map-get(
+  $background-colors,
+  "secondarylight"
+) !default;
 $input-autofill-border: color("secondary", "light", 20) !default;
 
 $input-readonly-background: transparent !default;

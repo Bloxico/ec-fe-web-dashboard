@@ -1,11 +1,9 @@
-import login, { StateT as LoginStateT } from './login/state';
+import login from './login/state';
+import register from './register/state';
 
-export type StateT = {
-  login: LoginStateT,
-};
-
-const initialState: StateT = {
+const initialState = {
   login,
+  register,
 };
 
 export default initialState;

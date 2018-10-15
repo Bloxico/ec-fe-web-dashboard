@@ -37,8 +37,13 @@ const Welcome = () => (
       <Row>
         <span>
           By continuing you agree to our{' '}
-          <a href="/" className="enrg-link">Terms of use</a> and{' '}
-          <a href="/" className="enrg-link">Privacy plicy</a>
+          <a href="/" className={`${THEME_PREFIX}-link`}>
+            Terms of use
+          </a>{' '}
+          and{' '}
+          <a href="/" className={`${THEME_PREFIX}-link`}>
+            Privacy plicy
+          </a>
         </span>
       </Row>
     </Container>
