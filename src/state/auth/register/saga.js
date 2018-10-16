@@ -3,8 +3,10 @@
 import { delay } from 'redux-saga';
 import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
+
+import { LOGIN_PAGE } from 'src/constants';
+
 import * as actions from './actions';
-import { LOGIN_PAGE } from '../../../constants';
 
 export function* register$({ payload }): Generator<*, *, *> {
   // eslint-disable-next-line

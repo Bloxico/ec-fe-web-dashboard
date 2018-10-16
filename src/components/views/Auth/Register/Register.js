@@ -4,7 +4,6 @@ import React, { Fragment } from 'react';
 import { Field } from 'redux-form';
 
 import { Form, FormField, Button, Container, Row, Col } from '@ui';
-
 import { THEME_PREFIX } from 'src/constants';
 
 export type Props = {

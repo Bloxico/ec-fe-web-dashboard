@@ -2,9 +2,10 @@
 
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+
 import { Container, Row, Col } from '@ui';
-import { REGISTER_PAGE, LOGIN_PAGE, THEME_PREFIX } from 'src/constants';
 import logo from '@images/energycoin.png';
+import { REGISTER_PAGE, LOGIN_PAGE, AUTH_PAGE, THEME_PREFIX } from 'src/constants';
 
 // TODO@all fix this logo like it is in gc-lite, and links for term of use and privacy policy should open a modal or redirect to external link
 
@@ -37,13 +38,13 @@ const Welcome = () => (
       <Row>
         <span>
           By continuing you agree to our{' '}
-          <a href="/" className={`${THEME_PREFIX}-link`}>
+          <Link to={AUTH_PAGE} className={`${THEME_PREFIX}-link`}>
             Terms of use
-          </a>{' '}
+          </Link>{' '}
           and{' '}
-          <a href="/" className={`${THEME_PREFIX}-link`}>
+          <Link to={AUTH_PAGE} className={`${THEME_PREFIX}-link`}>
             Privacy plicy
-          </a>
+          </Link>
         </span>
       </Row>
     </Container>

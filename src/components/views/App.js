@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
 import { AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX } from 'src/constants';
-
 import { StateT } from 'src/state/state';
 
 import Auth from './Auth';

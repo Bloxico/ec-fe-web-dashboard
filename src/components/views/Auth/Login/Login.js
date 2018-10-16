@@ -2,10 +2,10 @@
 
 import React, { Fragment } from 'react';
 import { Field } from 'redux-form';
+import { Link } from 'react-router-dom';
 
 import { Form, FormField, Button, Container, Row, Col } from '@ui';
-
-import { THEME_PREFIX } from 'src/constants/ui';
+import { LOGIN_PAGE, THEME_PREFIX } from 'src/constants';
 
 export type Props = {
   handleLogin: Function,
@@ -47,9 +47,9 @@ const Login = ({ isLoginInProgress, handleLogin, handleSubmit }: Props) => (
                 {isLoginInProgress ? 'Logging in' : 'Login'}
               </Button>
               <span>Forgot the password?</span>{' '}
-              <a href="/" className={`${THEME_PREFIX}-link`}>
+              <Link to={LOGIN_PAGE} className={`${THEME_PREFIX}-link`}>
                 Reset
-              </a>
+              </Link>
             </Form>
           </div>
         </Col>
