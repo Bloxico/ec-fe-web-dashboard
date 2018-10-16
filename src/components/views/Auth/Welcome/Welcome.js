@@ -5,7 +5,12 @@ import { Link } from 'react-router-dom';
 
 import { Container, Row, Col } from '@ui';
 import logo from '@images/energycoin.png';
-import { REGISTER_PAGE, LOGIN_PAGE, AUTH_PAGE, THEME_PREFIX } from 'src/constants';
+import {
+  REGISTER_PAGE,
+  LOGIN_PAGE,
+  AUTH_PAGE,
+  THEME_PREFIX,
+} from 'src/constants';
 
 // TODO@all fix this logo like it is in gc-lite, and links for term of use and privacy policy should open a modal or redirect to external link
 
