@@ -2,10 +2,10 @@
 
 import React, { Fragment } from 'react';
 import { Field } from 'redux-form';
+import { Link } from 'react-router-dom';
 
-import { Form, FormField, Container, Row, Col } from '@ui';
-
-import { THEME_PREFIX } from 'src/constants/ui';
+import { Form, FormField, Button, Container, Row, Col } from '@ui';
+import { LOGIN_PAGE, THEME_PREFIX } from 'src/constants';
 
 export type Props = {
   handleLogin: Function,
@@ -21,27 +21,35 @@ const Login = ({ isLoginInProgress, handleLogin, handleSubmit }: Props) => (
       <Row>
         <Col>
           <div className={baseClass}>
-            <h1>Login</h1>
+            <h1>Sign in</h1>
 
             <Form onSubmit={handleSubmit(handleLogin)}>
               {/* TODO@martins add validatiors */}
               <Field
-                label="Email"
+                placeholder="Email"
                 component={FormField}
                 name="username"
-                width="auto"
+                width="full"
               />
               <Field
-                label="Password"
+                placeholder="Password"
                 type="password"
                 component={FormField}
                 name="password"
-                width="auto"
+                width="full"
               />
-
-              <button type="submit" disabled={isLoginInProgress}>
+              <Button
+                action="submit"
+                size="full"
+                type="primary"
+                disabled={isLoginInProgress}
+              >
                 {isLoginInProgress ? 'Logging in' : 'Login'}
-              </button>
+              </Button>
+              <span>Forgot the password?</span>{' '}
+              <Link to={LOGIN_PAGE} className={`${THEME_PREFIX}-link`}>
+                Reset
+              </Link>
             </Form>
           </div>
         </Col>

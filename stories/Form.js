@@ -1,13 +1,12 @@
 // @flow
 
 import React from 'react';
-
 import { storiesOf } from '@storybook/react';
 import { Field } from 'redux-form';
+import withReduxForm from 'redux-form-storybook';
 
 import Form, { FormField } from 'src/components/ui/Form';
 import 'src/assets/styles/main.scss';
-import withReduxForm from 'redux-form-storybook';
 
 const citySelectItems = [
   { value: 'SR', text: 'Serbia' },

@@ -1,5 +1,5 @@
-$window-color: map-get($text-colors, "normal") !default;
-$window-background: map-get($background-colors, "window") !default;
+$window-color: map-get($text-colors, "white") !default;
+$window-background: map-get($background-colors, "black") !default;
 $selection-background: color("orange", "alpha", 50) !default;
 
 $scrollbar-size: map-get(map-get($application, scrollbar), size) !default;

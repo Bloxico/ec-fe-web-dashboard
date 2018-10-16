@@ -61,7 +61,6 @@ $font-sizes: (
 ) !default;
 
 $disabled-opacity: 0.5 !default;
-
 $text-colors: (
   "normal": color("black"),
   "dark": color("tertiary"),
@@ -71,7 +70,7 @@ $text-colors: (
   "inverse": color("white"),
   "active": color("cyan"),
   "opaque": color("black", "alpha", 80),
-  "link": color("cyan"),
+  "link": color("primary"),
   "hover": color("blue"),
   "button": color("white"),
   "alert": color("red"),
@@ -80,8 +79,8 @@ $text-colors: (
   "success": color("green"),
   "info": color("cyan")
 ) !default;
-
 $background-colors: (
+  "black": color("black"),
   "normal": color("primary"),
   "window": color("white"),
   "body": color("white"),
@@ -104,7 +103,6 @@ $background-colors: (
   "info": color("cyan"),
   //"announcement": color("violet")
 ) !default;
-
 $border-colors: (
   "dark": color("tertiary"),
   "normal": color("secondary"),
@@ -122,7 +120,6 @@ $border-colors: (
   "success": color("green"),
   "info": color("cyan")
 ) !default;
-
 $focus-shadow: (
   inset: false,
   x: 0,
@@ -131,7 +128,6 @@ $focus-shadow: (
   spread: 1px,
   color: map-get($background-colors, "selected")
 ) !default;
-
 $breakpoints: (
   "medium": (
     min-width: 800px
@@ -143,7 +139,6 @@ $breakpoints: (
     min-width: 1200px
   )
 ) !default;
-
 $icon-sizes: (
   "tiny": 10px,
   "small": 12px,
@@ -152,9 +147,7 @@ $icon-sizes: (
   "toolbar": 32px,
   "thumbnail": 80px
 ) !default;
-
-/// Application specific
-
+// / Application specific
 $application: (
   titlebar: (
     height: 1

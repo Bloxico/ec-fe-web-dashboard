@@ -1,21 +1,59 @@
 // @flow
 
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Container, Row, Col } from '@ui';
+import logo from '@images/energycoin.png';
+import {
+  REGISTER_PAGE,
+  LOGIN_PAGE,
+  AUTH_PAGE,
+  THEME_PREFIX,
+} from 'src/constants';
 
-// import { THEME_PREFIX } from 'src/constants/ui';
+// TODO@all fix this logo like it is in gc-lite, and links for term of use and privacy policy should open a modal or redirect to external link
 
-// const baseClass = `${THEME_PREFIX}-welocme`;
+const baseClass = `${THEME_PREFIX}-welcome`;
 
 const Welcome = () => (
-  <Container>
-    <Row>
-      <Col>
-        <h1>Welcome page</h1>
-      </Col>
-    </Row>
-  </Container>
+  <Fragment>
+    <Container className={baseClass}>
+      <Row className="align-items-center">
+        <Col>
+          <img src={logo} alt="" width="40%" />
+          <h1>Dashboard</h1>
+          <Link
+            to={REGISTER_PAGE}
+            className="enrg-button enrg-button--wide enrg-button--primary"
+          >
+            Create an account
+          </Link>
+          <div className="clearfix" />
+          <Link
+            to={LOGIN_PAGE}
+            className="enrg-button enrg-button--wide enrg-button--secondary"
+          >
+            Sign in
+          </Link>
+        </Col>
+      </Row>
+    </Container>
+    <Container className={`${baseClass}__footer`}>
+      <Row>
+        <span>
+          By continuing you agree to our{' '}
+          <Link to={AUTH_PAGE} className={`${THEME_PREFIX}-link`}>
+            Terms of use
+          </Link>{' '}
+          and{' '}
+          <Link to={AUTH_PAGE} className={`${THEME_PREFIX}-link`}>
+            Privacy plicy
+          </Link>
+        </span>
+      </Row>
+    </Container>
+  </Fragment>
 );
 
 export default Welcome;

@@ -3,8 +3,12 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { THEME_PREFIX } from 'src/constants/ui';
-import { AUTH_PAGE, LOGIN_PAGE, REGISTER_PAGE } from 'src/constants/routes';
+import {
+  AUTH_PAGE,
+  LOGIN_PAGE,
+  REGISTER_PAGE,
+  THEME_PREFIX,
+} from 'src/constants';
 
 import Login from './Login';
 import Register from './Register';
