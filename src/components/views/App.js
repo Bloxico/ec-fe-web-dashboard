@@ -5,6 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import { AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX } from 'src/constants';
 import { StateT } from 'src/state/state';
+import IntlProvider from 'src/components/wrappers/IntlProvider';
 
 import Auth from './Auth';
 import Portal from './Portal';
@@ -16,13 +17,19 @@ const baseClass = `${THEME_PREFIX}-app`;
 const App = ({ store, history }: { store: StateT, history: Object }) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div className={baseClass}>
-        <Switch className={`${baseClass}__content`}>
-          <Route exact path="/" component={() => <Redirect to={AUTH_PAGE} />} />
-          <Route path={PORTAL_PAGE} component={Portal} />
-          <Route path={AUTH_PAGE} component={Auth} />
-        </Switch>
-      </div>
+      <IntlProvider>
+        <div className={baseClass}>
+          <Switch className={`${baseClass}__content`}>
+            <Route
+              exact
+              path="/"
+              component={() => <Redirect to={AUTH_PAGE} />}
+            />
+            <Route path={PORTAL_PAGE} component={Portal} />
+            <Route path={AUTH_PAGE} component={Auth} />
+          </Switch>
+        </div>
+      </IntlProvider>
     </ConnectedRouter>
   </Provider>
 );

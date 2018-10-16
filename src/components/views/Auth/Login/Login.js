@@ -11,17 +11,23 @@ export type Props = {
   handleLogin: Function,
   handleSubmit: Function,
   isLoginInProgress: boolean,
+  MSGLoginHeading: string,
 };
 
 const baseClass = `${THEME_PREFIX}-login`;
 
-const Login = ({ isLoginInProgress, handleLogin, handleSubmit }: Props) => (
+const Login = ({
+  isLoginInProgress,
+  handleLogin,
+  handleSubmit,
+  MSGLoginHeading,
+}: Props) => (
   <Fragment>
     <Container>
       <Row>
         <Col>
           <div className={baseClass}>
-            <h1>Sign in</h1>
+            <h1>{MSGLoginHeading}</h1>
 
             <Form onSubmit={handleSubmit(handleLogin)}>
               {/* TODO@martins add validatiors */}
