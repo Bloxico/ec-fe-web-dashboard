@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 
@@ -22,46 +22,44 @@ const Login = ({
   handleSubmit,
   MSGLoginHeading,
 }: Props) => (
-  <Fragment>
-    <Container>
-      <Row>
-        <Col>
-          <div className={baseClass}>
-            <h1>{MSGLoginHeading}</h1>
+  <Container>
+    <Row>
+      <Col>
+        <div className={baseClass}>
+          <h1>{MSGLoginHeading}</h1>
 
-            <Form onSubmit={handleSubmit(handleLogin)}>
-              {/* TODO@martins add validatiors */}
-              <Field
-                placeholder="Email"
-                component={FormField}
-                name="username"
-                width="full"
-              />
-              <Field
-                placeholder="Password"
-                type="password"
-                component={FormField}
-                name="password"
-                width="full"
-              />
-              <Button
-                action="submit"
-                size="full"
-                type="primary"
-                disabled={isLoginInProgress}
-              >
-                {isLoginInProgress ? 'Logging in' : 'Login'}
-              </Button>
-              <span>Forgot the password?</span>{' '}
-              <Link to={LOGIN_PAGE} className={`${THEME_PREFIX}-link`}>
-                Reset
-              </Link>
-            </Form>
-          </div>
-        </Col>
-      </Row>
-    </Container>
-  </Fragment>
+          <Form onSubmit={handleSubmit(handleLogin)}>
+            {/* TODO@martins add validatiors */}
+            <Field
+              placeholder="Email"
+              component={FormField}
+              name="username"
+              width="full"
+            />
+            <Field
+              placeholder="Password"
+              type="password"
+              component={FormField}
+              name="password"
+              width="full"
+            />
+            <Button
+              action="submit"
+              size="full"
+              type="primary"
+              disabled={isLoginInProgress}
+            >
+              {isLoginInProgress ? 'Logging in' : 'Login'}
+            </Button>
+            <span>Forgot the password?</span>{' '}
+            <Link to={LOGIN_PAGE} className={`${THEME_PREFIX}-link`}>
+              Reset
+            </Link>
+          </Form>
+        </div>
+      </Col>
+    </Row>
+  </Container>
 );
 
 export default Login;

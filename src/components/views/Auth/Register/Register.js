@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Field } from 'redux-form';
 
 import { Form, FormField, Button, Container, Row, Col } from '@ui';
@@ -19,79 +19,77 @@ const Register = ({
   handleRegistration,
   handleSubmit,
 }: Props) => (
-  <Fragment>
-    <Container className={baseClass}>
-      <Row>
-        <Col>
-          <div className={baseClass}>
-            <h1>Create an account</h1>
+  <Container className={baseClass}>
+    <Row>
+      <Col>
+        <div className={baseClass}>
+          <h1>Create an account</h1>
 
-            <Form onSubmit={handleSubmit(handleRegistration)}>
-              {/* TODO@martins add validatiors */}
-              <Field
-                placeholder="Email"
-                type="email"
-                component={FormField}
-                name="username"
-                width="full"
-                required
-              />
-              <Field
-                placeholder="Password"
-                type="password"
-                component={FormField}
-                name="password"
-                width="full"
-                required
-              />
-              <Field
-                placeholder="Repeat Password"
-                type="password"
-                component={FormField}
-                name="repeatPassword"
-                width="full"
-                required
-              />
-              <Field
-                placeholder="Region"
-                type="text"
-                component={FormField}
-                name="region"
-                width="full"
-                required
-              />
-              <Field
-                placeholder="City"
-                type="text"
-                component={FormField}
-                name="city"
-                width="full"
-                required
-              />
-              <Field
-                placeholder="Nickname (Optional)"
-                type="text"
-                component={FormField}
-                name="nickname"
-                width="full"
-              />
+          <Form onSubmit={handleSubmit(handleRegistration)}>
+            {/* TODO@martins add validatiors */}
+            <Field
+              placeholder="Email"
+              type="email"
+              component={FormField}
+              name="username"
+              width="full"
+              required
+            />
+            <Field
+              placeholder="Password"
+              type="password"
+              component={FormField}
+              name="password"
+              width="full"
+              required
+            />
+            <Field
+              placeholder="Repeat Password"
+              type="password"
+              component={FormField}
+              name="repeatPassword"
+              width="full"
+              required
+            />
+            <Field
+              placeholder="Region"
+              type="text"
+              component={FormField}
+              name="region"
+              width="full"
+              required
+            />
+            <Field
+              placeholder="City"
+              type="text"
+              component={FormField}
+              name="city"
+              width="full"
+              required
+            />
+            <Field
+              placeholder="Nickname (Optional)"
+              type="text"
+              component={FormField}
+              name="nickname"
+              width="full"
+            />
 
-              <Button
-                size="full"
-                action="submit"
-                type="primary"
-                disabled={isRegistrationInProgress}
-              >
-                {isRegistrationInProgress
-                  ? 'Registration in progress'
-                  : 'Continue'}
-              </Button>
-            </Form>
-          </div>
-        </Col>
-      </Row>
-    </Container>
-  </Fragment>
+            <Button
+              size="full"
+              action="submit"
+              type="primary"
+              disabled={isRegistrationInProgress}
+            >
+              {isRegistrationInProgress
+                ? 'Registration in progress'
+                : 'Continue'}
+            </Button>
+          </Form>
+        </div>
+      </Col>
+    </Row>
+  </Container>
 );
 
 export default Register;
