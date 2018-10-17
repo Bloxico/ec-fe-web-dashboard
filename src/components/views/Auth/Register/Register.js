@@ -32,12 +32,12 @@ const Register = ({
                 placeholder="Email"
                 type="email"
                 component={FormField}
-                name="username"
+                name="email"
                 width="full"
                 required
               />
               <Field
-                placeholder="Password"
+                placeholder=" Password"
                 type="password"
                 component={FormField}
                 name="password"
@@ -48,7 +48,7 @@ const Register = ({
                 placeholder="Repeat Password"
                 type="password"
                 component={FormField}
-                name="repeatPassword"
+                name="matchPassword"
                 width="full"
                 required
               />
@@ -56,10 +56,11 @@ const Register = ({
                 placeholder="Region"
                 type="text"
                 component={FormField}
-                name="region"
+                name="regionName"
                 width="full"
                 required
               />
+
               <Field
                 placeholder="City"
                 type="text"
@@ -69,7 +70,7 @@ const Register = ({
                 required
               />
               <Field
-                placeholder="Nickname (Optional)"
+                placeholder="Nickname (optional)"
                 type="text"
                 component={FormField}
                 name="nickname"

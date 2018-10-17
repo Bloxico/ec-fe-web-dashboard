@@ -1,0 +1,13 @@
+// @flow
+//@TODO@martings set .env
+const env: Object = process.env; // eslint-disable-line
+
+const APP_PREFIX = 'ENRGDASHBOARD_';
+
+export const API_URL: string = env[`${APP_PREFIX}API_URL`];
+
+export const HTTP_RETRY_REQUESTS: boolean = Boolean(
+  env[`${APP_PREFIX}HTTP_RETRY_REQUESTS`],
+);
+
+export const HTTP_TIMEOUT: number = Number(env[`${APP_PREFIX}HTTP_TIMEOUT`]);
