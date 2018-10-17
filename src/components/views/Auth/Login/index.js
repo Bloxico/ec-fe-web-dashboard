@@ -1,12 +1,14 @@
 // @flow
 
 import { connect } from 'react-redux';
-import { compose, withHandlers } from 'recompose';
+import { compose, withHandlers, withProps } from 'recompose';
 import { reduxForm } from 'redux-form';
+import { injectIntl } from 'react-intl';
 
 import { login } from 'src/state/actions';
 
 import Login from './Login';
+import messages from './messages';
 
 const mapStateToProps = ({
   auth: {
@@ -19,6 +21,7 @@ const actions = {
 };
 
 export default compose(
+  injectIntl,
   reduxForm({
     form: 'Login',
   }),
@@ -31,4 +34,7 @@ export default compose(
       login(values);
     },
   }),
+  withProps(({ intl: { formatMessage } }) => ({
+    MSGLoginHeading: formatMessage(messages.loginHeading),
+  })),
 )(Login);
