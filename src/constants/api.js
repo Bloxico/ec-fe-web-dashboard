@@ -1,5 +1,7 @@
 // @flow
-//@TODO@martings set .env
+
+// @TODO@martings set .env
+
 const env: Object = process.env; // eslint-disable-line
 
 const APP_PREFIX = 'ENRGDASHBOARD_';

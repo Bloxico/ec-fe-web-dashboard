@@ -13,7 +13,7 @@ export function* register$({ payload }): Generator<*, *, *> {
     yield Http.post('/api/user/registration', payload);
     yield put(push(LOGIN_PAGE));
   } catch ({ response }) {
-    console.log(response);
+    // console.log(response);
   }
 
   yield put(actions.clearRegisterState());
