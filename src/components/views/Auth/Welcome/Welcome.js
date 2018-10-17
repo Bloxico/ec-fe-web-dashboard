@@ -14,27 +14,45 @@ import {
 
 // TODO@all fix this logo like it is in gc-lite, and links for term of use and privacy policy should open a modal or redirect to external link
 
+export type Props = {
+  MSGDashboard: string,
+  MSGCreateAnAccount: string,
+  MSGSignIn: string,
+  MSGByContinuingYouAgreeToOur: string,
+  MSGTermsOfUse: string,
+  MSGAnd: string,
+  MSGPrivacyPolicy: string,
+};
+
 const baseClass = `${THEME_PREFIX}-welcome`;
 
-const Welcome = () => (
+const Welcome = ({
+  MSGDashboard,
+  MSGCreateAnAccount,
+  MSGSignIn,
+  MSGByContinuingYouAgreeToOur,
+  MSGTermsOfUse,
+  MSGAnd,
+  MSGPrivacyPolicy,
+}: Props) => (
   <Fragment>
     <Container className={baseClass}>
       <Row className="align-items-center">
         <Col>
           <img src={logo} alt="" width="40%" />
-          <h1>Dashboard</h1>
+          <h1>{MSGDashboard}</h1>
           <Link
             to={REGISTER_PAGE}
             className="enrg-button enrg-button--wide enrg-button--primary"
           >
-            Create an account
+            {MSGCreateAnAccount}
           </Link>
           <div className="clearfix" />
           <Link
             to={LOGIN_PAGE}
             className="enrg-button enrg-button--wide enrg-button--secondary"
           >
-            Sign in
+            {MSGSignIn}
           </Link>
         </Col>
       </Row>
@@ -42,13 +60,13 @@ const Welcome = () => (
     <Container className={`${baseClass}__footer`}>
       <Row>
         <span>
-          By continuing you agree to our{' '}
+          {MSGByContinuingYouAgreeToOur}{' '}
           <Link to={AUTH_PAGE} className={`${THEME_PREFIX}-link`}>
-            Terms of use
+            {MSGTermsOfUse}
           </Link>{' '}
-          and{' '}
+          {MSGAnd}{' '}
           <Link to={AUTH_PAGE} className={`${THEME_PREFIX}-link`}>
-            Privacy plicy
+            {MSGPrivacyPolicy}
           </Link>
         </span>
       </Row>
