@@ -12,7 +12,7 @@ export default compose(
     MSGCreateAnAccount: formatMessage(messages.createAnAccount),
     MSGSignIn: formatMessage(messages.signIn),
     MSGByContinuingYouAgreeToOur: formatMessage(
-      messages.byCountinuingYouAgreeToOur,
+      messages.byContinuingYouAgreeToOur,
     ),
     MSGTermsOfUse: formatMessage(messages.termsOfUse),
     MSGAnd: formatMessage(messages.and),

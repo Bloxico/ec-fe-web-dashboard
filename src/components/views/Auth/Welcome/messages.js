@@ -15,8 +15,8 @@ export default defineMessages({
     id: 'signIn',
     defaultMessage: 'Sign in',
   },
-  byCountinuingYouAgreeToOur: {
-    id: 'byCountinuingYouAgreeToOur',
+  byContinuingYouAgreeToOur: {
+    id: 'byContinuingYouAgreeToOur',
     defaultMessage: 'By continuing you agree to our',
   },
   termsOfUse: {
