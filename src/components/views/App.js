@@ -3,9 +3,9 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
+import IntlProvider from 'src/components/wrappers/IntlProvider';
 import { AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX } from 'src/constants';
 import { StateT } from 'src/state/state';
-import IntlProvider from 'src/components/wrappers/IntlProvider';
 
 import Auth from './Auth';
 import Portal from './Portal';
@@ -15,9 +15,9 @@ import './App.scss';
 const baseClass = `${THEME_PREFIX}-app`;
 
 const App = ({ store, history }: { store: StateT, history: Object }) => (
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <IntlProvider>
+  <IntlProvider>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
         <div className={baseClass}>
           <Switch className={`${baseClass}__content`}>
             <Route
@@ -29,8 +29,8 @@ const App = ({ store, history }: { store: StateT, history: Object }) => (
             <Route path={AUTH_PAGE} component={Auth} />
           </Switch>
         </div>
-      </IntlProvider>
-    </ConnectedRouter>
-  </Provider>
+      </ConnectedRouter>
+    </Provider>
+  </IntlProvider>
 );
 export default App;

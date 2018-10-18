@@ -10,6 +10,14 @@ export type Props = {
   handleRegistration: Function,
   handleSubmit: Function,
   isRegistrationInProgress: boolean,
+  MSGCreateAnAccount: string,
+  MSGEmail: string,
+  MSGPassword: string,
+  MSGRepeatPassword: string,
+  MSGRegion: string,
+  MSGCity: string,
+  MSGNicknameOptional: string,
+  MSGContinue: string,
 };
 
 const baseClass = `${THEME_PREFIX}-register`;
@@ -18,25 +26,33 @@ const Register = ({
   isRegistrationInProgress,
   handleRegistration,
   handleSubmit,
+  MSGCreateAnAccount,
+  MSGEmail,
+  MSGPassword,
+  MSGRepeatPassword,
+  MSGRegion,
+  MSGCity,
+  MSGNicknameOptional,
+  MSGContinue,
 }: Props) => (
   <Container className={baseClass}>
     <Row>
       <Col>
         <div className={baseClass}>
-          <h1>Create an account</h1>
+          <h1>{MSGCreateAnAccount}</h1>
 
           <Form onSubmit={handleSubmit(handleRegistration)}>
             {/* TODO@martins add validatiors */}
             <Field
-              placeholder="Email"
+              placeholder={MSGEmail}
               type="email"
               component={FormField}
-              name="username"
+              name="email"
               width="full"
               required
             />
             <Field
-              placeholder="Password"
+              placeholder={MSGPassword}
               type="password"
               component={FormField}
               name="password"
@@ -44,23 +60,24 @@ const Register = ({
               required
             />
             <Field
-              placeholder="Repeat Password"
+              placeholder={MSGRepeatPassword}
               type="password"
               component={FormField}
-              name="repeatPassword"
+              name="matchPassword"
               width="full"
               required
             />
             <Field
-              placeholder="Region"
+              placeholder={MSGRegion}
               type="text"
               component={FormField}
-              name="region"
+              name="regionName"
               width="full"
               required
             />
+
             <Field
-              placeholder="City"
+              placeholder={MSGCity}
               type="text"
               component={FormField}
               name="city"
@@ -68,7 +85,7 @@ const Register = ({
               required
             />
             <Field
-              placeholder="Nickname (Optional)"
+              placeholder={MSGNicknameOptional}
               type="text"
               component={FormField}
               name="nickname"
@@ -81,9 +98,7 @@ const Register = ({
               type="primary"
               disabled={isRegistrationInProgress}
             >
-              {isRegistrationInProgress
-                ? 'Registration in progress'
-                : 'Continue'}
+              {MSGContinue}
             </Button>
           </Form>
         </div>

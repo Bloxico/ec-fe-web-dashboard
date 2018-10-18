@@ -11,7 +11,12 @@ export type Props = {
   handleLogin: Function,
   handleSubmit: Function,
   isLoginInProgress: boolean,
-  MSGLoginHeading: string,
+  MSGSignIn: string,
+  MSGEmail: string,
+  MSGPassword: string,
+  MSGLogin: string,
+  MSGForgotThePassword: string,
+  MSGReset: string,
 };
 
 const baseClass = `${THEME_PREFIX}-login`;
@@ -20,24 +25,29 @@ const Login = ({
   isLoginInProgress,
   handleLogin,
   handleSubmit,
-  MSGLoginHeading,
+  MSGSignIn,
+  MSGEmail,
+  MSGPassword,
+  MSGLogin,
+  MSGForgotThePassword,
+  MSGReset,
 }: Props) => (
   <Container>
     <Row>
       <Col>
         <div className={baseClass}>
-          <h1>{MSGLoginHeading}</h1>
+          <h1>{MSGSignIn}</h1>
 
           <Form onSubmit={handleSubmit(handleLogin)}>
             {/* TODO@martins add validatiors */}
             <Field
-              placeholder="Email"
+              placeholder={MSGEmail}
               component={FormField}
               name="username"
               width="full"
             />
             <Field
-              placeholder="Password"
+              placeholder={MSGPassword}
               type="password"
               component={FormField}
               name="password"
@@ -49,11 +59,11 @@ const Login = ({
               type="primary"
               disabled={isLoginInProgress}
             >
-              {isLoginInProgress ? 'Logging in' : 'Login'}
+              {MSGLogin}
             </Button>
-            <span>Forgot the password?</span>{' '}
+            <span>{MSGForgotThePassword}</span>{' '}
             <Link to={LOGIN_PAGE} className={`${THEME_PREFIX}-link`}>
-              Reset
+              {MSGReset}
             </Link>
           </Form>
         </div>

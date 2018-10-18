@@ -1,12 +1,14 @@
 // @flow
 
 import { connect } from 'react-redux';
-import { compose, withHandlers } from 'recompose';
+import { compose, withHandlers, withProps } from 'recompose';
 import { reduxForm } from 'redux-form';
+import { injectIntl } from 'react-intl';
 
 import { register } from 'src/state/actions';
 
 import Register from './Register';
+import messages from './messages';
 
 const mapStateToProps = ({
   auth: {
@@ -19,6 +21,7 @@ const actions = {
 };
 
 export default compose(
+  injectIntl,
   reduxForm({
     form: 'Register',
   }),
@@ -33,4 +36,14 @@ export default compose(
       register(values);
     },
   }),
+  withProps(({ intl: { formatMessage } }) => ({
+    MSGCreateAnAccount: formatMessage(messages.createAnAccount),
+    MSGEmail: formatMessage(messages.email),
+    MSGPassword: formatMessage(messages.password),
+    MSGRepeatPassword: formatMessage(messages.repeatPassword),
+    MSGRegion: formatMessage(messages.region),
+    MSGCity: formatMessage(messages.city),
+    MSGNicknameOptional: formatMessage(messages.nicknameOptional),
+    MSGContinue: formatMessage(messages.continue),
+  })),
 )(Register);

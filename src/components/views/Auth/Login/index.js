@@ -35,6 +35,11 @@ export default compose(
     },
   }),
   withProps(({ intl: { formatMessage } }) => ({
-    MSGLoginHeading: formatMessage(messages.loginHeading),
+    MSGSignIn: formatMessage(messages.signIn),
+    MSGEmail: formatMessage(messages.email),
+    MSGPassword: formatMessage(messages.password),
+    MSGLogin: formatMessage(messages.login),
+    MSGForgotThePassword: formatMessage(messages.forgotThePassword),
+    MSGReset: formatMessage(messages.reset),
   })),
 )(Login);
