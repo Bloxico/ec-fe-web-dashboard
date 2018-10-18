@@ -3,60 +3,60 @@
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-  validators_required: {
-    id: 'validators_required',
+  validatorsRequired: {
+    id: 'validatorsRequired',
     defaultMessage: 'Required',
   },
-  validators_number: {
-    id: 'validators_number',
+  validatorsNumber: {
+    id: 'validatorsNumber',
     defaultMessage: 'Must be a number',
   },
-  validators_alphanumeric: {
-    id: 'validators_alphanumeric',
+  validatorsAlphanumeric: {
+    id: 'validatorsAlphanumeric',
     defaultMessage: 'Only alphanumeric characters',
   },
-  validators_phone: {
-    id: 'validators_phone',
+  validatorsPhone: {
+    id: 'validatorsPhone',
     defaultMessage: 'Invalid phone number, must be 10 digits',
   },
-  validators_email: {
-    id: 'validators_email',
+  validatorsEmail: {
+    id: 'validatorsEmail',
     defaultMessage: 'Email is not valid',
   },
-  validators_password_no_spaces: {
-    id: 'validators_password_no_spaces',
+  validatorsPasswordNoSpaces: {
+    id: 'validatorsPasswordNoSpaces',
     defaultMessage: 'No spaces',
   },
-  validators_password_8_min: {
-    id: 'validators_password_8_min',
+  validatorsPassword8Min: {
+    id: 'validatorsPassword8Min',
     defaultMessage: 'Minimum 8 symbols',
   },
-  validators_password_match: {
-    id: 'validators_password_match',
+  validatorsPasswordMatch: {
+    id: 'validatorsPasswordMatch',
     defaultMessage: "Passwords don't match",
   },
-  validators_min: {
-    id: 'validators_min',
+  validatorsMin: {
+    id: 'validatorsMin',
     defaultMessage: 'Minimum allowed value is',
   },
-  validators_max: {
-    id: 'validators_max',
+  validatorsMax: {
+    id: 'validatorsMax',
     defaultMessage: 'Maximum allowed value is',
   },
-  validators_greaterthan: {
-    id: 'validators_greaterthan',
+  validatorsGreaterThan: {
+    id: 'validatorsGreaterThan',
     defaultMessage: 'Value must be greater than',
   },
-  validators_minlen_1: {
-    id: 'validators_minlen_1',
+  validatorsMinLen1: {
+    id: 'validatorsMinLen1',
     defaultMessage: 'Must be at least',
   },
-  validators_minlen_2: {
-    id: 'validators_minlen_2',
+  validatorsMinLen2: {
+    id: 'validatorsMinLen2',
     defaultMessage: 'characters or more',
   },
-  validators_address: {
-    id: 'validators_address',
+  validatorsAddress: {
+    id: 'validatorsAddress',
     defaultMessage: "Invalid recipient's address format",
   },
 });
@@ -65,7 +65,7 @@ type ContextT = { intl: any };
 
 export const required = ({ intl: { formatMessage } }: ContextT) => (
   value?: string,
-) => (value ? undefined : formatMessage(messages.validators_required));
+) => (value ? undefined : formatMessage(messages.validatorsRequired));
 
 export const number = ({ intl: { formatMessage } }: ContextT) => (
   value: string,
@@ -76,7 +76,7 @@ export const number = ({ intl: { formatMessage } }: ContextT) => (
 
   // eslint-disable-next-line
   return value && isNaN(value)
-    ? formatMessage(messages.validators_number)
+    ? formatMessage(messages.validatorsNumber)
     : undefined;
 };
 
@@ -84,30 +84,30 @@ export const alphanumeric = ({ intl: { formatMessage } }: ContextT) => (
   value: string,
 ) =>
   value && /[^a-zA-Z0-9 ]/i.test(value)
-    ? formatMessage(messages.validators_alphanumeric)
+    ? formatMessage(messages.validatorsAlphanumeric)
     : undefined;
 
 export const phone = ({ intl: { formatMessage } }: ContextT) => (
   value: string,
 ) =>
   value && !/^(0|[1-9][0-9]{9})$/i.test(value)
-    ? formatMessage(messages.validators_phone)
+    ? formatMessage(messages.validatorsPhone)
     : undefined;
 
 export const email = ({ intl: { formatMessage } }: ContextT) => (
   value: string,
 ) =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
-    ? formatMessage(messages.validators_email)
+    ? formatMessage(messages.validatorsEmail)
     : undefined;
 
 export const password = ({ intl: { formatMessage } }: ContextT) => (
   value?: string,
 ) => {
   if (value && value.indexOf(' ') > -1) {
-    return formatMessage(messages.validators_password_no_spaces);
+    return formatMessage(messages.validatorsPasswordNoSpaces);
   } else if (value && value.length < 8) {
-    return formatMessage(messages.validators_password_8_min);
+    return formatMessage(messages.validatorsPassword8Min);
   }
 
   return undefined;
@@ -118,7 +118,7 @@ export const match = ({ intl: { formatMessage } }: ContextT) => (
   toMatch: string,
 ) =>
   value !== toMatch
-    ? formatMessage(messages.validators_password_match)
+    ? formatMessage(messages.validatorsPasswordMatch)
     : undefined;
 
 export const min = ({ intl: { formatMessage } }: ContextT) => (
@@ -127,7 +127,7 @@ export const min = ({ intl: { formatMessage } }: ContextT) => (
   message?: string,
 ) =>
   value < minVal
-    ? message || `${formatMessage(messages.validators_min)} ${minVal}`
+    ? message || `${formatMessage(messages.validatorsMin)} ${minVal}`
     : undefined;
 
 export const max = ({ intl: { formatMessage } }: ContextT) => (
@@ -136,7 +136,7 @@ export const max = ({ intl: { formatMessage } }: ContextT) => (
   message?: string,
 ) =>
   value && value > maxVal
-    ? message || `${formatMessage(messages.validators_max)} ${maxVal}`
+    ? message || `${formatMessage(messages.validatorsMax)} ${maxVal}`
     : undefined;
 
 export const minLen = ({ intl: { formatMessage } }: ContextT) => (
@@ -144,8 +144,8 @@ export const minLen = ({ intl: { formatMessage } }: ContextT) => (
   minLen: number,
 ) =>
   value && value.length < minLen
-    ? `${formatMessage(messages.validators_minlen_1)} ${minLen} ${formatMessage(
-        messages.validators_minlen_2,
+    ? `${formatMessage(messages.validatorsMinLen1)} ${minLen} ${formatMessage(
+        messages.validatorsMinLen2,
       )}`
     : undefined;
 
@@ -153,7 +153,7 @@ export const address = ({ intl: { formatMessage } }: ContextT) => (
   value: string,
 ) =>
   value && (value.length !== 34 || !value.match(/^[3G][0-9a-zA-Z]+$/))
-    ? `${formatMessage(messages.validators_address)}`
+    ? `${formatMessage(messages.validatorsAddress)}`
     : undefined;
 
 export const greaterThan = ({ intl: { formatMessage } }: ContextT) => (
@@ -162,5 +162,5 @@ export const greaterThan = ({ intl: { formatMessage } }: ContextT) => (
   message?: string,
 ) =>
   parseFloat(value) <= minVal
-    ? message || `${formatMessage(messages.validators_greaterthan)} ${minVal}`
+    ? message || `${formatMessage(messages.validatorsGreaterThan)} ${minVal}`
     : undefined;
