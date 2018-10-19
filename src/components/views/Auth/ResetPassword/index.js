@@ -28,7 +28,6 @@ export default compose(
   ),
   withHandlers({
     handleResetPassword: ({ resetPassword }) => values => {
-      console.log(values);
       resetPassword(values);
     },
   }),

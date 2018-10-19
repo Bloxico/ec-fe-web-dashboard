@@ -28,7 +28,6 @@ export default compose(
   ),
   withHandlers({
     handleVerify: ({ verify }) => values => {
-      console.log(values);
       verify(values);
     },
   }),
