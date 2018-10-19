@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 
 import { Form, FormField, Button, Container, Row, Col } from '@ui';
-import { RESETPASSWORD_PAGE, THEME_PREFIX } from 'src/constants';
+import { RESET_PASSWORD_PAGE, THEME_PREFIX } from 'src/constants';
 
 import {
   required,
@@ -84,7 +84,7 @@ class Login extends Component<PropsT> {
                 </Button>
                 <span>{this.props.MSGForgotThePassword}</span>{' '}
                 <Link
-                  to={RESETPASSWORD_PAGE}
+                  to={RESET_PASSWORD_PAGE}
                   className={`${THEME_PREFIX}-link`}
                 >
                   {this.props.MSGReset}

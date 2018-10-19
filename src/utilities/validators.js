@@ -59,6 +59,10 @@ const messages = defineMessages({
     id: 'validatorsAddress',
     defaultMessage: "Invalid recipient's address format",
   },
+  validatorsVerifyLen: {
+    id: 'validatorsVerifyLen',
+    defaultMessage: 'Must be exactly 4-digits',
+  },
 });
 
 type ContextT = { intl: any };
@@ -147,6 +151,13 @@ export const minLen = ({ intl: { formatMessage } }: ContextT) => (
     ? `${formatMessage(messages.validatorsMinLen1)} ${minLen} ${formatMessage(
         messages.validatorsMinLen2,
       )}`
+    : undefined;
+
+export const codeLen = ({ intl: { formatMessage } }: ContextT) => (
+  value: string,
+) =>
+  value && value.length !== 4
+    ? `${formatMessage(messages.validatorsVerifyLen)}`
     : undefined;
 
 export const address = ({ intl: { formatMessage } }: ContextT) => (
