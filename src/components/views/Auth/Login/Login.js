@@ -3,16 +3,11 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import { Link } from 'react-router-dom';
+import classNames from "classnames";
 
 import { Form, FormField, Button, Container, Row, Col } from '@ui';
 import { RESET_PASSWORD_PAGE, THEME_PREFIX } from 'src/constants';
 
-import {
-  required,
-  password,
-  email,
-  alphanumeric,
-} from 'src/utilities/validators';
 
 type PropsT = {
   MSGSignIn: string,
@@ -24,7 +19,9 @@ type PropsT = {
   MSGLogin: string,
   MSGForgotThePassword: string,
   MSGReset: string,
-  intl: Object,
+  requiredIntl: Function,
+  passwordIntl: Function,
+  emailIntl: Function,
 };
 
 const baseClass = `${THEME_PREFIX}-login`;
@@ -32,62 +29,81 @@ const baseClass = `${THEME_PREFIX}-login`;
 class Login extends Component<PropsT> {
   constructor(props) {
     super(props);
-    const { intl } = props;
+    const { requiredIntl, passwordIntl, emailIntl } = props;
     this.validators = {
-      required: required({ intl }),
-      alphanumeric: alphanumeric({ intl }),
-      password: password({ intl }),
-      email: email({ intl }),
+      requiredValidator: requiredIntl,
+      passwordValidator: passwordIntl,
+      emailValidator: emailIntl,
     };
   }
 
   render() {
+    const {
+      MSGSignIn,
+      MSGEmail,
+      MSGPassword,
+      MSGLogin,
+      MSGForgotThePassword,
+      MSGReset,
+      handleSubmit,
+      handleLogin,
+      isLoginInProgress,
+    } = this.props;
+
+    const {
+      requiredValidator,
+      passwordValidator,
+      emailValidator,
+    } = this.validators;
+
+      const classes = classNames(baseClass,`${THEME_PREFIX}-layout--center`);
+
     return (
       <Container>
         <Row>
           <Col>
-            <div className={baseClass}>
-              <h1>{this.props.MSGSignIn}</h1>
+            <div className={classes}>
+              <h1>{MSGSignIn}</h1>
 
-              <Form onSubmit={this.props.handleSubmit(this.props.handleLogin)}>
+              <Form onSubmit={handleSubmit(handleLogin)}>
                 {/* TODO@martins add validatiors */}
                 <Field
-                  placeholder={this.props.MSGEmail}
+                  placeholder={MSGEmail}
                   component={FormField}
                   name="username"
                   width="full"
                   validate={[
-                    this.validators.required,
-                    this.validators.email,
-                    this.validators.alphanumeric,
+                    requiredValidator,
+                    passwordValidator,
+                    emailValidator,
                   ]}
                 />
                 <Field
-                  placeholder={this.props.MSGPassword}
+                  placeholder={MSGPassword}
                   type="password"
                   component={FormField}
                   name="password"
                   width="full"
                   validate={[
-                    this.validators.required,
-                    this.validators.password,
-                    this.validators.alphanumeric,
+                    requiredValidator,
+                    passwordValidator,
+                    emailValidator,
                   ]}
                 />
                 <Button
                   action="submit"
                   size="full"
                   type="primary"
-                  disabled={this.props.isLoginInProgress}
+                  disabled={isLoginInProgress}
                 >
-                  {this.props.MSGLogin}
+                  {MSGLogin}
                 </Button>
-                <span>{this.props.MSGForgotThePassword}</span>{' '}
+                <span>{MSGForgotThePassword}</span>{' '}
                 <Link
                   to={RESET_PASSWORD_PAGE}
                   className={`${THEME_PREFIX}-link`}
                 >
-                  {this.props.MSGReset}
+                  {MSGReset}
                 </Link>
               </Form>
             </div>

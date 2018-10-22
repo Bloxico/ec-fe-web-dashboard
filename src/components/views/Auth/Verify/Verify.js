@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Form, FormField, Button, Container, Row, Col } from '@ui';
 import { THEME_PREFIX } from 'src/constants';
-import { number, required, codeLen } from 'src/utilities/validators';
+import classNames from "classnames";
 
 const baseClass = `${THEME_PREFIX}-verify`;
 
@@ -15,55 +15,75 @@ type Props = {
   MSG4DigitVerificationCode: string,
   MSGVerify: string,
   MSGEnterYourCode: string,
-  MSGDidntRecieveEmail: string,
+  MSGDidntReceiveEmail: string,
   MSGResendCode: string,
-  intl: Object,
+  requiredIntl: Function,
+  numberIntl: Function,
+  codeLenIntl: Function,
 };
 
 class Verify extends Component<Props> {
   constructor(props) {
     super(props);
-    const { intl } = props;
+    const { requiredIntl, numberIntl, codeLenIntl } = props;
     this.validators = {
-      required: required({ intl }),
-      number: number({ intl }),
-      codeLen: codeLen({ intl }),
+      requiredValidator: requiredIntl,
+      numberValidator: numberIntl,
+      codeLenValidator: codeLenIntl,
     };
   }
 
   render() {
+    const {
+      MSGVerifyAccount,
+      MSGEnterYourCode,
+      MSG4DigitVerificationCode,
+      MSGVerify,
+      MSGDidntReceiveEmail,
+      MSGResendCode,
+      isVerifyInProgress,
+      handleSubmit,
+      handleVerify,
+    } = this.props;
+
+    const {
+      requiredValidator,
+      numberValidator,
+      codeLenValidator,
+    } = this.validators;
+
+      const classes = classNames(baseClass,`${THEME_PREFIX}-layout--center`);
+
     return (
-      <Container className={baseClass}>
+      <Container className={classes}>
         <Row>
           <Col>
-            <h1>{this.props.MSGVerifyAccount}</h1>
-            <p>{this.props.MSGEnterYourCode}</p>
-            <Form onSubmit={this.props.handleSubmit(this.props.handleVerify)}>
+            <h1>{MSGVerifyAccount}</h1>
+            <p>{MSGEnterYourCode}</p>
+            <Form onSubmit={handleSubmit(handleVerify)}>
               <Field
                 type="number"
                 name="code"
                 component={FormField}
-                placeholder={this.props.MSG4DigitVerificationCode}
+                placeholder={MSG4DigitVerificationCode}
                 width="full"
                 validate={[
-                  this.validators.required,
-                  this.validators.number,
-                  this.validators.codeLen,
+                  requiredValidator,
+                  numberValidator,
+                  codeLenValidator,
                 ]}
               />
               <Button
                 action="submit"
                 type="primary"
-                disabled={this.props.isVerifyInProgress}
+                disabled={isVerifyInProgress}
                 size="full"
               >
-                {this.props.MSGVerify}
+                {MSGVerify}
               </Button>
             </Form>
-            <span>{this.props.MSGDidntRecieveEmail}</span>{' '}
-            <span className={`${THEME_PREFIX}-link`}>
-              {this.props.MSGResendCode}
-            </span>
+            <span>{MSGDidntReceiveEmail}</span>{' '}
+            <span className={`${THEME_PREFIX}-link`}>{MSGResendCode}</span>
           </Col>
         </Row>
       </Container>

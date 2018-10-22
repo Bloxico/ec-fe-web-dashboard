@@ -4,15 +4,15 @@ import { reduxForm } from 'redux-form';
 import { injectIntl } from 'react-intl';
 
 import { resetPassword } from 'src/state/actions';
+import { required, email } from 'src/utilities/validators';
+import { isResetPasswordInProgress } from 'src/state/selectors';
 
 import ResetPassword from './ResetPassword';
 import messages from './messages';
 
-const mapStateToProps = ({
-  auth: {
-    resetPassword: { inProgress },
-  },
-}) => ({ isResetPasswordInProgress: inProgress });
+const mapStateToProps = state => ({
+  ...isResetPasswordInProgress(state),
+});
 
 const actions = {
   resetPassword,
@@ -36,5 +36,9 @@ export default compose(
     MSGEmail: formatMessage(messages.email),
     MSGContinue: formatMessage(messages.continue),
     MSGYourENRGEmail: formatMessage(messages.yourENRGEmail),
+  })),
+  withProps(({ intl }) => ({
+    requiredIntl: required({ intl }),
+    emailIntl: email({ intl }),
   })),
 )(ResetPassword);

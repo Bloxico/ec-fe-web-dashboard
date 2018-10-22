@@ -4,19 +4,20 @@ import { reduxForm } from 'redux-form';
 import { injectIntl } from 'react-intl';
 
 import { verify } from 'src/state/actions';
+import { codeLen, number, required } from 'src/utilities/validators';
+import { isVerifyInProgress } from "src/state/selectors";
 
 import Verify from './Verify';
 import messages from './messages';
 
-const mapStateToProps = ({
-  auth: {
-    resetPassword: { inProgress },
-  },
-}) => ({ isVerifyInProgress: inProgress });
+const mapStateToProps = state => ({
+    ...isVerifyInProgress(state),
+});
 
 const actions = {
   verify,
 };
+
 export default compose(
   injectIntl,
   reduxForm({
@@ -38,7 +39,12 @@ export default compose(
     ),
     MSGVerify: formatMessage(messages.verify),
     MSGEnterYourCode: formatMessage(messages.enterYourCode),
-    MSGDidntRecieveEmail: formatMessage(messages.didntRecieveEmail),
+    MSGDidntReceiveEmail: formatMessage(messages.didntReceiveEmail),
     MSGResendCode: formatMessage(messages.resendCode),
+  })),
+  withProps(({ intl }) => ({
+    requiredIntl: required({ intl }),
+    numberIntl: number({ intl }),
+    codeLenIntl: codeLen({ intl }),
   })),
 )(Verify);

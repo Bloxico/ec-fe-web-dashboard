@@ -5,16 +5,22 @@ import { compose, withHandlers, withProps } from 'recompose';
 import { reduxForm } from 'redux-form';
 import { injectIntl } from 'react-intl';
 
+import { isRegisterInProgress } from 'src/state/selectors';
 import { register } from 'src/state/actions';
+import {
+  alphanumeric,
+  email,
+  match,
+  password,
+  required,
+} from 'src/utilities/validators';
 
 import Register from './Register';
 import messages from './messages';
 
-const mapStateToProps = ({
-  auth: {
-    register: { inProgress },
-  },
-}) => ({ isRegistrationInProgress: inProgress });
+const mapStateToProps = state => ({
+  ...isRegisterInProgress(state),
+});
 
 const actions = {
   register,
@@ -45,5 +51,12 @@ export default compose(
     MSGCity: formatMessage(messages.city),
     MSGNicknameOptional: formatMessage(messages.nicknameOptional),
     MSGContinue: formatMessage(messages.continue),
+  })),
+  withProps(({ intl }) => ({
+    requiredIntl: required({ intl }),
+    alphanumericIntl: alphanumeric({ intl }),
+    passwordIntl: password({ intl }),
+    emailIntl: email({ intl }),
+    matchIntl: match({ intl }),
   })),
 )(Register);

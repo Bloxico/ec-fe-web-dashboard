@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
+import classNames from "classnames";
 
 import { Form, FormField, Button, Container, Row, Col } from '@ui';
 import { THEME_PREFIX } from 'src/constants';
-import { email, required } from 'src/utilities/validators';
 
 const baseClass = `${THEME_PREFIX}-resetPassword`;
 
@@ -15,44 +15,55 @@ type Props = {
   MSGEmail: string,
   MSGContinue: string,
   MSGYourENRGEmail: string,
-  intl: Object,
 };
 
 class ResetPassword extends Component<Props> {
   constructor(props) {
     super(props);
-    const { intl } = props;
+    const { requiredIntl, emailIntl } = props;
     this.validators = {
-      required: required({ intl }),
-      email: email({ intl }),
+      requiredValidator: requiredIntl,
+      emailValidator: emailIntl,
     };
   }
 
   render() {
+    const {
+      MSGResetPassword,
+      MSGYourENRGEmail,
+      handleSubmit,
+      handleResetPassword,
+      MSGEmail,
+      isResetPasswordInProgress,
+      MSGContinue,
+    } = this.props;
+
+    const { requiredValidator, emailValidator } = this.validators;
+
+      const classes = classNames(baseClass,`${THEME_PREFIX}-layout--center`);
+
     return (
-      <Container className={baseClass}>
+      <Container className={classes}>
         <Row>
           <Col>
-            <h1>{this.props.MSGResetPassword}</h1>
-            <p>{this.props.MSGYourENRGEmail}</p>
-            <Form
-              onSubmit={this.props.handleSubmit(this.props.handleResetPassword)}
-            >
+            <h1>{MSGResetPassword}</h1>
+            <p>{MSGYourENRGEmail}</p>
+            <Form onSubmit={handleSubmit(handleResetPassword)}>
               <Field
                 type="email"
                 name="email"
                 component={FormField}
-                placeholder={this.props.MSGEmail}
+                placeholder={MSGEmail}
                 width="full"
-                validate={[this.validators.required, this.validators.email]}
+                validate={[requiredValidator, emailValidator]}
               />
               <Button
                 action="submit"
                 type="primary"
-                disabled={this.props.isResetPasswordInProgress}
+                disabled={isResetPasswordInProgress}
                 size="full"
               >
-                {this.props.MSGContinue}
+                {MSGContinue}
               </Button>
             </Form>
           </Col>

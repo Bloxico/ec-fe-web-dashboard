@@ -20,8 +20,8 @@ export default defineMessages({
     defaultMessage:
       'A 4-digit verification code was sent to the email you provided. Please enter it below.',
   },
-  didntRecieveEmail: {
-    id: 'didntRecieveEmail',
+  didntReceiveEmail: {
+    id: 'didntReceiveEmail',
     defaultMessage: "Didn't recieve email?",
   },
   resendCode: {

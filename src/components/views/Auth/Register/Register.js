@@ -2,16 +2,10 @@
 
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
+import classNames from 'classnames';
 
 import { Form, FormField, Button, Container, Row, Col } from '@ui';
 import { THEME_PREFIX } from 'src/constants';
-import {
-  alphanumeric,
-  email,
-  password,
-  required,
-  match,
-} from 'src/utilities/validators';
 
 export type Props = {
   handleRegistration: Function,
@@ -25,7 +19,11 @@ export type Props = {
   MSGCity: string,
   MSGNicknameOptional: string,
   MSGContinue: string,
-  intl: Object,
+  requiredIntl: Function,
+  alphanumericIntl: Function,
+  passwordIntl: Function,
+  emailIntl: Function,
+  matchIntl: Function,
 };
 
 const baseClass = `${THEME_PREFIX}-register`;
@@ -33,103 +31,121 @@ const baseClass = `${THEME_PREFIX}-register`;
 class Register extends Component<Props> {
   constructor(props) {
     super(props);
-    const { intl } = props;
-
-    const [
+    const {
       requiredIntl,
       alphanumericIntl,
       passwordIntl,
       emailIntl,
       matchIntl,
-    ] = [required, alphanumeric, password, email, match].map(func =>
-      func({ intl }),
-    );
+    } = props;
 
     this.passwordField = React.createRef();
 
     this.validators = {
-      required: requiredIntl,
-      alphanumeric: alphanumericIntl,
-      password: passwordIntl,
-      email: emailIntl,
-      match: value => matchIntl(value, this.passwordField.current.value),
+      requiredValidator: requiredIntl,
+      alphanumericValidator: alphanumericIntl,
+      passwordValidator: passwordIntl,
+      emailValidator: emailIntl,
+      matchValidator: value =>
+        matchIntl(value, this.passwordField.current.value),
     };
   }
-
   render() {
+    const {
+      MSGCreateAnAccount,
+      handleSubmit,
+      handleRegistration,
+      MSGEmail,
+      MSGRepeatPassword,
+      MSGPassword,
+      MSGRegion,
+      MSGCity,
+      MSGNicknameOptional,
+      isRegistrationInProgress,
+      MSGContinue,
+    } = this.props;
+
+    const {
+      requiredValidator,
+      emailValidator,
+      alphanumericValidator,
+      passwordValidator,
+      matchValidator,
+    } = this.validators;
+
+    const classes = classNames(baseClass,`${THEME_PREFIX}-layout--center`);
+
     return (
-      <Container className={baseClass}>
+      <Container className={classes}>
         <Row>
           <Col>
-            <h1>{this.props.MSGCreateAnAccount}</h1>
+            <h1>{MSGCreateAnAccount}</h1>
 
-            <Form
-              onSubmit={this.props.handleSubmit(this.props.handleRegistration)}
-            >
+            <Form onSubmit={handleSubmit(handleRegistration)}>
               {/* TODO@martins add validatiors */}
               <Field
-                placeholder={this.props.MSGEmail}
+                placeholder={MSGEmail}
                 type="email"
                 component={FormField}
                 name="email"
                 width="full"
-                validate={[this.validators.required, this.validators.email]}
+                validate={[requiredValidator, emailValidator]}
               />
               <Field
-                placeholder={this.props.MSGPassword}
+                placeholder={MSGPassword}
                 type="password"
                 component={FormField}
                 name="password"
                 width="full"
-                validate={[this.validators.required, this.validators.password]}
+                validate={[requiredValidator, emailValidator]}
                 ref={this.passwordField}
               />
               <Field
-                placeholder={this.props.MSGRepeatPassword}
+                placeholder={MSGRepeatPassword}
                 type="password"
                 component={FormField}
                 name="matchPassword"
                 width="full"
                 toMatch="12345678"
                 validate={[
-                  this.validators.required,
-                  this.validators.password,
-                  this.validators.match,
+                  requiredValidator,
+                  passwordValidator,
+                  matchValidator,
                 ]}
               />
               <Field
-                placeholder={this.props.MSGRegion}
+                placeholder={MSGRegion}
                 type="text"
                 component={FormField}
                 name="regionName"
                 width="full"
-                validate={[this.validators.required]}
+                validate={[requiredValidator]}
               />
 
               <Field
-                placeholder={this.props.MSGCity}
+                placeholder={MSGCity}
                 type="text"
                 component={FormField}
                 name="city"
                 width="full"
-                validate={[this.validators.required]}
+                validate={[requiredValidator]}
               />
               <Field
-                placeholder={this.props.MSGNicknameOptional}
+                placeholder={MSGNicknameOptional}
                 type="text"
                 component={FormField}
                 name="nickname"
                 width="full"
-                validate={[this.validators.alphanumeric]}
+                validate={[alphanumericValidator]}
               />
 
               <Button
                 size="full"
                 action="submit"
                 type="primary"
-                disabled={this.props.isRegistrationInProgress}
+                disabled={isRegistrationInProgress}
               >
-                {this.props.MSGContinue}
+                {MSGContinue}
               </Button>
             </Form>
           </Col>

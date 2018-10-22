@@ -1,5 +1,11 @@
 .#{$namespace}-welcome {
-  @extend %layout-center;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
   min-height: calc(100vh - 60px);
 
   &__footer {
@@ -12,14 +18,7 @@
     padding: rhythm(1);
   }
 }
-
-.#{$namespace}-register,
-.#{$namespace}-login,
-.#{$namespace}-resetPassword,
-.#{$namespace}-verify {
-  @extend %layout-center;
-  min-height: 100vh;
-
+.#{$namespace}-auth {
   .#{$namespace}-form {
     min-width: 300px;
   }
@@ -29,16 +28,4 @@
   .#{$namespace}-button--full {
     margin-bottom: 1em;
   }
-}
-
-//temporary solution to vertically center entire content
-
-%layout-center {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
 }
