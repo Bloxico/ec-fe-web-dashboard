@@ -5,13 +5,13 @@ import { injectIntl } from 'react-intl';
 
 import { verify } from 'src/state/actions';
 import { codeLen, number, required } from 'src/utilities/validators';
-import { isVerifyInProgress } from "src/state/selectors";
+import { isVerifyInProgress } from 'src/state/selectors';
 
 import Verify from './Verify';
 import messages from './messages';
 
 const mapStateToProps = state => ({
-    ...isVerifyInProgress(state),
+  ...isVerifyInProgress(state),
 });
 
 const actions = {

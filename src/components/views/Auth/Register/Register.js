@@ -73,7 +73,7 @@ class Register extends Component<Props> {
       matchValidator,
     } = this.validators;
 
-    const classes = classNames(baseClass,`${THEME_PREFIX}-layout--center`);
+    const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
 
     return (
       <Container className={classes}>

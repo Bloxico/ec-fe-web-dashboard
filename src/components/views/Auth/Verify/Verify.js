@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Form, FormField, Button, Container, Row, Col } from '@ui';
 import { THEME_PREFIX } from 'src/constants';
-import classNames from "classnames";
+import classNames from 'classnames';
 
 const baseClass = `${THEME_PREFIX}-verify`;
 
@@ -52,7 +52,7 @@ class Verify extends Component<Props> {
       codeLenValidator,
     } = this.validators;
 
-      const classes = classNames(baseClass,`${THEME_PREFIX}-layout--center`);
+    const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
 
     return (
       <Container className={classes}>

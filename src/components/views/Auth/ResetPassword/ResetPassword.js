@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
-import classNames from "classnames";
+import classNames from 'classnames';
 
 import { Form, FormField, Button, Container, Row, Col } from '@ui';
 import { THEME_PREFIX } from 'src/constants';
@@ -15,6 +15,8 @@ type Props = {
   MSGEmail: string,
   MSGContinue: string,
   MSGYourENRGEmail: string,
+  requiredIntl: Function,
+  emailIntl: Function,
 };
 
 class ResetPassword extends Component<Props> {
@@ -40,7 +42,7 @@ class ResetPassword extends Component<Props> {
 
     const { requiredValidator, emailValidator } = this.validators;
 
-      const classes = classNames(baseClass,`${THEME_PREFIX}-layout--center`);
+    const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
 
     return (
       <Container className={classes}>

@@ -3,11 +3,10 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import { Link } from 'react-router-dom';
-import classNames from "classnames";
+import classNames from 'classnames';
 
 import { Form, FormField, Button, Container, Row, Col } from '@ui';
 import { RESET_PASSWORD_PAGE, THEME_PREFIX } from 'src/constants';
-
 
 type PropsT = {
   MSGSignIn: string,
@@ -56,7 +55,7 @@ class Login extends Component<PropsT> {
       emailValidator,
     } = this.validators;
 
-      const classes = classNames(baseClass,`${THEME_PREFIX}-layout--center`);
+    const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
 
     return (
       <Container>
