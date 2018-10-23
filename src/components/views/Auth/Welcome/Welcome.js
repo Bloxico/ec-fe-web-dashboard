@@ -39,36 +39,27 @@ const Welcome = ({
     <Container className={baseClass}>
       <Row className="align-items-center">
         <Col>
-          <img src={logo} alt="" width="40%" />
+          <img src={logo} alt="" />
           <h1>{MSGDashboard}</h1>
-          <Link
-            to={REGISTER_PAGE}
-            className="enrg-button enrg-button--wide enrg-button--primary"
-          >
+          <Link to={REGISTER_PAGE} className={`${THEME_PREFIX}-link-button`}>
             {MSGCreateAnAccount}
           </Link>
           <div className="clearfix" />
-          <Link
-            to={LOGIN_PAGE}
-            className="enrg-button enrg-button--wide enrg-button--secondary"
-          >
-            {MSGSignIn}
-          </Link>
+          <Link to={LOGIN_PAGE}>{MSGSignIn}</Link>
         </Col>
       </Row>
     </Container>
-    <Container className={`${baseClass}__footer`}>
+    <Container>
       <Row>
-        <span>
-          {MSGByContinuingYouAgreeToOur}{' '}
-          <Link to={AUTH_PAGE} className={`${THEME_PREFIX}-link`}>
-            {MSGTermsOfUse}
-          </Link>{' '}
-          {MSGAnd}{' '}
-          <Link to={AUTH_PAGE} className={`${THEME_PREFIX}-link`}>
-            {MSGPrivacyPolicy}
-          </Link>
-        </span>
+        <Col>
+          <div className={`${baseClass}__footer`}>
+            <span>
+              {MSGByContinuingYouAgreeToOur}{' '}
+              <Link to={AUTH_PAGE}>{MSGTermsOfUse}</Link> {MSGAnd}{' '}
+              <Link to={AUTH_PAGE}>{MSGPrivacyPolicy}</Link>
+            </span>
+          </div>
+        </Col>
       </Row>
     </Container>
   </Fragment>

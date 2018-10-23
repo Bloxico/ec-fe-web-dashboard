@@ -6,15 +6,15 @@ import { reduxForm } from 'redux-form';
 import { injectIntl } from 'react-intl';
 
 import { login } from 'src/state/actions';
+import { email, password, required } from 'src/utilities/validators';
+import { isLoginInProgress } from 'src/state/selectors';
 
 import Login from './Login';
 import messages from './messages';
 
-const mapStateToProps = ({
-  auth: {
-    login: { inProgress },
-  },
-}) => ({ isLoginInProgress: inProgress });
+const mapStateToProps = state => ({
+  ...isLoginInProgress(state),
+});
 
 const actions = {
   login,
@@ -41,5 +41,10 @@ export default compose(
     MSGLogin: formatMessage(messages.login),
     MSGForgotThePassword: formatMessage(messages.forgotThePassword),
     MSGReset: formatMessage(messages.reset),
+  })),
+  withProps(({ intl }) => ({
+    requiredIntl: required({ intl }),
+    passwordIntl: password({ intl }),
+    emailIntl: email({ intl }),
   })),
 )(Login);

@@ -1,5 +1,35 @@
+.#{$namespace}-auth {
+  .#{$namespace}-button {
+    margin-bottom: rhythm(1);
+  }
+
+  a:not(.#{$namespace}-link-button) {
+    @extend .#{$namespace}-link;
+  }
+
+  .#{$namespace}-link-button {
+    @extend .#{$namespace}-button;
+    @extend .#{$namespace}-button--primary;
+  }
+
+  .#{$namespace}-form {
+    width: 100%;
+  }
+}
+
 .#{$namespace}-welcome {
-  @extend %layout-center;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  min-height: calc(100vh - 60px);
+
+  img {
+    width: 40%;
+  }
 
   &__footer {
     flex: 1 1 auto;
@@ -8,36 +38,12 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: rhythm(1);
+    padding: 0 rhythm(1);
   }
 }
 
-.#{$namespace}-register,
-.#{$namespace}-login {
-  @extend %layout-center;
-
-  .#{$namespace}-form {
-    min-width: 300px;
+.#{$namespace}-success {
+  img {
+    margin-bottom: rhythm(1.5);
   }
-}
-
-.#{$namespace}-login {
-  .#{$namespace}-button--full {
-    margin-bottom: 1em;
-  }
-}
-
-//temporary solution to vertically center entire content
-
-%layout-center {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  min-height: calc(100vh - 60px);
-  overflow: hidden;
 }
