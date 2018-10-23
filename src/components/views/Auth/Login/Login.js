@@ -24,6 +24,7 @@ type PropsT = {
 };
 
 const baseClass = `${THEME_PREFIX}-login`;
+const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
 
 class Login extends Component<PropsT> {
   constructor(props) {
@@ -55,17 +56,13 @@ class Login extends Component<PropsT> {
       emailValidator,
     } = this.validators;
 
-    const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
-
     return (
       <Container>
         <Row>
-          <Col>
+          <Col sm={{ size: 4, offset: 4 }} xs={{ size: 10, offset: 1 }}>
             <div className={classes}>
               <h1>{MSGSignIn}</h1>
-
               <Form onSubmit={handleSubmit(handleLogin)}>
-                {/* TODO@martins add validatiors */}
                 <Field
                   placeholder={MSGEmail}
                   component={FormField}
@@ -98,12 +95,7 @@ class Login extends Component<PropsT> {
                   {MSGLogin}
                 </Button>
                 <span>{MSGForgotThePassword}</span>{' '}
-                <Link
-                  to={RESET_PASSWORD_PAGE}
-                  className={`${THEME_PREFIX}-link`}
-                >
-                  {MSGReset}
-                </Link>
+                <Link to={RESET_PASSWORD_PAGE}>{MSGReset}</Link>
               </Form>
             </div>
           </Col>

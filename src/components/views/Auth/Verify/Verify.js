@@ -57,33 +57,35 @@ class Verify extends Component<Props> {
     return (
       <Container className={classes}>
         <Row>
-          <Col>
-            <h1>{MSGVerifyAccount}</h1>
-            <p>{MSGEnterYourCode}</p>
-            <Form onSubmit={handleSubmit(handleVerify)}>
-              <Field
-                type="number"
-                name="code"
-                component={FormField}
-                placeholder={MSG4DigitVerificationCode}
-                width="full"
-                validate={[
-                  requiredValidator,
-                  numberValidator,
-                  codeLenValidator,
-                ]}
-              />
-              <Button
-                action="submit"
-                type="primary"
-                disabled={isVerifyInProgress}
-                size="full"
-              >
-                {MSGVerify}
-              </Button>
-            </Form>
-            <span>{MSGDidntReceiveEmail}</span>{' '}
-            <span className={`${THEME_PREFIX}-link`}>{MSGResendCode}</span>
+          <Col sm={{ size: 4, offset: 4 }} xs={{ size: 10, offset: 1 }}>
+            <div className={classes}>
+              <h1>{MSGVerifyAccount}</h1>
+              <p>{MSGEnterYourCode}</p>
+              <Form onSubmit={handleSubmit(handleVerify)}>
+                <Field
+                  type="number"
+                  name="code"
+                  component={FormField}
+                  placeholder={MSG4DigitVerificationCode}
+                  width="full"
+                  validate={[
+                    requiredValidator,
+                    numberValidator,
+                    codeLenValidator,
+                  ]}
+                />
+                <Button
+                  action="submit"
+                  type="primary"
+                  disabled={isVerifyInProgress}
+                  size="full"
+                >
+                  {MSGVerify}
+                </Button>
+              </Form>
+              <span>{MSGDidntReceiveEmail}</span>{' '}
+              <span className={`${THEME_PREFIX}-link`}>{MSGResendCode}</span>
+            </div>
           </Col>
         </Row>
       </Container>

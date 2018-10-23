@@ -5,7 +5,8 @@ import classNames from 'classnames';
 import { Form, FormField, Button, Container, Row, Col } from '@ui';
 import { THEME_PREFIX } from 'src/constants';
 
-const baseClass = `${THEME_PREFIX}-resetPassword`;
+const baseClass = `${THEME_PREFIX}-reset-password`;
+const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
 
 type Props = {
   handleSubmit: Function,
@@ -42,32 +43,32 @@ class ResetPassword extends Component<Props> {
 
     const { requiredValidator, emailValidator } = this.validators;
 
-    const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
-
     return (
-      <Container className={classes}>
+      <Container>
         <Row>
-          <Col>
-            <h1>{MSGResetPassword}</h1>
-            <p>{MSGYourENRGEmail}</p>
-            <Form onSubmit={handleSubmit(handleResetPassword)}>
-              <Field
-                type="email"
-                name="email"
-                component={FormField}
-                placeholder={MSGEmail}
-                width="full"
-                validate={[requiredValidator, emailValidator]}
-              />
-              <Button
-                action="submit"
-                type="primary"
-                disabled={isResetPasswordInProgress}
-                size="full"
-              >
-                {MSGContinue}
-              </Button>
-            </Form>
+          <Col sm={{ size: 4, offset: 4 }} xs={{ size: 10, offset: 1 }}>
+            <div className={classes}>
+              <h1>{MSGResetPassword}</h1>
+              <p>{MSGYourENRGEmail}</p>
+              <Form onSubmit={handleSubmit(handleResetPassword)}>
+                <Field
+                  type="email"
+                  name="email"
+                  component={FormField}
+                  placeholder={MSGEmail}
+                  width="full"
+                  validate={[requiredValidator, emailValidator]}
+                />
+                <Button
+                  action="submit"
+                  type="primary"
+                  disabled={isResetPasswordInProgress}
+                  size="full"
+                >
+                  {MSGContinue}
+                </Button>
+              </Form>
+            </div>
           </Col>
         </Row>
       </Container>

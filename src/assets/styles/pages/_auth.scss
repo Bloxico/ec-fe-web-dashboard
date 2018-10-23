@@ -1,3 +1,22 @@
+.#{$namespace}-auth {
+  .#{$namespace}-button {
+    margin-bottom: rhythm(1);
+  }
+
+  a:not(.#{$namespace}-link-button) {
+    @extend .#{$namespace}-link;
+  }
+
+  .#{$namespace}-link-button {
+    @extend .#{$namespace}-button;
+    @extend .#{$namespace}-button--primary;
+  }
+
+  .#{$namespace}-form {
+    width: 100%;
+  }
+}
+
 .#{$namespace}-welcome {
   flex: 1 1 auto;
   display: flex;
@@ -8,6 +27,10 @@
   overflow: hidden;
   min-height: calc(100vh - 60px);
 
+  img {
+    width: 40%;
+  }
+
   &__footer {
     flex: 1 1 auto;
     display: flex;
@@ -15,22 +38,12 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: rhythm(1);
-  }
-}
-.#{$namespace}-auth {
-  .#{$namespace}-form {
-    min-width: 300px;
+    padding: 0 rhythm(1);
   }
 }
 
-.#{$namespace}-login {
-  .#{$namespace}-button--full {
-    margin-bottom: 1em;
-  }
-}
 .#{$namespace}-success {
   img {
-    margin-bottom: 1.5em;
+    margin-bottom: rhythm(1.5);
   }
 }

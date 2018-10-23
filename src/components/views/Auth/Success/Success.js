@@ -25,18 +25,12 @@ const Success = ({
 }: Props) => (
   <Fragment>
     <Container className={classes}>
-      <Row className="align-items-center">
+      <Row>
         <Col>
           <h1>{MSGSuccess}</h1>
           <img src={logo} alt="" width="100" />
           <p>{MSGSuccessfullyResetPass}</p>
-          <Link
-            to={LOGIN_PAGE}
-            className="enrg-button enrg-button--wide enrg-button--primary"
-          >
-            {MSGSignIn}
-          </Link>
-          <div className="clearfix" />
+          <Link to={LOGIN_PAGE}>{MSGSignIn}</Link>
         </Col>
       </Row>
     </Container>
