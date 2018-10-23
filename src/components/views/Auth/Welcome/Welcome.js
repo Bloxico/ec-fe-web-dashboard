@@ -44,7 +44,7 @@ const Welcome = ({
           <Link to={REGISTER_PAGE} className={`${THEME_PREFIX}-link-button`}>
             {MSGCreateAnAccount}
           </Link>
-          <div className="clearfix" />
+          <br />
           <Link to={LOGIN_PAGE}>{MSGSignIn}</Link>
         </Col>
       </Row>
