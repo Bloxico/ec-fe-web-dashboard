@@ -1,5 +1,4 @@
 // @flow
-import React from 'react';
 import { connect } from 'react-redux';
 import { compose, withHandlers, withProps } from 'recompose';
 import { reduxForm } from 'redux-form';
@@ -7,7 +6,6 @@ import { injectIntl } from 'react-intl';
 
 import { isRegisterInProgress } from 'src/state/selectors';
 import { register } from 'src/state/actions';
-import { Button } from '@ui';
 import {
   alphanumeric,
   email,
