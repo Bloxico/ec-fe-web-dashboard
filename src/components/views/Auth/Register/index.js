@@ -1,5 +1,5 @@
 // @flow
-
+import React from 'react';
 import { connect } from 'react-redux';
 import { compose, withHandlers, withProps } from 'recompose';
 import { reduxForm } from 'redux-form';
@@ -7,6 +7,7 @@ import { injectIntl } from 'react-intl';
 
 import { isRegisterInProgress } from 'src/state/selectors';
 import { register } from 'src/state/actions';
+import { Button } from '@ui';
 import {
   alphanumeric,
   email,
@@ -14,6 +15,8 @@ import {
   password,
   required,
 } from 'src/utilities/validators';
+
+import { showModal } from 'src/state/modal/actions';
 
 import Register from './Register';
 import messages from './messages';
@@ -24,7 +27,10 @@ const mapStateToProps = state => ({
 
 const actions = {
   register,
+  showModal,
 };
+
+const aa = <Button>Got it!</Button>;
 
 export default compose(
   injectIntl,
@@ -40,6 +46,28 @@ export default compose(
       // eslint-disable-next-line
       console.log(values);
       register(values);
+    },
+    handleContinueClick: ({ showModal }) => e => {
+      showModal({
+        modalName: 'Register',
+        title: 'This is a server error',
+        align: 'center',
+        footerBtnTxt: 'Got it!',
+        autoFocus: false,
+        data: 'User already exists',
+      });
+      e.preventDefault();
+    },
+    handleContinueClick2: ({ showModal }) => e => {
+      showModal({
+        modalName: 'Register',
+        title: 'Confirm me pls',
+        align: 'left',
+        autoFocus: true,
+        hasClose: true,
+        data: 'User already exists',
+      });
+      e.preventDefault();
     },
   }),
   withProps(({ intl: { formatMessage } }) => ({
