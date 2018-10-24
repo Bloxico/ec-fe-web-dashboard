@@ -5,6 +5,7 @@ import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 import { Http } from 'src/services/http';
 import { LOGIN_PAGE } from 'src/constants';
+import { showModal } from 'src/state/actions';
 import * as actions from './actions';
 
 export function* register$({ payload }): Generator<*, *, *> {
@@ -14,6 +15,15 @@ export function* register$({ payload }): Generator<*, *, *> {
     yield put(push(LOGIN_PAGE));
   } catch ({ response }) {
     // console.log(response);
+    yield put(
+      showModal({
+        modalName: 'Register',
+        title: 'Register Header',
+        align: 'center',
+          footerBtnTxt: 'Got it!',
+        data: response.data.message,
+      }),
+    );
   }
 
   yield put(actions.clearRegisterState());

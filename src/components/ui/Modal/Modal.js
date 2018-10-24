@@ -50,13 +50,15 @@ const Wrapper = (props: any) => {
     return null;
   }
 
+  const centered = true;
+
   return (
     <BootstrapModal
       isOpen={show}
       autoFocus={autoFocus}
       toggle={onHide}
       className={classes}
-      centered="true"
+      centered={centered}
       backdropClassName="enrg-modal__backdrop"
     >
       {children}
@@ -187,7 +189,7 @@ class Modal extends PureComponent<PropsT, StateT> {
         show={this.state.isOpen}
         onHide={this.handleHide}
       >
-        <Header onHide={this.handleHide} close={Close} align={align}>
+        <Header onHide={this.handleHide} close={null} align={align}>
           <Title align={align}>{title}</Title>
           {hasClose && <Close onClick={this.handleHide} />}
         </Header>

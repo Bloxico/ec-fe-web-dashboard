@@ -43,28 +43,6 @@ export default compose(
       console.log(values);
       register(values);
     },
-    handleContinueClick: ({ showModal }) => e => {
-      showModal({
-        modalName: 'Register',
-        title: 'This is a server error',
-        align: 'center',
-        footerBtnTxt: 'Got it!',
-        autoFocus: false,
-        data: 'User already exists',
-      });
-      e.preventDefault();
-    },
-    handleContinueClick2: ({ showModal }) => e => {
-      showModal({
-        modalName: 'Register',
-        title: 'Confirm me pls',
-        align: 'left',
-        autoFocus: true,
-        hasClose: true,
-        data: 'User already exists',
-      });
-      e.preventDefault();
-    },
   }),
   withProps(({ intl: { formatMessage } }) => ({
     MSGCreateAnAccount: formatMessage(messages.createAnAccount),

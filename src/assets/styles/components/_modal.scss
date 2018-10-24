@@ -81,12 +81,9 @@ body.modal-open {
     overflow-y: auto;
   }
 }
-
 // / Modal backdrop
-
 .#{$namespace}-modal__backdrop {
   @include set-background($modal-backdrop-background);
-
   @include modal-backdrop-transition;
   position: fixed;
   top: 0;
@@ -115,7 +112,6 @@ body.modal-open {
     @include set-background($modal-header-background);
   }
 }
-
 // / Modal content holder
 .#{$namespace}-modal-content,
 .#{$namespace}-modal__content {
@@ -147,8 +143,7 @@ body.modal-open {
   border: 0 !important;
   &.#{$namespace}-modal--center {
     justify-content: center !important;
-  }
-  // / Close button
+  } // / Close button
   .modal-title {
     margin: 0;
   }
@@ -199,14 +194,12 @@ body.modal-open {
   }
 }
 // / Modal footer
-
 .#{$namespace}-modal__footer {
   flex: 0 0 auto;
   padding: 0 $modal-padding $modal-padding $modal-padding;
   border-radius: 0 0 $default-border-radius $default-border-radius;
   border-top: 0 !important;
 }
-
 // / Modal content alignment
 .#{$namespace}-modal--left {
   .modal-content {
@@ -223,6 +216,6 @@ body.modal-open {
     text-align: center;
   }
   .modal-footer {
-    //justify-content: center !important;
+    // justify-content: center !important;
   }
 }

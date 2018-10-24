@@ -10,8 +10,6 @@ import { THEME_PREFIX } from 'src/constants';
 export type Props = {
   handleRegistration: Function,
   handleSubmit: Function,
-  handleContinueClick: Function,
-  handleContinueClick2: Function,
   isRegistrationInProgress: boolean,
   MSGCreateAnAccount: string,
   MSGEmail: string,
@@ -57,8 +55,6 @@ class Register extends Component<Props> {
       MSGCreateAnAccount,
       handleSubmit,
       handleRegistration,
-      handleContinueClick,
-      handleContinueClick2,
       MSGEmail,
       MSGRepeatPassword,
       MSGPassword,
@@ -101,7 +97,7 @@ class Register extends Component<Props> {
                   component={FormField}
                   name="password"
                   width="full"
-                  validate={[requiredValidator, emailValidator]}
+                  validate={[requiredValidator, passwordValidator]}
                   ref={this.passwordField}
                 />
                 <Field
@@ -142,22 +138,6 @@ class Register extends Component<Props> {
                   width="full"
                   validate={[alphanumericValidator]}
                 />
-                <Button
-                  size="full"
-                  onClick={handleContinueClick}
-                  type="secondary"
-                  disabled={isRegistrationInProgress}
-                >
-                  Demoii
-                </Button>
-                <Button
-                  size="full"
-                  onClick={handleContinueClick2}
-                  type="secondary"
-                  disabled={isRegistrationInProgress}
-                >
-                  Demoii2
-                </Button>
                 <Button
                   size="full"
                   action="submit"
