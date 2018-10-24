@@ -30,8 +30,6 @@ const actions = {
   showModal,
 };
 
-const aa = <Button>Got it!</Button>;
-
 export default compose(
   injectIntl,
   reduxForm({
