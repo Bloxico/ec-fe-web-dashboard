@@ -4,15 +4,42 @@ import { delay } from 'redux-saga';
 import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
-import { SUCCESS_PAGE } from 'src/constants';
+import { SUCCESS_PAGE, messages } from 'src/constants';
+import { Http } from 'src/services/http';
+import { showModal } from "src/state/actions";
+import { getIntl } from "src/components/wrappers/IntlProvider";
 
 import * as actions from './actions';
 
-export function* verify$({ payload }): Generator<*, *, *> {
+export function* verify$({ payload: { formData } }): Generator<*, *, *> {
   // eslint-disable-next-line
-  console.log(payload);
   yield delay(500);
-  yield put(push(SUCCESS_PAGE));
+  try {
+    yield Http.post('/api/user/passwordForgotUpdate', formData);
+    yield put(push(SUCCESS_PAGE));
+  } catch ({ response }) {
+      const { formatMessage } = yield getIntl;
+
+      let errorTitle = formatMessage(messages.serverError);
+      let errorContent = formatMessage(messages.somethingWentWrong);
+      let btnText = formatMessage(messages.damnDevelopers);
+
+      if (response !== undefined) {
+          errorContent = response.data.message;
+          btnText = formatMessage(messages.gotIt);
+          errorTitle = formatMessage(messages.tryAgain);
+      }
+
+      yield put(
+          showModal({
+              modalName: 'Verify',
+              title: errorTitle,
+              align: 'center',
+              footerBtnTxt: btnText,
+              data: errorContent,
+          }),
+      );
+  }
   yield put(actions.clearVerifyState());
 }
 
