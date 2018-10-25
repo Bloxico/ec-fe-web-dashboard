@@ -14,8 +14,6 @@ import {
   required,
 } from 'src/utilities/validators';
 
-import { showModal } from 'src/state/modal/actions';
-
 import Register from './Register';
 import messages from './messages';
 
@@ -25,7 +23,6 @@ const mapStateToProps = state => ({
 
 const actions = {
   register,
-  showModal,
 };
 
 export default compose(
