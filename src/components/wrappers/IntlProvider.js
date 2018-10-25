@@ -7,9 +7,7 @@ import { IntlProvider } from 'react-intl';
 
 const locale = 'en';
 
-const IntlWrapper = ({ children }: any) => {
-  return <IntlProvider locale={locale}>{children}</IntlProvider>;
-};
+const IntlWrapper = ({ children }: any) => <IntlProvider locale={locale}>{children}</IntlProvider>;
 
 const intlProvider = new IntlProvider({
   locale,
