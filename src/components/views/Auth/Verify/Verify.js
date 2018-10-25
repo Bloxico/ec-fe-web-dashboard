@@ -17,6 +17,7 @@ type Props = {
   MSGEnterYourCode: string,
   MSGDidntReceiveEmail: string,
   MSGResendCode: string,
+  MSGNewPassword: string,
   requiredIntl: Function,
   numberIntl: Function,
   codeLenIntl: Function,
@@ -58,6 +59,7 @@ class Verify extends Component<Props> {
       MSGVerify,
       MSGDidntReceiveEmail,
       MSGResendCode,
+      MSGNewPassword,
       isVerifyInProgress,
       isResetPasswordEmail,
       handleSubmit,
@@ -97,7 +99,7 @@ class Verify extends Component<Props> {
                   type="password"
                   name="newPassword"
                   component={FormField}
-                  placeholder="New password"
+                  placeholder={MSGNewPassword}
                   width="full"
                   validate={[requiredValidator, passwordValidator]}
                 />

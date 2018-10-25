@@ -17,7 +17,6 @@ export function* register$({ payload }): Generator<*, *, *> {
     yield Http.post('/api/user/registration', payload);
     yield put(push(LOGIN_PAGE));
   } catch ({ response }) {
-
     const { formatMessage } = yield getIntl;
 
     let errorTitle = formatMessage(messages.serverError);

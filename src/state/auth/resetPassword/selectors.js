@@ -3,6 +3,7 @@ export const isResetPasswordInProgress = ({
     resetPassword: { inProgress },
   },
 }) => ({ isResetPasswordInProgress: inProgress });
+
 export const isResetPasswordEmail = ({
   auth: {
     resetPassword: { email },
