@@ -7,10 +7,11 @@ import { injectIntl } from 'react-intl';
 import { State } from 'src/state/state';
 
 import messages from './messages';
-import Dashboard, { Props } from './Transactions';
+import Dashboard from './Transactions';
 
 const actions = {};
 
+// eslint-disable-next-line
 const mapStateToProps = (state: State) => ({});
 
 export default compose(
