@@ -25,4 +25,3 @@ export default defineMessages({
     defaultMessage: 'Try again',
   },
 });
-
