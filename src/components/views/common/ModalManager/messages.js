@@ -2,7 +2,7 @@
 
 import { defineMessages } from 'react-intl';
 
-const messages = defineMessages({
+export default defineMessages({
   somethingWentWrong: {
     id: 'somethingWentWrong',
     defaultMessage:
@@ -26,4 +26,3 @@ const messages = defineMessages({
   },
 });
 
-export { messages };

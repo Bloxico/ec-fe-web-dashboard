@@ -4,10 +4,11 @@ import { delay } from 'redux-saga';
 import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
-import { VERIFY_PAGE, messages } from 'src/constants';
+import { VERIFY_PAGE } from 'src/constants';
 import { Http } from 'src/services/http';
 import { showModal } from 'src/state/actions';
 import { getIntl } from 'src/components/wrappers/IntlProvider';
+import messages from 'src/components/views/common/ModalManager/messages';
 
 import * as actions from './actions';
 

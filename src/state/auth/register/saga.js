@@ -5,9 +5,10 @@ import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
 import { Http } from 'src/services/http';
-import { LOGIN_PAGE, messages } from 'src/constants';
+import { LOGIN_PAGE } from 'src/constants';
 import { showModal } from 'src/state/actions';
 import { getIntl } from 'src/components/wrappers/IntlProvider';
+import messages from 'src/components/views/common/ModalManager/messages';
 
 import * as actions from './actions';
 
