@@ -10,8 +10,6 @@ import { StateT } from 'src/state/state';
 import Auth from './Auth';
 import Portal from './Portal';
 
-import './App.scss';
-
 const baseClass = `${THEME_PREFIX}-app`;
 
 const App = ({ store, history }: { store: StateT, history: Object }) => (

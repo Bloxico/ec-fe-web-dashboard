@@ -137,6 +137,36 @@ module.exports = {
         // match the requirements. When no loader matches it will fall
         // back to the "file" loader at the end of the loader list.
         oneOf: [
+          // SVG loader
+          {
+              test: /\.svg$/,
+              use: [
+                  'babel-loader',
+                  {
+                      loader: 'react-svg-loader',
+                      options: {
+                          svgo: {
+                              plugins: [
+                                  { moveStyleElement: true },
+                                  { removeTitle: true },
+                                  { removeDesc: true },
+                                  { removeUselessDefs: true },
+                                  { removeDimensions: false },
+                                  { removeViewBox: false },
+                                  { removeRasterImages: true },
+                                  { collapseGroups: true },
+                                  { cleanupNumericValues: { floatPrecision: 1 } },
+                                  { removeEmptyContainers: true },
+                                  { removeEmptyAttrs: true },
+                                  { cleanupAttrs: true },
+                                  { cleanupIDs: false },
+                              ],
+                              floatPrecision: 2,
+                          },
+                      },
+                  },
+              ],
+          },
           // "url" loader works like "file" loader except that it embeds assets
           // smaller than specified limit in bytes as data URLs to avoid requests.
           // A missing `test` is equivalent to a match.
@@ -166,13 +196,14 @@ module.exports = {
           // In production, we use a plugin to extract that CSS to a file, but
           // in development "style" loader enables hot editing of CSS.
           {
-            test: /\.(scss|css)$/,
+            test: /\.(scss|sass)$/,
             use: [
               require.resolve('style-loader'),
               {
                 loader: require.resolve('css-loader'),
                 options: {
-                  importLoaders: 1,
+                  sourceMap: true,
+                  importLoaders: 2,
                 },
               },
               {
@@ -181,6 +212,7 @@ module.exports = {
                   // Necessary for external CSS imports to work
                   // https://github.com/facebookincubator/create-react-app/issues/2677
                   ident: 'postcss',
+                  sourceMap: true,
                   plugins: () => [
                     require('postcss-flexbugs-fixes'),
                     autoprefixer({

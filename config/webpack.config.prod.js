@@ -131,6 +131,36 @@ module.exports = {
         // match the requirements. When no loader matches it will fall
         // back to the "file" loader at the end of the loader list.
         oneOf: [
+          // SVG loader
+          {
+              test: /\.svg$/,
+              use: [
+                  'babel-loader',
+                  {
+                      loader: 'react-svg-loader',
+                      options: {
+                          svgo: {
+                              plugins: [
+                                  { moveStyleElement: true },
+                                  { removeTitle: true },
+                                  { removeDesc: true },
+                                  { removeUselessDefs: true },
+                                  { removeDimensions: false },
+                                  { removeViewBox: false },
+                                  { removeRasterImages: true },
+                                  { collapseGroups: true },
+                                  { cleanupNumericValues: { floatPrecision: 1 } },
+                                  { removeEmptyContainers: true },
+                                  { removeEmptyAttrs: true },
+                                  { cleanupAttrs: true },
+                                  { cleanupIDs: false },
+                              ],
+                              floatPrecision: 2,
+                          },
+                      },
+                  },
+              ],
+          },
           // "url" loader works just like "file" loader but it also embeds
           // assets smaller than specified size as data URLs to avoid requests.
           {
@@ -163,7 +193,7 @@ module.exports = {
           // use the "style" loader inside the async code so CSS from them won't be
           // in the main CSS file.
           {
-            test: /\.css$/,
+            test: /\.(scss|sass)$/,
             loader: ExtractTextPlugin.extract(
               Object.assign(
                 {
@@ -171,6 +201,7 @@ module.exports = {
                     loader: require.resolve('style-loader'),
                     options: {
                       hmr: false,
+                      sourceMap: shouldUseSourceMap,
                     },
                   },
                   use: [
@@ -188,6 +219,7 @@ module.exports = {
                         // Necessary for external CSS imports to work
                         // https://github.com/facebookincubator/create-react-app/issues/2677
                         ident: 'postcss',
+                        sourceMap: shouldUseSourceMap,
                         plugins: () => [
                           require('postcss-flexbugs-fixes'),
                           autoprefixer({
@@ -200,6 +232,12 @@ module.exports = {
                             flexbox: 'no-2009',
                           }),
                         ],
+                      },
+                    },
+                    {
+                      loader: 'sass-loader',
+                      options: {
+                        sourceMap: shouldUseSourceMap,
                       },
                     },
                   ],
