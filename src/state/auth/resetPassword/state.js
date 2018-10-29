@@ -8,7 +8,6 @@ type StateT = {
 
 const initialState: StateT = {
   inProgress: false,
-  email: '',
   fail: false,
 };
 

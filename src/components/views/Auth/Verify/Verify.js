@@ -9,29 +9,47 @@ const baseClass = `${THEME_PREFIX}-verify`;
 
 type Props = {
   handleSubmit: Function,
-  handleVerify: Function,
   isVerifyInProgress: boolean,
+  isResetPasswordEmail: string,
   MSGVerifyAccount: string,
   MSG4DigitVerificationCode: string,
   MSGVerify: string,
   MSGEnterYourCode: string,
   MSGDidntReceiveEmail: string,
   MSGResendCode: string,
+  MSGNewPassword: string,
   requiredIntl: Function,
   numberIntl: Function,
   codeLenIntl: Function,
+  passwordIntl: Function,
+  verify: Function,
 };
 
 class Verify extends Component<Props> {
   constructor(props) {
     super(props);
-    const { requiredIntl, numberIntl, codeLenIntl } = props;
+    const {
+      requiredIntl,
+      numberIntl,
+      codeLenIntl,
+      passwordIntl,
+      isResetPasswordEmail,
+    } = props;
+    this.isResetPasswordEmail = isResetPasswordEmail;
     this.validators = {
       requiredValidator: requiredIntl,
       numberValidator: numberIntl,
       codeLenValidator: codeLenIntl,
+      passwordValidator: passwordIntl,
     };
   }
+
+  handleSubmit = (data: any) => {
+    const { verify } = this.props;
+    const formData = data;
+    formData.email = this.isResetPasswordEmail;
+    verify({ formData });
+  };
 
   render() {
     const {
@@ -41,30 +59,33 @@ class Verify extends Component<Props> {
       MSGVerify,
       MSGDidntReceiveEmail,
       MSGResendCode,
+      MSGNewPassword,
       isVerifyInProgress,
+      isResetPasswordEmail,
       handleSubmit,
-      handleVerify,
     } = this.props;
 
     const {
       requiredValidator,
       numberValidator,
       codeLenValidator,
+      passwordValidator,
     } = this.validators;
 
     const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
 
     return (
-      <Container className={classes}>
+      <Container>
         <Row>
           <Col sm={{ size: 4, offset: 4 }} xs={{ size: 10, offset: 1 }}>
             <div className={classes}>
               <h1>{MSGVerifyAccount}</h1>
               <p>{MSGEnterYourCode}</p>
-              <Form onSubmit={handleSubmit(handleVerify)}>
+              <h1>{isResetPasswordEmail}</h1>
+              <Form onSubmit={handleSubmit(this.handleSubmit)}>
                 <Field
                   type="number"
-                  name="code"
+                  name="tokenValue"
                   component={FormField}
                   placeholder={MSG4DigitVerificationCode}
                   width="full"
@@ -73,6 +94,14 @@ class Verify extends Component<Props> {
                     numberValidator,
                     codeLenValidator,
                   ]}
+                />
+                <Field
+                  type="password"
+                  name="newPassword"
+                  component={FormField}
+                  placeholder={MSGNewPassword}
+                  width="full"
+                  validate={[requiredValidator, passwordValidator]}
                 />
                 <Button
                   action="submit"

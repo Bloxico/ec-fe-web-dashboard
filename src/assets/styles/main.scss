@@ -18,4 +18,8 @@
 // Page specific
 @import "pages/index";
 
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/modal";
 @import "~bootstrap/scss/bootstrap-grid";
