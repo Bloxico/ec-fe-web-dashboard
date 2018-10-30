@@ -15,14 +15,14 @@ import * as actions from './actions';
 export function* fetchRegions$(): Generator<*, *, *> {
   try {
     const response = yield Http.get('api/user/registrationData');
+
     const regions = response.data.regions.reduce((obj, item) => {
       obj[item.regionName.trim(' ')] = item.regionName;
       return obj;
     }, {});
-    console.log(regions);
+
     yield put(actions.fetchRegionsSuccess({ regions }));
   } catch ({ response }) {
-    console.log(response);
     //    TODO@all handle the error with modal?
   }
 }
@@ -34,10 +34,7 @@ export function* register$({ payload }): Generator<*, *, *> {
     yield Http.post('/api/user/registration', payload);
     yield put(push(LOGIN_PAGE));
   } catch ({ response }) {
-
     const { formatMessage } = yield getIntl;
-
-    console.log(response);
 
     let errorTitle = formatMessage(messages.serverError);
     let errorContent = formatMessage(messages.somethingWentWrong);
