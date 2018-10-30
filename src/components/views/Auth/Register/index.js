@@ -4,8 +4,8 @@ import { compose, withHandlers, withProps } from 'recompose';
 import { reduxForm } from 'redux-form';
 import { injectIntl } from 'react-intl';
 
-import { isRegisterInProgress } from 'src/state/selectors';
-import { register } from 'src/state/actions';
+import { isRegisterInProgress, getRegions } from 'src/state/selectors';
+import { register, fetchRegions } from 'src/state/actions';
 import {
   alphanumeric,
   email,
@@ -19,10 +19,12 @@ import messages from './messages';
 
 const mapStateToProps = state => ({
   ...isRegisterInProgress(state),
+  ...getRegions(state),
 });
 
 const actions = {
   register,
+  fetchRegions,
 };
 
 export default compose(

@@ -15,6 +15,21 @@ export default handleActions(
       }),
     ],
     [
+      actions.FETCH_REGIONS,
+      state => ({
+        ...state,
+        isFetchRegionsInProgress: true,
+      }),
+    ],
+    [
+      actions.FETCH_REGIONS_SUCCESS,
+      (state, { payload }) => ({
+        ...state,
+        regions: payload.regions || {},
+        isFetchRegionsInProgress: false,
+      }),
+    ],
+    [
       actions.REGISTRATION_FAIL,
       (state, { payload }) => ({
         ...state,

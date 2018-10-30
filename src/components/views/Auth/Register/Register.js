@@ -24,11 +24,17 @@ export type Props = {
   passwordIntl: Function,
   emailIntl: Function,
   matchIntl: Function,
+  registerRegions: Object,
+  fetchRegions: Function,
 };
 
 const baseClass = `${THEME_PREFIX}-register`;
 
 class Register extends Component<Props> {
+  static defaultProps = {
+    registerRegions: { Serbia: 'Select' },
+  };
+
   constructor(props) {
     super(props);
     const {
@@ -50,6 +56,12 @@ class Register extends Component<Props> {
         matchIntl(value, this.passwordField.current.value),
     };
   }
+
+  componentDidMount() {
+    const { fetchRegions } = this.props;
+    fetchRegions();
+  }
+
   render() {
     const {
       MSGCreateAnAccount,
@@ -63,6 +75,7 @@ class Register extends Component<Props> {
       MSGNicknameOptional,
       isRegistrationInProgress,
       MSGContinue,
+      registerRegions,
     } = this.props;
 
     const {
@@ -115,10 +128,12 @@ class Register extends Component<Props> {
                 />
                 <Field
                   placeholder={MSGRegion}
-                  type="text"
+                  type="select"
                   component={FormField}
                   name="regionName"
                   width="full"
+                  options={registerRegions}
+                  selected="Serbia"
                   validate={[requiredValidator]}
                 />
 

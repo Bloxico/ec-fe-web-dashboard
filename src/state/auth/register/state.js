@@ -8,6 +8,7 @@ type StateT = {
   matchPassword: string,
   region: string,
   city: string,
+  regions: Object,
 };
 
 const initialState: StateT = {
