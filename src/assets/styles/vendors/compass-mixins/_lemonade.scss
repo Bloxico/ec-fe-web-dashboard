@@ -8,7 +8,7 @@
 }
 
 @mixin sized-sprite-image($file) {
-  background: sprite-image($file);
+  background: sprite-image($file);  
   @include image-dimensions($file);
 }
 
@@ -16,7 +16,8 @@
   .#{$folder} {
     @if $image-dimensions {
       background: sprite-url($folder);
-    } @else {
+    }
+    @else {
       background: sprite-url($folder) no-repeat;
     }
   }
@@ -24,9 +25,7 @@
     $file: sprite-file-from-folder($folder, $i);
     .#{$folder}-#{image-basename($file)} {
       @extend .#{$folder};
-      background-position: sprite-position(
-        sprite-file-from-folder($folder, $i)
-      );
+      background-position: sprite-position(sprite-file-from-folder($folder, $i));
       @if $image-dimensions {
         @include image-dimensions($file);
       }

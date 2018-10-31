@@ -38,15 +38,19 @@ $pie-behavior: stylesheet-url("PIE.htc") !default;
 // relative to the stylesheet. It considers them relative
 // to the webpage. As a result, you cannot reliably use
 // compass's relative_assets with PIE.
-//
+// 
 // * `$approach` - one of: relative, z-index, or none
 // * `$z-index` - when using the z-index approach, this
 //                is the z-index that is applied.
-@mixin pie-element($approach: $pie-default-approach, $z-index: 0) {
+@mixin pie-element(
+  $approach: $pie-default-approach,
+  $z-index: 0
+) {
   behavior: $pie-behavior;
   @if $approach == relative {
     position: relative;
-  } @else if $approach == z-index {
+  }
+  @else if $approach == z-index {
     z-index: $z-index;
   }
 }
@@ -56,7 +60,8 @@ $pie-behavior: stylesheet-url("PIE.htc") !default;
 @mixin pie($base-class: $pie-base-class) {
   @if $base-class {
     @extend .#{$base-class};
-  } @else {
+  }
+  @else {
     @include pie-element;
   }
 }

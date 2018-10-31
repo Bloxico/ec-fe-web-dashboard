@@ -1,0 +1,426 @@
+//@todo: Implement:
+// - vertical form
+// - floating form
+
+//$form-row-min-height: rhythm(2) !default;
+//$form-field-spacing: 1em !default;
+//$form-input-spacing: 1ex !default;
+//
+//$form-label-width: 210px !default;
+//$form-label-color: map-get($text-colors, 'normal') !default;
+//$form-label-required-content: '*' !default;
+//$form-label-required-color: map-get($text-colors,' error') !default;
+//$form-label-invalid-color: map-get($text-colors, 'error') !default;
+//
+//$form-checkbox-label-color: map-get($text-colors, 'normal') !default;
+//
+//$form-invalid-color: map-get($text-colors, 'error') !default;
+//$form-invalid-border-color: map-get($border-colors, 'error') !default;
+//
+//$form-info-icon: info-circle !default;
+//$form-info-color: map-get($text-colors, 'light') !default;
+//$form-info-font-size: map-get($font-sizes, 'small') !default;
+//
+//$form-info-tooltip-width: 20px !default;
+//$form-info-tooltip-padding: 0 10px !default;
+//$form-info-tooltip-border-radius: $default-border-radius !default;
+//$form-info-tooltip-color: map-get($text-colors, 'inverse') !default;
+//$form-info-tooltip-background: map-get($colors, 'black') !default;
+//$form-info-tooltip-box-shadow: -8px 0 0  -7px $form-info-tooltip-background,
+//-10px 0 0  -8px $form-info-tooltip-background,
+//-12px 0 0  -9px $form-info-tooltip-background,
+//-14px 0 0 -10px $form-info-tooltip-background,
+//-16px 0 0 -11px $form-info-tooltip-background !default;
+//
+//$form-errors-margin: 0 0 0 $form-label-width !default;
+//$form-errors-padding: 0 0 0 20px !default;
+//$form-errors-font-size: map-get($font-sizes, 'small') !default;
+//$form-errors-color: map-get($text-colors, 'error') !default;
+//
+//$form-buttons-margin: rhythm(.5) 0 0 0 !default;
+
+
+///
+/// Form elements
+///
+/// Depends on:
+///
+/// common/buttons
+/// common/inputs
+/// common/radio
+/// common/selects
+/// common/switch
+/// common/textarea
+///
+
+
+//form {
+//
+//}
+//
+//
+//fieldset {
+//  border: 0;
+//  padding: .01em 0 0 0;
+//  margin: 0;
+//  min-width: 0;
+//
+//  legend {
+//    padding: 0;
+//    display: table;
+//  }
+//}
+//
+//body:not(:-moz-handler-blocked) fieldset {
+//  display: table-cell;
+//}
+
+
+
+
+//label,
+//input,
+//select,
+//button,
+//textarea,
+//[tabindex],
+//[contenteditable='true'] {
+//  &:focus:not([tabindex='-1']) {
+////    @extend %focus;
+//  }
+//}
+
+
+//label {
+//  margin: 0;
+//  padding: 0;
+//
+//  // add spacing to an input element after label
+//  & + span,
+//  & + label,
+//  & + select,
+//  & + textarea,
+//  & + input[type='text'],
+//  & + input[type='password'],
+//  & + input[type='number'],
+//  & + input[type='date'],
+//  & + input[type='email'],
+//  & + input[type='url'],
+//  & + input[type='tel'],
+//  & + input[type='search'],
+//  & + input[type='radio'],
+//  & + input[type='checkbox'] {
+//    margin-left: 12px;
+//  }
+//
+//  // if label contains an input element, add spacing to that element
+//  > select,
+//  > textarea,
+//  > input[type='text'],
+//  > input[type='password'],
+//  > input[type='number'],
+//  > input[type='date'],
+//  > input[type='email'],
+//  > input[type='url'],
+//  > input[type='tel'],
+//  > input[type='search'] {
+//    margin-left: 12px;
+//  }
+//
+//  // if there's a radio or a checkbox before the label, add spacing between
+//  > input[type='radio'],
+//  > input[type='checkbox'] {
+//    margin-right: 12px;
+//    vertical-align: middle;
+//  }
+//}
+
+
+///
+/// Output
+///
+///
+//output {
+//
+//}
+
+
+///
+/// Input fields
+///
+///
+//input {
+//  &[type='date'],
+//  &[type='email'],
+//  &[type='number'],
+//  &[type='password'],
+//  &[type='search'],
+//  &[type='tel'],
+//  &[type='text'],
+//  &[type='url'] {
+//    @extend %input;
+//
+//    & + label {
+//      margin-left: 12px;
+//    }
+//  }
+//
+//  &[type='email'],
+//  &[type='password'],
+//  &[type='search'],
+//  &[type='text'],
+//  &[type='url'] {
+//    @include ellipsis;
+//  }
+//
+//  &[type='number'] {
+//    width: $input-number-width;
+//    text-align: right;
+//  }
+//
+//  &[type='file'] {
+//    display: none;
+//  }
+//
+//  &[type='image'] {
+//    //@todo: Implement this
+//  }
+//
+//  &[type='range'] {
+//    //@todo: Implement this
+//  }
+//
+//  //@todo: Implement these
+//  &:required {}
+//
+//  &:optional {}
+//
+//  &:valid {}
+//
+//  &:invalid {}
+//
+//  &:in-range {}
+//
+//  &:out-of-range {}
+//
+//  &:read-only {}
+//
+//  &:read-write {}
+//}
+
+
+///
+/// Datalist
+///
+///
+//datalist {
+//  //@todo: Implement this
+//}
+
+
+///
+/// Text area
+///
+///
+//textarea {
+//  @include set-border($textarea-border, $textarea-padding);
+//
+//  appearance: none;
+//  display: inline-block;
+//  width: $textarea-width;
+//  height: $textarea-height;
+//  margin: $textarea-margin;
+//  line-height: $base-line-height;
+//  vertical-align: top;
+//  resize: none;
+//  background: $textarea-background;
+//
+//  &:hover {
+//    border-color: $textarea-hover-border-color;
+//  }
+//
+//  &::placeholder {
+//    font-style: normal;
+//    color: $textarea-placeholder-color;
+//  }
+//
+//  & + label {
+//    margin-left: 8px;
+//  }
+//}
+
+
+///
+/// Radio
+///
+///
+//input[type="radio"] {
+//  @include set-background($radio-background);
+//  @include set-border($radio-border, $radio-padding);
+//
+//  appearance: none;
+//  display: inline-block;
+//  width: $radio-size;
+//  height: $radio-size;
+//  margin: $radio-margin;
+//  padding: $radio-padding;
+//  cursor: pointer;
+//  vertical-align: top;
+//  line-height: $base-line-height;
+//
+//  &:hover:not([disabled]):not([aria-disabled='true']) {
+//    @include set-border($radio-hover-border);
+//  }
+//
+//  &:checked {
+//    @include set-background($radio-checked-background);
+//  }
+//
+//  & + label {
+//    margin-left: 4px;
+//  }
+//}
+
+
+///
+/// Checkbox
+///
+///
+//input[type='checkbox'] {
+//  @include set-background($checkbox-background);
+//  @include set-border($checkbox-border, $checkbox-padding);
+//
+//  appearance: none;
+//  display: inline-block;
+//  width: $checkbox-size;
+//  height: $checkbox-size;
+//  margin: $checkbox-margin;
+//  padding: $checkbox-padding;
+//  cursor: pointer;
+//  vertical-align: top;
+//  line-height: $base-line-height;
+//
+//  &:hover:not([disabled]):not([aria-disabled='true']) {
+//    @include set-border($checkbox-hover-border);
+//  }
+//
+//  &:checked {
+//    @include set-background($checkbox-checked-background);
+//  }
+//
+//  &:indeterminate {
+//    @include set-background($checkbox-indeterminate-background);
+//  }
+//
+//  & + label {
+//    margin-left: 4px;
+//  }
+//}
+
+
+///
+/// Switch
+///
+///
+//input[type='checkbox'][role='switch'] {
+//  @include set-border($switch-border);
+//  @include set-background($switch-background);
+//
+//  appearance: none;
+//  display: inline-block;
+//  width: $switch-width;
+//  height: $switch-height;
+//  margin: $switch-margin;
+//  padding: $switch-padding;
+//  cursor: pointer;
+//  vertical-align: top;
+//  line-height: $base-line-height;
+//  border: 0;
+//
+//  &:hover {
+//    &:not(:focus),
+//    &:not([disabled]),
+//    &:not([aria-disabled='true']) {
+//      @include set-border($switch-hover-border);
+//    }
+//  }
+//
+//  &:checked {
+//    @include set-background($switch-checked-background);
+//  }
+//
+//  & + label {
+//    margin-left: 4px;
+//  }
+//}
+
+
+///
+/// Select
+///
+///
+//select {
+//  @extend %select;
+//
+//  align-items: center;
+//
+//  appearance: none;
+//  height: $select-height;
+//
+//  // remove select arrow for IE
+//  &::-ms-expand {
+//    display: none;
+//  }
+//
+//  & + label {
+//    margin-left: 8px;
+//  }
+//
+//  > optgroup {
+//    > option {
+//      //@todo: Implement this
+//    }
+//  }
+//}
+
+
+///
+/// Multiselect
+///
+///
+//select[multiple] {
+//  @include set-background($select-multiple-background);
+//
+//  flex-direction: column;
+//
+//  height: auto;
+//  max-height: $select-multiple-height;
+//  padding: $select-multiple-padding;
+//  vertical-align: top;
+//
+//  > option {
+//    height: $select-option-height;
+//    padding: $select-option-padding;
+//  }
+//
+//  > optgroup {
+//    > option {
+//      //@todo: Implement this
+//    }
+//  }
+//}
+
+
+///
+/// Buttons
+///
+///
+//button,
+//input[type='button']
+//input[type='image'],
+//input[type='reset'],
+//input[type='submit'] {
+//  @extend %button;
+//
+//  @include coloured-button('button');
+//}

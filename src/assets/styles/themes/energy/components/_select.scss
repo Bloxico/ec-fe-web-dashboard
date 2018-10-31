@@ -1,0 +1,54 @@
+$select-min-width: 115px;
+$select-max-width: 200px;
+$select-height: rhythm(1.75);
+$select-margin: rhythm(0.125) 0;
+$select-padding: 0.375 25px 0.375 10px;
+$select-font-weight: normal;
+$select-color: map-get($text-colors, "white");
+$select-placeholder-color: map-get($text-colors, "dark");
+
+$select-background: (
+  color: map-get($background-colors, "secondary"),
+  image:
+    svg-url(
+      (
+        fill: map-get($palette, "tertiary")
+      ),
+      '<svg width="8" height="5" viewBox="0 0 8 5" fill="#000000" xmlns="http://www.w3.org/2000/svg"><path d="M.938 0L4 3.101 7.063 0 8 .95 4 5 0 .95z"/></svg>'
+    ),
+  repeat: no-repeat,
+  position: right 10px center,
+  size: 8px 5px
+);
+
+$select-border: (
+  width: 1px,
+  style: solid,
+  color: map-get($border-colors, "normal"),
+  radius: $default-border-radius
+);
+
+$select-box-shadow: none;
+$select-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+$select-focus-shadow: 0px 0px 2px 2px map-get($background-colors, "selected");
+$select-focus-border-color: transparent;
+
+$select-hover-border-color: map-get($border-colors, "hover");
+$select-hover-background: (
+  color: color('black')
+);
+
+$select-multiple-height: rhythm(7.5);
+$select-multiple-padding: 0;
+$select-multiple-background: (
+  color: map-get($background-colors, "secondary"),
+  image: none
+);
+
+$select-option-height: rhythm(1.5);
+$select-option-padding: rhythm(0.25) 10px;
+
+$select-autofill-color: map-get($text-colors, "normal");
+$select-autofill-background: map-get($background-colors, "body");
+$select-autofill-border: color("secondary", "light", 20);

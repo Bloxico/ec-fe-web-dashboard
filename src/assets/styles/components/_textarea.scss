@@ -1,8 +1,8 @@
 $textarea-width: 200px !default;
 $textarea-height: rhythm(4.5) !default;
-$textarea-margin: rhythm(0.25) 0 !default;
-$textarea-padding: 0.25 10px 0.25 10px !default;
-$textarea-background: map-get($background-colors, "control") !default;
+$textarea-margin: rhythm(.25) 0 !default;
+$textarea-padding: .25 10px .25 10px !default;
+$textarea-background: map-get($background-colors, 'control') !default;
 
 $textarea-border: (
   width: 1px,
@@ -11,8 +11,9 @@ $textarea-border: (
   radius: $default-border-radius
 ) !default;
 
-$textarea-placeholder-color: map-get($text-colors, "opaque") !default;
+$textarea-placeholder-color: map-get($text-colors, 'opaque') !default;
 $textarea-hover-border-color: transparent !default;
+
 
 .#{$namespace}-textarea {
   @include set-border($textarea-border, $textarea-padding);
@@ -43,15 +44,17 @@ $textarea-hover-border-color: transparent !default;
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
-    border-color: map-get($select-border, "color") !important;
+    border-color: map-get($select-border, 'color') !important;
     -webkit-text-fill-color: $select-placeholder-color !important;
-    -webkit-box-shadow: 0 0 0 1000px map-get($select-background, "color") inset !important;
+    -webkit-box-shadow: 0 0 0 1000px map-get($select-background, 'color') inset !important;
   }
 }
+
 
 .#{$namespace}-textarea--full {
   width: 100%;
 }
+
 
 .#{$namespace}-textarea--auto {
   width: auto;
