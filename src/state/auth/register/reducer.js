@@ -9,8 +9,9 @@ export default handleActions(
   new Map([
     [
       actions.REGISTER,
-      state => ({
+      (state, { payload }) => ({
         ...state,
+        email: payload.email || '',
         inProgress: true,
       }),
     ],

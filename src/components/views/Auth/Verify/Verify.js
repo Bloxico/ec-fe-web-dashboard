@@ -10,7 +10,8 @@ const baseClass = `${THEME_PREFIX}-verify`;
 type Props = {
   handleSubmit: Function,
   isVerifyInProgress: boolean,
-  isResetPasswordEmail: string,
+  resetPasswordEmail: string,
+  registerEmail: string,
   MSGVerifyAccount: string,
   MSG4DigitVerificationCode: string,
   MSGVerify: string,
@@ -33,9 +34,13 @@ class Verify extends Component<Props> {
       numberIntl,
       codeLenIntl,
       passwordIntl,
-      isResetPasswordEmail,
+      resetPasswordEmail,
+      registerEmail,
     } = props;
-    this.isResetPasswordEmail = isResetPasswordEmail;
+
+    this.resetPasswordEmail = resetPasswordEmail;
+    this.registerEmail = registerEmail;
+
     this.validators = {
       requiredValidator: requiredIntl,
       numberValidator: numberIntl,
@@ -47,8 +52,15 @@ class Verify extends Component<Props> {
   handleSubmit = (data: any) => {
     const { verify } = this.props;
     const formData = data;
-    formData.email = this.isResetPasswordEmail;
-    verify({ formData });
+    let isForReset = false;
+    if (this.resetPasswordEmail) {
+      formData.email = this.resetPasswordEmail;
+      isForReset = true;
+      verify({ isForReset, formData });
+    } else {
+      formData.email = this.registerEmail;
+      verify({ isForReset, formData });
+    }
   };
 
   render() {
@@ -61,7 +73,6 @@ class Verify extends Component<Props> {
       MSGResendCode,
       MSGNewPassword,
       isVerifyInProgress,
-      isResetPasswordEmail,
       handleSubmit,
     } = this.props;
 
@@ -81,7 +92,6 @@ class Verify extends Component<Props> {
             <div className={classes}>
               <h1>{MSGVerifyAccount}</h1>
               <p>{MSGEnterYourCode}</p>
-              <h1>{isResetPasswordEmail}</h1>
               <Form onSubmit={handleSubmit(this.handleSubmit)}>
                 <Field
                   type="number"
@@ -95,14 +105,16 @@ class Verify extends Component<Props> {
                     codeLenValidator,
                   ]}
                 />
-                <Field
-                  type="password"
-                  name="newPassword"
-                  component={FormField}
-                  placeholder={MSGNewPassword}
-                  width="full"
-                  validate={[requiredValidator, passwordValidator]}
-                />
+                {this.resetPasswordEmail && (
+                  <Field
+                    type="password"
+                    name="newPassword"
+                    component={FormField}
+                    placeholder={MSGNewPassword}
+                    width="full"
+                    validate={[requiredValidator, passwordValidator]}
+                  />
+                )}
                 <Button
                   action="submit"
                   type="primary"

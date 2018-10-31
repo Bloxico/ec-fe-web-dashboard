@@ -32,7 +32,7 @@ const baseClass = `${THEME_PREFIX}-register`;
 
 class Register extends Component<Props> {
   static defaultProps = {
-    registerRegions: { Serbia: 'Select' },
+    registerRegions: { Select: 'Select' },
   };
 
   constructor(props) {
@@ -133,7 +133,7 @@ class Register extends Component<Props> {
                   name="regionName"
                   width="full"
                   options={registerRegions}
-                  selected="Serbia"
+                  selected="Select"
                   validate={[requiredValidator]}
                 />
 

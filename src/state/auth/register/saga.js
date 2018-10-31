@@ -1,11 +1,10 @@
 // @flow
 
-import { delay } from 'redux-saga';
 import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
 import { Http } from 'src/services/http';
-import { LOGIN_PAGE } from 'src/constants';
+import { VERIFY_PAGE } from 'src/constants';
 import { showModal } from 'src/state/actions';
 import { getIntl } from 'src/components/wrappers/IntlProvider';
 import messages from 'src/components/views/common/ModalManager/messages';
@@ -16,10 +15,11 @@ export function* fetchRegions$(): Generator<*, *, *> {
   try {
     const response = yield Http.get('api/user/registrationData');
 
-    const regions = response.data.regions.reduce((obj, item) => {
+    let regions = response.data.regions.reduce((obj, item) => {
       obj[item.regionName.trim(' ')] = item.regionName;
       return obj;
     }, {});
+    regions = { '': 'Select', ...regions };
 
     yield put(actions.fetchRegionsSuccess({ regions }));
   } catch ({ response }) {
@@ -28,11 +28,9 @@ export function* fetchRegions$(): Generator<*, *, *> {
 }
 
 export function* register$({ payload }): Generator<*, *, *> {
-  yield delay(500);
-
   try {
     yield Http.post('/api/user/registration', payload);
-    yield put(push(LOGIN_PAGE));
+    yield put(push(VERIFY_PAGE));
   } catch ({ response }) {
     const { formatMessage } = yield getIntl;
 

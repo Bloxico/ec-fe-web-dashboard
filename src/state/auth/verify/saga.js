@@ -1,10 +1,9 @@
 // @flow
 
-import { delay } from 'redux-saga';
 import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
-import { SUCCESS_PAGE } from 'src/constants';
+import { SUCCESS_PAGE, LOGIN_PAGE } from 'src/constants';
 import { Http } from 'src/services/http';
 import { showModal } from 'src/state/actions';
 import { getIntl } from 'src/components/wrappers/IntlProvider';
@@ -12,39 +11,43 @@ import messages from 'src/components/views/common/ModalManager/messages';
 
 import * as actions from './actions';
 
-export function* verify$({ payload: { formData } }): Generator<*, *, *> {
-  // eslint-disable-next-line
-  yield delay(500);
-  try {
-    yield Http.post('/api/user/passwordForgotUpdate', formData);
-    yield put(push(SUCCESS_PAGE));
-  } catch ({ response }) {
-    const { formatMessage } = yield getIntl;
+export function* verify$({ payload: { isForReset, formData } }): Generator<*, *, *> {
+    try {
+        if(isForReset) {
+            yield Http.post('/api/user/passwordForgotUpdate', formData);
+            yield put(push(SUCCESS_PAGE));
+        } else {
+            yield Http.post('/api/user/registrationConfirm', formData);
+            yield put(push(LOGIN_PAGE));
+        }
 
-    let errorTitle = formatMessage(messages.serverError);
-    let errorContent = formatMessage(messages.somethingWentWrong);
-    let btnText = formatMessage(messages.damnDevelopers);
+    } catch ({ response }) {
+        const { formatMessage } = yield getIntl;
 
-    if (response !== undefined) {
-      errorContent = response.data.message;
-      btnText = formatMessage(messages.gotIt);
-      errorTitle = formatMessage(messages.tryAgain);
+        let errorTitle = formatMessage(messages.serverError);
+        let errorContent = formatMessage(messages.somethingWentWrong);
+        let btnText = formatMessage(messages.damnDevelopers);
+
+        if (response !== undefined) {
+            errorContent = response.data.message;
+            btnText = formatMessage(messages.gotIt);
+            errorTitle = formatMessage(messages.tryAgain);
+        }
+
+        yield put(
+            showModal({
+                modalName: 'Verify',
+                title: errorTitle,
+                align: 'center',
+                footerBtnTxt: btnText,
+                data: errorContent,
+            }),
+        );
     }
-
-    yield put(
-      showModal({
-        modalName: 'Verify',
-        title: errorTitle,
-        align: 'center',
-        footerBtnTxt: btnText,
-        data: errorContent,
-      }),
-    );
-  }
-  yield put(actions.clearVerifyState());
+    yield put(actions.clearVerifyState());
 }
 
 // $FlowIssue
 export default function*() {
-  yield all([takeEvery(actions.VERIFY, verify$)]);
+    yield all([takeEvery(actions.VERIFY, verify$)]);
 }
