@@ -7,6 +7,7 @@ $base-font-family: 'Roboto', sans-serif !default;
 $base-font-weight: 300 !default;
 $cursive-font-family: 'Georgia', serif !default;
 $monospace-font-family: 'Courier', monospace !default;
+$ui-font-family: $base-font-family !default;
 
 // The font size set on the root html element.
 $base-font-size: 14px !default;

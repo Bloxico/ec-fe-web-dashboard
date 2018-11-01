@@ -1,6 +1,8 @@
 $button-margin: rhythm(.125) 0 !default;
 $button-padding: .375 20px .375 20px !default;
 $button-spacing: 12px !default;
+$button-font-family: $ui-font-family !default;
+$button-font-size: map-get($font-sizes, default) !default;
 $button-font-weight: 300 !default;
 $button-transition: all .15s ease-in-out 0s !default;
 $button-text-color: map-get($text-colors, 'button') !default;
@@ -15,20 +17,24 @@ $button-border: (
 $button-small-height: rhythm(1) !default;
 $button-small-margin: 0 !default;
 $button-small-padding: 0 10px !default;
+$button-small-font-size: map-get($font-sizes, default) !default;
+$button-small-font-weight: 300 !default;
 $button-small-border: (
   width: $default-rhythm-border-width
 ) !default;
 
 $button-medium-height: rhythm(2) !default;
-$button-medium-font-size: map-get($font-sizes, 'normal') !default;
+$button-medium-font-size: map-get($font-sizes, default) !default;
 $button-medium-margin: 0 !default;
 $button-medium-padding: .5 15px !default;
+$button-medium-font-size: map-get($font-sizes, default) !default;
+$button-medium-font-weight: 300 !default;
 $button-medium-border: (
   width: $default-rhythm-border-width
 ) !default;
 
 $button-large-height: rhythm(2.25) !default;
-$button-large-font-size: map-get($font-sizes, 'large') !default;
+$button-large-font-size: map-get($font-sizes, large) !default;
 $button-large-font-weight: normal !default;
 $button-large-margin: 0 !default;
 $button-large-padding: .125 35px !default;
@@ -734,6 +740,8 @@ $button-busy-animation: working 5s linear infinite !default;
   vertical-align: middle;
   text-align: center;
   text-decoration: none;
+  font-family: $button-font-family;
+  font-size: $button-font-size;
   font-weight: $button-font-weight;
   white-space: nowrap;
   cursor: pointer;

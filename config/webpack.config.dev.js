@@ -88,6 +88,7 @@ module.exports = {
       '@views': path.join(paths.appSrc, 'components/views'),
       '@partials': path.join(paths.appSrc, 'components/views/common'),
       '@ui': path.join(paths.appSrc, 'components/ui'),
+      '@images': path.join(paths.appSrc, 'assets/images'),
       '@styles': path.join(paths.appSrc, 'assets/styles'),
       '@abstract-styles': path.join(
         paths.appSrc,

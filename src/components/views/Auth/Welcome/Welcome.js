@@ -1,10 +1,10 @@
 // @flow
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
-import { Container, Row, Col } from '@ui';
-import logo from '@images/energycoin.png';
+import Logo from '@ui/Logo';
 import {
   REGISTER_PAGE,
   LOGIN_PAGE,
@@ -26,6 +26,12 @@ export type Props = {
 
 const baseClass = `${THEME_PREFIX}-welcome`;
 
+const btnClasses = classNames(
+  `${THEME_PREFIX}-button`,
+  `${THEME_PREFIX}-button--large`,
+  `${THEME_PREFIX}-button--wide`,
+);
+
 const Welcome = ({
   MSGDashboard,
   MSGCreateAnAccount,
@@ -35,34 +41,29 @@ const Welcome = ({
   MSGAnd,
   MSGPrivacyPolicy,
 }: Props) => (
-  <Fragment>
-    <Container className={baseClass}>
-      <Row className="align-items-center">
-        <Col>
-          <img src={logo} alt="" />
-          <h1>{MSGDashboard}</h1>
-          <Link to={REGISTER_PAGE} className={`${THEME_PREFIX}-link-button`}>
-            {MSGCreateAnAccount}
-          </Link>
-          <br />
-          <Link to={LOGIN_PAGE}>{MSGSignIn}</Link>
-        </Col>
-      </Row>
-    </Container>
-    <Container>
-      <Row>
-        <Col>
-          <div className={`${baseClass}__footer`}>
-            <span>
-              {MSGByContinuingYouAgreeToOur}{' '}
-              <Link to={AUTH_PAGE}>{MSGTermsOfUse}</Link> {MSGAnd}{' '}
-              <Link to={AUTH_PAGE}>{MSGPrivacyPolicy}</Link>
-            </span>
-          </div>
-        </Col>
-      </Row>
-    </Container>
-  </Fragment>
+  <div className={baseClass}>
+    <header className={`${baseClass}__header`}>
+      <Logo />
+      <h1>{MSGDashboard}</h1>
+    </header>
+
+    <section className={`${baseClass}__content`}>
+      <Link to={REGISTER_PAGE} className={`${btnClasses} ${THEME_PREFIX}-button--primary`}>
+        {MSGCreateAnAccount}
+      </Link>
+      <br />
+      <Link to={LOGIN_PAGE} className={btnClasses}>{MSGSignIn}</Link>
+    </section>
+
+    <footer className={`${baseClass}__footer`}>
+      <small className={`${THEME_PREFIX}-text--alt`}>
+        {MSGByContinuingYouAgreeToOur}{' '}
+        <br />
+        <Link to={AUTH_PAGE} className={`${THEME_PREFIX}-link`}>{MSGTermsOfUse}</Link> {MSGAnd}{' '}
+        <Link to={AUTH_PAGE} className={`${THEME_PREFIX}-link`}>{MSGPrivacyPolicy}</Link>
+      </small>
+    </footer>
+  </div>
 );
 
 export default Welcome;

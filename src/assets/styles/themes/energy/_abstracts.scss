@@ -12,6 +12,7 @@ $namespace: "enrg" !global;
 
 $palette-configuration: (
   shades: (
+    'alpha-5':    .05, // 5% opacity
     'alpha-10':   .1,  // 10% opacity
     'alpha-20':   .2,
     'alpha-30':   .3,
@@ -46,9 +47,9 @@ $palette-configuration: (
   ),
 
   predefined: (
-    'primary':    #11152e,
-    'secondary':  #151b3b,
-    'tertiary':   #363c57,
+    'primary':    #0c0f21,
+    'secondary':  #11152e,
+    'tertiary':   #151b3b,
   ),
 
   colors: (
@@ -56,6 +57,7 @@ $palette-configuration: (
     'white':  #ffffff,
     'gray':   #585d74,
     'grey':   #585d74,
+    'smoke':  #363c57,
     'silver': #ebedee,
     'red':    #f7316a,
     'orange': #f7742d,
@@ -76,9 +78,10 @@ $palette-configuration: (
 
 // Global class prefix - DON'T CHANGE!!!
 // Default fonts
-$base-font-family: 'Work Sans', sans-serif;
+$base-font-family: 'Space Mono', monospace;
 $base-font-weight: 400;
 $monospace-font-family: 'Space Mono', monospace;
+$ui-font-family: 'Work Sans', sans-serif;
 
 $base-font-size: 14px;
 $base-line-height: 20px;
@@ -111,9 +114,10 @@ $text-colors: (
   default:  color('white'),
   normal:   color('white'),
   bright:   color('white'),
-  light:    color('ebedee'),
+  light:    color('silver'),
   dark:     color('gray'),
-  opaque:   color('gray', 'alpha', 80),
+  alt:      color('gray'),
+  opaque:   color('gray', alpha, 80),
   inverse:  color('black'),
 
   link:     color('mint'),
@@ -125,45 +129,44 @@ $text-colors: (
   error:    color('red'),
   warning:  color('orange'),
   success:  color('green'),
-  info:     color('mint')
+  info:     color('blue')
 );
 
 
 $background-colors: (
   default:  color('black'),
   window:   color('black'),
-  control:  color('primary'),
-  body:     color('secondary'),
+  control:  color('secondary'),
+  body:     color('tertiary'),
 
-  active:   color('secondary'),
-  selected: color('secondary'),
-  hover:    color('secondary'),
+  active:   color('tertiary'),
+  selected: color('mint'),
+  hover:    color('tertiary'),
 
-  primary:  color('mint'),
   success:  color('green'),
   error:    color('red'),
   alert:    color('red'),
   warning:  color('orange'),
-  info:     color('mint'),
+  info:     color('blue'),
 );
 
 
 $border-colors: (
-  default:  color('white', 'alpha', 10),
-  dark:     color('white', 'alpha', 10),
-  normal:   color('white', 'alpha', 10),
-  light:    color('white', 'alpha', 10),
-  
+  default:  color('white', alpha, 10),
+  dark:     color('white', alpha, 10),
+  normal:   color('white', alpha, 10),
+  light:    color('white', alpha, 10),
+  control:  color('secondary'),
+
   active:   color('mint'),
   selected: color('mint'),
   hover:    color('mint'),
   
-  primary:  color('blue'),
   alert:    color('red'),
   error:    color('red'),
   warning:  color('orange'),
   success:  color('green'),
-  info:     color('mint')
+  info:     color('blue')
 );
 
 

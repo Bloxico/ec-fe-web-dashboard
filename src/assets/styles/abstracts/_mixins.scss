@@ -236,7 +236,7 @@
       $right: nth($padding, 2);
       $bottom: nth($padding, 3);
       $left: nth($padding, 4);
-      $width: map-get($border, width);
+      $width: if(map-has-key($border, width), map-get($border, width), 0);
 
       // all 4 borders
       @if index($side, all) != null {

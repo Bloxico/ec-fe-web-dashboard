@@ -1,13 +1,16 @@
+// @flow
+
 import React from 'react';
 import classNames from 'classnames';
+import { THEME_PREFIX } from 'src/constants';
 
 type LoaderTypes = 'buggy';
 
 type LoaderSizes = 'small';
 
-const baseClass = 'enrg-loader';
+const baseClass = `${THEME_PREFIX}-loader`;
 
-type Props = {
+interface Props {
   children?: any;
   type?: LoaderTypes;
   size?: LoaderSizes;

@@ -1,21 +1,19 @@
 .#{$namespace}-auth {
-  .#{$namespace}-button {
-    margin-bottom: rhythm(1);
-  }
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  a:not(.#{$namespace}-link-button) {
-    @extend .#{$namespace}-link;
-  }
-
-  .#{$namespace}-link-button {
-    @extend .#{$namespace}-button;
-    @extend .#{$namespace}-button--primary;
-  }
-
-  .#{$namespace}-form {
-    width: 100%;
-  }
+  width: 400px;
+  height: 100%;
+  padding: rhythm(1);
+  //
+  //.#{$namespace}-form {
+  //  width: 100%;
+  //}
 }
+
 
 .#{$namespace}-welcome {
   flex: 1 1 auto;
@@ -23,24 +21,34 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  width: 100%;
   text-align: center;
   overflow: hidden;
-  min-height: calc(100vh - 60px);
 
-  img {
-    width: 40%;
-  }
 
-  &__footer {
+  &__header {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 0 rhythm(1);
+
+    width: 100%;
+  }
+
+
+  &__content {
+    width: 100%;
+  }
+
+
+  &__footer {
+    width: 100%;
+    margin: rhythm(1) 0;
   }
 }
+
 
 .#{$namespace}-success {
   img {
