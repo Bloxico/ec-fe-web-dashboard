@@ -50,6 +50,25 @@
 }
 
 
+.#{$namespace}-login {
+  width: 100%;
+  height: 100%;
+
+  &__footer {
+    padding: rhythm(1);
+    text-align: center;
+    font-size: map-get($font-sizes, small);
+    color: map-get($text-colors, dark);
+  }
+}
+
+
+.#{$namespace}-register {
+  width: 100%;
+  height: 100%;
+}
+
+
 .#{$namespace}-success {
   img {
     margin-bottom: rhythm(1.5);

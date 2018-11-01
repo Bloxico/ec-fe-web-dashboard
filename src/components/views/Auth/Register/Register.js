@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import classNames from 'classnames';
 
+import Header from '@partials/Header';
 import { Form, FormField, Button } from '@ui';
 import { THEME_PREFIX } from 'src/constants';
 
@@ -74,11 +75,12 @@ class Register extends Component<Props> {
       matchValidator,
     } = this.validators;
 
-    const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
+    const classes = classNames(baseClass);
 
     return (
       <div className={classes}>
-        <h4>{MSGCreateAnAccount}</h4>
+        <Header title={MSGCreateAnAccount} />
+
         <Form onSubmit={handleSubmit(handleRegistration)}>
           {/* TODO@martins add validatiors */}
           <Field
@@ -138,9 +140,10 @@ class Register extends Component<Props> {
           />
 
           <Button
-            size="full"
-            action="submit"
             type="primary"
+            size="large"
+            width="full"
+            action="submit"
             disabled={isRegistrationInProgress}
           >
             {MSGContinue}

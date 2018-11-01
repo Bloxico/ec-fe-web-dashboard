@@ -95,8 +95,8 @@ $h6-font-size: 14px;
 
 
 $font-sizes: (
-  tiny: 12px,
-  small: 13px,
+  tiny: 10px,
+  small: 12px,
   normal: $base-font-size,
   large: 16px,
   huge: 24px,
@@ -153,8 +153,8 @@ $background-colors: (
 
 $border-colors: (
   default:  color('white', alpha, 10),
-  dark:     color('white', alpha, 10),
   normal:   color('white', alpha, 10),
+  dark:     color('white', alpha, 10),
   light:    color('white', alpha, 10),
   control:  color('secondary'),
 

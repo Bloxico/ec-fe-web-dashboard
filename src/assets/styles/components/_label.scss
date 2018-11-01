@@ -1,3 +1,6 @@
+$label-font-family: $ui-font-family !default;
+$label-font-size: map-get($font-sizes, normal) !default;
+$label-font-weight: normal !default;
 $label-spacing: 12px !default;
 $label-spacing-small: 8px !default;
 $label-selected-font-weight: 300 !default;
@@ -17,6 +20,9 @@ $label-switch-hint-padding: 0 0 0 40px !default;
 .#{$namespace}-label {
   margin: 0;
   padding: 0;
+  font-family: $label-font-family;
+  font-size: $label-font-size;
+  font-weight: $label-font-weight;
   color: $label-color;
 
   &[disabled] [disabled] {

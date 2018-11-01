@@ -5,7 +5,8 @@ import { Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { Form, FormField, Button, Container, Row, Col } from '@ui';
+import Header from '@partials/Header';
+import { Form, FormField, Button } from '@ui';
 import { RESET_PASSWORD_PAGE, THEME_PREFIX } from 'src/constants';
 
 type PropsT = {
@@ -24,7 +25,7 @@ type PropsT = {
 };
 
 const baseClass = `${THEME_PREFIX}-login`;
-const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
+const classes = classNames(baseClass);
 
 class Login extends Component<PropsT> {
   constructor(props) {
@@ -57,50 +58,49 @@ class Login extends Component<PropsT> {
     } = this.validators;
 
     return (
-      <Container>
-        <Row>
-          <Col sm={{ size: 4, offset: 4 }} xs={{ size: 10, offset: 1 }}>
-            <div className={classes}>
-              <h1>{MSGSignIn}</h1>
-              <Form onSubmit={handleSubmit(handleLogin)}>
-                <Field
-                  placeholder={MSGEmail}
-                  component={FormField}
-                  name="username"
-                  width="full"
-                  validate={[
-                    requiredValidator,
-                    passwordValidator,
-                    emailValidator,
-                  ]}
-                />
-                <Field
-                  placeholder={MSGPassword}
-                  type="password"
-                  component={FormField}
-                  name="password"
-                  width="full"
-                  validate={[
-                    requiredValidator,
-                    passwordValidator,
-                    emailValidator,
-                  ]}
-                />
-                <Button
-                  action="submit"
-                  size="full"
-                  type="primary"
-                  disabled={isLoginInProgress}
-                >
-                  {MSGLogin}
-                </Button>
-                <span>{MSGForgotThePassword}</span>{' '}
-                <Link to={RESET_PASSWORD_PAGE}>{MSGReset}</Link>
-              </Form>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+      <div className={classes}>
+        <Header title={MSGSignIn} />
+
+        <Form onSubmit={handleSubmit(handleLogin)}>
+          <Field
+            placeholder={MSGEmail}
+            component={FormField}
+            name="username"
+            width="full"
+            validate={[
+              requiredValidator,
+              passwordValidator,
+              emailValidator,
+            ]}
+          />
+          <Field
+            placeholder={MSGPassword}
+            type="password"
+            component={FormField}
+            name="password"
+            width="full"
+            validate={[
+              requiredValidator,
+              passwordValidator,
+              emailValidator,
+            ]}
+          />
+
+          <Button
+            action="submit"
+            size="full"
+            type="primary"
+            disabled={isLoginInProgress}
+          >
+            {MSGLogin}
+          </Button>
+
+          <footer className={`${baseClass}__footer`}>
+            {MSGForgotThePassword}{' '}
+            <Link to={RESET_PASSWORD_PAGE} className={`${THEME_PREFIX}-link`}>{MSGReset}</Link>
+          </footer>
+        </Form>
+      </div>
     );
   }
 }

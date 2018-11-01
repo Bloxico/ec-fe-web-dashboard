@@ -31,9 +31,7 @@ $switch-hover-border: (
 $switch-transition: background-image 0.15s linear !default;
 
 
-
 .#{$namespace}-switch {
-//.#{$namespace}-input[type='checkbox'][role='switch'] {
   @include set-border($switch-border);
   @include set-background($switch-background);
 
