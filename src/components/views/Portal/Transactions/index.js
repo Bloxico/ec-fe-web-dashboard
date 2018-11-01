@@ -21,6 +21,6 @@ export default compose(
     actions,
   ),
   withProps(({ intl: { formatMessage } }) => ({
-    MSGDashboard: formatMessage(messages.dashboard),
+    MSGTransactions: formatMessage(messages.transactions),
   })),
 )(Dashboard);
