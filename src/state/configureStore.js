@@ -1,7 +1,7 @@
 // @flow
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { createHashHistory } from 'history';
+import { createBrowserHistory } from 'history';
 import {
   connectRouter,
   routerMiddleware as createRouterMiddleware,
@@ -11,7 +11,7 @@ import rootReducer from './reducer';
 import sagas from './saga';
 import { StateT } from './state';
 
-const history = createHashHistory();
+const history = createBrowserHistory();
 
 export default (initialState?: StateT) => {
   const sagaMiddleware = createSagaMiddleware();
