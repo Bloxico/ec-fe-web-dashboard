@@ -1,8 +1,9 @@
 import Form, { FormField, InputGroup } from './Form';
-import Textarea from './Textarea';
 import Button from './Button';
+import Textarea from './Textarea';
 import { Container, Row, Col } from './Grid';
 import { LineChart } from './Chart';
+import Modal from './Modal';
 
 export {
   Button,
@@ -14,4 +15,5 @@ export {
   Row,
   Col,
   LineChart,
+  Modal,
 };

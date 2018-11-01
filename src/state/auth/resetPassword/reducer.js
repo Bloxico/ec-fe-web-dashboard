@@ -9,8 +9,9 @@ export default handleActions(
   new Map([
     [
       actions.RESET_PASSWORD,
-      state => ({
+      (state, { payload }) => ({
         ...state,
+        ...payload,
         inProgress: true,
       }),
     ],

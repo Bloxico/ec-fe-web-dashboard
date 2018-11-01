@@ -2,21 +2,24 @@
 
 import React from 'react';
 
-import { LineChart } from '@ui';
 import { mockChartData } from 'src/mocks/dashboard';
+
+import Chart from './Chart';
 
 export type Props = {
   MSGDashboard: string,
+  MSGCO2Prevented: string,
+  MSGkWhSaved: string,
 };
 
 const baseClass = 'gc-dashboard';
 
-const Dashboard = ({ MSGDashboard }: Props) => (
+const Dashboard = ({ MSGDashboard, MSGCO2Prevented, MSGkWhSaved }: Props) => (
   <div className={baseClass}>
     {MSGDashboard}
 
-    <LineChart data={mockChartData(6)} colors={['green']} />
-    <LineChart data={mockChartData(6)} colors={['blue']} />
+    <Chart data={mockChartData(6)} lineColor="green" title={MSGCO2Prevented} />
+    <Chart data={mockChartData(6)} lineColor="blue" title={MSGkWhSaved} />
   </div>
 );
 

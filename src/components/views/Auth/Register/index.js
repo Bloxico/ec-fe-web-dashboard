@@ -1,5 +1,4 @@
 // @flow
-
 import { connect } from 'react-redux';
 import { compose, withHandlers, withProps } from 'recompose';
 import { reduxForm } from 'redux-form';
