@@ -1,18 +1,18 @@
+// @flow
 /* eslint-disable react/require-default-props, react/no-find-dom-node */
-
-// TODO@martins check value in fom for ionput type password
+// TODO@martins check value in form for input type password
 import React, { PureComponent } from 'react';
-
 import classNames from 'classnames';
+import { THEME_PREFIX } from 'src/constants';
 
-import Label from '..//Label';
+import Label from '../Label';
 import Input from '../Input';
-// import Search from '..//Search';
-import Textarea from '..//Textarea';
+import Textarea from '../Textarea';
 import Select from '../Select';
-import Radio, { RadioGroup } from '..//Radio';
-import Checkbox from '..//Checkbox';
+import Radio, { RadioGroup, RadioArray } from '../Radio';
+import Checkbox from '../Checkbox';
 import Switch from '../Switch';
+import Output, { OutputFormats } from '../Output';
 import InputGroup from './InputGroup';
 
 type FieldStatus = 'success' | 'warning' | 'error' | null;
@@ -23,9 +23,8 @@ type FieldWidths = 'auto' | 'wide' | 'full';
 
 const inputTypes = {
   text: Input,
-  // output: Output,
+  output: Output,
   password: Input,
-  // search: Search,
   number: Input,
   email: Input,
   select: Select,
@@ -38,63 +37,69 @@ const inputTypes = {
 export type InputTypesT = $Keys<typeof inputTypes>;
 
 type InputT = {
-  name: string,
-  value: any,
-  onFocus?: Function,
-  onBlur?: Function,
-  onChange?: Function,
-  onDragStart?: Function,
-  onDrop?: Function,
+  name: string;
+  value: any;
+  onFocus?: Function;
+  onBlur?: Function;
+  onChange?: Function;
+  onDragStart?: Function;
+  onDrop?: Function;
 };
 
 type MetaT = {
-  form: string,
-  error?: string,
-  warning?: string,
-  active: boolean,
-  autofilled: boolean,
-  asyncValidating: boolean,
-  dirty: boolean,
-  initial: any,
-  invalid: boolean,
-  pristine: boolean,
-  submitting: boolean,
-  submitFailed: boolean,
-  touched: boolean,
-  valid: boolean,
-  visited: boolean,
-  dispatch: Function,
+  form: string;
+  error?: string;
+  warning?: string;
+  active: boolean;
+  autofilled: boolean;
+  asyncValidating: boolean;
+  dirty: boolean;
+  initial: any;
+  invalid: boolean;
+  pristine: boolean;
+  submitting: boolean;
+  submitFailed: boolean;
+  touched: boolean;
+  valid: boolean;
+  visited: boolean;
+  dispatch: Function;
 };
 
 type PropsT = {
-  input?: InputT,
-  meta?: MetaT,
-  type?: $Keys<typeof inputTypes>,
-  id?: string,
-  name?: string,
-  disabled?: boolean,
-  hint?: any,
-  help?: any,
-  prefix?: any,
-  sufix?: any,
-  label?: string,
-  status?: FieldStatus,
-  message?: string,
-  format?: string,
-  inline?: boolean,
-  options?: Object | Array<{ value: string, text: string }>,
-  multiple?: boolean | Array<{ value: string, label: string }>,
-  selected?: any,
-  toggle?: boolean,
-  ref?: Function,
-  size?: FieldSizes,
-  width?: FieldWidths,
-  className?: string,
+  input?: InputT;
+  meta?: MetaT;
+  type?: InputTypesT;
+  id?: string;
+  name?: string;
+  disabled?: boolean;
+  hint?: any;
+  help?: any;
+  prefix?: any;
+  sufix?: any;
+  label?: string;
+  status?: FieldStatus;
+  message?: string;
+  format?: OutputFormats;
+  inline?: boolean;
+  options?: {} | Array<{ value: string, text: string }>;
+  multiple?: boolean | RadioArray;
+  selected?: any;
+  toggle?: boolean;
+  ref?: Function;
+  size?: FieldSizes;
+  width?: FieldWidths;
+  title?: string;
+  className?: string;
+  placeholder?: any;
+  checked?: boolean;
+  value?: any;
+  defaultValue?: any;
+  onChange?: Function;
 };
 
-const baseClass = 'enrg-form-group';
+const baseClass = `${THEME_PREFIX}-form-group`;
 
-const omit = (obj: Object, keys: Array) =>
+const omit = (obj: any, keys: string[]) =>
   Object.entries(obj)
     .filter(([key]) => !keys.includes(key))
     .reduce((newObj, [key, val]) => Object.assign(newObj, { [key]: val }), {});
@@ -111,6 +116,7 @@ class FormField extends PureComponent<PropsT> {
       help,
       label,
       message,
+      format,
       inline,
       multiple,
       selected,
@@ -177,12 +183,27 @@ class FormField extends PureComponent<PropsT> {
             </Label>
           )}
 
+        {!isTogglable &&
+          !isRadio &&
+          isOutput && (
+            <Label {...this.props} id={id} text={label} disabled={disabled}>
+              <Output
+                {...inputProps}
+                id={id}
+                name={input && input.name}
+                value={input && input.value}
+                format={format}
+                width={width}
+              />
+            </Label>
+          )}
+
         {isTogglable &&
           !isRadio && (
             <Label {...this.props} id={id} text={label} disabled={disabled}>
               <InputField {...inputProps} />
-              {hint && <div className="enrg-input__hint">{hint}</div>}
-              {error && <div className="enrg-input__message">{error}</div>}
+              {hint && <div className={`${THEME_PREFIX}-input__hint`}>{hint}</div>}
+              {error && <div className={`${THEME_PREFIX}-input__message`}>{error}</div>}
             </Label>
           )}
 
@@ -190,13 +211,14 @@ class FormField extends PureComponent<PropsT> {
           isRadio && (
             <RadioGroup
               {...inputProps}
+              // @ts-ignore
               multiple={multiple}
               selected={selected}
               disabled={disabled}
               inline={inline}
             >
-              {hint && <div className="enrg-input__hint">{hint}</div>}
-              {error && <div className="enrg-input__message">{error}</div>}
+              {hint && !error && <div className={`${THEME_PREFIX}-input__hint`}>{hint}</div>}
+              {error && <div className={`${THEME_PREFIX}-input__message`}>{error}</div>}
             </RadioGroup>
           )}
       </div>

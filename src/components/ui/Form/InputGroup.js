@@ -5,7 +5,9 @@ import React, { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 import classNames from 'classnames';
 
-type PropsT = {
+import { THEME_PREFIX } from 'src/constants';
+
+type Props = {
   input: any,
   hint?: any,
   help?: any,
@@ -17,9 +19,9 @@ type PropsT = {
   className?: string,
 };
 
-const baseClass = 'enrg-input-group';
+const baseClass = `${THEME_PREFIX}-input-group`;
 
-const cloneElement = (element: any, props: Object = {}) => {
+const cloneElement = (element: any, props: any = {}) => {
   if (!element || !React.isValidElement(element)) {
     return element;
   }
@@ -32,8 +34,8 @@ const cloneElement = (element: any, props: Object = {}) => {
   return React.cloneElement(element, properties);
 };
 
-class InputGroup extends PureComponent<PropsT> {
-  constructor(props: PropsT) {
+class InputGroup extends PureComponent<Props> {
+  constructor(props: Props) {
     super(props);
 
     this.isUpdated = false;

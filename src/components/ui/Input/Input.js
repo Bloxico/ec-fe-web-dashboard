@@ -3,9 +3,11 @@
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import { THEME_PREFIX } from 'src/constants';
+
 import type { InputTypesT } from '../Form/Field';
 
-const baseClass = 'enrg-input';
+const baseClass = `${THEME_PREFIX}-input`;
 
 type InputSizes = 'small' | 'large';
 
@@ -59,8 +61,6 @@ class Input extends PureComponent<PropsT, StateT> {
     super(props);
 
     this.state = { value: this.props.value };
-
-    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps: PropsT) {

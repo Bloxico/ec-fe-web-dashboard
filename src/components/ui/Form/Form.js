@@ -1,6 +1,7 @@
 // @flow
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import { THEME_PREFIX } from 'src/constants';
 
 type FormTypes = 'dialog';
 
@@ -15,25 +16,43 @@ type PropsT = {
   className?: string,
 };
 
-const baseClass = 'enrg-form';
+const baseClass = `${THEME_PREFIX}-form`;
 
-const Header = ({ align, children }: { align: string, children: any }) => {
+const Header = ({
+  align,
+  children,
+  className,
+}: {
+  align: string,
+  children: any,
+  className: any,
+}) => {
   const classes = classNames(
     `${baseClass}__header`,
     align && `${baseClass}__header--${align}`,
+    className
   );
 
   return (
     <header className={classes}>
-      <h3 className="enrg-heading">{children}</h3>
+      <h3 className={`${THEME_PREFIX}-heading`}>{children}</h3>
     </header>
   );
 };
 
-const Footer = ({ align, children }: { align: string, children: any }) => {
+const Footer = ({
+  align,
+  children ,
+  className,
+}: {
+  align: string,
+  children: any,
+  className: any,
+}) => {
   const classes = classNames(
     `${baseClass}__footer`,
     align && `${baseClass}__footer--${align}`,
+    className
   );
 
   return <footer className={classes}>{children}</footer>;

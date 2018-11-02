@@ -3,67 +3,72 @@
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import { THEME_PREFIX } from 'src/constants';
+
 import Radio from './Radio';
-import Label from '../Label/Label';
+import Label from '../Label';
 
-const baseClass = 'enrg-radiogroup';
+const baseClass = `${THEME_PREFIX}-radiogroup`;
 
-type RadioArray = Array<{
+export type RadioArray = Array<{
   value: string,
   label: string,
   hint?: any,
   disabled?: boolean,
 }>;
 
-type RadioT = {
-  key: string,
-  value: string,
-  label?: string,
-  disabled?: boolean,
-  hint?: any,
-  selected: any,
-  children?: any,
-};
+interface RadioProps {
+  key: string;
+  value: string;
+  label?: string;
+  disabled?: boolean;
+  hint?: any;
+  selected: any;
+  children?: any;
+  onBlur?: Function;
+  onDragStart?: Function;
+  onDrop?: Function;
+  onFocus?: Function;
+}
 
-type PropsT = {
-  name: string,
-  value: any,
-  label?: string,
-  hint?: any,
-  selected: any,
-  multiple?: RadioArray,
-  tabIndex?: number,
-  disabled?: boolean,
-  hidden?: boolean,
-  inline?: boolean,
-  autoFocus?: boolean,
-  children: any,
-  className?: string,
-  onChange?: Function,
-  onBlur?: Function,
-  onDragStart?: Function,
-  onDrop?: Function,
-  onFocus?: Function,
-  onChange?: Function,
-};
+interface Props {
+  name: string;
+  value: any;
+  label?: string;
+  hint?: any;
+  selected: any;
+  multiple?: RadioArray;
+  tabIndex?: number;
+  disabled?: boolean;
+  hidden?: boolean;
+  inline?: boolean;
+  autoFocus?: boolean;
+  children: any;
+  className?: string;
+  onBlur?: Function;
+  onDragStart?: Function;
+  onDrop?: Function;
+  onFocus?: Function;
+  onChange?: (value: any) => void;
+}
 
-type StateT = {
-  selected: any,
-};
+interface State {
+  selected: any;
+}
 
-class RadioGroup extends PureComponent<PropsT, StateT> {
+class RadioGroup extends PureComponent<Props, State> {
   static defaultProps = {
     selected: '',
     inline: true,
   };
 
-  constructor(props: PropsT) {
+  constructor(props: Props) {
     super(props);
 
     this.state = { selected: this.props.selected || '' };
   }
 
-  componentWillReceiveProps(nextProps: PropsT) {
+  componentWillReceiveProps(nextProps: Props) {
     if (this.props.selected !== nextProps.selected) {
       this.setState({ selected: nextProps.selected });
     }
@@ -79,7 +84,7 @@ class RadioGroup extends PureComponent<PropsT, StateT> {
     });
   };
 
-  createRadio(props: RadioT) {
+  createRadio(props: RadioProps) {
     const { name } = this.props;
 
     const {
@@ -111,7 +116,7 @@ class RadioGroup extends PureComponent<PropsT, StateT> {
           onFocus={onFocus}
         />
         {children}
-        {hint && <div className="enrg-input__hint">{hint}</div>}
+        {hint && <div className={`${THEME_PREFIX}-input__hint`}>{hint}</div>}
       </Label>
     );
   }
@@ -122,7 +127,7 @@ class RadioGroup extends PureComponent<PropsT, StateT> {
     const classes = classNames(
       baseClass,
       inline && `${baseClass}--inline`,
-      'enrg-fieldset',
+      `${THEME_PREFIX}--fieldset`,
       className,
     );
 
@@ -131,7 +136,7 @@ class RadioGroup extends PureComponent<PropsT, StateT> {
     // multiple choices
     if (multiple) {
       const radios = multiple.map(radio => {
-        const { value, label, hint = '', disabled } = radio;
+        const { value, label, hint = '', disabled = false } = radio;
         const selected = value === this.state.selected;
 
         return this.createRadio({
@@ -154,10 +159,10 @@ class RadioGroup extends PureComponent<PropsT, StateT> {
       // single radio
       const {
         value,
-        label,
+        label = '',
         selected = false,
         hint = '',
-        disabled,
+        disabled = false,
       } = this.props;
 
       Group = this.createRadio({

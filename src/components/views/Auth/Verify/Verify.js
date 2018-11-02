@@ -13,7 +13,6 @@ type Props = {
   handleVerify: Function,
   isVerifyInProgress: boolean,
   MSGVerifyAccount: string,
-  MSG4DigitVerificationCode: string,
   MSGVerify: string,
   MSGEnterYourCode: string,
   MSGDidntReceiveEmail: string,
@@ -38,7 +37,6 @@ class Verify extends Component<Props> {
     const {
       MSGVerifyAccount,
       MSGEnterYourCode,
-      MSG4DigitVerificationCode,
       MSGVerify,
       MSGDidntReceiveEmail,
       MSGResendCode,
