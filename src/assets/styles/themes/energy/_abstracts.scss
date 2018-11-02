@@ -98,6 +98,7 @@ $font-sizes: (
   tiny: 10px,
   small: 12px,
   normal: $base-font-size,
+  default: $base-font-size,
   large: 16px,
   huge: 24px,
   giant: 30px,
@@ -107,6 +108,16 @@ $font-sizes: (
   h4: $h4-font-size,
   h5: $h5-font-size,
   h6: $h6-font-size
+);
+
+
+$icon-sizes: (
+  tiny:       10px,
+  small:      12px,
+  normal:     14px,
+  large:      20px,
+  toolbar:    32px,
+  thumbnail:  80px
 );
 
 
@@ -174,16 +185,6 @@ $breakpoints: (
   small:  (min-width: 320px, max-width: 767px),
   medium: (min-width: 768px, max-width: 1279px),
   large:  (min-width: 1280px),
-);
-
-
-$icon-sizes: (
-  tiny:       10px,
-  small:      12px,
-  normal:     14px,
-  large:      20px,
-  toolbar:    32px,
-  thumbnail:  80px
 );
 
 

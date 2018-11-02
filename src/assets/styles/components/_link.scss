@@ -1,5 +1,8 @@
 $html-link-margin: 0 !default;
 $html-link-padding: 0 !default;
+$html-link-font-family: $ui-font-family !default;
+$html-link-font-size: map-get($font-sizes, default) !default;
+$html-link-font-weight: normal !default;
 $html-link-color: map-get($text-colors, 'link') !default;
 $html-link-background: transparent !default;
 $html-link-text-decoration: none !default;
@@ -21,6 +24,9 @@ $html-link-large-font-size: map-get($font-sizes, 'large') !default;
   display: inline;
   margin: $html-link-margin;
   padding: $html-link-padding;
+  font-family: $html-link-font-family;
+  font-size: $html-link-font-size;
+  font-weight: $html-link-font-weight;
   color: $html-link-color;
   background: $html-link-background;
   text-decoration: $html-link-text-decoration;

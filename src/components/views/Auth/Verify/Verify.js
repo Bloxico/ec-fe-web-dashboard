@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
-
-import { Form, FormField, Button, Container, Row, Col } from '@ui';
-import { THEME_PREFIX } from 'src/constants';
 import classNames from 'classnames';
+
+import Header from '@partials/Header';
+import { Form, FormField, Button } from '@ui';
+import { THEME_PREFIX } from 'src/constants';
 
 const baseClass = `${THEME_PREFIX}-verify`;
 
@@ -52,43 +53,41 @@ class Verify extends Component<Props> {
       codeLenValidator,
     } = this.validators;
 
-    const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
+    const classes = classNames(baseClass);
 
     return (
-      <Container className={classes}>
-        <Row>
-          <Col sm={{ size: 4, offset: 4 }} xs={{ size: 10, offset: 1 }}>
-            <div className={classes}>
-              <h1>{MSGVerifyAccount}</h1>
-              <p>{MSGEnterYourCode}</p>
-              <Form onSubmit={handleSubmit(handleVerify)}>
-                <Field
-                  type="number"
-                  name="code"
-                  component={FormField}
-                  placeholder={MSG4DigitVerificationCode}
-                  width="full"
-                  validate={[
-                    requiredValidator,
-                    numberValidator,
-                    codeLenValidator,
-                  ]}
-                />
-                <Button
-                  action="submit"
-                  type="primary"
-                  disabled={isVerifyInProgress}
-                  size="full"
-                >
-                  {MSGVerify}
-                </Button>
-              </Form>
-              <span>{MSGDidntReceiveEmail}</span>{' '}
-              <span className={`${THEME_PREFIX}-link`}>{MSGResendCode}</span>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+      <div className={classes}>
+        <Header title={MSGVerifyAccount} />
+
+        <p>{MSGEnterYourCode}</p>
+        <Form onSubmit={handleSubmit(handleVerify)}>
+          <Field
+            type="number"
+            name="code"
+            component={FormField}
+            width="full"
+            validate={[
+              requiredValidator,
+              numberValidator,
+              codeLenValidator,
+            ]}
+          />
+          <Button
+            disabled={isVerifyInProgress}
+            action="submit"
+            type="primary"
+            size="large"
+            width="full"
+          >
+            {MSGVerify}
+          </Button>
+        </Form>
+
+        <footer className={`${baseClass}__footer`}>
+          {MSGDidntReceiveEmail}{' '}
+          <Button type="link">{MSGResendCode}</Button>
+        </footer>
+      </div>
     );
   }
 }

@@ -5,13 +5,9 @@
   align-items: center;
   justify-content: center;
 
-  width: 400px;
+  max-width: 400px;
   height: 100%;
   padding: rhythm(1);
-  //
-  //.#{$namespace}-form {
-  //  width: 100%;
-  //}
 }
 
 
@@ -55,7 +51,7 @@
   height: 100%;
 
   &__footer {
-    padding: rhythm(1);
+    padding: rhythm(1) 0;
     text-align: center;
     font-size: map-get($font-sizes, small);
     color: map-get($text-colors, dark);
@@ -69,8 +65,46 @@
 }
 
 
+.#{$namespace}-reset-password {
+  width: 100%;
+  height: 100%;
+}
+
+
 .#{$namespace}-success {
-  img {
-    margin-bottom: rhythm(1.5);
+  text-align: center;
+
+  h4 {
+    font-weight: bold;
+  }
+
+  p {
+    text-align: justify;
+  }
+}
+
+
+.#{$namespace}-verify {
+  width: 100%;
+  height: 100%;
+
+  .#{$namespace}-input {
+    height: rhythm(3.5);
+    padding: rhythm(1);
+    font-size: map-get($font-sizes, giant);
+    text-align: center;
+    text-indent: 30px;
+    letter-spacing: rhythm(2);
+
+    //&:empty {
+    //  text-indent: 0;
+    //}
+  }
+
+  &__footer {
+    padding: rhythm(1) 0;
+    text-align: center;
+    font-size: map-get($font-sizes, small);
+    color: map-get($text-colors, dark);
   }
 }
