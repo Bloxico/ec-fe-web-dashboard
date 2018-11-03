@@ -25,7 +25,7 @@ const ErrorMessage = (props: Props) => {
     MSGServerError,
     MSGDamnDevelopers,
     MSGSomethingWentWrong,
-    handleClick
+    handleClick,
   } = props;
 
   return (

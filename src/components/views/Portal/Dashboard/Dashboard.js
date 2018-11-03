@@ -21,13 +21,11 @@ const Dashboard = ({ MSGDashboard }: Props) => (
       <Sidebar.Body align="center">
         <h3 className="gc-heading">GPU earns more</h3>
         <p>
-          Graphics card which has a GPU works much faster than CPU.
-          Consider getting one.
+          Graphics card which has a GPU works much faster than CPU. Consider
+          getting one.
         </p>
       </Sidebar.Body>
-      <Sidebar.Footer align="right">
-        footer
-      </Sidebar.Footer>
+      <Sidebar.Footer align="right">footer</Sidebar.Footer>
     </Sidebar>
   </div>
 );

@@ -18,7 +18,7 @@ export default compose(
   injectIntl,
   connect(
     mapStateToProps,
-    actions
+    actions,
   ),
   withProps(({ intl: { formatMessage } }) => ({
     MSGGotIt: formatMessage(messages.gotIt),
@@ -31,5 +31,5 @@ export default compose(
     handleClick: ({ hideModal }) => () => {
       hideModal();
     },
-  })
+  }),
 )(ErrorMessage);

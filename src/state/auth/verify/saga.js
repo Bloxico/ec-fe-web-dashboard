@@ -22,7 +22,7 @@ export function* verify$({ payload: { formData } }): Generator<*, *, *> {
         modalName: MODALS.ErrorMessage,
         align: 'center',
         data: {
-          content: response && response.data.message
+          content: response && response.data.message,
         },
       }),
     );

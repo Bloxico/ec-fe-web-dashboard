@@ -23,7 +23,7 @@ export function* resetPassword$({ payload }): Generator<*, *, *> {
         modalName: MODALS.ErrorMessage,
         align: 'center',
         data: {
-          content: response && response.data.message
+          content: response && response.data.message,
         },
       }),
     );

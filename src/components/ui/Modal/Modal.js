@@ -78,7 +78,7 @@ const Wrapper = (props: any) => {
     size && `${baseClass}--${size}`,
     align && `${baseClass}--${align}`,
     position && `${baseClass}--${position}`,
-    className
+    className,
   );
 
   if (!show) {
@@ -138,7 +138,7 @@ const Header = (props: any) => {
   const classes = classNames(
     `${baseClass}__header`,
     type && `${baseClass}--${type}`,
-    headerAlign && `${baseClass}--${headerAlign}`
+    headerAlign && `${baseClass}--${headerAlign}`,
   );
 
   return (
@@ -159,7 +159,7 @@ const Title = (props: any) => {
 
   const classes = classNames(
     `${baseClass}__title`,
-    align && `${baseClass}--${align}`
+    align && `${baseClass}--${align}`,
   );
 
   return (
@@ -200,7 +200,7 @@ const Body = (props: any) => {
   const classes = classNames(
     `${baseClass}__body`,
     type && `${baseClass}--${type}`,
-    align && `${baseClass}--${align}`
+    align && `${baseClass}--${align}`,
   );
 
   return (
@@ -221,7 +221,7 @@ const Footer = (props: any) => {
     `${baseClass}__footer`,
     type && `${baseClass}--${type}`,
     footerAlign && `${baseClass}--${footerAlign}`,
-    className
+    className,
   );
 
   return (
