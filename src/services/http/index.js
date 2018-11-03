@@ -1,4 +1,4 @@
 // @flow
-import Http from './http';
+import http from './http';
 
-export { Http };
+export { http };

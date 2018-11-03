@@ -3,8 +3,8 @@
 import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
-import { Http } from 'src/services/http';
-import { VERIFY_PAGE } from 'src/constants';
+import { http } from 'src/services/http';
+import { VERIFY_PAGE, API_URL } from 'src/constants';
 import { showModal } from 'src/state/actions';
 import { getIntl } from 'src/components/wrappers/IntlProvider';
 import messages from 'src/components/views/common/ModalManager/messages';
@@ -13,13 +13,7 @@ import * as actions from './actions';
 
 export function* fetchRegions$(): Generator<*, *, *> {
   try {
-    const response = yield Http.get('api/user/registrationData');
-
-    let regions = response.data.regions.reduce((obj, item) => {
-      obj[item.regionName.trim(' ')] = item.regionName;
-      return obj;
-    }, {});
-    regions = { '': 'Select', ...regions };
+    const { data: { regions } } = yield http.get(`${API_URL}/user/registrationData`);
 
     yield put(actions.fetchRegionsSuccess({ regions }));
   } catch ({ response }) {

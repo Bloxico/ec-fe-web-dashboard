@@ -8,7 +8,7 @@ type StateT = {
   matchPassword: string,
   region: string,
   city: string,
-  regions: Object,
+  regions: null | [],
 };
 
 const initialState: StateT = {
@@ -19,6 +19,7 @@ const initialState: StateT = {
   matchPassword: '',
   region: '',
   city: '',
+  regions: null,
 };
 
 export default initialState;

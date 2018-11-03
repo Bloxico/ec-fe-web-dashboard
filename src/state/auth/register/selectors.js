@@ -8,7 +8,7 @@ export const getRegions = ({
   auth: {
     register: { regions },
   },
-}) => ({ registerRegions: regions });
+}) => ({ regions });
 
 export const getRegisterEmail = ({
   auth: {

@@ -24,16 +24,13 @@ export type Props = {
   passwordIntl: Function,
   emailIntl: Function,
   matchIntl: Function,
-  registerRegions: Object,
+  regions: [],
   fetchRegions: Function,
 };
 
 const baseClass = `${THEME_PREFIX}-register`;
 
 class Register extends Component<Props> {
-  static defaultProps = {
-    registerRegions: { Select: 'Select' },
-  };
 
   constructor(props) {
     super(props);
@@ -62,6 +59,11 @@ class Register extends Component<Props> {
     fetchRegions();
   }
 
+  defaultRegionOption = {
+    text: 'Select',
+    value: null,
+  };
+
   render() {
     const {
       MSGCreateAnAccount,
@@ -75,8 +77,10 @@ class Register extends Component<Props> {
       MSGNicknameOptional,
       isRegistrationInProgress,
       MSGContinue,
-      registerRegions,
+      regions,
     } = this.props;
+
+    let regionOptions = [this.defaultRegionOption];
 
     const {
       requiredValidator,
@@ -88,6 +92,10 @@ class Register extends Component<Props> {
 
     const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
 
+    if(regions) {
+      regionOptions = [ ...regionOptions, ...regions.map(({ regionName }) => ({ value: regionName, text: regionName })) ];
+    }
+
     return (
       <Container>
         <Row>
@@ -95,7 +103,6 @@ class Register extends Component<Props> {
             <div className={classes}>
               <h1>{MSGCreateAnAccount}</h1>
               <Form onSubmit={handleSubmit(handleRegistration)}>
-                {/* TODO@martins add validatiors */}
                 <Field
                   placeholder={MSGEmail}
                   type="email"
@@ -132,7 +139,7 @@ class Register extends Component<Props> {
                   component={FormField}
                   name="regionName"
                   width="full"
-                  options={registerRegions}
+                  options={regionOptions}
                   selected="Select"
                   validate={[requiredValidator]}
                 />

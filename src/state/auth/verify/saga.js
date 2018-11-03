@@ -4,7 +4,7 @@ import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
 import { SUCCESS_PAGE, LOGIN_PAGE } from 'src/constants';
-import { Http } from 'src/services/http';
+import { http } from 'src/services/http';
 import { showModal } from 'src/state/actions';
 import { getIntl } from 'src/components/wrappers/IntlProvider';
 import messages from 'src/components/views/common/ModalManager/messages';
@@ -16,10 +16,10 @@ export function* verify$({
 }): Generator<*, *, *> {
   try {
     if (isForReset) {
-      yield Http.post('/api/user/passwordForgotUpdate', formData);
+      yield http.post('/api/user/passwordForgotUpdate', formData);
       yield put(push(SUCCESS_PAGE));
     } else {
-      yield Http.post('/api/user/registrationConfirm', formData);
+      yield http.post('/api/user/registrationConfirm', formData);
       yield put(push(LOGIN_PAGE));
     }
   } catch ({ response }) {

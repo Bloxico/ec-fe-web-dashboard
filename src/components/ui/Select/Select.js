@@ -28,6 +28,7 @@ const createOption = ({
   text: string,
 }) => (
   <option
+    // @TODO@all fix this key hack - use trimmed value or smth
     key={key || value || `option-${Math.floor(Math.random() * 1000000)}`}
     value={value}
   >
