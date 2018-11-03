@@ -4,8 +4,8 @@ import { compose, withHandlers, withProps } from 'recompose';
 import { reduxForm } from 'redux-form';
 import { injectIntl } from 'react-intl';
 
-import { isRegisterInProgress } from 'src/state/selectors';
-import { register } from 'src/state/actions';
+import { isRegisterInProgress, getRegions } from 'src/state/selectors';
+import { register, fetchRegions } from 'src/state/actions';
 import {
   alphanumeric,
   email,
@@ -18,26 +18,35 @@ import Register from './Register';
 import messages from './messages';
 
 const mapStateToProps = state => ({
-  ...isRegisterInProgress(state),
+  registerInProgress: isRegisterInProgress(state),
+  regions: getRegions(state),
 });
 
 const actions = {
   register,
+  fetchRegions,
 };
 
 export default compose(
   injectIntl,
-  reduxForm({
-    form: 'Register',
-  }),
   connect(
     mapStateToProps,
     actions,
   ),
+  reduxForm({
+    form: 'Register',
+    // TODO@martins remove
+    initialValues: {
+      city: 'string',
+      email: 'string@wawd.cop',
+      matchPassword: '123123123',
+      name: 'string',
+      password: '123123123',
+      regionName: 'string',
+    },
+  }),
   withHandlers({
     handleRegistration: ({ register }) => values => {
-      // eslint-disable-next-line
-      console.log(values);
       register(values);
     },
   }),

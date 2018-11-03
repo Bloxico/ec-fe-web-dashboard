@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { cacheAdapterEnhancer, Cache } from 'axios-extensions';
 
 type HttpOpts = {
   baseURL?: string,
@@ -41,7 +42,7 @@ class Http {
     this.config = Object.assign({}, DEFAULT_CONFIG, opts);
 
     this.http = axios.create({
-      baseURL: 'http://192.168.0.14:8089/',
+      baseURL: '/',
       timeout: this.config.timeout,
       headers: { 'Cache-Control': 'no-cache' },
     });
@@ -167,6 +168,45 @@ class Http {
     } catch (e) {
       return Promise.reject(e);
     }
+  }
+
+  /**
+   * Add interceptors
+   *
+   * @param type
+   * @param success
+   * @param error
+   */
+  interceptors(
+    type: 'request' | 'response',
+    success: () => void,
+    error: () => void,
+  ) {
+    // return this.interceptorsMap[type].push({ success, error });
+
+    return this.http.interceptors[type].use(success, error);
+  }
+
+  /**
+   * Update config
+   *
+   * @param conf
+   * @returns {HttpOpts|Http.config}
+   */
+  setConfig(conf: HttpOpts) {
+    this.config = Object.assign(this.config, conf);
+
+    this.http.defaults.baseURL = this.config.baseURL;
+    this.http.defaults.adapter = cacheAdapterEnhancer(
+      axios.defaults.adapter,
+      false,
+      'cache',
+      new Cache({ maxAge: this.config.cacheAge }),
+    );
+
+    this.http.defaults.timeout = this.config.timeout;
+
+    return this.config;
   }
 }
 
