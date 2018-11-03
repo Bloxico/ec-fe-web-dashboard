@@ -91,7 +91,7 @@ class Register extends Component<Props> {
     } = this.validators;
 
     let regionOptions = [this.defaultRegionOption];
-    
+
     if (regions) {
       regionOptions = [
         ...regionOptions,
