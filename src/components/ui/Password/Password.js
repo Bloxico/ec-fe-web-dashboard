@@ -1,3 +1,6 @@
+// @flow
+/* eslint-disable jsx-a11y/no-autofocus, react/sort-comp: 0 */
+
 import * as React from 'react';
 import classNames from 'classnames';
 import { THEME_PREFIX } from 'src/constants';
@@ -100,11 +103,15 @@ class Password extends React.PureComponent<Props, State> {
       width && `${baseClass}--${width}`,
       size && `${baseClass}--${size}`,
       status && `${baseClass}--${status}`,
-      className
+      className,
     );
 
     return (
-      <span className={`${THEME_PREFIX}-password ${toggle ? `${THEME_PREFIX}-password--toggle` : ''}`}>
+      <span
+        className={`${THEME_PREFIX}-password ${
+          toggle ? `${THEME_PREFIX}-password--toggle` : ''
+        }`}
+      >
         <input
           type="password"
           autoComplete="off"

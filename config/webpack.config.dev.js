@@ -94,7 +94,6 @@ module.exports = {
         paths.appSrc,
         'assets/styles/abstracts/_index.scss',
       ),
-      '@images': path.join(paths.appSrc, 'assets/images'),
 
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
@@ -140,33 +139,33 @@ module.exports = {
         oneOf: [
           // SVG loader
           {
-              test: /\.svg$/,
-              use: [
-                  'babel-loader',
-                  {
-                      loader: 'react-svg-loader',
-                      options: {
-                          svgo: {
-                              plugins: [
-                                  { moveStyleElement: true },
-                                  { removeTitle: true },
-                                  { removeDesc: true },
-                                  { removeUselessDefs: true },
-                                  { removeDimensions: false },
-                                  { removeViewBox: false },
-                                  { removeRasterImages: true },
-                                  { collapseGroups: true },
-                                  { cleanupNumericValues: { floatPrecision: 1 } },
-                                  { removeEmptyContainers: true },
-                                  { removeEmptyAttrs: true },
-                                  { cleanupAttrs: true },
-                                  { cleanupIDs: false },
-                              ],
-                              floatPrecision: 2,
-                          },
-                      },
+            test: /\.svg$/,
+            use: [
+              'babel-loader',
+              {
+                loader: 'react-svg-loader',
+                options: {
+                  svgo: {
+                    plugins: [
+                      { moveStyleElement: true },
+                      { removeTitle: true },
+                      { removeDesc: true },
+                      { removeUselessDefs: true },
+                      { removeDimensions: false },
+                      { removeViewBox: false },
+                      { removeRasterImages: true },
+                      { collapseGroups: true },
+                      { cleanupNumericValues: { floatPrecision: 1 } },
+                      { removeEmptyContainers: true },
+                      { removeEmptyAttrs: true },
+                      { cleanupAttrs: true },
+                      { cleanupIDs: false },
+                    ],
+                    floatPrecision: 2,
                   },
-              ],
+                },
+              },
+            ],
           },
           // "url" loader works like "file" loader except that it embeds assets
           // smaller than specified limit in bytes as data URLs to avoid requests.

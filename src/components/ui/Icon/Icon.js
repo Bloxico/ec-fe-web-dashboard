@@ -33,7 +33,7 @@ const iconTypes = {
 
 interface Props {
   data: any;
-  type?: $Keys<typeof iconTypes>,
+  type?: $Keys<typeof iconTypes>;
   size?: IconSizes;
   title?: string;
   color?: string;
@@ -59,7 +59,7 @@ const Icon = (props: Props) => {
     spacing && `${baseClass}--${spacing}`,
     align && `${baseClass}--${align}`,
     color && `${baseClass}--color`,
-    className
+    className,
   );
 
   return (

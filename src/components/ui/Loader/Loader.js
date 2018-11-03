@@ -26,7 +26,7 @@ const Loader = (props: Props) => {
     type && `${baseClass}--${type}`,
     size && `${baseClass}--${size}`,
     textual && `${baseClass}--textual`,
-    className
+    className,
   );
 
   return (

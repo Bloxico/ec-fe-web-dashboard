@@ -22,7 +22,7 @@ const Logo = (props: Props) => {
     baseClass,
     size && `${baseClass}--${size}`,
     block && `${baseClass}--block`,
-    className
+    className,
   );
 
   return (

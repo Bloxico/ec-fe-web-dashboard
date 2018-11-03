@@ -42,7 +42,7 @@ const ButtonGroup = (props: Props) => {
     align && `${baseClass}--${align}`,
     width && `${baseClass}--${width}`,
     size && `${baseClass}--${size}`,
-    className
+    className,
   );
 
   return (

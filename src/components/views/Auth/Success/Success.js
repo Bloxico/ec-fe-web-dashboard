@@ -33,7 +33,9 @@ const Success = ({
     <h4>{MSGSuccess}</h4>
     <p>{MSGSuccessfullyResetPass}</p>
     <br />
-    <Link to={LOGIN_PAGE} className={btnClasses}>{MSGSignIn}</Link>
+    <Link to={LOGIN_PAGE} className={btnClasses}>
+      {MSGSignIn}
+    </Link>
   </div>
 );
 

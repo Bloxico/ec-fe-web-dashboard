@@ -29,7 +29,7 @@ const Anchor = (props: Props) => {
 
   const classes = classNames(
     isButton ? `${THEME_PREFIX}-button` : baseClass,
-    className
+    className,
   );
 
   return (

@@ -13,5 +13,5 @@ export {
   Modal,
   Container,
   Row,
-  Col
+  Col,
 };

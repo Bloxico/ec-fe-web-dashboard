@@ -48,19 +48,28 @@ const Welcome = ({
     </header>
 
     <section className={`${baseClass}__content`}>
-      <Link to={REGISTER_PAGE} className={`${btnClasses} ${THEME_PREFIX}-button--primary`}>
+      <Link
+        to={REGISTER_PAGE}
+        className={`${btnClasses} ${THEME_PREFIX}-button--primary`}
+      >
         {MSGCreateAnAccount}
       </Link>
       <br />
-      <Link to={LOGIN_PAGE} className={btnClasses}>{MSGSignIn}</Link>
+      <Link to={LOGIN_PAGE} className={btnClasses}>
+        {MSGSignIn}
+      </Link>
     </section>
 
     <footer className={`${baseClass}__footer`}>
       <small className={`${THEME_PREFIX}-text--alt`}>
-        {MSGByContinuingYouAgreeToOur}{' '}
-        <br />
-        <Link to={AUTH_PAGE} className={`${THEME_PREFIX}-link`}>{MSGTermsOfUse}</Link> {MSGAnd}{' '}
-        <Link to={AUTH_PAGE} className={`${THEME_PREFIX}-link`}>{MSGPrivacyPolicy}</Link>
+        {MSGByContinuingYouAgreeToOur} <br />
+        <Link to={AUTH_PAGE} className={`${THEME_PREFIX}-link`}>
+          {MSGTermsOfUse}
+        </Link>{' '}
+        {MSGAnd}{' '}
+        <Link to={AUTH_PAGE} className={`${THEME_PREFIX}-link`}>
+          {MSGPrivacyPolicy}
+        </Link>
       </small>
     </footer>
   </div>

@@ -107,11 +107,7 @@ class Register extends Component<Props> {
             name="matchPassword"
             width="full"
             toMatch="12345678"
-            validate={[
-              requiredValidator,
-              passwordValidator,
-              matchValidator,
-            ]}
+            validate={[requiredValidator, passwordValidator, matchValidator]}
           />
           <Field
             placeholder={MSGRegion}

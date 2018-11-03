@@ -133,33 +133,33 @@ module.exports = {
         oneOf: [
           // SVG loader
           {
-              test: /\.svg$/,
-              use: [
-                  'babel-loader',
-                  {
-                      loader: 'react-svg-loader',
-                      options: {
-                          svgo: {
-                              plugins: [
-                                  { moveStyleElement: true },
-                                  { removeTitle: true },
-                                  { removeDesc: true },
-                                  { removeUselessDefs: true },
-                                  { removeDimensions: false },
-                                  { removeViewBox: false },
-                                  { removeRasterImages: true },
-                                  { collapseGroups: true },
-                                  { cleanupNumericValues: { floatPrecision: 1 } },
-                                  { removeEmptyContainers: true },
-                                  { removeEmptyAttrs: true },
-                                  { cleanupAttrs: true },
-                                  { cleanupIDs: false },
-                              ],
-                              floatPrecision: 2,
-                          },
-                      },
+            test: /\.svg$/,
+            use: [
+              'babel-loader',
+              {
+                loader: 'react-svg-loader',
+                options: {
+                  svgo: {
+                    plugins: [
+                      { moveStyleElement: true },
+                      { removeTitle: true },
+                      { removeDesc: true },
+                      { removeUselessDefs: true },
+                      { removeDimensions: false },
+                      { removeViewBox: false },
+                      { removeRasterImages: true },
+                      { collapseGroups: true },
+                      { cleanupNumericValues: { floatPrecision: 1 } },
+                      { removeEmptyContainers: true },
+                      { removeEmptyAttrs: true },
+                      { cleanupAttrs: true },
+                      { cleanupIDs: false },
+                    ],
+                    floatPrecision: 2,
                   },
-              ],
+                },
+              },
+            ],
           },
           // "url" loader works just like "file" loader but it also embeds
           // assets smaller than specified size as data URLs to avoid requests.

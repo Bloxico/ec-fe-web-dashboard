@@ -37,64 +37,64 @@ const inputTypes = {
 export type InputTypesT = $Keys<typeof inputTypes>;
 
 type InputT = {
-  name: string;
-  value: any;
-  onFocus?: Function;
-  onBlur?: Function;
-  onChange?: Function;
-  onDragStart?: Function;
-  onDrop?: Function;
+  name: string,
+  value: any,
+  onFocus?: Function,
+  onBlur?: Function,
+  onChange?: Function,
+  onDragStart?: Function,
+  onDrop?: Function,
 };
 
 type MetaT = {
-  form: string;
-  error?: string;
-  warning?: string;
-  active: boolean;
-  autofilled: boolean;
-  asyncValidating: boolean;
-  dirty: boolean;
-  initial: any;
-  invalid: boolean;
-  pristine: boolean;
-  submitting: boolean;
-  submitFailed: boolean;
-  touched: boolean;
-  valid: boolean;
-  visited: boolean;
-  dispatch: Function;
+  form: string,
+  error?: string,
+  warning?: string,
+  active: boolean,
+  autofilled: boolean,
+  asyncValidating: boolean,
+  dirty: boolean,
+  initial: any,
+  invalid: boolean,
+  pristine: boolean,
+  submitting: boolean,
+  submitFailed: boolean,
+  touched: boolean,
+  valid: boolean,
+  visited: boolean,
+  dispatch: Function,
 };
 
 type PropsT = {
-  input?: InputT;
-  meta?: MetaT;
-  type?: InputTypesT;
-  id?: string;
-  name?: string;
-  disabled?: boolean;
-  hint?: any;
-  help?: any;
-  prefix?: any;
-  sufix?: any;
-  label?: string;
-  status?: FieldStatus;
-  message?: string;
-  format?: OutputFormats;
-  inline?: boolean;
-  options?: {} | Array<{ value: string, text: string }>;
-  multiple?: boolean | RadioArray;
-  selected?: any;
-  toggle?: boolean;
-  ref?: Function;
-  size?: FieldSizes;
-  width?: FieldWidths;
-  title?: string;
-  className?: string;
-  placeholder?: any;
-  checked?: boolean;
-  value?: any;
-  defaultValue?: any;
-  onChange?: Function;
+  input?: InputT,
+  meta?: MetaT,
+  type?: InputTypesT,
+  id?: string,
+  name?: string,
+  disabled?: boolean,
+  hint?: any,
+  help?: any,
+  prefix?: any,
+  sufix?: any,
+  label?: string,
+  status?: FieldStatus,
+  message?: string,
+  format?: OutputFormats,
+  inline?: boolean,
+  options?: {} | Array<{ value: string, text: string }>,
+  multiple?: boolean | RadioArray,
+  selected?: any,
+  toggle?: boolean,
+  ref?: Function,
+  size?: FieldSizes,
+  width?: FieldWidths,
+  title?: string,
+  className?: string,
+  placeholder?: any,
+  checked?: boolean,
+  value?: any,
+  defaultValue?: any,
+  onChange?: Function,
 };
 
 const baseClass = `${THEME_PREFIX}-form-group`;
@@ -202,8 +202,12 @@ class FormField extends PureComponent<PropsT> {
           !isRadio && (
             <Label {...this.props} id={id} text={label} disabled={disabled}>
               <InputField {...inputProps} />
-              {hint && <div className={`${THEME_PREFIX}-input__hint`}>{hint}</div>}
-              {error && <div className={`${THEME_PREFIX}-input__message`}>{error}</div>}
+              {hint && (
+                <div className={`${THEME_PREFIX}-input__hint`}>{hint}</div>
+              )}
+              {error && (
+                <div className={`${THEME_PREFIX}-input__message`}>{error}</div>
+              )}
             </Label>
           )}
 
@@ -217,8 +221,13 @@ class FormField extends PureComponent<PropsT> {
               disabled={disabled}
               inline={inline}
             >
-              {hint && !error && <div className={`${THEME_PREFIX}-input__hint`}>{hint}</div>}
-              {error && <div className={`${THEME_PREFIX}-input__message`}>{error}</div>}
+              {hint &&
+                !error && (
+                  <div className={`${THEME_PREFIX}-input__hint`}>{hint}</div>
+                )}
+              {error && (
+                <div className={`${THEME_PREFIX}-input__message`}>{error}</div>
+              )}
             </RadioGroup>
           )}
       </div>

@@ -40,7 +40,7 @@ const Output = (props: Props) => {
   const classes = classNames(
     baseClass,
     width && `${baseClass}--${width}`,
-    className
+    className,
   );
 
   return (

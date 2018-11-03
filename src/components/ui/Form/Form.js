@@ -30,7 +30,7 @@ const Header = ({
   const classes = classNames(
     `${baseClass}__header`,
     align && `${baseClass}__header--${align}`,
-    className
+    className,
   );
 
   return (
@@ -42,7 +42,7 @@ const Header = ({
 
 const Footer = ({
   align,
-  children ,
+  children,
   className,
 }: {
   align: string,
@@ -52,7 +52,7 @@ const Footer = ({
   const classes = classNames(
     `${baseClass}__footer`,
     align && `${baseClass}__footer--${align}`,
-    className
+    className,
   );
 
   return <footer className={classes}>{children}</footer>;

@@ -73,7 +73,7 @@ class Input extends PureComponent<PropsT, StateT> {
   handleKeyDown: Function;
 
   handleKeyDown = (e: any) => {
-    const { type, minLength, maxLength, onKeyDown = f => f } = this.props;
+    const { type, maxLength, onKeyDown = f => f } = this.props;
 
     if (type === 'number') {
       const specials = [

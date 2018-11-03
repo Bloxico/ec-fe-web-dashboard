@@ -21,12 +21,7 @@ export type ButtonTypes =
   | 'ghost'
   | 'link';
 
-export type ButtonColors =
-  | 'success'
-  | 'warning'
-  | 'alert'
-  | 'info'
-  | 'inverse';
+export type ButtonColors = 'success' | 'warning' | 'alert' | 'info' | 'inverse';
 
 export type ButtonShapes = 'round' | 'pill';
 
@@ -111,7 +106,7 @@ class Button extends PureComponent<Props> {
           icon && `${THEME_PREFIX}-link--icon`,
           width && `${THEME_PREFIX}-link--${width}`,
           size && `${THEME_PREFIX}-link--${size}`,
-          className
+          className,
         )
       : classNames(
           baseClass,
@@ -121,7 +116,7 @@ class Button extends PureComponent<Props> {
           shape && `${baseClass}--${shape}`,
           width && `${baseClass}--${width}`,
           size && `${baseClass}--${size}`,
-          className
+          className,
         );
 
     return (

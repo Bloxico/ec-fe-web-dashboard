@@ -67,11 +67,7 @@ class Login extends Component<PropsT> {
             component={FormField}
             name="username"
             width="full"
-            validate={[
-              requiredValidator,
-              passwordValidator,
-              emailValidator,
-            ]}
+            validate={[requiredValidator, passwordValidator, emailValidator]}
           />
           <Field
             placeholder={MSGPassword}
@@ -79,11 +75,7 @@ class Login extends Component<PropsT> {
             component={FormField}
             name="password"
             width="full"
-            validate={[
-              requiredValidator,
-              passwordValidator,
-              emailValidator,
-            ]}
+            validate={[requiredValidator, passwordValidator, emailValidator]}
           />
 
           <Button
@@ -97,7 +89,9 @@ class Login extends Component<PropsT> {
 
           <footer className={`${baseClass}__footer`}>
             {MSGForgotThePassword}{' '}
-            <Link to={RESET_PASSWORD_PAGE} className={`${THEME_PREFIX}-link`}>{MSGReset}</Link>
+            <Link to={RESET_PASSWORD_PAGE} className={`${THEME_PREFIX}-link`}>
+              {MSGReset}
+            </Link>
           </footer>
         </Form>
       </div>

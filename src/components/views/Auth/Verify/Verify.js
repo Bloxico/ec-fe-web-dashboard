@@ -11,7 +11,6 @@ const baseClass = `${THEME_PREFIX}-verify`;
 type Props = {
   handleSubmit: Function,
   isVerifyInProgress: boolean,
-  isResetPasswordEmail: string,
   MSGVerifyAccount: string,
   MSG4DigitVerificationCode: string,
   MSGVerify: string,
@@ -34,9 +33,7 @@ class Verify extends Component<Props> {
       numberIntl,
       codeLenIntl,
       passwordIntl,
-      isResetPasswordEmail,
     } = props;
-    this.isResetPasswordEmail = isResetPasswordEmail;
     this.validators = {
       requiredValidator: requiredIntl,
       numberValidator: numberIntl,
@@ -48,7 +45,7 @@ class Verify extends Component<Props> {
   handleSubmit = (data: any) => {
     const { verify } = this.props;
     const formData = data;
-    formData.email = this.isResetPasswordEmail;
+
     verify({ formData });
   };
 
@@ -62,7 +59,6 @@ class Verify extends Component<Props> {
       MSGResendCode,
       MSGNewPassword,
       isVerifyInProgress,
-      isResetPasswordEmail,
       handleSubmit,
     } = this.props;
 
@@ -89,11 +85,7 @@ class Verify extends Component<Props> {
             component={FormField}
             width="full"
             placeholder={MSG4DigitVerificationCode}
-            validate={[
-              requiredValidator,
-              numberValidator,
-              codeLenValidator,
-            ]}
+            validate={[requiredValidator, numberValidator, codeLenValidator]}
             className={`${baseClass}__token`}
           />
           <Field
@@ -116,8 +108,7 @@ class Verify extends Component<Props> {
         </Form>
 
         <footer className={`${baseClass}__footer`}>
-          {MSGDidntReceiveEmail}{' '}
-          <Anchor href="#">{MSGResendCode}</Anchor>
+          {MSGDidntReceiveEmail} <Anchor href="#">{MSGResendCode}</Anchor>
         </footer>
       </div>
     );
