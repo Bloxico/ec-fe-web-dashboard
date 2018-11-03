@@ -1,27 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-import { AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX } from 'src/constants';
-import logo from '@images/react-logo.svg';
-
-import './Header.scss';
+import Button from '@ui/Button';
+import iconBack from '@images/icon-back.svg';
+import { THEME_PREFIX } from 'src/constants';
 
 const baseClass = `${THEME_PREFIX}-header`;
 
-const Header = () => (
+const Header = ({ title }: { title: string }) => (
   <header className={baseClass}>
-    <img src={logo} className={`${baseClass}__logo`} alt="logo" />
-    <h1 className={`${baseClass}__title`}>React App</h1>
-    <nav className={`${baseClass}__nav`}>
-      <ul>
-        <li>
-          <Link to={PORTAL_PAGE}>Portal</Link>
-        </li>
-        <li>
-          <Link to={AUTH_PAGE}>Auth</Link>
-        </li>
-      </ul>
-    </nav>
+    <h4 className={`${baseClass}__title`}>{title}</h4>
+    <Button icon={iconBack} type="ghost" className={`${baseClass}__action`}>
+      Back
+    </Button>
   </header>
 );
 

@@ -3,8 +3,9 @@
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import { THEME_PREFIX } from 'src/constants';
 
-const baseClass = 'enrg-radio';
+const baseClass = `${THEME_PREFIX}-radio`;
 
 type PropsT = {
   id?: string,

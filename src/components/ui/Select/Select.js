@@ -3,12 +3,13 @@
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import { THEME_PREFIX } from 'src/constants';
 
-const baseClass = 'enrg-select';
+const baseClass = `${THEME_PREFIX}-select`;
 
-const selectWidths = {
-  fixed: `${baseClass}--fixed`,
-};
+type SelectTypes = 'icon' | 'inline';
+
+type SelectWidths = 'fixed' | 'full';
 
 /**
  * Creates a single option element
@@ -43,8 +44,8 @@ const createOption = ({
  * @param {Object} options
  * @returns {React.Element}
  */
-const createOptgroup = (label, options) => {
-  const children = [];
+const createOptgroup = (label: any, options: any) => {
+  const children: any[] = [];
   const keys = Object.keys(options);
 
   keys.forEach(key =>
@@ -65,8 +66,8 @@ const createOptgroup = (label, options) => {
  * @param {Object | Array<{value: string, text: string>} options
  * @returns {Array<React.Element>}
  */
-const createOptions = options => {
-  const result = [];
+const createOptions = (options: any) => {
+  const result: any[] = [];
   // $FlowIssue
   const keys = Object.keys(options);
 
@@ -124,10 +125,11 @@ const createOptions = options => {
 };
 
 type PropsT = {
+  type?: SelectTypes,
   id?: string,
   name?: string,
   title?: string,
-  options: Object | Array<{ value: string, text: string }>,
+  options: {} | Array<{ value: string, text: string }>,
   selected?: any,
   tabIndex?: number,
   multiple?: boolean,
@@ -136,7 +138,7 @@ type PropsT = {
   required?: boolean,
   autoFocus?: boolean,
   readOnly?: boolean,
-  width?: $Keys<typeof selectWidths>,
+  width?: SelectWidths,
   inputRef?: any,
   className?: string,
   onBlur?: Function,
@@ -188,6 +190,7 @@ class Select extends PureComponent<PropsT, StateT> {
 
   render() {
     const {
+      type,
       id,
       name,
       title,
@@ -210,6 +213,7 @@ class Select extends PureComponent<PropsT, StateT> {
 
     const classes = classNames(
       baseClass,
+      type && `${baseClass}--${type}`,
       width && `${baseClass}--${width}`,
       className,
     );

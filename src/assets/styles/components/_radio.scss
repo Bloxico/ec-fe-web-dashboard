@@ -1,15 +1,9 @@
 $radio-size: 20px !default;
-$radio-margin: rhythm(
-    (
-      (strip-unit($base-line-height) - strip-unit($radio-size)) /
-        (2 * strip-unit($base-line-height))
-    )
-  )
-  0 !default;
+$radio-margin: rhythm(((strip-unit($base-line-height) - strip-unit($radio-size)) / (2 * strip-unit($base-line-height)))) 0 !default;
 $radio-padding: 0 !default;
 
 $radio-background: (
-  color: map-get($background-colors, "control"),
+  color: map-get($background-colors, 'control'),
   image: none,
   size: 20px,
   repeat: no-repeat,
@@ -17,20 +11,14 @@ $radio-background: (
 ) !default;
 
 $radio-checked-background: (
-  image:
-    svg-url(
-      (
-        fill: map-get($palette, "green")
-      ),
-      '<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path fill="#000000" d="M 10 5 C 7.24 5 5 7.24 5 10 C 5 12.76 7.24 15 10 15 C 12.76 15 15 12.76 15 10 C 15 7.24 12.76 5 10 5 Z M 10 0 C 4.48 0 0 4.48 0 10 C 0 15.52 4.48 20 10 20 C 15.52 20 20 15.52 20 10 C 20 4.48 15.52 0 10 0 Z M 10 18 C 5.58 18 2 14.42 2 10 C 2 5.58 5.58 2 10 2 C 14.42 2 18 5.58 18 10 C 18 14.42 14.42 18 10 18 Z"></path></svg>'
-    )
+  image: svg-url('<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path fill="#{color('green')}" d="M 10 5 C 7.24 5 5 7.24 5 10 C 5 12.76 7.24 15 10 15 C 12.76 15 15 12.76 15 10 C 15 7.24 12.76 5 10 5 Z M 10 0 C 4.48 0 0 4.48 0 10 C 0 15.52 4.48 20 10 20 C 15.52 20 20 15.52 20 10 C 20 4.48 15.52 0 10 0 Z M 10 18 C 5.58 18 2 14.42 2 10 C 2 5.58 5.58 2 10 2 C 14.42 2 18 5.58 18 10 C 18 14.42 14.42 18 10 18 Z"></path></svg>'),
 ) !default;
 
 $radio-border: (
   side: all,
   width: 1px,
   style: solid,
-  color: map-get($border-colors, "normal"),
+  color: map-get($border-colors, 'normal'),
   radius: 50%
 ) !default;
 
@@ -39,6 +27,7 @@ $radio-hover-border: () !default;
 $radio-checked-border: (
   color: transparent
 ) !default;
+
 
 .#{$namespace}-radio {
   @include set-background($radio-background);
@@ -54,7 +43,7 @@ $radio-checked-border: (
   vertical-align: top;
   line-height: $base-line-height;
 
-  &:hover:not([disabled]):not([aria-disabled="true"]) {
+  &:hover:not([disabled]):not([aria-disabled='true']) {
     @include set-border($radio-hover-border);
   }
 

@@ -2,8 +2,7 @@
 
 @mixin inline-list {
   list-style-type: none;
-  &,
-  & li {
+  &, & li {
     margin: 0px;
     padding: 0px;
     display: inline;
@@ -27,18 +26,12 @@
 @mixin delimited-list($separator: ", ") {
   @include inline-list;
   li {
-    &:after {
-      content: $separator;
-    }
+    &:after { content: $separator; }
     &:last-child {
-      &:after {
-        content: "";
-      }
+      &:after { content: ""; }
     }
     &.last {
-      &:after {
-        content: "";
-      }
+      &:after { content: ""; }
     }
   }
 }

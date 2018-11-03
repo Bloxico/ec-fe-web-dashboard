@@ -4,22 +4,13 @@
 ///
 
 // These things first (order matters!)
-@import "abstracts/index";
+@import 'abstracts/index';
 
 // Then these (order matters!)
-@import "base/index";
+@import 'base/index';
 
 //// Then the components
-@import "components/index";
+@import 'components/index';
 
 // Then some common stuff
-//@import 'partials/index';
-
-// Page specific
-@import "pages/index";
-
-@import "~bootstrap/scss/mixins";
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/modal";
-@import "~bootstrap/scss/bootstrap-grid";
+@import 'partials/index';

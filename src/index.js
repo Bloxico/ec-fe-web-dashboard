@@ -3,7 +3,8 @@ import { render } from 'react-dom';
 
 import configureStore from 'src/state/configureStore';
 import App from 'src/components/views/App';
-import 'src/assets/styles/main.scss';
+
+import '@styles/themes/energy/index.scss';
 
 const { store, history } = configureStore();
 

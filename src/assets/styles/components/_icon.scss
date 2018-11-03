@@ -1,6 +1,19 @@
-.#{$namespace}-icon {
-  @extend %icon;
+@mixin generate-icon-sizes {
+  @each $key, $value in $icon-sizes {
+    .#{$namespace}-icon--#{$key} {
+      height: map-get($icon-sizes, $key);
 
+      > img,
+      > svg {
+        width: map-get($icon-sizes, $key);
+        height: map-get($icon-sizes, $key);
+      }
+    }
+  }
+}
+
+
+.#{$namespace}-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -8,14 +21,27 @@
   line-height: $base-line-height;
   height: $base-line-height;
 
+  font-size: inherit;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  vertical-align: top;
+
   > img,
   > svg {
     width: map-get($icon-sizes, normal);
     height: map-get($icon-sizes, normal);
   }
 
-  > svg path {
-    fill: inherit;
+  &[aria-busy='true'] {
+    animation: pulsate 2s infinite linear;
+  }
+
+  &:not(&--color) {
+    > svg g,
+    > svg path {
+      fill: inherit;
+    }
   }
 
   &--inline {
@@ -50,18 +76,5 @@
   }
 }
 
-@mixin generate-icon-sizes {
-  @each $key, $value in $icon-sizes {
-    .#{$namespace}-icon--#{$key} {
-      height: map-get($icon-sizes, $key);
-
-      > img,
-      > svg {
-        width: map-get($icon-sizes, $key);
-        height: map-get($icon-sizes, $key);
-      }
-    }
-  }
-}
 
 @include generate-icon-sizes;
