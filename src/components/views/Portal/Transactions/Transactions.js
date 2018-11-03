@@ -3,7 +3,7 @@
 import React from 'react';
 import { FormattedDate } from 'react-intl';
 
-import { THEME_PREFIX } from "src/constants";
+import { THEME_PREFIX } from 'src/constants';
 
 import { Table } from '@ui';
 
@@ -34,7 +34,8 @@ const columns = [
   },
 ];
 
-const Transactions = ({ MSGTransactions }: Props) => console.log(MSGTransactions) || (
+const Transactions = ({ MSGTransactions }: Props) =>
+  console.log(MSGTransactions) || (
     <div className={baseClass}>
       <h3>{MSGTransactions}</h3>
       <Table

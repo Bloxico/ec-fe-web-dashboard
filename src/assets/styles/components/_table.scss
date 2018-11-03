@@ -1,10 +1,10 @@
 $table-border: none !default;
 $table-background: transparent !default;
-$table-background-striped-odd: map-get($background-colors, 'black') !default;
+$table-background-striped-odd: map-get($background-colors, "black") !default;
 // TODO@prebla
-$table-background-striped-even: #11152E;
-$table-background-highlight: map-get($background-colors, 'body') !default;
-$table-resizing-border-color: map-get($border-colors, 'normal') !default;
+$table-background-striped-even: #11152e;
+$table-background-highlight: map-get($background-colors, "body") !default;
+$table-resizing-border-color: map-get($border-colors, "normal") !default;
 
 $table-header-groups-background: none !default;
 $table-header-groups-border: none !default;
@@ -15,84 +15,101 @@ $table-header-filters-cell-border: (
   side: right,
   width: 1px,
   style: solid,
-  color: black,
+  color: black
 ) !default;
-$table-header-cell-padding: rhythm(.75) rhythm(1) !default;
+$table-header-cell-padding: rhythm(0.75) rhythm(1) !default;
 $table-header-cell-align: left !default;
-$table-header-cell-font-size: map-get($font-sizes, 'tiny') !default;
+$table-header-cell-font-size: map-get($font-sizes, "tiny") !default;
 $table-header-cell-text-transform: uppercase !default;
-$table-header-cell-color: map-get($text-colors, 'dark') !default;
+$table-header-cell-color: map-get($text-colors, "dark") !default;
 $table-header-cell-border: (
   side: right,
   width: 1px,
   style: dashed,
-  color: transparent,
+  color: transparent
 ) !default;
-$table-header-cell-resizing-border-color: map-get($border-colors, 'light') !default;
-$table-header-cell-transition: box-shadow .3s cubic-bezier(0.250, 0.460, 0.450, 0.940) !default;
+$table-header-cell-resizing-border-color: map-get(
+  $border-colors,
+  "light"
+) !default;
+$table-header-cell-transition: box-shadow 0.3s
+  cubic-bezier(0.25, 0.46, 0.45, 0.94) !default;
 $table-header-cell-shadow: none !default;
 $table-header-cell-sort-asc-background: (
-  image: svg-url((), '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/><path fill="none" d="M0 0h24v24H0z"/></svg>'),
+  image:
+    svg-url(
+      (),
+      '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/><path fill="none" d="M0 0h24v24H0z"/></svg>'
+    ),
   color: transparent,
   repeat: no-repeat,
   position: right center,
-  size: 20px,
+  size: 20px
 ) !default;
 $table-header-cell-sort-desc-background: (
-  image: svg-url((), '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg>'),
+  image:
+    svg-url(
+      (),
+      '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg>'
+    ),
   color: transparent,
   repeat: no-repeat,
   position: right center,
-  size: 20px,
+  size: 20px
 ) !default;
 $table-header-resizer-width: 6px !default;
 $table-header-resizer-border: (
   side: right,
   width: 1px,
   style: dashed,
-  color: map-get($border-colors, 'normal'),
+  color: map-get($border-colors, "normal")
 ) !default;
 
-$table-body-background: map-get($background-colors, 'window') !default;
+$table-body-background: map-get($background-colors, "window") !default;
 $table-body-row-group-border: none !default;
 $table-body-cell-border: (
   side: right,
   width: 1px,
   style: dashed,
-  color: transparent,
+  color: transparent
 ) !default;
-$table-body-row-cell-padding: rhythm(.75) rhythm(1) !default;
-$table-body-row-cell-transition: .3s ease !default;
+$table-body-row-cell-padding: rhythm(0.75) rhythm(1) !default;
+$table-body-row-cell-transition: 0.3s ease !default;
 
 $table-foot-shadow: none !default;
 $table-foot-cell-border: none !default;
 
 $table-pagination-height: rhythm(2.5) !default;
-$table-pagination-padding: rhythm(.5) 0 !default;
-$table-pagination-font-size: map-get($font-sizes, 'small') !default;
-$table-pagination-color: map-get($text-colors, 'normal') !default;
+$table-pagination-padding: rhythm(0.5) 0 !default;
+$table-pagination-font-size: map-get($font-sizes, "small") !default;
+$table-pagination-color: map-get($text-colors, "normal") !default;
 $table-pagination-shadow: none !default;
 $table-pagination-border: none !default;
-$table-pagination-prev-icon: svg-url((), '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/><path fill="none" d="M0 0h24v24H0z"/></svg>') !default;
-$table-pagination-next-icon: svg-url((), '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"/><path fill="none" d="M0 0h24v24H0z"/></svg>') !default;
+$table-pagination-prev-icon: svg-url(
+  (),
+  '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/><path fill="none" d="M0 0h24v24H0z"/></svg>'
+) !default;
+$table-pagination-next-icon: svg-url(
+  (),
+  '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"/><path fill="none" d="M0 0h24v24H0z"/></svg>'
+) !default;
 $table-pagination-page-info-margin: 0 !default;
 $table-pagination-page-info-padding: 0 rhythm(1) !default;
 $table-pagination-page-size-margin: 0 !default;
 $table-pagination-page-size-padding: 0 rhythm(1) !default;
 
-$table-loading-background: color('white', 'alpha', 80) !default;
-$table-loading-transition: all .3s ease !default;
-$table-loading-font-size: map-get($font-sizes, 'normal') !default;
-$table-loading-color: map-get($text-colors, 'normal') !default;
-$table-loading-transition: all .3s cubic-bezier(0.250, 0.460, 0.450, 0.940) !default;
+$table-loading-background: color("white", "alpha", 80) !default;
+$table-loading-transition: all 0.3s ease !default;
+$table-loading-font-size: map-get($font-sizes, "normal") !default;
+$table-loading-color: map-get($text-colors, "normal") !default;
+$table-loading-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !default;
 
-$table-empty-background: color('white', 'alpha', 80) !default;
-$table-empty-transition: all .3s ease !default;
-$table-empty-color: map-get($text-colors, 'normal') !default;
+$table-empty-background: color("white", "alpha", 80) !default;
+$table-empty-transition: all 0.3s ease !default;
+$table-empty-color: map-get($text-colors, "normal") !default;
 
 //todo@prebla: Implement this, when needed
 //$table-pivot: null !default;
-
 
 @mixin input-select-style() {
   input {
@@ -103,7 +120,6 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
     @extend .#{$namespace}-select;
   }
 }
-
 
 ///
 /// Wrapper
@@ -156,7 +172,6 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
     }
   }
 }
-
 
 ///
 /// Header
@@ -247,7 +262,7 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
     &:hover::before {
       @include set-border($table-header-resizer-border);
 
-      content: '';
+      content: "";
       display: inline-block;
       position: absolute;
       top: 0;
@@ -263,7 +278,6 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
     display: none;
   }
 }
-
 
 ///
 /// Body
@@ -299,7 +313,6 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
   }
 }
 
-
 ///
 /// Rows & Cells
 ///
@@ -331,12 +344,11 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
       width: 0 !important;
       min-width: 0 !important;
       padding: 0 !important;
-      border:0 !important;
+      border: 0 !important;
       opacity: 0 !important;
     }
   }
 }
-
 
 ///
 /// Footer
@@ -352,11 +364,10 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
     @include set-border($table-foot-cell-border);
 
     &:last-child {
-      border-right:0;
+      border-right: 0;
     }
   }
 }
-
 
 ///
 /// Pagination
@@ -367,7 +378,7 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
   @include set-border($table-pagination-border);
 
   z-index: 1;
-  display:flex;
+  display: flex;
   justify-content: space-between;
   align-items: stretch;
   flex-wrap: wrap;
@@ -398,7 +409,12 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
 
   .-previous {
     .-btn {
-      @include icon($table-pagination-prev-icon, (pseudo: true));
+      @include icon(
+        $table-pagination-prev-icon,
+        (
+          pseudo: true
+        )
+      );
     }
 
     justify-content: flex-end;
@@ -406,7 +422,12 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
 
   .-next {
     .-btn {
-      @include icon($table-pagination-next-icon, (pseudo: true));
+      @include icon(
+        $table-pagination-next-icon,
+        (
+          pseudo: true
+        )
+      );
     }
 
     justify-content: flex-start;
@@ -446,7 +467,6 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
   }
 }
 
-
 ///
 /// Empty table
 ///
@@ -467,7 +487,6 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
   color: $table-empty-color;
   pointer-events: none;
 }
-
 
 ///
 /// Loading state
@@ -511,7 +530,6 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
   }
 }
 
-
 ///
 /// Pivot
 ///
@@ -524,7 +542,7 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
 
     .rt-header-pivot:after,
     .rt-header-pivot:before {
-      content: ' ';
+      content: " ";
       position: absolute;
       left: 100%;
       top: 50%;
@@ -536,7 +554,7 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
 
     .rt-header-pivot:after {
       border-color: rgba(255, 255, 255, 0);
-      border-left-color: #FFF;
+      border-left-color: #fff;
       border-width: 8px;
       margin-top: -8px;
     }
@@ -551,23 +569,23 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
 
   .rt-expander {
     display: inline-block;
-    position:relative;
+    position: relative;
     margin: 0;
     color: transparent;
     margin: 0 10px;
 
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       width: 0;
       height: 0;
-      top:50%;
-      left:50%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%) rotate(-90deg);
-      border-left: (7px * .72) solid transparent;
-      border-right: (7px * .72) solid transparent;
-      border-top: 7px solid color('black', 'alpha', 80);
-      transition: all .3s cubic-bezier(0.175,  0.885, 0.320, 1.275);
+      border-left: (7px * 0.72) solid transparent;
+      border-right: (7px * 0.72) solid transparent;
+      border-top: 7px solid color("black", "alpha", 80);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       cursor: pointer;
     }
 

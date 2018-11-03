@@ -1,4 +1,4 @@
-import * as faker from "faker";
+import * as faker from 'faker';
 
 export const mockTransactions = (length: number) =>
   Array.from({ length }, () => ({
