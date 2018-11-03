@@ -16,7 +16,6 @@ type PropsT = {
   MSGEmail: string,
   MSGPassword: string,
   isLoginInProgress: boolean,
-  MSGLogin: string,
   MSGForgotThePassword: string,
   MSGReset: string,
   requiredIntl: Function,
@@ -28,7 +27,7 @@ const baseClass = `${THEME_PREFIX}-login`;
 const classes = classNames(baseClass);
 
 class Login extends Component<PropsT> {
-  constructor(props) {
+  constructor(props: PropsT) {
     super(props);
     const { requiredIntl, passwordIntl, emailIntl } = props;
     this.validators = {
@@ -43,7 +42,6 @@ class Login extends Component<PropsT> {
       MSGSignIn,
       MSGEmail,
       MSGPassword,
-      MSGLogin,
       MSGForgotThePassword,
       MSGReset,
       handleSubmit,
@@ -80,11 +78,12 @@ class Login extends Component<PropsT> {
 
           <Button
             action="submit"
-            size="full"
+            size="large"
+            width="full"
             type="primary"
             disabled={isLoginInProgress}
           >
-            {MSGLogin}
+            {MSGSignIn}
           </Button>
 
           <footer className={`${baseClass}__footer`}>
