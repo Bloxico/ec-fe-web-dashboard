@@ -3,8 +3,5 @@
   color: inherit;
   text-decoration: inherit;
   cursor: inherit;
-  &:active,
-  &:focus {
-    outline: none;
-  }
-}
+  &:active, &:focus {
+    outline: none; } }

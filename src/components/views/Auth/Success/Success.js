@@ -1,11 +1,10 @@
 // @flow
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { Container, Row, Col } from '@ui';
-import logo from '@images/icon-success.svg';
+import SuccessSVG from '@images/success.svg';
 import { LOGIN_PAGE, THEME_PREFIX } from 'src/constants';
 
 export type Props = {
@@ -16,25 +15,28 @@ export type Props = {
 
 const baseClass = `${THEME_PREFIX}-success`;
 
-const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
+const classes = classNames(baseClass);
+const btnClasses = classNames(
+  `${THEME_PREFIX}-button`,
+  `${THEME_PREFIX}-button--primary`,
+  `${THEME_PREFIX}-button--wide`,
+  `${THEME_PREFIX}-button--large`,
+);
 
 const Success = ({
   MSGSuccess,
   MSGSuccessfullyResetPass,
   MSGSignIn,
 }: Props) => (
-  <Fragment>
-    <Container className={classes}>
-      <Row>
-        <Col>
-          <h1>{MSGSuccess}</h1>
-          <img src={logo} alt="" width="100" />
-          <p>{MSGSuccessfullyResetPass}</p>
-          <Link to={LOGIN_PAGE}>{MSGSignIn}</Link>
-        </Col>
-      </Row>
-    </Container>
-  </Fragment>
+  <div className={classes}>
+    <SuccessSVG />
+    <h4>{MSGSuccess}</h4>
+    <p>{MSGSuccessfullyResetPass}</p>
+    <br />
+    <Link to={LOGIN_PAGE} className={btnClasses}>
+      {MSGSignIn}
+    </Link>
+  </div>
 );
 
 export default Success;

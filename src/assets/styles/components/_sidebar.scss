@@ -1,0 +1,220 @@
+$sidebar-backdrop-background: (
+  color: rgba(0,0,0,0.5),
+) !default;
+
+$sidebar-offset: (
+  top: map-get(map-get($application, header), height),
+) !default;
+$sidebar-width: 380px !default;
+$sidebar-margin: 0 !default;
+$sidebar-padding: rhythm(1.5) !default;
+$sidebar-border: (
+  width: $default-rhythm-border-width,
+  color: rgba(0,0,0, .1),
+  radius: 0
+) !default;
+$sidebar-background: (
+  color: map-get($background-colors, 'window'),
+  clip: padding-box,
+) !default;
+$sidebar-shadow: -2px 0 4px 0 rgba(0,0,0, .15) !default;
+$sidebar-transition: transform .3s ease-out !default;
+
+$sidebar-header-padding: rhythm(1) $sidebar-padding 0 rhythm(1) !default;
+$sidebar-footer-padding: 0 $sidebar-padding rhythm(1) $sidebar-padding !default;
+
+$sidebar-backdrop-z-index: 1010 !default;
+$sidebar-z-index: 1020 !default;
+
+
+@mixin sidebar-offset($top: 0) {
+  $keys: map-keys($sidebar-offset);
+
+  @if nth($keys, 1) == top {
+    top: rhythm(to-lines(map-get($sidebar-offset, top)) + to-lines($top));
+  }
+}
+
+
+@mixin sidebar-backdrop-transition() {
+  &.fade {
+    opacity: 0;
+    transition: opacity .15s linear;
+
+    &.in {
+      opacity: 1;
+    }
+  }
+}
+
+
+@mixin sidebar-transition() {
+  &.fade {
+    transition: all .15s linear;
+
+    .#{$namespace}-sidebar__panel {
+      opacity: 0;
+    }
+
+    &[data-position="left"] {
+      left: 0;
+      right: unset;
+      transform: translateX(-100%);
+    }
+
+    &[data-position="right"] {
+      left: unset;
+      right: -$sidebar-width;
+      transform: translateX(0);
+    }
+
+    &.in {
+      &[data-position="left"] {
+        transform: translateX(0);
+      }
+
+      &[data-position="right"] {
+        transform: translateX(-100%);
+      }
+
+      .#{$namespace}-sidebar__panel {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
+/// sidebar body helper class
+
+body.sidebar-open {
+  overflow: hidden;
+
+  .sidebar {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+
+/// sidebar backdrop
+
+.#{$namespace}-sidebar__backdrop {
+  @include set-background($sidebar-backdrop-background);
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $sidebar-backdrop-z-index;
+
+  @include sidebar-backdrop-transition;
+}
+
+
+/// sidebar wrapper
+
+.#{$namespace}-sidebar {
+  @include set-border($sidebar-border);
+  @include set-background($sidebar-background);
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  //left: 0;
+  //right: unset;
+  outline: 0;
+  overflow: hidden;
+  z-index: $sidebar-z-index;
+  transition: $sidebar-transition;
+  will-change: transform, opacity;
+  //transform: translateX(-100%);
+  -webkit-overflow-scrolling: touch;
+
+  @include sidebar-transition;
+}
+
+
+/// Electron version
+
+.electron:root {
+  .#{$namespace}-sidebar {
+    @include sidebar-offset(map-get(map-get($application, titlebar), height));
+  }
+}
+
+
+/// sidebar
+
+.#{$namespace}-sidebar__panel {
+  position: relative;
+  width: $sidebar-width;
+  height: 100%;
+  margin: $sidebar-margin;
+  overflow-y: scroll;
+}
+
+
+/// sidebar content holder
+
+.#{$namespace}-sidebar-content,
+.#{$namespace}-sidebar__content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  outline: 0;
+  box-shadow: $sidebar-shadow;
+}
+
+
+/// sidebar header
+
+.#{$namespace}-sidebar__header {
+  flex: 0 0 auto;
+  padding: $sidebar-header-padding;
+  text-align: center;
+}
+
+
+/// sidebar body
+
+.#{$namespace}-sidebar__body {
+  flex: 1 1 auto;
+  padding: $sidebar-padding;
+}
+
+
+/// sidebar footer
+
+.#{$namespace}-sidebar__footer {
+  flex: 0 0 auto;
+  padding: $sidebar-footer-padding;
+}
+
+
+/// sidebar types
+
+.#{$namespace}-sidebar--compact {
+  padding: 0;
+  overflow: hidden;
+}
+
+
+/// sidebar content alignment
+
+.#{$namespace}-sidebar--left {
+  text-align: left;
+}
+
+.#{$namespace}-sidebar--right {
+  text-align: right;
+}
+
+.#{$namespace}-sidebar--center {
+  text-align: center;
+}
+

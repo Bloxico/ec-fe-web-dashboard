@@ -44,6 +44,7 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^4.0.8",
+    "react-svg-loader": "^2.1.0",
     "reactstrap": "^6.5.0",
     "recompose": "^0.30.0",
     "redux": "^4.0.0",
@@ -65,18 +66,18 @@
     "test": "node scripts/test.js --env=jsdom",
     "format-js": "./node_modules/.bin/prettier --config=\".prettierrc.json\" --write \"src/**/*.js\" \"config/**/*.js\" \"stories/**/*.js\"",
     "format-scss": "./node_modules/.bin/prettier --config=\".prettierrc-styles.json\" --write \"src/**/*.scss\"",
-    "format": "yarn run format-js && yarn run format-scss",
+    "format": "yarn run format-js",
     "lint": "cross-env NODE_ENV=development eslint --cache --format=node_modules/eslint-formatter-pretty .",
     "lint-prod": "cross-env NODE_ENV=development eslint --cache --config .eslintrc-prod.json --format=node_modules/eslint-formatter-pretty .",
     "lint-fix": "yarn run lint --fix",
-    "lint-styles": "cross-env NODE_ENV=development stylelint src/**/*.css --syntax scss",
+    "lint-styles": "cross-env NODE_ENV=development stylelint 'src/assets/styles/**/*.scss' !'src/assets/styles/vendors/**'",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "husky": {
     "hooks": {
       "pre-commit": "yarn run format",
-      "pre-push": "yarn run lint-prod && yarn run lint-styles"
+      "pre-push": "yarn run lint-prod"
     }
   },
   "jest": {
@@ -139,6 +140,8 @@
     "stylelint": "^9.5.0",
     "stylelint-config-prettier": "^4.0.0",
     "stylelint-config-recommended": "^2.1.0",
-    "stylelint-config-standard": "^18.2.0"
+    "stylelint-config-sass-guidelines": "^5.2.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.3.2"
   }
 }

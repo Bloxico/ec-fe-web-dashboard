@@ -11,8 +11,6 @@ import ModalManager from 'src/components/views/common/ModalManager';
 import Auth from './Auth';
 import Portal from './Portal';
 
-import './App.scss';
-
 const baseClass = `${THEME_PREFIX}-app`;
 
 const App = ({ store, history }: { store: StateT, history: Object }) => (

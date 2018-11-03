@@ -7,30 +7,16 @@
 // Apply a transform sent as a complete string.
 
 @mixin apply-transform($transform) {
-  @include experimental(
-    transform,
-    $transform,
-    -moz,
-    -webkit,
-    -o,
-    not(-ms),
-    not(-khtml),
-    official
+  @include experimental(transform, $transform,
+    -moz, -webkit, -o, not(-ms), not(-khtml), official
   );
 }
 
 // Apply a transform-origin sent as a complete string.
 
 @mixin apply-origin($origin) {
-  @include experimental(
-    transform-origin,
-    $origin,
-    -moz,
-    -webkit,
-    -o,
-    not(-ms),
-    not(-khtml),
-    official
+  @include experimental(transform-origin, $origin,
+    -moz, -webkit, -o, not(-ms), not(-khtml), official
   );
 }
 
@@ -41,12 +27,12 @@
 @mixin transform-origin($originx: 50%, $originy: 50%) {
   @if $originx or $originy {
     @if $originy {
-      @include apply-origin($originx or 50% $originy);
-    } @else {
-      @include apply-origin($originx);
-    }
+       @include apply-origin($originx or 50% $originy);
+     } @else {
+       @include apply-origin($originx);
+     }
   }
-}
+} 
 
 // A full transform mixin with everything you could want
 //
@@ -64,8 +50,7 @@
   $originx: false,
   $originy: false
 ) {
-  $transform: scale($scale) rotate($rotate) translate($transx, $transy)
-    skew($skewx, $skewy);
+  $transform : scale($scale) rotate($rotate) translate($transx, $transy) skew($skewx, $skewy);
   @include apply-transform($transform);
   @include transform-origin($originx, $originy);
 }

@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import classNames from 'classnames';
 
-import { Form, FormField, Button, Container, Row, Col } from '@ui';
+import Header from '@partials/Header';
+import { Form, FormField, Button } from '@ui';
 import { THEME_PREFIX } from 'src/constants';
 
 export type Props = {
@@ -29,7 +30,7 @@ export type Props = {
 const baseClass = `${THEME_PREFIX}-register`;
 
 class Register extends Component<Props> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     const {
       requiredIntl,
@@ -50,6 +51,7 @@ class Register extends Component<Props> {
         matchIntl(value, this.passwordField.current.value),
     };
   }
+
   render() {
     const {
       MSGCreateAnAccount,
@@ -73,84 +75,77 @@ class Register extends Component<Props> {
       matchValidator,
     } = this.validators;
 
-    const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
+    const classes = classNames(baseClass);
 
     return (
-      <Container>
-        <Row>
-          <Col sm={{ size: 4, offset: 4 }} xs={{ size: 10, offset: 1 }}>
-            <div className={classes}>
-              <h1>{MSGCreateAnAccount}</h1>
-              <Form onSubmit={handleSubmit(handleRegistration)}>
-                {/* TODO@martins add validatiors */}
-                <Field
-                  placeholder={MSGEmail}
-                  type="email"
-                  component={FormField}
-                  name="email"
-                  width="full"
-                  validate={[requiredValidator, emailValidator]}
-                />
-                <Field
-                  placeholder={MSGPassword}
-                  type="password"
-                  component={FormField}
-                  name="password"
-                  width="full"
-                  validate={[requiredValidator, passwordValidator]}
-                  ref={this.passwordField}
-                />
-                <Field
-                  placeholder={MSGRepeatPassword}
-                  type="password"
-                  component={FormField}
-                  name="matchPassword"
-                  width="full"
-                  toMatch="12345678"
-                  validate={[
-                    requiredValidator,
-                    passwordValidator,
-                    matchValidator,
-                  ]}
-                />
-                <Field
-                  placeholder={MSGRegion}
-                  type="text"
-                  component={FormField}
-                  name="regionName"
-                  width="full"
-                  validate={[requiredValidator]}
-                />
+      <div className={classes}>
+        <Header title={MSGCreateAnAccount} />
 
-                <Field
-                  placeholder={MSGCity}
-                  type="text"
-                  component={FormField}
-                  name="city"
-                  width="full"
-                  validate={[requiredValidator]}
-                />
-                <Field
-                  placeholder={MSGNicknameOptional}
-                  type="text"
-                  component={FormField}
-                  name="nickname"
-                  width="full"
-                  validate={[alphanumericValidator]}
-                />
-                <Button
-                  size="full"
-                  action="submit"
-                  type="primary"
-                  disabled={isRegistrationInProgress}
-                >
-                  {MSGContinue}
-                </Button>
-              </Form>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+        <Form onSubmit={handleSubmit(handleRegistration)}>
+          {/* TODO@martins add validatiors */}
+          <Field
+            placeholder={MSGEmail}
+            type="email"
+            component={FormField}
+            name="email"
+            width="full"
+            validate={[requiredValidator, emailValidator]}
+          />
+          <Field
+            placeholder={MSGPassword}
+            type="password"
+            component={FormField}
+            name="password"
+            width="full"
+            validate={[requiredValidator, passwordValidator]}
+            ref={this.passwordField}
+          />
+          <Field
+            placeholder={MSGRepeatPassword}
+            type="password"
+            component={FormField}
+            name="matchPassword"
+            width="full"
+            toMatch="12345678"
+            validate={[requiredValidator, passwordValidator, matchValidator]}
+          />
+          <Field
+            placeholder={MSGRegion}
+            type="text"
+            component={FormField}
+            name="regionName"
+            width="full"
+            validate={[requiredValidator]}
+          />
+
+          <Field
+            placeholder={MSGCity}
+            type="text"
+            component={FormField}
+            name="city"
+            width="full"
+            validate={[requiredValidator]}
+          />
+          <Field
+            placeholder={MSGNicknameOptional}
+            type="text"
+            component={FormField}
+            name="nickname"
+            width="full"
+            validate={[alphanumericValidator]}
+          />
+
+          <Button
+            type="primary"
+            size="large"
+            width="full"
+            action="submit"
+            disabled={isRegistrationInProgress}
+          >
+            {MSGContinue}
+          </Button>
+        </Form>
+      </div>
     );
   }
 }

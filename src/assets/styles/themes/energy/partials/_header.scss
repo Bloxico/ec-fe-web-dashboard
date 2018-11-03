@@ -1,0 +1,22 @@
+$header-margin: 0 0 rhythm(2) 0 !default;
+$header-title-padding: rhythm(.25) rhythm(1.5) !default;
+
+.#{$namespace}-header {
+  position: relative;
+  margin: $header-margin;
+
+  &__title {
+    width: 100%;
+    margin: 0;
+    padding: $header-title-padding;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  &__action {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+}

@@ -5,8 +5,9 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import { THEME_PREFIX } from 'src/constants';
 
-const baseClass = 'enrg-label';
+const baseClass = `${THEME_PREFIX}-label`;
 
 type LabelWidths = 'auto' | 'wide' | 'fixed' | 'full';
 
