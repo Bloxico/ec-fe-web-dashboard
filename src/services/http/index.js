@@ -1,6 +1,6 @@
 // @flow
 
-import { API_URL } from "src/constants";
+import { API_URL } from 'src/constants';
 
 import http from './http';
 

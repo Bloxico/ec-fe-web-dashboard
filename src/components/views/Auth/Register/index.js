@@ -37,17 +37,16 @@ export default compose(
     form: 'Register',
     // TODO@martins remove
     initialValues: {
-      "city": "string",
-      "email": "string@wawd.cop",
-      "matchPassword": "123123123",
-      "name": "string",
-      "password": "123123123",
-      "regionName": "string"
-    }
+      city: 'string',
+      email: 'string@wawd.cop',
+      matchPassword: '123123123',
+      name: 'string',
+      password: '123123123',
+      regionName: 'string',
+    },
   }),
   withHandlers({
     handleRegistration: ({ register }) => values => {
-
       register(values);
     },
   }),
