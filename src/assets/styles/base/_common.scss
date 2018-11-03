@@ -41,11 +41,11 @@ $scrollbar-thumb-hover: rgba(0, 0, 0, .1) !default;
   text-decoration: none;
 
   box-shadow: #{if(map-get($focus-shadow, inset) == true, inset, '')}
-              map-get($focus-shadow, x)
-              map-get($focus-shadow, y)
-              map-get($focus-shadow, blur)
-              map-get($focus-shadow, spread)
-              map-get($focus-shadow, color);
+    map-get($focus-shadow, x)
+    map-get($focus-shadow, y)
+    map-get($focus-shadow, blur)
+    map-get($focus-shadow, spread)
+    map-get($focus-shadow, color);
 }
 
 
@@ -92,7 +92,7 @@ $scrollbar-thumb-hover: rgba(0, 0, 0, .1) !default;
 
 
 [disabled],
-[aria-disabled="true"] {
+[aria-disabled='true'] {
   @extend %disabled;
 }
 

@@ -40,8 +40,8 @@ $html-kbd-font: normal normal normal $base-font-size $monospace-font-family !def
 $html-kbd-color: map-get($text-colors, 'normal') !default;
 $html-kbd-background: map-get($text-colors, 'body') !default;
 $html-kbd-border: $default-rhythm-border-width $default-rhythm-border-style map-get($border-colors, 'normal') !default;
-$html-kbd-box-shadow: 0 0 0 1px #fff inset !default;
-$html-kbd-text-shadow: 0 1px 0 #fff !default;
+$html-kbd-box-shadow: 0 0 0 1px #ffffff inset !default;
+$html-kbd-text-shadow: 0 1px 0 #ffffff !default;
 
 $html-cite-font: normal normal normal map-get($font-sizes, 'normal') inherit !default;
 $html-cite-color: map-get($text-colors, 'normal') !default;
@@ -245,7 +245,7 @@ hr {
 ///
 abbr,
 acronym {
-	border-bottom: $html-abbr-border;
+  border-bottom: $html-abbr-border;
 }
 
 
@@ -254,9 +254,9 @@ acronym {
 ///
 ///
 address {
-	margin: $html-address-margin;
-	padding: 0;
-	font-style: normal;
+  margin: $html-address-margin;
+  padding: 0;
+  font-style: normal;
 }
 
 
@@ -294,7 +294,7 @@ samp {
 pre {
   display: block;
   margin: $html-pre-margin;
-	white-space: pre;
+  white-space: pre;
 
   code,
   samp {
@@ -324,7 +324,7 @@ kbd {
   padding: $html-code-padding;
   vertical-align: bottom;
   font: $html-kbd-font;
-	white-space: nowrap;
+  white-space: nowrap;
   color: $html-kbd-color;
   border: $html-kbd-border;
   border-radius: $html-code-radius;
@@ -355,7 +355,7 @@ blockquote {
   border: $html-quote-border;
   border-radius: $html-quote-radius;
 
-  &:before {
+  &::before {
     position: absolute;
     display: inline-block;
     width: $html-quote-mark-width;
@@ -364,7 +364,7 @@ blockquote {
     color: $html-quote-mark-color;
   }
 
-  &:before {
+  &::before {
     content: $html-quote-mark-char;
     top: $html-quote-mark-top;
     left: $html-quote-mark-left;
@@ -383,7 +383,7 @@ blockquote {
     font: $html-cite-font;
     color: $html-cite-color;
 
-    &:before {
+    &::before {
       content: $html-cite-mark;
     }
   }

@@ -100,7 +100,8 @@ $transition-scale-exit: transform .2s ease-in-out .2s !default;
       backface-visibility: hidden;
       z-index: 1;
 
-      a, button {
+      a,
+      button {
         pointer-events: none;
       }
     }
@@ -123,7 +124,8 @@ $transition-scale-exit: transform .2s ease-in-out .2s !default;
       transition: $transition-flip-exit;
       z-index: 2;
 
-      a, button {
+      a,
+      button {
         pointer-events: none;
       }
     }
@@ -154,7 +156,8 @@ $transition-scale-exit: transform .2s ease-in-out .2s !default;
       top: 0;
       opacity: 0;
 
-      a, button {
+      a,
+      button {
         pointer-events: none;
       }
     }
@@ -175,7 +178,8 @@ $transition-scale-exit: transform .2s ease-in-out .2s !default;
       transition: $transition-cube-exit;
       opacity: 0;
 
-      a, button {
+      a,
+      button {
         pointer-events: none;
       }
     }

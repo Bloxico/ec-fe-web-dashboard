@@ -38,19 +38,19 @@ $palette-configuration: (
   ),
 
   predefined: (
-    'primary':    #F7F9FC,
-    'secondary':  #C9D0DF,
-    'tertiary':   #A8B2CB,
+    'primary':    #f7f9fc,
+    'secondary':  #c9d0df,
+    'tertiary':   #a8b2cb,
   ),
 
   colors: (
-    'black':      #2A2D33,
-    'white':      #FFFFFF,
-    'red':        #F72D2D,
-    'orange':     #FF9D2E,
-    'green':      #22D682,
-    'cyan':       #0EA5F0,
-    'blue':       #005EBD,
+    'black':      #2a2d33,
+    'white':      #ffffff,
+    'red':        #f72d2d,
+    'orange':     #ff9d2e,
+    'green':      #22d682,
+    'cyan':       #0ea5f0,
+    'blue':       #005ebd,
     'gray':       #292836,
   )
 ) !default;
@@ -70,7 +70,7 @@ $palette-configuration: (
   $blue: round(blue($color));
   $alpha: if($alpha, $alpha, alpha($color));
 
-  @return unquote("rgba(#{$red}, #{$green}, #{$blue}, #{$alpha})");
+  @return unquote('rgba(#{$red}, #{$green}, #{$blue}, #{$alpha})');
 }
 
 
@@ -83,7 +83,7 @@ $palette-configuration: (
 /// @return {color}
 ///
 @function tint($color, $percentage) {
-	@return mix(white, $color, $percentage);
+  @return mix(white, $color, $percentage);
 }
 
 
@@ -96,7 +96,7 @@ $palette-configuration: (
 /// @return {color}
 ///
 @function shade($color, $percentage) {
-	@return mix(black, $color, $percentage);
+  @return mix(black, $color, $percentage);
 }
 
 
@@ -142,19 +142,19 @@ $palette-configuration: (
     $shade: 0;
     $gradients: ();
 
-    $palette: map-merge($palette, ('#{$name}': to-rgba($color, 1.0)));
+    $palette: map-merge($palette, ('#{$name}': to-rgba($color, 1)));
 
     @each $key, $value in $shades {
       $value: to-number($value);
 
       @if $value < 0 {
-        $shade: to-rgba(darken($color, -$value), 1.0);
+        $shade: to-rgba(darken($color, -$value), 1);
       }
       @else if $value > 0 and $value < 1 {
         $shade: to-rgba($color, $value);
       }
       @else {
-        $shade: to-rgba(lighten($color, $value), 1.0);
+        $shade: to-rgba(lighten($color, $value), 1);
       }
 
       $gradients: map-merge($gradients, ('#{$name}--#{$key}': $shade));

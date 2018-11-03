@@ -1,4 +1,4 @@
-@import "../vendors/compass-mixins/compass/functions";
+@import '../vendors/compass-mixins/compass/functions';
 
 
 ///
@@ -185,7 +185,7 @@
     @return map-get($units, $unit) + $value;
   }
 
-  @error "Unknown unit `#{$unit}`.";
+  @error 'Unknown unit `#{$unit}`.';
 }
 
 
@@ -213,7 +213,7 @@
     $character: str-slice($value, $i, $i);
 
     @if not (index(map-keys($numbers), $character) or $character == '.') {
-      @return to-length(if($minus, -$result, $result), str-slice($value, $i))
+      @return to-length(if($minus, -$result, $result), str-slice($value, $i));
     }
 
     @if $character == '.' {
@@ -302,15 +302,15 @@
 /// @return {list}
 ///
 @function compact($vars...) {
-	$list: ();
+  $list: ();
 
-	@each $var in $vars {
-		@if $var {
-			$list: append($list, $var, comma);
-		}
-	}
+  @each $var in $vars {
+    @if $var {
+      $list: append($list, $var, comma);
+    }
+  }
 
-	@return $list;
+  @return $list;
 }
 
 
@@ -393,7 +393,7 @@
   $level: 1;
 
   @each $key, $value in $map {
-    @if type-of($value) == "map" {
+    @if type-of($value) == 'map' {
       $level: max(map-depth($value) + 1, $level);
     }
   }
@@ -457,8 +457,8 @@
   $map: ();
 
   @if $l-keys != $l-values {
-    @warn "There are #{$l-keys} key(s) for #{$l-values} value(s) in the map for `map-zip`. "
-        + "Resulting map will only have #{$min} pairs.";
+    @warn 'There are #{$l-keys} key(s) for #{$l-values} value(s) in the map for `map-zip`. '
+    + 'Resulting map will only have #{$min} pairs.';
   }
 
   @if $min == 0 {
@@ -502,7 +502,7 @@
       @each $key, $value in $current {
 
         // If value is a nested map and same key from map is a nested map as well
-        @if type-of($value) == "map" and type-of(map-get($map, $key)) == "map" {
+        @if type-of($value) == 'map' and type-of(map-get($map, $key)) == 'map' {
           // Recursive extend
           $value: map-extend(map-get($map, $key), $value, true);
         }
@@ -556,7 +556,7 @@
     @if map-has-key($direction-map, $direction) {
       $opposite-directions: append($opposite-directions, unquote(map-get($direction-map, $direction)));
     } @else {
-      @warn "No opposite direction can be found for `#{$direction}`. Direction omitted.";
+      @warn 'No opposite direction can be found for `#{$direction}`. Direction omitted.';
     }
   }
 
@@ -722,7 +722,7 @@
 /// @return {string}
 ///
 @function svg-encode($svg, $safe: false) {
-  $encoded:'';
+  $encoded: '';
   $slice: 2000;
   $index: 0;
   $loops: ceil(str-length($svg)/$slice);
@@ -731,14 +731,14 @@
   @for $i from 1 through $loops {
     $chunk: str-slice($svg, $index, $index + $slice - 1);
 
-    $chunk: str-replace($chunk,'"', '\'');
-    $chunk: str-replace($chunk,'%', '%25');
-    $chunk: str-replace($chunk,'&', '%26');
-    $chunk: str-replace($chunk,'#', '%23');
-    $chunk: str-replace($chunk,'{', '%7B');
-    $chunk: str-replace($chunk,'}', '%7D');
-    $chunk: str-replace($chunk,'<', '%3C');
-    $chunk: str-replace($chunk,'>', '%3E');
+    $chunk: str-replace($chunk, '"', '\'');
+    $chunk: str-replace($chunk, '%', '%25');
+    $chunk: str-replace($chunk, '&', '%26');
+    $chunk: str-replace($chunk, '#', '%23');
+    $chunk: str-replace($chunk, '{', '%7B');
+    $chunk: str-replace($chunk, '}', '%7D');
+    $chunk: str-replace($chunk, '<', '%3C');
+    $chunk: str-replace($chunk, '>', '%3E');
 
     //  The maybe list
     //  Keep size and compile time down (only add on documented fail)
@@ -798,7 +798,7 @@
 
   //  Add missing namespace
   @if not str-index($svg, 'xmlns') {
-    $svg: str-replace($svg, '<svg','<svg xmlns="http://www.w3.org/2000/svg"');
+    $svg: str-replace($svg, '<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
   }
 
   @if $options != null {
@@ -808,7 +808,7 @@
     }
 
     @if map-has-key($options, 'base64') and function-exists('__encode64') {
-      @return url("data:image/svg+xml;base64,#{__encode64($svg)}");
+      @return url('data:image/svg+xml;base64,#{__encode64($svg)}');
     }
   }
 
@@ -820,5 +820,5 @@
   // encode unsafe characters
   $encoded: svg-encode($svg);
 
-  @return url("#{$encoded}");
+  @return url('#{$encoded}');
 }

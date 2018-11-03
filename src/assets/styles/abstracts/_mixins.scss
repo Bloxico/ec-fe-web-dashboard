@@ -262,7 +262,8 @@
           border-color: map-get($border, color);
         }
       }
-        // separate border styling
+
+      // separate border styling
       @else {
         @if index($side, top) != null {
           @include apply-side-rhythm-border(top, $width, $top);
@@ -396,8 +397,10 @@
 ///
 @mixin triangle($direction, $color: currentcolor, $size: 1em) {
   @if not index(top right bottom left, $direction) {
-    @error "Direction must be either `top`, `right`, `bottom` or `left`.";
+    @error 'Direction must be either `top`, `right`, `bottom` or `left`.';
   }
+
+  $perpendicular-borders: $size solid transparent;
 
   display: block;
   width: 0;
@@ -405,8 +408,6 @@
   content: '';
   z-index: 2;
   border-#{opposite-position($direction)}: ($size * 1.5) solid $color;
-
-  $perpendicular-borders: $size solid transparent;
 
   @if $direction == top or $direction == bottom {
     border-left:   $perpendicular-borders;
@@ -478,19 +479,15 @@
     @each $name-1, $value-1 in $value {
       @if type-of($value-1) == map {
         @each $name-2, $value-2 in $value-1 {
-          $result: map-merge($result,
-            (
-              #{inspect('--#{$prefix}#{$name}--#{$name-1}--#{$name-2}')}: #{inspect($value-2)}
-            )
-          );
+          $result: map-merge($result, (
+            #{inspect('--#{$prefix}#{$name}--#{$name-1}--#{$name-2}')}: #{inspect($value-2)}
+          ));
         }
       }
       @else {
-        $result: map-merge($result,
-          (
-            #{inspect('--#{$prefix}#{$name}--#{$name-1}')}: #{inspect($value-1)}
-          )
-        );
+        $result: map-merge($result, (
+          #{inspect('--#{$prefix}#{$name}--#{$name-1}')}: #{inspect($value-1)}
+        ));
       }
     }
   }
@@ -523,7 +520,7 @@
     }
   } @else {
     @error 'No value found for `#{$breakpoint}`. '
-         + 'Please make sure it is defined in `$breakpoints` map.';
+    + 'Please make sure it is defined in `$breakpoints` map.';
   }
 }
 
@@ -545,7 +542,7 @@
 
   @if $screen-sizes == null or length($screen-sizes) == 0 {
     //@debug "Please provide at least one of the available breakpoints: #{$keys}";
-    @error "Please provide at least one of the available breakpoints: #{$keys}";
+    @error 'Please provide at least one of the available breakpoints: #{$keys}';
   }
 
   @each $size in $screen-sizes {
@@ -553,8 +550,8 @@
 
     // if the key doesn't exist in the map
     @if not $bounds {
-      @error "Unfortunately, no value could be retrieved for `#{$size}`. "
-          + "Available breakpoints are: `#{$keys}`.";
+      @error 'Unfortunately, no value could be retrieved for `#{$size}`. '
+      + 'Available breakpoints are: `#{$keys}`.';
     }
 
     $bounds: map-get($breakpoints, $size);
@@ -580,7 +577,7 @@
       $condition: #{inspect($min)} and #{inspect($max)};
     }
     @else {
-      @warn "No min-width or max-width defined.";
+      @warn 'No min-width or max-width defined.';
     }
     //@debug inspect($condition);
 
