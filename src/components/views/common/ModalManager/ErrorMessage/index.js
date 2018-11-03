@@ -12,6 +12,7 @@ const actions = {
   hideModal,
 };
 
+// eslint-disable-next-line
 const mapStateToProps = (state: State) => ({});
 
 export default compose(

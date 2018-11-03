@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ModalManager from './ModalManager';
 
+// TODO@martins Please check if all of these are valid here?
 const mapStateToProps = ({
   modal: {
     modalName,

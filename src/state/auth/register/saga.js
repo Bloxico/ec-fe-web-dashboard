@@ -13,7 +13,7 @@ import * as actions from './actions';
 export function* register$({ payload }): Generator<*, *, *> {
   yield delay(500);
   try {
-    throw new Error({ response: { data: { message: 'Show Modal Error!' } } });
+    // throw new Error({ response: { data: { message: 'Testing modal...' } } });
     yield Http.post('/api/user/registration', payload);
     yield put(push(LOGIN_PAGE));
   } catch ({ response }) {
