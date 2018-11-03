@@ -1,39 +1,67 @@
 // @flow
 
 import React from 'react';
+
 import Modal from 'src/components/ui/Modal';
 import { hideModal } from 'src/state/actions';
+import { MODALS } from 'src/constants';
+import {
+  ModalTypes,
+  ModalSizes,
+  ModalPosition,
+  ModalAlignment,
+} from '@ui/Modal';
 
-import type { ModalAlignment } from 'src/components/ui/Modal/Modal';
+import ErrorMessage from './ErrorMessage';
 
-type PropsT = {
-  modalName: string | undefined,
-  title?: string,
-  hasClose?: boolean,
-  align?: ModalAlignment,
-  data?: any,
-  autoFocus?: boolean,
-  className?: string,
-  footerBtnTxt?: string,
-  onHideActions: Array<Object> | undefined,
-  dispatch: Function,
+interface Props {
+  modalName: string;
+  title?: string;
+  hasClose?: boolean;
+  header?: any;
+  footer?: any;
+  type?: ModalTypes;
+  align?: ModalAlignment;
+  position?: ModalPosition;
+  size?: ModalSizes;
+  data?: any;
+  autoFocus?: boolean;
+  restoreFocus?: boolean;
+  enforceFocus?: boolean;
+  className?: string;
+  onHideActions?: any[];
+  dispatch: Function;
+  headerAlign?: ModalAlignment;
+  sticky?: boolean;
+}
+
+const modals = {
+  [MODALS.ErrorMessage]: ErrorMessage,
 };
 
-const ModalManager = (props: PropsT) => {
+const ModalManager = (props: Props) => {
   const {
     modalName,
-    title,
-    hasClose,
-    align,
-    footerBtnTxt,
-    data,
-    autoFocus,
+    type,
+    title = '',
+    hasClose = true,
+    header = null,
+    footer = null,
+    size = 'small',
+    align = 'center',
+    position = 'top',
+    headerAlign = 'center',
+    data = null,
+    autoFocus = true,
+    restoreFocus = true,
+    enforceFocus = true,
     className,
     onHideActions,
     dispatch,
+    sticky,
   } = props;
 
-  // const ModalContent = modals[modalName];
+  const ModalContent = modals[modalName];
 
   const handleOnHide = () => {
     if (onHideActions) {
@@ -49,26 +77,24 @@ const ModalManager = (props: PropsT) => {
     <Modal
       title={title}
       hasClose={hasClose}
+      header={header}
+      footer={footer}
       show={!!modalName}
       onHide={handleOnHide}
+      type={type}
+      size={size}
       align={align}
-      footerBtnTxt={footerBtnTxt}
+      position={position}
       autoFocus={autoFocus}
+      restoreFocus={restoreFocus}
+      enforceFocus={enforceFocus}
       className={className}
+      sticky={sticky}
+      headerAlign={headerAlign}
     >
-      {data}
+      {ModalContent && <ModalContent {...data} />}
     </Modal>
   );
-};
-
-ModalManager.defaultProps = {
-  title: '',
-  hasClose: false,
-  align: 'center',
-  data: null,
-  autoFocus: false,
-  footerBtnTxt: '',
-  className: undefined,
 };
 
 export default ModalManager;

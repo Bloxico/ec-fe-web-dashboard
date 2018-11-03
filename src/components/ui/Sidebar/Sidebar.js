@@ -1,11 +1,13 @@
 // @flow
 /* eslint react/sort-comp: 0 */
-// TODO@prebla: Implement PortalSidebar without Bootstrap
+
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Modal as BootstrapModal } from 'react-bootstrap';
 
-const baseClass = 'gc-sidebar';
+import { THEME_PREFIX } from 'src/constants';
+
+const baseClass = `${THEME_PREFIX}-sidebar`;
 
 type SidebarTypes = 'compact';
 
@@ -13,7 +15,7 @@ type SidebarAlignment = 'left' | 'right' | 'center';
 
 type SidebarPosition = 'left' | 'right';
 
-type PropsT = {
+type Props = {
   id?: string,
   children: any,
   align?: SidebarAlignment,
@@ -24,7 +26,7 @@ type PropsT = {
   className?: string,
 };
 
-const Panel = props => {
+const Panel = (props: Props) => {
   const { position = 'right' } = props;
 
   return (
@@ -38,7 +40,7 @@ const Panel = props => {
   );
 };
 
-const Wrapper = props => {
+const Wrapper = (props: Props) => {
   const { type } = props;
 
   const classes = classNames(
@@ -51,13 +53,13 @@ const Wrapper = props => {
       {...props}
       // $FlowIssue
       dialogComponentClass={Panel}
-      backdropClassName="gc-sidebar__backdrop"
+      backdropClassName={`${baseClass}__backdrop`}
       dialogClassName={classes}
     />
   );
 };
 
-const Header = props => {
+const Header = (props: Props) => {
   const { type, align = 'left' } = props;
 
   const classes = classNames(
@@ -76,7 +78,7 @@ const Header = props => {
   );
 };
 
-const Body = props => {
+const Body = (props: Props) => {
   const { type, align } = props;
 
   const classes = classNames(
@@ -95,7 +97,7 @@ const Body = props => {
   );
 };
 
-const Footer = props => {
+const Footer = (props: Props) => {
   const { type, align = 'right' } = props;
 
   const classes = classNames(
@@ -115,7 +117,7 @@ const Footer = props => {
   );
 };
 
-class Sidebar extends PureComponent<PropsT> {
+class Sidebar extends PureComponent<Props> {
   static defaultProps = {
     position: 'right',
   };
@@ -126,7 +128,7 @@ class Sidebar extends PureComponent<PropsT> {
 
   handleClose: Function;
 
-  constructor(props: PropsT) {
+  constructor(props: Props) {
     super(props);
 
     this.handleClose = this.handleClose.bind(this);

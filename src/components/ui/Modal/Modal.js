@@ -1,73 +1,183 @@
 // @flow
-/* eslint react/sort-comp: 0 */
 
-import React, { PureComponent } from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
-import {
-  Modal as BootstrapModal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from 'reactstrap';
-import { Button } from '@ui';
+import { Modal as BootstrapModal } from 'react-bootstrap';
 
-const baseClass = 'enrg-modal';
+import Button from '@ui/Button';
+import { THEME_PREFIX } from 'src/constants';
 
+const baseClass = `${THEME_PREFIX}-modal`;
+
+export type ModalTypes = 'compact';
+export type ModalSizes = 'small' | 'medium' | 'large' | 'full' | 'auto';
 export type ModalAlignment = 'left' | 'right' | 'center';
-
 export type ModalPosition = 'top' | 'bottom' | 'middle';
 
-type PropsT = {
-  id?: any,
-  children: any,
-  headerAlign?: ModalAlignment,
-  title?: any,
-  footerBtnTxt?: any,
-  footerAlign?: ModalAlignment,
-  hasClose: boolean,
-  show: boolean,
-  align?: ModalAlignment,
-  position?: ModalPosition,
-  autoFocus?: boolean,
-  onHide?: Function,
-  className?: string,
-};
+interface Props {
+  id?: any;
+  children: any;
+  header?: any;
+  headerAlign?: ModalAlignment;
+  title?: any;
+  footer?: any;
+  footerAlign?: ModalAlignment;
+  hasClose?: boolean;
+  show: boolean;
+  size?: ModalSizes;
+  align?: ModalAlignment;
+  position?: ModalPosition;
+  type?: ModalTypes;
+  autoFocus?: boolean;
+  restoreFocus?: boolean;
+  enforceFocus?: boolean;
+  onHide?: Function;
+  className?: string;
+  sticky?: boolean;
+}
 
-type StateT = {
-  isOpen: boolean,
-};
+interface State {
+  isOpen: boolean;
+}
 
+/**
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
+const Dialog = (props: any) => (
+  <BootstrapModal.Dialog {...props} bsClass={baseClass} />
+);
+
+/**
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 const Wrapper = (props: any) => {
-  const { align, show, autoFocus, onHide, children, className } = props;
+  const {
+    type,
+    size,
+    align,
+    position = 'top',
+    show,
+    autoFocus = true,
+    restoreFocus = true,
+    enforceFocus = true,
+    onHide,
+    children,
+    className,
+    sticky,
+  } = props;
 
   const classes = classNames(
     `${baseClass}__dialog`,
+    type && `${baseClass}--${type}`,
+    size && `${baseClass}--${size}`,
     align && `${baseClass}--${align}`,
-    className,
+    position && `${baseClass}--${position}`,
+    className
   );
 
   if (!show) {
     return null;
   }
 
-  const centered = true;
+  const handleFocus = (modal: any) => {
+    if (!props.autoFocus) {
+      return;
+    }
+
+    const { activeElement } = document;
+    const form = modal.querySelector('form');
+
+    // Auto focus to the first form element if autoFocus is set
+    if (form) {
+      const fields = [...form.elements];
+      const hasActive = fields.find(field => field === activeElement);
+
+      if (!hasActive) {
+        fields[0].focus();
+      }
+    }
+  };
+
+  const backdrop = sticky ? 'static' : undefined;
 
   return (
     <BootstrapModal
-      isOpen={show}
+      show={show}
       autoFocus={autoFocus}
-      toggle={onHide}
-      className={classes}
-      centered={centered}
-      backdropClassName="enrg-modal__backdrop"
+      // @ts-ignore
+      restoreFocus={restoreFocus}
+      enforceFocus={enforceFocus}
+      onHide={onHide}
+      onEntered={handleFocus}
+      backdrop={backdrop}
+      // $FlowIssue
+      dialogComponentClass={Dialog}
+      backdropClassName={`${baseClass}__backdrop`}
+      dialogClassName={classes}
     >
       {children}
     </BootstrapModal>
   );
 };
 
+/**
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
+const Header = (props: any) => {
+  const { type, headerAlign, hasClose = true, children } = props;
+
+  const classes = classNames(
+    `${baseClass}__header`,
+    type && `${baseClass}--${type}`,
+    headerAlign && `${baseClass}--${headerAlign}`
+  );
+
+  return (
+    <BootstrapModal.Header closeButton={hasClose} bsClass={classes}>
+      {children}
+    </BootstrapModal.Header>
+  );
+};
+
+/**
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
+const Title = (props: any) => {
+  const { align, children } = props;
+
+  const classes = classNames(
+    `${baseClass}__title`,
+    align && `${baseClass}--${align}`
+  );
+
+  return (
+    // @ts-ignore
+    <BootstrapModal.Title componentClass="h3" bsClass={classes}>
+      {children}
+    </BootstrapModal.Title>
+  );
+};
+
+/**
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 const Close = (props: any) => {
-  const { text = '', onClick } = props;
+  const { text = 'Close', onClick } = props;
 
   const classes = classNames(`${baseClass}__close`);
 
@@ -78,109 +188,96 @@ const Close = (props: any) => {
   );
 };
 
-const FooterClose = (props: any) => {
-  const { text, onClick } = props;
-
-  return (
-    <Button type="full" onClick={onClick}>
-      {text}
-    </Button>
-  );
-};
-
-const Header = (props: any) => {
-  const { align, onHide, children, close } = props;
-
-  const classes = classNames(
-    `${baseClass}__header`,
-    align && `${baseClass}--${align}`,
-  );
-
-  return (
-    <ModalHeader
-      close={close}
-      className={classes}
-      align={align}
-      toggle={onHide}
-    >
-      {children}
-    </ModalHeader>
-  );
-};
-
-const Title = (props: any) => {
-  const { align, children } = props;
-
-  const classes = classNames(
-    `${baseClass}__title`,
-    align && `${baseClass}--${align}`,
-  );
-
-  return (
-    <div className={classes} align={align}>
-      {children}
-    </div>
-  );
-};
-
+/**
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 const Body = (props: any) => {
-  const { align, children } = props;
+  const { type, align, children } = props;
 
   const classes = classNames(
     `${baseClass}__body`,
-    align && `${baseClass}--${align}`,
+    type && `${baseClass}--${type}`,
+    align && `${baseClass}--${align}`
   );
 
   return (
-    <ModalBody align={align} className={classes}>
-      {children}
-    </ModalBody>
+    // @ts-ignore
+    <BootstrapModal.Body bsClass={classes}>{children}</BootstrapModal.Body>
   );
 };
 
+/**
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 const Footer = (props: any) => {
-  const { align, children } = props;
-
+  const { type, footerAlign, className, children } = props;
   const classes = classNames(
     `${baseClass}__footer`,
-    align && `${baseClass}--${align}`,
+    type && `${baseClass}--${type}`,
+    footerAlign && `${baseClass}--${footerAlign}`,
+    className
   );
 
   return (
-    <ModalFooter className={classes} align={align}>
+    // @ts-ignore
+    <BootstrapModal.Footer componentClass="footer" bsClass={classes}>
       {children}
-    </ModalFooter>
+    </BootstrapModal.Footer>
   );
 };
 
-class Modal extends PureComponent<PropsT, StateT> {
-  constructor(props: PropsT) {
+/**
+ *
+ *
+ */
+class Modal extends React.PureComponent<Props, State> {
+  static defaultProps = {
+    hasClose: true,
+  };
+
+  static Header: any;
+  static Title: any;
+  static Body: any;
+  static Footer: any;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = { isOpen: props.show };
   }
 
-  componentWillReceiveProps(nextProps: PropsT) {
+  componentWillReceiveProps(nextProps: Props) {
     if (this.props.show !== nextProps.show) {
       this.setState(state => ({ ...state, isOpen: nextProps.show }));
     }
   }
 
+  handleClose = () => {
+    this.setState(state => ({ ...state, isOpen: false }));
+    this.handleHide();
+  };
+
   handleHide = () => {
     const { id = Symbol('Modal'), onHide = f => f } = this.props;
 
     onHide(id);
-    this.setState(state => ({ ...state, isOpen: false }));
   };
 
   render() {
     const {
-      align,
+      type,
       title,
+      header,
       hasClose,
-      footerBtnTxt,
+      footer,
       children,
-      footerAlign,
+      headerAlign,
     } = this.props;
 
     return (
@@ -189,20 +286,25 @@ class Modal extends PureComponent<PropsT, StateT> {
         show={this.state.isOpen}
         onHide={this.handleHide}
       >
-        <Header onHide={this.handleHide} close={null} align={align}>
-          <Title align={align}>{title}</Title>
-          {hasClose && <Close onClick={this.handleHide} />}
-        </Header>
-
-        <Body align={align}>{children}</Body>
-        <Footer align={footerAlign}>
-          {footerBtnTxt && (
-            <FooterClose text={footerBtnTxt} onClick={this.handleHide} />
+        {header}
+        {!header && !title && hasClose && <Close onClick={this.handleClose} />}
+        {!header &&
+          title &&
+          hasClose && (
+            <Header headerAlign={headerAlign} hasClose={hasClose}>
+              <Title headerAlign={headerAlign}>{title}</Title>
+            </Header>
           )}
-        </Footer>
+        <Body type={type}>{children}</Body>
+        {footer}
       </Wrapper>
     );
   }
 }
+
+Modal.Header = Header;
+Modal.Title = Title;
+Modal.Body = Body;
+Modal.Footer = Footer;
 
 export default Modal;
