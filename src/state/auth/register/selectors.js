@@ -1,6 +1,7 @@
 // @flow
 import { createSelector } from 'reselect';
 
+// TODO move this to upper folder
 const getAuth = ({ auth }) => auth;
 
 const getRegister = createSelector(getAuth, ({ register }) => register);
@@ -12,9 +13,7 @@ export const isRegisterInProgress = createSelector(
 
 export const getRegions = createSelector(getRegister, ({ regions }) => regions);
 
-// TODO@use reselect
-export const getRegisterEmail = ({
-  auth: {
-    register: { email },
-  },
-}) => ({ registerEmail: email });
+export const getRegisterEmail = createSelector(
+  getRegister,
+  ({ email }) => email,
+);
