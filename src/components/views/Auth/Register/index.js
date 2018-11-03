@@ -29,17 +29,25 @@ const actions = {
 
 export default compose(
   injectIntl,
-  reduxForm({
-    form: 'Register',
-  }),
   connect(
     mapStateToProps,
     actions,
   ),
+  reduxForm({
+    form: 'Register',
+    // TODO@martins remove
+    initialValues: {
+      "city": "string",
+      "email": "string@wawd.cop",
+      "matchPassword": "123123123",
+      "name": "string",
+      "password": "123123123",
+      "regionName": "string"
+    }
+  }),
   withHandlers({
     handleRegistration: ({ register }) => values => {
-      // eslint-disable-next-line
-      console.log(values);
+
       register(values);
     },
   }),

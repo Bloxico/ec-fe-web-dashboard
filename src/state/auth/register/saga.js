@@ -4,10 +4,9 @@ import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
 import { http } from 'src/services/http';
-import { VERIFY_PAGE, API_URL } from 'src/constants';
-import { showModal } from 'src/state/actions';
-import { getIntl } from 'src/components/wrappers/IntlProvider';
-import messages from 'src/components/views/common/ModalManager/messages';
+import { VERIFY_PAGE } from 'src/constants';
+// import { showModal } from 'src/state/actions';
+// import { getIntl } from 'src/components/wrappers/IntlProvider';
 
 import * as actions from './actions';
 
@@ -15,7 +14,7 @@ export function* fetchRegions$(): Generator<*, *, *> {
   try {
     const {
       data: { regions },
-    } = yield http.get(`${API_URL}/user/registrationData`);
+    } = yield http.get(`user/registrationData`);
 
     yield put(actions.fetchRegionsSuccess({ regions }));
   } catch ({ response }) {
@@ -25,34 +24,26 @@ export function* fetchRegions$(): Generator<*, *, *> {
 
 export function* register$({ payload }): Generator<*, *, *> {
   try {
-    yield http.post('/api/user/registration', payload);
+
+    yield http.post('user/registration', payload);
 
     yield put(push(VERIFY_PAGE));
   } catch ({ response }) {
-    const { formatMessage } = yield getIntl;
 
-    let errorTitle = formatMessage(messages.serverError);
-    let errorContent = formatMessage(messages.somethingWentWrong);
-    let btnText = formatMessage(messages.damnDevelopers);
+    if( response.data ) {
 
-    if (response !== undefined) {
-      errorContent = response.data.message;
-      btnText = formatMessage(messages.gotIt);
-      errorTitle = formatMessage(messages.tryAgain);
+      if(response.data) {
+        const { validationErrorMessages } = response.data;
+
+        // eslint-disable-next-line
+        console.log(validationErrorMessages);
+      }
     }
 
-    yield put(
-      showModal({
-        modalName: 'Register',
-        title: errorTitle,
-        align: 'center',
-        footerBtnTxt: btnText,
-        data: errorContent,
-      }),
-    );
+    // TODO@martins show error modal
   }
 
-  yield put(actions.clearRegisterState());
+  // yield put(actions.clearRegisterState());
 }
 
 // $FlowIssue
