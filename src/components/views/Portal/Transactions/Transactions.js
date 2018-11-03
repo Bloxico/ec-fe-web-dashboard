@@ -34,16 +34,15 @@ const columns = [
   },
 ];
 
-const Transactions = ({ MSGTransactions }: Props) =>
-  console.log(MSGTransactions) || (
-    <div className={baseClass}>
-      <h3>{MSGTransactions}</h3>
-      <Table
-        showPagination={false}
-        data={mockTransactions(10)}
-        columns={columns}
-      />
-    </div>
-  );
+const Transactions = ({ MSGTransactions }: Props) => (
+  <div className={baseClass}>
+    <h3>{MSGTransactions}</h3>
+    <Table
+      showPagination={false}
+      data={mockTransactions(10)}
+      columns={columns}
+    />
+  </div>
+);
 
 export default Transactions;
