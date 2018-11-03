@@ -5,7 +5,7 @@ import ReactTable from 'react-table';
 import classNames from 'classnames';
 import Loader from '../Loader';
 
-const baseClass = 'gc-table';
+const baseClass = 'enrg-table';
 
 type PropsT = any;
 

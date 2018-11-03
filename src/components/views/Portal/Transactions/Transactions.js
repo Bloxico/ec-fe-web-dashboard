@@ -1,46 +1,42 @@
 // @flow
 
 import React from 'react';
-import * as faker from 'faker';
+import { FormattedDate } from 'react-intl';
+
+import { THEME_PREFIX } from "src/constants";
 
 import { Table } from '@ui';
 
+import { mockTransactions } from 'src/mocks/transactions';
+
 export type Props = {
-  MSGDTransactions: string,
+  MSGTransactions: string,
 };
 
-const baseClass = 'gc-transactions';
+const baseClass = `${THEME_PREFIX}-transactions`;
 
-export const mockTransactions = (length: number) =>
-  Array.from({ length }, () => ({
-    amount: `ENRG ${faker.random.number({ min: 0, max: 50000 })}`,
-    date: faker.date.past(),
-    source: 'Ring-ring',
-  }));
+const columns = [
+  {
+    Header: 'Amount',
+    accessor: 'amount',
+    id: 'amount',
+    Cell: ({ value }: any) => <span>{value}</span>,
+  },
+  {
+    Header: 'Date',
+    accessor: 'date',
+    Cell: ({ value }: any) => <FormattedDate v value={value} />,
+  },
+  {
+    Header: 'Source',
+    accessor: 'source',
+    Cell: ({ value }: any) => <span>{value}</span>,
+  },
+];
 
-const Transactions = ({ MSGDTransactions }: Props) => {
-  const columns = [
-    {
-      Header: 'Amount',
-      accessor: 'amount',
-      id: 'amount',
-      Cell: ({ value }: any) => <span>{value}</span>,
-    },
-    {
-      Header: 'Date',
-      accessor: 'date',
-      Cell: ({ value }: any) => <span>{value.toString()}</span>,
-    },
-    {
-      Header: 'Source',
-      accessor: 'source',
-      Cell: ({ value }: any) => <span>{value}</span>,
-    },
-  ];
-
-  return (
+const Transactions = ({ MSGTransactions }: Props) => console.log(MSGTransactions) || (
     <div className={baseClass}>
-      {MSGDTransactions}
+      <h3>{MSGTransactions}</h3>
       <Table
         showPagination={false}
         data={mockTransactions(10)}
@@ -48,6 +44,5 @@ const Transactions = ({ MSGDTransactions }: Props) => {
       />
     </div>
   );
-};
 
 export default Transactions;
