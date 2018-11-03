@@ -1,7 +1,7 @@
 $html-link-margin: 0;
 $html-link-padding: 0;
 $html-link-font-family: $ui-font-family;
-$html-link-font-size: map-get($font-sizes, default);
+$html-link-font-size: inherit;
 $html-link-font-weight: normal !default;
 $html-link-color: map-get($text-colors, link);
 $html-link-background: transparent;

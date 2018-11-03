@@ -28,4 +28,8 @@ export default defineMessages({
     id: 'resendCode',
     defaultMessage: 'Resend code',
   },
+  newPassword: {
+    id: 'newPassword',
+    defaultMessage: 'New password',
+  },
 });

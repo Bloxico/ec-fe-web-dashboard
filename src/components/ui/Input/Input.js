@@ -73,7 +73,7 @@ class Input extends PureComponent<PropsT, StateT> {
   handleKeyDown: Function;
 
   handleKeyDown = (e: any) => {
-    const { type, onKeyDown = f => f } = this.props;
+    const { type, minLength, maxLength, onKeyDown = f => f } = this.props;
 
     if (type === 'number') {
       const specials = [
@@ -94,6 +94,7 @@ class Input extends PureComponent<PropsT, StateT> {
       ];
 
       const {
+        target,
         keyCode: code,
         ctrlKey: ctrl,
         shiftKey: shift,
@@ -110,6 +111,10 @@ class Input extends PureComponent<PropsT, StateT> {
 
       if ((shift || (code < 48 || code > 57)) && (code < 96 || code > 105)) {
         e.preventDefault(); // shift, not (numpad) numbers
+      }
+
+      if (maxLength && target.value.length >= maxLength) {
+        e.preventDefault();
       }
     }
 

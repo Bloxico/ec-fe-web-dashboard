@@ -89,12 +89,18 @@
   height: 100%;
 
   .#{$namespace}-input {
-    height: rhythm(3.5);
-    padding: rhythm(1);
-    font-size: map-get($font-sizes, giant);
     text-align: center;
-    text-indent: 30px;
-    letter-spacing: rhythm(2);
+  }
+
+  &__token {
+    //.#{$namespace}-input {
+      //height: rhythm(3.5);
+      //padding: rhythm(1);
+      //font-size: map-get($font-sizes, giant);
+      //text-align: center;
+      //text-indent: 30px;
+      //letter-spacing: rhythm(2);
+    //}
   }
 
   &__footer {

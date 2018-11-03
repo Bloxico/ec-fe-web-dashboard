@@ -97,7 +97,7 @@ class Register extends Component<Props> {
             component={FormField}
             name="password"
             width="full"
-            validate={[requiredValidator, emailValidator]}
+            validate={[requiredValidator, passwordValidator]}
             ref={this.passwordField}
           />
           <Field
