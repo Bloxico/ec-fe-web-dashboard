@@ -31,7 +31,6 @@ export type Props = {
 const baseClass = `${THEME_PREFIX}-register`;
 
 class Register extends Component<Props> {
-
   constructor(props) {
     super(props);
     const {
@@ -92,8 +91,14 @@ class Register extends Component<Props> {
 
     const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
 
-    if(regions) {
-      regionOptions = [ ...regionOptions, ...regions.map(({ regionName }) => ({ value: regionName, text: regionName })) ];
+    if (regions) {
+      regionOptions = [
+        ...regionOptions,
+        ...regions.map(({ regionName }) => ({
+          value: regionName,
+          text: regionName,
+        })),
+      ];
     }
 
     return (

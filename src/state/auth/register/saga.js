@@ -13,7 +13,9 @@ import * as actions from './actions';
 
 export function* fetchRegions$(): Generator<*, *, *> {
   try {
-    const { data: { regions } } = yield http.get(`${API_URL}/user/registrationData`);
+    const {
+      data: { regions },
+    } = yield http.get(`${API_URL}/user/registrationData`);
 
     yield put(actions.fetchRegionsSuccess({ regions }));
   } catch ({ response }) {
