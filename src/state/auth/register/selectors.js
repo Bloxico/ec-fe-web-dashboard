@@ -1,15 +1,18 @@
-export const isRegisterInProgress = ({
-  auth: {
-    register: { inProgress },
-  },
-}) => ({ isRegistrationInProgress: inProgress });
+// @flow
+import { createSelector } from 'reselect';
 
-export const getRegions = ({
-  auth: {
-    register: { regions },
-  },
-}) => ({ regions });
+const getAuth = ({ auth }) => auth;
 
+const getRegister = createSelector(getAuth, ({ register }) => register);
+
+export const isRegisterInProgress = createSelector(
+  getRegister,
+  ({ inProgress }) => inProgress,
+);
+
+export const getRegions = createSelector(getRegister, ({ regions }) => regions);
+
+// TODO@use reselect
 export const getRegisterEmail = ({
   auth: {
     register: { email },

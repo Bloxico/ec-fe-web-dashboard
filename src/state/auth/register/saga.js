@@ -25,7 +25,8 @@ export function* fetchRegions$(): Generator<*, *, *> {
 
 export function* register$({ payload }): Generator<*, *, *> {
   try {
-    yield Http.post('/api/user/registration', payload);
+    yield http.post('/api/user/registration', payload);
+
     yield put(push(VERIFY_PAGE));
   } catch ({ response }) {
     const { formatMessage } = yield getIntl;

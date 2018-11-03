@@ -55,6 +55,7 @@ class Register extends Component<Props> {
 
   componentDidMount() {
     const { fetchRegions } = this.props;
+
     fetchRegions();
   }
 

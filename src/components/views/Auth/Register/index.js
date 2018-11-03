@@ -18,8 +18,8 @@ import Register from './Register';
 import messages from './messages';
 
 const mapStateToProps = state => ({
-  ...isRegisterInProgress(state),
-  ...getRegions(state),
+  registerInProgress: isRegisterInProgress(state),
+  regions: getRegions(state),
 });
 
 const actions = {
