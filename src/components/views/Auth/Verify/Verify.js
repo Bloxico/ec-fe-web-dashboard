@@ -28,12 +28,7 @@ type Props = {
 class Verify extends Component<Props> {
   constructor(props) {
     super(props);
-    const {
-      requiredIntl,
-      numberIntl,
-      codeLenIntl,
-      passwordIntl,
-    } = props;
+    const { requiredIntl, numberIntl, codeLenIntl, passwordIntl } = props;
     this.validators = {
       requiredValidator: requiredIntl,
       numberValidator: numberIntl,
