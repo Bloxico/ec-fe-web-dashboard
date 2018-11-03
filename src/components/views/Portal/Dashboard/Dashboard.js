@@ -28,7 +28,7 @@ const Dashboard = ({ MSGDashboard, MSGCO2Prevented, MSGkWhSaved }: Props) => (
         <h3>{MSGDashboard}</h3>
       </Col>
     </Row>
-      <Row>
+    <Row>
       <Col>
         <Chart
           data={mockChartData(6)}
