@@ -40,7 +40,7 @@ export default compose(
     handleRegistration: ({ register }) => values => {
       // eslint-disable-next-line
       console.log(values);
-      // register(values);
+      register(values);
     },
   }),
   withProps(({ intl: { formatMessage } }) => ({
