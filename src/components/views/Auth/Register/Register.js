@@ -107,7 +107,6 @@ class Register extends Component<Props> {
         <Header title={MSGCreateAnAccount} />
 
         <Form onSubmit={handleSubmit(handleRegistration)}>
-          {/* TODO@martins add validatiors */}
           <Field
             placeholder={MSGEmail}
             type="email"
@@ -131,18 +130,18 @@ class Register extends Component<Props> {
             component={FormField}
             name="matchPassword"
             width="full"
-            toMatch="12345678"
             validate={[requiredValidator, passwordValidator, matchValidator]}
           />
           <Field
             placeholder={MSGRegion}
-            type="text"
+            type="select"
             component={FormField}
             name="regionName"
             width="full"
+            options={regionOptions}
+            selected="Select"
             validate={[requiredValidator]}
           />
-
           <Field
             placeholder={MSGCity}
             type="text"
