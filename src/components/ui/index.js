@@ -18,4 +18,6 @@ export {
   Col,
   LineChart,
   Modal,
+  Table,
+  Loader,
 };
