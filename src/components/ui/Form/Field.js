@@ -165,7 +165,9 @@ class FormField extends PureComponent<PropsT> {
       className,
     );
 
-    if (type === 'password') { inputProps.value = undefined; }
+    if (type === 'password') {
+      inputProps.value = undefined;
+    }
 
     return (
       <div className={classes}>

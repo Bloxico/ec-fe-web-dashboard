@@ -26,7 +26,7 @@ export function* register$({ payload }): Generator<*, *, *> {
   try {
     yield http.post('user/registration', payload);
 
-   yield put(push(`${VERIFY_PAGE}/${payload.email}`));
+    yield put(push(`${VERIFY_PAGE}/${payload.email}`));
   } catch ({ response }) {
     // TODO@martins create a generic error handler
     if (response.data) {
