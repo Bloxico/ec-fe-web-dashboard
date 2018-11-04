@@ -46,6 +46,7 @@ export default compose(
     },
   }),
   withHandlers({
+    // eslint-disable-next-line no-shadow
     handleRegistration: ({ register }) => values => {
       register(values);
     },
