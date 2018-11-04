@@ -7,7 +7,6 @@ import Form, { FormField, InputGroup } from './Form';
 import Modal from './Modal';
 import Table from './Table';
 import Loader from './Loader';
-import { Container, Row, Col } from './Grid';
 
 export {
   Anchor,
