@@ -24,6 +24,7 @@ export function* verify$({
       yield put(push(LOGIN_PAGE));
     }
   } catch ({ response: { data } }) {
+    // eslint-disable-next-line
     console.log(data);
     // TODO display error in modal
     // const { formatMessage } = yield getIntl;
