@@ -4,6 +4,7 @@ import React from 'react';
 
 import { mockChartData } from 'src/mocks/dashboard';
 import { THEME_PREFIX } from 'src/constants';
+import Sidebar from '@ui/Sidebar';
 import { Col, Row } from '@ui';
 
 import Chart from './Chart';
@@ -20,9 +21,15 @@ export type Props = {
 // - integrate BE
 
 const baseClass = `${THEME_PREFIX}-dashboard`;
+
 // TODO@martins get actual colors from designers
 const Dashboard = ({ MSGDashboard, MSGCO2Prevented, MSGkWhSaved }: Props) => (
   <div className={baseClass}>
+    <Sidebar align="left">
+      <Sidebar.Header>Header</Sidebar.Header>
+      <Sidebar.Body>Body</Sidebar.Body>
+      <Sidebar.Footer>Footer</Sidebar.Footer>
+    </Sidebar>
     <Row>
       <Col>
         <h3>{MSGDashboard}</h3>

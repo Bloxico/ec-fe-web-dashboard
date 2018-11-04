@@ -4,9 +4,8 @@ import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
 import { http } from 'src/services/http';
-import { VERIFY_PAGE } from 'src/constants';
-// import { showModal } from 'src/state/actions';
-// import { getIntl } from 'src/components/wrappers/IntlProvider';
+import { VERIFY_PAGE, MODALS } from 'src/constants';
+import { showModal } from 'src/state/actions';
 
 import * as actions from './actions';
 
@@ -24,18 +23,26 @@ export function* fetchRegions$(): Generator<*, *, *> {
 
 export function* register$({ payload }): Generator<*, *, *> {
   try {
+    // throw new Error({ response: { data: { message: 'Testing modal...' } } });
     yield http.post('user/registration', payload);
 
     yield put(push(`${VERIFY_PAGE}/${payload.email}`));
   } catch ({ response }) {
     // TODO@martins create a generic error handler
     if (response.data) {
-      if (response.data) {
-        const { validationErrorMessages } = response.data;
+      const { validationErrorMessages } = response.data;
 
-        // eslint-disable-next-line
-        console.log(validationErrorMessages);
-      }
+      // eslint-disable-next-line
+      console.log(validationErrorMessages);
+      yield put(
+        showModal({
+          modalName: MODALS.ErrorMessage,
+          align: 'center',
+          data: {
+            content: validationErrorMessages,
+          },
+        }),
+      );
     }
 
     // TODO@martins show error modal
