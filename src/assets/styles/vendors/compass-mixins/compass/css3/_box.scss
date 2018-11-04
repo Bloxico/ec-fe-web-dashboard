@@ -2,15 +2,8 @@
 
 // display:box; must be used for any of the other flexbox mixins to work properly
 @mixin display-box {
-  @include experimental-value(
-    display,
-    box,
-    -moz,
-    -webkit,
-    not(-o),
-    -ms,
-    not(-khtml),
-    official
+  @include experimental-value(display, box,
+    -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
 
@@ -18,17 +11,12 @@
 $default-box-orient: horizontal !default;
 
 // Box orientation [ horizontal | vertical | inline-axis | block-axis | inherit ]
-@mixin box-orient($orientation: $default-box-orient) {
-  $orientation: unquote($orientation);
-  @include experimental(
-    box-orient,
-    $orientation,
-    -moz,
-    -webkit,
-    not(-o),
-    -ms,
-    not(-khtml),
-    official
+@mixin box-orient(
+  $orientation: $default-box-orient
+) {
+  $orientation : unquote($orientation);
+  @include experimental(box-orient, $orientation,
+    -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
 
@@ -36,17 +24,12 @@ $default-box-orient: horizontal !default;
 $default-box-align: stretch !default;
 
 // Box align [ start | end | center | baseline | stretch ]
-@mixin box-align($alignment: $default-box-align) {
-  $alignment: unquote($alignment);
-  @include experimental(
-    box-align,
-    $alignment,
-    -moz,
-    -webkit,
-    not(-o),
-    -ms,
-    not(-khtml),
-    official
+@mixin box-align(
+  $alignment: $default-box-align
+) {
+  $alignment : unquote($alignment);
+  @include experimental(box-align, $alignment,
+    -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
 
@@ -56,16 +39,11 @@ $default-box-flex: 0 !default;
 // mixin which takes an int argument for box flex. Apply this to the children inside the box.
 //
 // For example: "div.display-box > div.child-box" would get the box flex mixin.
-@mixin box-flex($flex: $default-box-flex) {
-  @include experimental(
-    box-flex,
-    $flex,
-    -moz,
-    -webkit,
-    not(-o),
-    -ms,
-    not(-khtml),
-    official
+@mixin box-flex(
+  $flex: $default-box-flex
+) {
+  @include experimental(box-flex, $flex,
+    -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
 
@@ -73,16 +51,11 @@ $default-box-flex: 0 !default;
 $default-box-flex-group: 1 !default;
 
 // mixin which takes an int argument for flexible grouping
-@mixin box-flex-group($group: $default-box-flex-group) {
-  @include experimental(
-    box-flex-group,
-    $group,
-    -moz,
-    -webkit,
-    not(-o),
-    -ms,
-    not(-khtml),
-    official
+@mixin box-flex-group(
+  $group: $default-box-flex-group
+) {
+  @include experimental(box-flex-group, $group,
+    -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
 
@@ -90,16 +63,11 @@ $default-box-flex-group: 1 !default;
 $default-box-ordinal-group: 1 !default;
 
 // mixin which takes an int argument for ordinal grouping and rearranging the order
-@mixin box-ordinal-group($group: $default-ordinal-flex-group) {
-  @include experimental(
-    box-ordinal-group,
-    $group,
-    -moz,
-    -webkit,
-    not(-o),
-    -ms,
-    not(-khtml),
-    official
+@mixin box-ordinal-group(
+  $group: $default-ordinal-flex-group
+) {
+  @include experimental(box-ordinal-group, $group,
+    -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
 
@@ -107,17 +75,12 @@ $default-box-ordinal-group: 1 !default;
 $default-box-direction: normal !default;
 
 // mixin for box-direction [ normal | reverse | inherit ]
-@mixin box-direction($direction: $default-box-direction) {
+@mixin box-direction(
+  $direction: $default-box-direction
+) {
   $direction: unquote($direction);
-  @include experimental(
-    box-direction,
-    $direction,
-    -moz,
-    -webkit,
-    not(-o),
-    -ms,
-    not(-khtml),
-    official
+  @include experimental(box-direction, $direction,
+    -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
 
@@ -125,17 +88,12 @@ $default-box-direction: normal !default;
 $default-box-lines: single !default;
 
 // mixin for box lines [ single | multiple ]
-@mixin box-lines($lines: $default-box-lines) {
+@mixin box-lines(
+  $lines: $default-box-lines
+) {
   $lines: unquote($lines);
-  @include experimental(
-    box-lines,
-    $lines,
-    -moz,
-    -webkit,
-    not(-o),
-    -ms,
-    not(-khtml),
-    official
+  @include experimental(box-lines, $lines,
+    -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
 
@@ -143,16 +101,11 @@ $default-box-lines: single !default;
 $default-box-pack: start !default;
 
 // mixin for box pack [ start | end | center | justify ]
-@mixin box-pack($pack: $default-box-pack) {
+@mixin box-pack(
+  $pack: $default-box-pack
+) {
   $pack: unquote($pack);
-  @include experimental(
-    box-pack,
-    $pack,
-    -moz,
-    -webkit,
-    not(-o),
-    -ms,
-    not(-khtml),
-    official
+  @include experimental(box-pack, $pack,
+    -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }

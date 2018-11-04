@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
-
-import { Form, FormField, Button, Container, Row, Col } from '@ui';
-import { THEME_PREFIX } from 'src/constants';
 import classNames from 'classnames';
+
+import Header from '@partials/Header';
+import { Anchor, Form, FormField, Button } from '@ui';
+import { THEME_PREFIX } from 'src/constants';
 
 const baseClass = `${THEME_PREFIX}-verify`;
 
 type Props = {
   handleSubmit: Function,
   isVerifyInProgress: boolean,
-  isResetPasswordEmail: string,
   MSGVerifyAccount: string,
   MSG4DigitVerificationCode: string,
   MSGVerify: string,
@@ -28,14 +28,7 @@ type Props = {
 class Verify extends Component<Props> {
   constructor(props) {
     super(props);
-    const {
-      requiredIntl,
-      numberIntl,
-      codeLenIntl,
-      passwordIntl,
-      isResetPasswordEmail,
-    } = props;
-    this.isResetPasswordEmail = isResetPasswordEmail;
+    const { requiredIntl, numberIntl, codeLenIntl, passwordIntl } = props;
     this.validators = {
       requiredValidator: requiredIntl,
       numberValidator: numberIntl,
@@ -47,7 +40,7 @@ class Verify extends Component<Props> {
   handleSubmit = (data: any) => {
     const { verify } = this.props;
     const formData = data;
-    formData.email = this.isResetPasswordEmail;
+
     verify({ formData });
   };
 
@@ -55,13 +48,12 @@ class Verify extends Component<Props> {
     const {
       MSGVerifyAccount,
       MSGEnterYourCode,
-      MSG4DigitVerificationCode,
       MSGVerify,
+      MSG4DigitVerificationCode,
       MSGDidntReceiveEmail,
       MSGResendCode,
       MSGNewPassword,
       isVerifyInProgress,
-      isResetPasswordEmail,
       handleSubmit,
     } = this.props;
 
@@ -72,52 +64,48 @@ class Verify extends Component<Props> {
       passwordValidator,
     } = this.validators;
 
-    const classes = classNames(baseClass, `${THEME_PREFIX}-layout--center`);
+    const classes = classNames(baseClass);
 
     return (
-      <Container>
-        <Row>
-          <Col sm={{ size: 4, offset: 4 }} xs={{ size: 10, offset: 1 }}>
-            <div className={classes}>
-              <h1>{MSGVerifyAccount}</h1>
-              <p>{MSGEnterYourCode}</p>
-              <h1>{isResetPasswordEmail}</h1>
-              <Form onSubmit={handleSubmit(this.handleSubmit)}>
-                <Field
-                  type="number"
-                  name="tokenValue"
-                  component={FormField}
-                  placeholder={MSG4DigitVerificationCode}
-                  width="full"
-                  validate={[
-                    requiredValidator,
-                    numberValidator,
-                    codeLenValidator,
-                  ]}
-                />
-                <Field
-                  type="password"
-                  name="newPassword"
-                  component={FormField}
-                  placeholder={MSGNewPassword}
-                  width="full"
-                  validate={[requiredValidator, passwordValidator]}
-                />
-                <Button
-                  action="submit"
-                  type="primary"
-                  disabled={isVerifyInProgress}
-                  size="full"
-                >
-                  {MSGVerify}
-                </Button>
-              </Form>
-              <span>{MSGDidntReceiveEmail}</span>{' '}
-              <span className={`${THEME_PREFIX}-link`}>{MSGResendCode}</span>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+      <div className={classes}>
+        <Header title={MSGVerifyAccount} />
+
+        <p>{MSGEnterYourCode}</p>
+
+        <Form onSubmit={handleSubmit(this.handleSubmit)}>
+          <Field
+            type="number"
+            maxLength={4}
+            name="tokenValue"
+            component={FormField}
+            width="full"
+            placeholder={MSG4DigitVerificationCode}
+            validate={[requiredValidator, numberValidator, codeLenValidator]}
+            className={`${baseClass}__token`}
+          />
+          <Field
+            type="password"
+            name="newPassword"
+            component={FormField}
+            placeholder={MSGNewPassword}
+            width="full"
+            validate={[requiredValidator, passwordValidator]}
+          />
+          <Button
+            disabled={isVerifyInProgress}
+            action="submit"
+            type="primary"
+            width="full"
+            size="large"
+          >
+            {MSGVerify}
+          </Button>
+        </Form>
+
+        <footer className={`${baseClass}__footer`}>
+          {MSGDidntReceiveEmail} <Anchor href="#">{MSGResendCode}</Anchor>
+        </footer>
+      </div>
     );
   }
 }

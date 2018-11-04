@@ -3,8 +3,9 @@
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import { THEME_PREFIX } from 'src/constants';
 
-const baseClass = 'enrg-switch';
+const baseClass = `${THEME_PREFIX}-switch`;
 
 type PropsT = {
   id?: string,

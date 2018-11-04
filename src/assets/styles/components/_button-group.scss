@@ -1,9 +1,10 @@
 $button-group-height: rhythm(2) !default;
-$button-group-margin: rhythm(0.125) 0 !default;
+$button-group-margin: rhythm(.125) 0 !default;
 $button-group-spacing: 12px !default;
-$button-group-height: rhythm(2) !default;
 $button-group-small-height: rhythm(1) !default;
 $button-group-large-height: rhythm(2.25) !default;
+$button-group-border-radius: $default-border-radius !default;
+
 
 /// Button group
 
@@ -76,17 +77,15 @@ $button-group-large-height: rhythm(2.25) !default;
       }
 
       &:first-child {
-        border-radius: map-get($button-border, radius) 0 0
-          map-get($button-border, radius);
+        border-radius: $button-group-border-radius 0 0 $button-group-border-radius;
       }
 
       &:last-child {
-        border-radius: 0 map-get($button-border, radius)
-          map-get($button-border, radius) 0;
+        border-radius: 0 $button-group-border-radius $button-group-border-radius 0;
       }
 
       &:first-child:last-child {
-        border-radius: map-get($button-border, radius);
+        border-radius: $button-group-border-radius;
       }
 
       & + .#{$namespace}-button {
@@ -112,6 +111,12 @@ $button-group-large-height: rhythm(2.25) !default;
     }
   }
 
+  &--medium {
+    .#{$namespace}-button {
+      @extend .#{$namespace}-button--medium;
+    }
+  }
+
   &--large {
     min-height: $button-group-large-height;
 
@@ -129,7 +134,11 @@ $button-group-large-height: rhythm(2.25) !default;
     }
   }
 
+
   .#{$namespace}-loader {
     margin: 0;
   }
 }
+
+
+

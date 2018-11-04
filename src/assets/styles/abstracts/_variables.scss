@@ -1,12 +1,13 @@
-// Global class prefix - DON'T CHANGE!!!
-$namespace: "enrg" !default;
+///
+/// Vertical rhythm related variables
+///
 
 // Default fonts
-$base-font-family: "Roboto ENRG", sans-serif !default;
+$base-font-family: 'Roboto', sans-serif !default;
 $base-font-weight: 300 !default;
-$cursive-font-family: "Georgia", serif !default;
-$monospace-font-family: "Courier", monospace !default;
-$icon-font-family: $base-font-family !default;
+$cursive-font-family: 'Georgia', serif !default;
+$monospace-font-family: 'Courier', monospace !default;
+$ui-font-family: $base-font-family !default;
 
 // The font size set on the root html element.
 $base-font-size: 14px !default;
@@ -16,8 +17,8 @@ $base-line-height: 20px !default;
 
 // The length unit in which to output vertical rhythm values.
 // Supported values: px, em, rem.
-$base-unit: "rem" !default;
-$rhythm-unit: "rem" !default;
+$base-unit: 'rem' !default;
+$rhythm-unit: 'rem' !default;
 $rem-with-px-fallback: false !default;
 
 $default-rhythm-border-width: 1px !default;
@@ -30,7 +31,7 @@ $h2-font-size: 24px !default;
 $h3-font-size: 20px !default;
 $h4-font-size: 18px !default;
 $h5-font-size: 14px !default;
-$h6-font-size: 14px !default;
+$h6-font-size: 10px !default;
 
 // The amount lists and blockquotes are indented.
 $indent-amount: 40px !default;
@@ -60,105 +61,105 @@ $font-sizes: (
   h6: $h6-font-size
 ) !default;
 
-$disabled-opacity: 0.5 !default;
+
+///
+/// Predefined colors
+///
+
 $text-colors: (
-  "normal": color("black"),
-  "dark": color("tertiary"),
-  "light": color("secondary"),
-  "bright": color("secondary"),
-  "white": color("white"),
-  "inverse": color("white"),
-  "active": color("cyan"),
-  "opaque": color("black", "alpha", 80),
-  "link": color("primary"),
-  "hover": color("blue"),
-  "button": color("white"),
-  "alert": color("red"),
-  "error": color("red"),
-  "warning": color("orange"),
-  "success": color("green"),
-  "info": color("cyan")
+  'normal':   color('black'),
+  'dark':     color('tertiary'),
+  'light':    color('secondary'),
+  'bright':   color('secondary'),
+  'inverse':  color('white'),
+
+  'active':   color('cyan'),
+  'opaque':   color('black', 'alpha', 80),
+
+  'link':     color('cyan'),
+  'hover':    color('blue'),
+  'button':   color('white'),
+
+  'alert':    color('red'),
+  'error':    color('red'),
+  'warning':  color('orange'),
+  'success':  color('green'),
+  'info':     color('cyan'),
 ) !default;
+
+
 $background-colors: (
-  "black": color("black"),
-  "normal": color("primary"),
-  "window": color("white"),
-  "body": color("white"),
-  //"panel": color("tertiary"),
-  "control": color("white"),
-  "button": color("primary"),
-  "selected": color("primary"),
-  "hover": color("blue"),
-  "primary": color("primary"),
-  "primarydark": color("primarydark"),
-  "primarylight": color("primarylight"),
-  "secondary": color("secondary"),
-  "secondarydark": color("secondarydark"),
-  "secondarylight": color("secondarylight"),
-  "default": color("blue"),
-  "success": color("green"),
-  "error": color("red"),
-  "alert": color("red"),
-  "warning": color("orange"),
-  "info": color("cyan"),
-  //"announcement": color("violet")
+  'normal':       color('primary'),
+  'window':       color('white'),
+  'body':         color('white'),
+  //'panel':        color('tertiary'),
+  'control':      color('white'),
+
+  'button':       color('cyan'),
+  'selected':     color('cyan'),
+  'hover':        color('blue'),
+
+  'primary':      color('blue'),
+  'default':      color('blue'),
+  'success':      color('green'),
+  'error':        color('red'),
+  'alert':        color('red'),
+  'warning':      color('orange'),
+  'info':         color('cyan'),
 ) !default;
+
+
 $border-colors: (
-  "dark": color("tertiary"),
-  "normal": color("secondary"),
-  "light": color("primary"),
-  "input": color("secondary"),
-  "button": color("cyan"),
-  //"pill": map-get($colors, "cyan"),
-  "inverse": color("white"),
-  "selected": color("cyan"),
-  "hover": color("primary"),
-  "primary": color("blue"),
-  "alert": color("red"),
-  "error": color("red"),
-  "warning": color("orange"),
-  "success": color("green"),
-  "info": color("cyan")
+  'dark':     color('tertiary'),
+  'normal':   color('secondary'),
+  'light':    color('primary'),
+
+  'input':    color('secondary'),
+  'button':   color('cyan'),
+  'inverse':  color('white'),
+  'selected': color('cyan'),
+  'hover':    color('blue'),
+
+  'primary':  color('blue'),
+  'alert':    color('red'),
+  'error':    color('red'),
+  'warning':  color('orange'),
+  'success':  color('green'),
+  'info':     color('cyan'),
 ) !default;
-$focus-shadow: (
-  inset: false,
-  x: 0,
-  y: 0,
-  blur: 1px,
-  spread: 1px,
-  color: map-get($background-colors, "selected")
-) !default;
+
+
+///
+/// Responsive breakpoints
+///
+
 $breakpoints: (
-  "medium": (
-    min-width: 800px
-  ),
-  "large": (
-    min-width: 1000px
-  ),
-  "huge": (
-    min-width: 1200px
-  )
+  'small': (min-width: 320px, max-width: 767px),
+  'medium': (min-width: 768px, max-width: 1279px),
+  'large': (min-width: 1280px),
 ) !default;
-$icon-sizes: (
-  "tiny": 10px,
-  "small": 12px,
-  "normal": 14px,
-  "large": 20px,
-  "toolbar": 32px,
-  "thumbnail": 80px
-) !default;
-// / Application specific
+
+@include create-global('breakpoint', $breakpoints);
+
+
+///
+/// Application specific
+///
+
 $application: (
   titlebar: (
-    height: 1
+    height: 1,
   ),
+
   header: (
-    height: 3.5
+    height: 3.5,
   ),
+
   background: (
-    color: map-get($background-colors, "normal")
+    color: map-get($background-colors, 'normal'),
   ),
+
   scrollbar: (
-    size: 9px
-  )
+    size: 9px,
+  ),
 ) !default;

@@ -1,50 +1,50 @@
 // @flow
 
-import { delay } from 'redux-saga';
 import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
-import { Http } from 'src/services/http';
-import { LOGIN_PAGE } from 'src/constants';
-import { showModal } from 'src/state/actions';
-import { getIntl } from 'src/components/wrappers/IntlProvider';
-import messages from 'src/components/views/common/ModalManager/messages';
+import { http } from 'src/services/http';
+import { VERIFY_PAGE } from 'src/constants';
+// import { showModal } from 'src/state/actions';
+// import { getIntl } from 'src/components/wrappers/IntlProvider';
 
 import * as actions from './actions';
 
-export function* register$({ payload }): Generator<*, *, *> {
-  yield delay(500);
+export function* fetchRegions$(): Generator<*, *, *> {
   try {
-    yield Http.post('/api/user/registration', payload);
-    yield put(push(LOGIN_PAGE));
+    const {
+      data: { regions },
+    } = yield http.get(`user/registrationData`);
+
+    yield put(actions.fetchRegionsSuccess({ regions }));
   } catch ({ response }) {
-    const { formatMessage } = yield getIntl;
+    //    TODO@all handle the error with modal?
+  }
+}
 
-    let errorTitle = formatMessage(messages.serverError);
-    let errorContent = formatMessage(messages.somethingWentWrong);
-    let btnText = formatMessage(messages.damnDevelopers);
+export function* register$({ payload }): Generator<*, *, *> {
+  try {
+    yield http.post('user/registration', payload);
 
-    if (response !== undefined) {
-      errorContent = response.data.message;
-      btnText = formatMessage(messages.gotIt);
-      errorTitle = formatMessage(messages.tryAgain);
+    yield put(push(VERIFY_PAGE));
+  } catch ({ response }) {
+    if (response.data) {
+      if (response.data) {
+        const { validationErrorMessages } = response.data;
+
+        // eslint-disable-next-line
+        console.log(validationErrorMessages);
+      }
     }
 
-    yield put(
-      showModal({
-        modalName: 'Register',
-        title: errorTitle,
-        align: 'center',
-        footerBtnTxt: btnText,
-        data: errorContent,
-      }),
-    );
+    // TODO@martins show error modal
   }
 
-  yield put(actions.clearRegisterState());
+  // yield put(actions.clearRegisterState());
 }
 
 // $FlowIssue
 export default function*() {
   yield all([takeEvery(actions.REGISTER, register$)]);
+  yield all([takeEvery(actions.FETCH_REGIONS, fetchRegions$)]);
 }

@@ -1,6 +1,6 @@
 import Radio from './Radio';
-import RadioGroup from './RadioGroup';
+import RadioGroup, { RadioArray } from './RadioGroup';
 
-export { RadioGroup };
+export { RadioGroup, RadioArray };
 
 export default Radio;

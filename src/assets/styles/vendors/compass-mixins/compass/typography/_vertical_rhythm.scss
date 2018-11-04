@@ -33,8 +33,7 @@ $base-rhythm-unit: $base-line-height / $base-font-size * $font-unit;
 
 // The leader is the amount of whitespace in a line.
 // It might be useful in your calculations.
-$base-leader: ($base-line-height - $base-font-size) * $font-unit /
-  $base-font-size;
+$base-leader: ($base-line-height - $base-font-size) * $font-unit / $base-font-size;
 
 // The half-leader is the amount of whitespace above and below a line.
 // It might be useful in your calculations.
@@ -42,8 +41,7 @@ $base-half-leader: $base-leader / 2;
 
 // True if a number has a relative unit.
 @function relative-unit($number) {
-  @return unit($number) == "%" or unit($number) == "em" or unit($number) ==
-    "rem";
+  @return unit($number) == "%" or unit($number) == "em" or unit($number) == "rem"
 }
 
 // True if a number has an absolute unit.
@@ -65,10 +63,7 @@ $base-half-leader: $base-leader / 2;
   }
   html {
     font-size: $font-size;
-    @include adjust-leading-to(
-      1,
-      if($relative-font-sizing, $font-size, $base-font-size)
-    );
+    @include adjust-leading-to(1, if($relative-font-sizing, $font-size, $base-font-size));
   }
 }
 
@@ -78,10 +73,7 @@ $base-half-leader: $base-leader / 2;
 // @deprecated This mixin will be removed in the next release.
 // Please use the `adjust-leading-to` mixin instead.
 @mixin reset-baseline {
-  @include adjust-leading-to(
-    1,
-    if($relative-font-sizing, $base-font-size, $base-font-size)
-  );
+  @include adjust-leading-to(1, if($relative-font-sizing, $base-font-size, $base-font-size));
 }
 
 // Show a background image that can be used to debug your alignments.
@@ -100,19 +92,12 @@ $base-half-leader: $base-leader / 2;
 // of this font should use up. It does not have to be an integer, but it
 // defaults to the smallest integer that is large enough to fit the font.
 // Use $from-size to adjust from a font-size other than the base font-size.
-@mixin adjust-font-size-to(
-  $to-size,
-  $lines: lines-for-font-size($to-size),
-  $from-size: $base-font-size
-) {
+@mixin adjust-font-size-to($to-size, $lines: lines-for-font-size($to-size), $from-size: $base-font-size) {
   @if not($relative-font-sizing) and $from-size != $base-font-size {
     @warn "$relative-font-sizing is false but a relative font size was passed to adjust-font-size-to";
   }
   font-size: $font-unit * $to-size / $from-size;
-  @include adjust-leading-to(
-    $lines,
-    if($relative-font-sizing, $to-size, $base-font-size)
-  );
+  @include adjust-leading-to($lines, if($relative-font-sizing, $to-size, $base-font-size));
 }
 
 // Adjust a block to have different line height to maintain the rhythm.
@@ -124,7 +109,11 @@ $base-half-leader: $base-leader / 2;
 }
 
 // Calculate rhythm units.
-@function rhythm($lines: 1, $font-size: $base-font-size, $offset: 0) {
+@function rhythm(
+  $lines: 1,
+  $font-size: $base-font-size,
+  $offset: 0
+) {
   @if not($relative-font-sizing) and $font-size != $base-font-size {
     @warn "$relative-font-sizing is false but a relative font size was passed to the rhythm function";
   }
@@ -138,11 +127,9 @@ $base-half-leader: $base-leader / 2;
 
 // Calculate the minimum multiple of rhythm units needed to contain the font-size.
 @function lines-for-font-size($font-size) {
-  $lines: if(
-    $round-to-nearest-half-line,
-    ceil(2 * $font-size / $base-line-height) / 2,
-    ceil($font-size / $base-line-height)
-  );
+  $lines: if($round-to-nearest-half-line,
+              ceil(2 * $font-size / $base-line-height) / 2,
+              ceil($font-size / $base-line-height));
   @if $lines * $base-line-height - $font-size < $min-line-padding * 2 {
     $lines: $lines + if($round-to-nearest-half-line, 0.5, 1);
   }
@@ -180,13 +167,7 @@ $base-half-leader: $base-leader / 2;
 }
 
 // Shorthand mixin to apply whitespace for top and bottom margins and padding.
-@mixin rhythm(
-  $leader: 0,
-  $padding-leader: 0,
-  $padding-trailer: 0,
-  $trailer: 0,
-  $font-size: $base-font-size
-) {
+@mixin rhythm($leader: 0, $padding-leader: 0, $padding-trailer: 0, $trailer: 0, $font-size: $base-font-size) {
   @include leader($leader, $font-size);
   @include padding-leader($padding-leader, $font-size);
   @include padding-trailer($padding-trailer, $font-size);
@@ -195,89 +176,46 @@ $base-half-leader: $base-leader / 2;
 
 // Apply a border and whitespace to any side without destroying the vertical
 // rhythm. The whitespace must be greater than the width of the border.
-@mixin apply-side-rhythm-border(
-  $side,
-  $width: 1px,
-  $lines: 1,
-  $font-size: $base-font-size,
-  $border-style: $default-rhythm-border-style
-) {
+@mixin apply-side-rhythm-border($side, $width: 1px, $lines: 1, $font-size: $base-font-size, $border-style: $default-rhythm-border-style) {
   @if not($relative-font-sizing) and $font-size != $base-font-size {
     @warn "$relative-font-sizing is false but a relative font size was passed to apply-side-rhythm-border";
   }
   border-#{$side}: {
     style: $border-style;
     width: $font-unit * $width / $font-size;
-  }
+  };
   padding-#{$side}: rhythm($lines, $font-size, $offset: $width);
 }
 
 // Apply borders and whitespace equally to all sides.
-@mixin rhythm-borders(
-  $width: 1px,
-  $lines: 1,
-  $font-size: $base-font-size,
-  $border-style: $default-rhythm-border-style
-) {
+@mixin rhythm-borders($width: 1px, $lines: 1, $font-size: $base-font-size, $border-style: $default-rhythm-border-style) {
   @if not($relative-font-sizing) and $font-size != $base-font-size {
     @warn "$relative-font-sizing is false but a relative font size was passed to rhythm-borders";
   }
   border: {
     style: $border-style;
     width: $font-unit * $width / $font-size;
-  }
+  };
   padding: rhythm($lines, $font-size, $offset: $width);
 }
 
 // Apply a leading border.
-@mixin leading-border(
-  $width: 1px,
-  $lines: 1,
-  $font-size: $base-font-size,
-  $border-style: $default-rhythm-border-style
-) {
-  @include apply-side-rhythm-border(
-    top,
-    $width,
-    $lines,
-    $font-size,
-    $border-style
-  );
+@mixin leading-border($width: 1px, $lines: 1, $font-size: $base-font-size, $border-style: $default-rhythm-border-style) {
+  @include apply-side-rhythm-border(top, $width, $lines, $font-size, $border-style);
 }
 
 // Apply a trailing border.
-@mixin trailing-border(
-  $width: 1px,
-  $lines: 1,
-  $font-size: $base-font-size,
-  $border-style: $default-rhythm-border-style
-) {
-  @include apply-side-rhythm-border(
-    bottom,
-    $width,
-    $lines,
-    $font-size,
-    $border-style
-  );
+@mixin trailing-border($width: 1px, $lines: 1, $font-size: $base-font-size, $border-style: $default-rhythm-border-style) {
+  @include apply-side-rhythm-border(bottom, $width, $lines, $font-size, $border-style);
 }
 
 // Apply both leading and trailing borders.
-@mixin horizontal-borders(
-  $width: 1px,
-  $lines: 1,
-  $font-size: $base-font-size,
-  $border-style: $default-rhythm-border-style
-) {
+@mixin horizontal-borders($width: 1px, $lines: 1, $font-size: $base-font-size, $border-style: $default-rhythm-border-style) {
   @include leading-border($width, $lines, $font-size, $border-style);
   @include trailing-border($width, $lines, $font-size, $border-style);
 }
 
 // Alias for `horizontal-borders` mixin.
-@mixin h-borders(
-  $width: 1px,
-  $lines: 1,
-  $font-size: $base-font-size,
-  $border-style: $default-rhythm-border-style
-) {
+@mixin h-borders($width: 1px, $lines: 1, $font-size: $base-font-size, $border-style: $default-rhythm-border-style) {
   @include horizontal-borders($width, $lines, $font-size, $border-style);
 }

@@ -1,88 +1,124 @@
-$window-color: map-get($text-colors, "white") !default;
-$window-background: map-get($background-colors, "black") !default;
-$selection-background: color("orange", "alpha", 50) !default;
+$window-color: map-get($text-colors, 'normal') !default;
+$window-background: map-get($background-colors, 'window') !default;
+
+$selection-background: color('orange', 'alpha', 50) !default;
+
+$disabled-opacity: .5 !default;
+
+$focus-shadow: (
+  inset: false,
+  x: 0,
+  y: 0,
+  blur: 1px,
+  spread: 1px,
+  color: map-get($background-colors, 'selected')
+) !default;
 
 $scrollbar-size: map-get(map-get($application, scrollbar), size) !default;
-$scrollbar-background: map-get($background-colors, "body") !default;
-$scrollbar-thumb: map-get($background-colors, "window") !default;
+$scrollbar-background: rgba(0, 0, 0, .05) !default;
+$scrollbar-thumb: rgba(0, 0, 0, .05) !default;
+$scrollbar-thumb-hover: rgba(0, 0, 0, .1) !default;
 
-// Establishes a font baseline for the given font-size
-@include establish-baseline;
 
-// Icon selectors
-//@include generate-icons;
+///
+/// Global placeholders
+///
+
+%hidden {
+  display: none !important;
+}
+
+
+%disabled {
+  opacity: $disabled-opacity;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+%focus {
+  outline: none;
+  text-decoration: none;
+
+  box-shadow: #{if(map-get($focus-shadow, inset) == true, inset, '')}
+    map-get($focus-shadow, x)
+    map-get($focus-shadow, y)
+    map-get($focus-shadow, blur)
+    map-get($focus-shadow, spread)
+    map-get($focus-shadow, color);
+}
+
 
 ///
 /// Global pseudo classes
 ///
-///
+
 :root {
+  @include set-background($window-background);
+
   text-size-adjust: 100%;
   color: $window-color;
-  background: $window-background;
 }
+
 
 :disabled {
   @extend %disabled;
 }
 
+
 :focus {
   outline: none;
 }
+
 
 ::before,
 ::after {
   box-sizing: border-box;
 }
 
+
 ::selection {
   background-color: $selection-background;
 }
 
+
 ///
 /// Global elements' attributes
 ///
-///
+
 [hidden] {
   @extend %hidden;
 }
 
+
 [disabled],
-[aria-disabled="true"] {
+[aria-disabled='true'] {
   @extend %disabled;
 }
 
-///
-/// Custom icon styling
-///
-///
-[icon]::before,
-[icon-second]::after {
-  @extend %icon;
-}
 
 ///
 /// Scrollbar styling
 ///
-///
+
 ::-webkit-scrollbar {
   width: $scrollbar-size;
 }
 
 ::-webkit-scrollbar-track {
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.05);
+  background: $scrollbar-background;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.05);
+  background: $scrollbar-thumb;
 
   &:window-inactive {
-    background: rgba(0, 0, 0, 0.05);
+    background: $scrollbar-thumb;
   }
 
   &:hover {
-    background: rgba(0, 0, 0, 0.1);
+    background: $scrollbar-thumb-hover;
   }
 }

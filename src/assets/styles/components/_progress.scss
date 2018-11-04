@@ -1,21 +1,22 @@
 $progress-width: 200px !default;
 $progress-height: rhythm(1.5) !default;
-$progress-margin: rhythm(0.25) 0 !default;
+$progress-margin: rhythm(.25) 0 !default;
 $progress-padding: 0 !default;
 $progress-bar-height: 4px !default;
 $progress-bar-margin: 0 !default;
 $progress-bar-padding: 0 !default;
 $progress-radius: 4px !default;
 $progress-border: 0 !default;
-$progress-background: color("cyan", "alpha", 10) !default;
-$progress-value-background: map-get($background-colors, "selected") !default;
+$progress-background: color('cyan', 'alpha', 10) !default;
+$progress-value-background: map-get($background-colors, 'selected') !default;
 
-$progress-message-spacing: rhythm(0.5) !default;
-$progress-message-color: map-get($text-colors, "normal") !default;
-$progress-message-font-size: map-get($font-sizes, "normal") !default;
-$progress-percentage-color: map-get($text-colors, "normal") !default;
-$progress-percentage-spacing: rhythm(0.5) !default;
-$progress-percentage-font-size: map-get($font-sizes, "small") !default;
+$progress-message-spacing: rhythm(.5) !default;
+$progress-message-color: map-get($text-colors, 'normal') !default;
+$progress-message-font-size: map-get($font-sizes, 'normal') !default;
+$progress-percentage-color: map-get($text-colors, 'normal') !default;
+$progress-percentage-spacing: rhythm(.5) !default;
+$progress-percentage-font-size: map-get($font-sizes, 'small') !default;
+
 
 .#{$namespace}-progress {
   position: relative;
@@ -24,6 +25,7 @@ $progress-percentage-font-size: map-get($font-sizes, "small") !default;
   height: $progress-height;
   margin: $progress-margin;
   padding: $progress-padding;
+
 
   // message
   &::after {
@@ -35,6 +37,7 @@ $progress-percentage-font-size: map-get($font-sizes, "small") !default;
     bottom: $progress-message-spacing;
     color: $progress-message-color;
   }
+
 
   progress {
     appearance: none;
@@ -78,7 +81,7 @@ $progress-percentage-font-size: map-get($font-sizes, "small") !default;
 
       // percentage
       &::before {
-        content: attr(value) "%";
+        content: attr(value)'%';
       }
     }
 
@@ -93,10 +96,11 @@ $progress-percentage-font-size: map-get($font-sizes, "small") !default;
       }
 
       &::before {
-        content: "0%";
+        content: '0%';
       }
     }
   }
+
 
   &--full {
     width: 100%;

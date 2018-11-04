@@ -1,26 +1,24 @@
 // @flow
 
-// TODO@all fix lint error. Rule temporarily disabled because it clutters eslint output.
-/* eslint-disable react/require-default-props */
-
 import React from 'react';
 import classNames from 'classnames';
+import { THEME_PREFIX } from 'src/constants';
 
 type LoaderTypes = 'buggy';
 
 type LoaderSizes = 'small';
 
-const baseClass = 'gc-loader';
+const baseClass = `${THEME_PREFIX}-loader`;
 
-type PropsT = {
-  children?: any,
-  type?: LoaderTypes,
-  size?: LoaderSizes,
-  textual?: boolean,
-  className?: string,
-};
+interface Props {
+  children?: any;
+  type?: LoaderTypes;
+  size?: LoaderSizes;
+  textual?: boolean;
+  className?: string;
+}
 
-const Loader = (props: PropsT) => {
+const Loader = (props: Props) => {
   const { type, size, textual, children, className } = props;
 
   const classes = classNames(

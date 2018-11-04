@@ -24,7 +24,7 @@ $hide-text-direction: left !default;
     }
     repeat: no-repeat;
     position: $x $y;
-  }
+  };
 }
 
 // Like the `replace-text` mixin, but also sets the width

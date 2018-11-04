@@ -18,14 +18,10 @@
 @function ch-pow($base, $exponent, $prec: 12) {
   // Handles decimal exponents by trying to convert them into a fraction and then use a nthRoot-algorithm for parts of the calculation
   @if (floor($exponent) != $exponent) {
-    $prec2: ch-pow(10, $prec);
+    $prec2 : ch-pow(10, $prec);
     $exponent: round($exponent * $prec2);
     $denominator: ch-gcd($exponent, $prec2);
-    @return ch-nth-root(
-      ch-pow($base, $exponent / $denominator),
-      $prec2 / $denominator,
-      $prec
-    );
+    @return ch-nth-root(ch-pow($base, $exponent / $denominator), $prec2 / $denominator, $prec);
   }
 
   $value: $base;

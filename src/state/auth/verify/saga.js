@@ -1,23 +1,27 @@
 // @flow
 
-import { delay } from 'redux-saga';
 import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
-import { SUCCESS_PAGE } from 'src/constants';
-import { Http } from 'src/services/http';
+import { SUCCESS_PAGE, LOGIN_PAGE } from 'src/constants';
+import { http } from 'src/services/http';
 import { showModal } from 'src/state/actions';
 import { getIntl } from 'src/components/wrappers/IntlProvider';
 import messages from 'src/components/views/common/ModalManager/messages';
 
 import * as actions from './actions';
 
-export function* verify$({ payload: { formData } }): Generator<*, *, *> {
-  // eslint-disable-next-line
-  yield delay(500);
+export function* verify$({
+  payload: { isForReset, formData },
+}): Generator<*, *, *> {
   try {
-    yield Http.post('/api/user/passwordForgotUpdate', formData);
-    yield put(push(SUCCESS_PAGE));
+    if (isForReset) {
+      yield http.post('/api/user/passwordForgotUpdate', formData);
+      yield put(push(SUCCESS_PAGE));
+    } else {
+      yield http.post('/api/user/registrationConfirm', formData);
+      yield put(push(LOGIN_PAGE));
+    }
   } catch ({ response }) {
     const { formatMessage } = yield getIntl;
 
