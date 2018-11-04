@@ -1,10 +1,6 @@
-// @flow
+const env = process.env; // eslint-disable-line
 
-// @TODO@martings set .env
-
-const env: Object = process.env; // eslint-disable-line
-
-const APP_PREFIX = 'ENRGDASHBOARD_';
+const APP_PREFIX = 'ENRG_';
 
 export const API_URL: string = env[`${APP_PREFIX}API_URL`];
 

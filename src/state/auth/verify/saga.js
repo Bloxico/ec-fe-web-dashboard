@@ -1,28 +1,36 @@
 // @flow
 
-import { delay } from 'redux-saga';
 import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
-import { SUCCESS_PAGE, MODALS } from 'src/constants';
-import { Http } from 'src/services/http';
+import { SUCCESS_PAGE, LOGIN_PAGE, MODALS } from 'src/constants';
+import { http } from 'src/services/http';
+
 import { showModal } from 'src/state/actions';
 
 import * as actions from './actions';
 
-export function* verify$({ payload: { formData } }): Generator<*, *, *> {
-  // eslint-disable-next-line
-  yield delay(500);
+export function* verify$({
+  payload: { isForReset, data },
+}): Generator<*, *, *> {
   try {
-    yield Http.post('/api/user/passwordForgotUpdate', formData);
-    yield put(push(SUCCESS_PAGE));
-  } catch ({ response }) {
+    if (isForReset) {
+      yield http.post('user/passwordForgotUpdate', data);
+      yield put(push(SUCCESS_PAGE));
+    } else {
+      yield http.post('user/registrationConfirm', data);
+      yield put(push(LOGIN_PAGE));
+    }
+  } catch ({ response: { data } }) {
+    // eslint-disable-next-line
+    console.log(data);
+    // TODO display error in modal
     yield put(
       showModal({
         modalName: MODALS.ErrorMessage,
         align: 'center',
         data: {
-          content: response && response.data.message,
+          content: data && data.message,
         },
       }),
     );

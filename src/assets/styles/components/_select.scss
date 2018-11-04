@@ -1,5 +1,5 @@
 $select-min-width: 115px !default;
-$select-max-width: 200px !default;
+$select-max-width: 100% !default;
 $select-height: rhythm(1.75) !default;
 $select-margin: rhythm(.125) 0 !default;
 $select-padding: .375 25px .375 10px !default;
@@ -94,6 +94,10 @@ $select-inline-background: (
 
   &.#{$namespace}-select--fixed {
     width: $select-min-width;
+  }
+
+  &.#{$namespace}-select--full {
+    width: $select-max-width;
   }
 
   &:-webkit-autofill,

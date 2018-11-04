@@ -5,7 +5,7 @@ import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
 import { VERIFY_PAGE, MODALS } from 'src/constants';
-import { Http } from 'src/services/http';
+import { http } from 'src/services/http';
 import { showModal } from 'src/state/actions';
 
 import * as actions from './actions';
@@ -15,7 +15,7 @@ export function* resetPassword$({ payload }): Generator<*, *, *> {
   // console.log(payload);
   yield delay(500);
   try {
-    yield Http.post('/api/user/passwordForgot', payload);
+    yield http.post('/api/user/passwordForgot', payload);
     yield put(push(VERIFY_PAGE));
   } catch ({ response }) {
     yield put(

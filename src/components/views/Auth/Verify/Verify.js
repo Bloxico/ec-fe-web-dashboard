@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import classNames from 'classnames';
@@ -7,22 +9,23 @@ import { Anchor, Form, FormField, Button } from '@ui';
 import { THEME_PREFIX } from 'src/constants';
 
 const baseClass = `${THEME_PREFIX}-verify`;
+const classes = classNames(baseClass);
 
 type Props = {
   handleSubmit: Function,
-  isVerifyInProgress: boolean,
+  verifyInProgress: boolean,
   MSGVerifyAccount: string,
   MSG4DigitVerificationCode: string,
   MSGVerify: string,
   MSGEnterYourCode: string,
   MSGDidntReceiveEmail: string,
   MSGResendCode: string,
-  MSGNewPassword: string,
   requiredIntl: Function,
   numberIntl: Function,
   codeLenIntl: Function,
   passwordIntl: Function,
   verify: Function,
+  match: Object,
 };
 
 class Verify extends Component<Props> {
@@ -38,10 +41,14 @@ class Verify extends Component<Props> {
   }
 
   handleSubmit = (data: any) => {
-    const { verify } = this.props;
-    const formData = data;
+    const {
+      verify,
+      match: {
+        params: { email },
+      },
+    } = this.props;
 
-    verify({ formData });
+    verify({ data: { ...data, email } });
   };
 
   render() {
@@ -52,8 +59,7 @@ class Verify extends Component<Props> {
       MSG4DigitVerificationCode,
       MSGDidntReceiveEmail,
       MSGResendCode,
-      MSGNewPassword,
-      isVerifyInProgress,
+      verifyInProgress,
       handleSubmit,
     } = this.props;
 
@@ -61,10 +67,7 @@ class Verify extends Component<Props> {
       requiredValidator,
       numberValidator,
       codeLenValidator,
-      passwordValidator,
     } = this.validators;
-
-    const classes = classNames(baseClass);
 
     return (
       <div className={classes}>
@@ -83,16 +86,8 @@ class Verify extends Component<Props> {
             validate={[requiredValidator, numberValidator, codeLenValidator]}
             className={`${baseClass}__token`}
           />
-          <Field
-            type="password"
-            name="newPassword"
-            component={FormField}
-            placeholder={MSGNewPassword}
-            width="full"
-            validate={[requiredValidator, passwordValidator]}
-          />
           <Button
-            disabled={isVerifyInProgress}
+            disabled={verifyInProgress}
             action="submit"
             type="primary"
             width="full"

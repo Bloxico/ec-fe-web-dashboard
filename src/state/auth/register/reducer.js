@@ -9,9 +9,25 @@ export default handleActions(
   new Map([
     [
       actions.REGISTER,
+      (state, { payload }) => ({
+        ...state,
+        email: payload.email || '',
+        inProgress: true,
+      }),
+    ],
+    [
+      actions.FETCH_REGIONS,
       state => ({
         ...state,
-        inProgress: true,
+        isFetchRegionsInProgress: true,
+      }),
+    ],
+    [
+      actions.FETCH_REGIONS_SUCCESS,
+      (state, { payload }) => ({
+        ...state,
+        regions: payload.regions || {},
+        isFetchRegionsInProgress: false,
       }),
     ],
     [

@@ -25,12 +25,15 @@ export type Props = {
   passwordIntl: Function,
   emailIntl: Function,
   matchIntl: Function,
+  regions: [],
+  fetchRegions: Function,
 };
 
 const baseClass = `${THEME_PREFIX}-register`;
+const classes = classNames(baseClass);
 
 class Register extends Component<Props> {
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     const {
       requiredIntl,
@@ -52,6 +55,17 @@ class Register extends Component<Props> {
     };
   }
 
+  componentDidMount() {
+    const { fetchRegions } = this.props;
+
+    fetchRegions();
+  }
+
+  defaultRegionOption = {
+    text: 'Select',
+    value: null,
+  };
+
   render() {
     const {
       MSGCreateAnAccount,
@@ -65,6 +79,7 @@ class Register extends Component<Props> {
       MSGNicknameOptional,
       isRegistrationInProgress,
       MSGContinue,
+      regions,
     } = this.props;
 
     const {
@@ -75,14 +90,23 @@ class Register extends Component<Props> {
       matchValidator,
     } = this.validators;
 
-    const classes = classNames(baseClass);
+    let regionOptions = [this.defaultRegionOption];
+
+    if (regions) {
+      regionOptions = [
+        ...regionOptions,
+        ...regions.map(({ regionName }) => ({
+          value: regionName,
+          text: regionName,
+        })),
+      ];
+    }
 
     return (
       <div className={classes}>
         <Header title={MSGCreateAnAccount} />
 
         <Form onSubmit={handleSubmit(handleRegistration)}>
-          {/* TODO@martins add validatiors */}
           <Field
             placeholder={MSGEmail}
             type="email"
@@ -106,18 +130,18 @@ class Register extends Component<Props> {
             component={FormField}
             name="matchPassword"
             width="full"
-            toMatch="12345678"
             validate={[requiredValidator, passwordValidator, matchValidator]}
           />
           <Field
             placeholder={MSGRegion}
-            type="text"
+            type="select"
             component={FormField}
             name="regionName"
             width="full"
+            options={regionOptions}
+            selected="Select"
             validate={[requiredValidator]}
           />
-
           <Field
             placeholder={MSGCity}
             type="text"

@@ -7,4 +7,12 @@ export default defineMessages({
     defaultMessage: 'Dashboard',
     id: 'dashboard',
   },
+  CO2Prevented: {
+    defaultMessage: 'CO2 prevented',
+    id: 'CO2Prevented',
+  },
+  kWhSaved: {
+    defaultMessage: 'kWh Saved',
+    id: 'kWhSaved',
+  },
 });
