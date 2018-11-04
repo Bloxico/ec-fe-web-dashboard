@@ -2,14 +2,45 @@
 
 import React from 'react';
 
+import { mockChartData } from 'src/mocks/dashboard';
+import { THEME_PREFIX } from 'src/constants';
+import { Col, Row } from '@ui';
+
+import Chart from './Chart';
+
 export type Props = {
   MSGDashboard: string,
+  MSGCO2Prevented: string,
+  MSGkWhSaved: string,
 };
 
-const baseClass = 'gc-dashboard';
+// TODO:
+// - add headers
+// - improve styles and markup
+// - integrate BE
 
-const Dashboard = ({ MSGDashboard }: Props) => (
-  <div className={baseClass}>{MSGDashboard}</div>
+const baseClass = `${THEME_PREFIX}-dashboard`;
+// TODO@martins get actual colors from designers
+const Dashboard = ({ MSGDashboard, MSGCO2Prevented, MSGkWhSaved }: Props) => (
+  <div className={baseClass}>
+    <Row>
+      <Col>
+        <h3>{MSGDashboard}</h3>
+      </Col>
+    </Row>
+    <Row>
+      <Col>
+        <Chart
+          data={mockChartData(6)}
+          lineColor="green"
+          title={MSGCO2Prevented}
+        />
+      </Col>
+      <Col>
+        <Chart data={mockChartData(6)} lineColor="blue" title={MSGkWhSaved} />
+      </Col>
+    </Row>
+  </div>
 );
 
 export default Dashboard;
