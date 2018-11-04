@@ -22,5 +22,7 @@ export default compose(
   ),
   withProps(({ intl: { formatMessage } }) => ({
     MSGDashboard: formatMessage(messages.dashboard),
+    MSGCO2Prevented: formatMessage(messages.CO2Prevented),
+    MSGkWhSaved: formatMessage(messages.kWhSaved),
   })),
 )(Dashboard);
