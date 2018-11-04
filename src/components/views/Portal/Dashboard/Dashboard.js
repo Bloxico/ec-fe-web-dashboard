@@ -26,15 +26,9 @@ const baseClass = `${THEME_PREFIX}-dashboard`;
 const Dashboard = ({ MSGDashboard, MSGCO2Prevented, MSGkWhSaved }: Props) => (
   <div className={baseClass}>
     <Sidebar align="left">
-      <Sidebar.Header>
-        Header
-      </Sidebar.Header>
-      <Sidebar.Body>
-        Body
-      </Sidebar.Body>
-      <Sidebar.Footer>
-        Footer
-      </Sidebar.Footer>
+      <Sidebar.Header>Header</Sidebar.Header>
+      <Sidebar.Body>Body</Sidebar.Body>
+      <Sidebar.Footer>Footer</Sidebar.Footer>
     </Sidebar>
     <Row>
       <Col>
