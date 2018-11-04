@@ -1,5 +1,7 @@
+// TODO@use reselect
+
 export const isVerifyInProgress = ({
   auth: {
     resetPassword: { inProgress },
   },
-}) => ({ isVerifyInProgress: inProgress });
+}) => inProgress;

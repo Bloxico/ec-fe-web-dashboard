@@ -1,23 +1,20 @@
+// @flow
+
 import { connect } from 'react-redux';
 import { compose, withProps } from 'recompose';
 import { reduxForm } from 'redux-form';
 import { injectIntl } from 'react-intl';
+import { withRouter } from 'react-router';
 
 import { verify } from 'src/state/actions';
 import { codeLen, number, required, password } from 'src/utilities/validators';
-import {
-  isVerifyInProgress,
-  getResetPasswordEmail,
-  getRegisterEmail,
-} from 'src/state/selectors';
+import { isVerifyInProgress } from 'src/state/selectors';
 
 import Verify from './Verify';
 import messages from './messages';
 
 const mapStateToProps = state => ({
-  ...isVerifyInProgress(state),
-  ...getResetPasswordEmail(state),
-  ...getRegisterEmail(state),
+  verifyInProgress: isVerifyInProgress(state),
 });
 const actions = {
   verify,
@@ -32,6 +29,7 @@ export default compose(
   reduxForm({
     form: 'Verify',
   }),
+  withRouter,
   withProps(({ intl: { formatMessage } }) => ({
     MSGVerifyAccount: formatMessage(messages.verifyAccount),
     MSG4DigitVerificationCode: formatMessage(
@@ -41,7 +39,6 @@ export default compose(
     MSGEnterYourCode: formatMessage(messages.enterYourCode),
     MSGDidntReceiveEmail: formatMessage(messages.didntReceiveEmail),
     MSGResendCode: formatMessage(messages.resendCode),
-    MSGNewPassword: formatMessage(messages.newPassword),
   })),
   withProps(({ intl }) => ({
     requiredIntl: required({ intl }),

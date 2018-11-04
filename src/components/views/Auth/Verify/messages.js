@@ -22,14 +22,10 @@ export default defineMessages({
   },
   didntReceiveEmail: {
     id: 'didntReceiveEmail',
-    defaultMessage: "Didn't recieve email?",
+    defaultMessage: "Didn't receive email?",
   },
   resendCode: {
     id: 'resendCode',
     defaultMessage: 'Resend code',
-  },
-  newPassword: {
-    id: 'newPassword',
-    defaultMessage: 'New password',
   },
 });

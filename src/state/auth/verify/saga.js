@@ -5,45 +5,48 @@ import { push } from 'react-router-redux';
 
 import { SUCCESS_PAGE, LOGIN_PAGE } from 'src/constants';
 import { http } from 'src/services/http';
-import { showModal } from 'src/state/actions';
-import { getIntl } from 'src/components/wrappers/IntlProvider';
-import messages from 'src/components/views/common/ModalManager/messages';
+
+// import { showModal } from 'src/state/actions';
+// import { getIntl } from 'src/components/wrappers/IntlProvider';
+// import messages from 'src/components/views/common/ModalManager/messages';
 
 import * as actions from './actions';
 
 export function* verify$({
-  payload: { isForReset, formData },
+  payload: { isForReset, data },
 }): Generator<*, *, *> {
   try {
     if (isForReset) {
-      yield http.post('/api/user/passwordForgotUpdate', formData);
+      yield http.post('user/passwordForgotUpdate', data);
       yield put(push(SUCCESS_PAGE));
     } else {
-      yield http.post('/api/user/registrationConfirm', formData);
+      yield http.post('user/registrationConfirm', data);
       yield put(push(LOGIN_PAGE));
     }
-  } catch ({ response }) {
-    const { formatMessage } = yield getIntl;
+  } catch ({ response: { data } }) {
+    console.log(data);
+    // TODO display error in modal
+    // const { formatMessage } = yield getIntl;
 
-    let errorTitle = formatMessage(messages.serverError);
-    let errorContent = formatMessage(messages.somethingWentWrong);
-    let btnText = formatMessage(messages.damnDevelopers);
-
-    if (response !== undefined) {
-      errorContent = response.data.message;
-      btnText = formatMessage(messages.gotIt);
-      errorTitle = formatMessage(messages.tryAgain);
-    }
-
-    yield put(
-      showModal({
-        modalName: 'Verify',
-        title: errorTitle,
-        align: 'center',
-        footerBtnTxt: btnText,
-        data: errorContent,
-      }),
-    );
+    // let errorTitle = formatMessage(messages.serverError);
+    // let errorContent = formatMessage(messages.somethingWentWrong);
+    // let btnText = formatMessage(messages.damnDevelopers);
+    //
+    // if (response !== undefined) {
+    //   errorContent = response.data.message;
+    //   btnText = formatMessage(messages.gotIt);
+    //   errorTitle = formatMessage(messages.tryAgain);
+    // }
+    //
+    // yield put(
+    //   showModal({
+    //     modalName: 'Verify',
+    //     title: errorTitle,
+    //     align: 'center',
+    //     footerBtnTxt: btnText,
+    //     data: errorContent,
+    //   }),
+    // );
   }
   yield put(actions.clearVerifyState());
 }

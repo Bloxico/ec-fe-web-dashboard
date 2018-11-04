@@ -38,11 +38,11 @@ export default compose(
     // TODO@martins remove
     initialValues: {
       city: 'string',
-      email: 'string@wawd.cop',
-      matchPassword: '123123123',
+      email: 'striawdng@wawd.cop',
+      matchPassword: 'AloBre123.awd',
       name: 'string',
-      password: '123123123',
-      regionName: 'string',
+      password: 'AloBre123.awd',
+      regionName: 'Serbia',
     },
   }),
   withHandlers({
