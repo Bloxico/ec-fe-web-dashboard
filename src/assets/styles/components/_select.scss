@@ -1,8 +1,11 @@
 $select-min-width: 115px !default;
 $select-max-width: 100% !default;
+$select-full-width: 100% !default;
 $select-height: rhythm(1.75) !default;
 $select-margin: rhythm(.125) 0 !default;
 $select-padding: .375 25px .375 10px !default;
+$select-font-family: $ui-font-family !default;
+$select-font-size: map-get($font-sizes, large) !default;
 $select-font-weight: normal !default;
 $select-color: map-get($text-colors, 'normal') !default;
 $select-placeholder-color: map-get($text-colors, 'dark') !default;
@@ -70,6 +73,8 @@ $select-inline-background: (
   min-height: $select-height;
   margin: $select-margin;
   line-height: $base-line-height;
+  font-family: $select-font-family;
+  font-size: $select-font-size;
   font-weight: $select-font-weight;
   box-shadow: $select-box-shadow;
   transition: $select-transition;
@@ -90,14 +95,6 @@ $select-inline-background: (
         @include set-background($select-hover-background);
       }
     }
-  }
-
-  &.#{$namespace}-select--fixed {
-    width: $select-min-width;
-  }
-
-  &.#{$namespace}-select--full {
-    width: $select-max-width;
   }
 
   &:-webkit-autofill,
@@ -171,8 +168,17 @@ $select-inline-background: (
 }
 
 
-.#{$namespace}-select--full {
+.#{$namespace}-select--fixed {
+  width: $select-min-width;
+  min-width: $select-min-width;
+  max-width: $select-min-width;
+}
+
+
+.#{$namespace}-select--full,
+.#{$namespace}-select--wide {
   width: 100%;
+  min-width: 100%;
   max-width: 100%;
 }
 
