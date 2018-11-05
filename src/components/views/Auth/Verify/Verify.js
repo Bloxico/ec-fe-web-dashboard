@@ -20,12 +20,14 @@ type Props = {
   MSGEnterYourCode: string,
   MSGDidntReceiveEmail: string,
   MSGResendCode: string,
+  MSGNewPassword: string,
   requiredIntl: Function,
   numberIntl: Function,
   codeLenIntl: Function,
   passwordIntl: Function,
   verify: Function,
   match: Object,
+  history: any,
 };
 
 class Verify extends Component<Props> {
@@ -44,11 +46,16 @@ class Verify extends Component<Props> {
     const {
       verify,
       match: {
-        params: { email },
+        params: { email, reset },
       },
     } = this.props;
 
-    verify({ data: { ...data, email } });
+    let isForReset = false;
+    if (reset !== undefined) {
+      isForReset = true;
+    }
+
+    verify({ isForReset, data: { ...data, email } });
   };
 
   render() {
@@ -59,19 +66,25 @@ class Verify extends Component<Props> {
       MSG4DigitVerificationCode,
       MSGDidntReceiveEmail,
       MSGResendCode,
+      MSGNewPassword,
       verifyInProgress,
       handleSubmit,
+      history,
+      match: {
+        params: { reset },
+      },
     } = this.props;
 
     const {
       requiredValidator,
       numberValidator,
       codeLenValidator,
+      passwordValidator,
     } = this.validators;
 
     return (
       <div className={classes}>
-        <Header title={MSGVerifyAccount} />
+        <Header handleBack={history.goBack} title={MSGVerifyAccount} />
 
         <p>{MSGEnterYourCode}</p>
 
@@ -86,6 +99,16 @@ class Verify extends Component<Props> {
             validate={[requiredValidator, numberValidator, codeLenValidator]}
             className={`${baseClass}__token`}
           />
+          {reset && (
+            <Field
+              type="password"
+              name="newPassword"
+              component={FormField}
+              placeholder={MSGNewPassword}
+              width="full"
+              validate={[requiredValidator, passwordValidator]}
+            />
+          )}
           <Button
             disabled={verifyInProgress}
             action="submit"

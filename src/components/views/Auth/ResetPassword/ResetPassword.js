@@ -19,6 +19,7 @@ type Props = {
   MSGYourENRGEmail: string,
   requiredIntl: Function,
   emailIntl: Function,
+  history: any,
 };
 
 class ResetPassword extends Component<Props> {
@@ -40,13 +41,14 @@ class ResetPassword extends Component<Props> {
       MSGEmail,
       isResetPasswordInProgress,
       MSGContinue,
+      history,
     } = this.props;
 
     const { requiredValidator, emailValidator } = this.validators;
 
     return (
       <div className={classes}>
-        <Header title={MSGResetPassword} />
+        <Header handleBack={history.goBack} title={MSGResetPassword} />
 
         <p>{MSGYourENRGEmail}</p>
         <Form onSubmit={handleSubmit(handleResetPassword)}>

@@ -21,6 +21,7 @@ type PropsT = {
   requiredIntl: Function,
   passwordIntl: Function,
   emailIntl: Function,
+  history: any,
 };
 
 const baseClass = `${THEME_PREFIX}-login`;
@@ -47,6 +48,7 @@ class Login extends Component<PropsT> {
       handleSubmit,
       handleLogin,
       isLoginInProgress,
+      history,
     } = this.props;
 
     const {
@@ -57,7 +59,7 @@ class Login extends Component<PropsT> {
 
     return (
       <div className={classes}>
-        <Header title={MSGSignIn} />
+        <Header handleBack={history.goBack} title={MSGSignIn} />
 
         <Form onSubmit={handleSubmit(handleLogin)}>
           <Field
@@ -65,7 +67,7 @@ class Login extends Component<PropsT> {
             component={FormField}
             name="username"
             width="full"
-            validate={[requiredValidator, passwordValidator, emailValidator]}
+            validate={[requiredValidator, emailValidator]}
           />
           <Field
             placeholder={MSGPassword}
@@ -73,7 +75,7 @@ class Login extends Component<PropsT> {
             component={FormField}
             name="password"
             width="full"
-            validate={[requiredValidator, passwordValidator, emailValidator]}
+            validate={[requiredValidator, passwordValidator]}
           />
 
           <Button

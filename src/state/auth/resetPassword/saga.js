@@ -15,8 +15,8 @@ export function* resetPassword$({ payload }): Generator<*, *, *> {
   // console.log(payload);
   yield delay(500);
   try {
-    yield http.post('/api/user/passwordForgot', payload);
-    yield put(push(VERIFY_PAGE));
+    yield http.post('user/passwordForgot', payload);
+    yield put(push(`${VERIFY_PAGE}/${payload.email}/1`));
   } catch ({ response }) {
     yield put(
       showModal({

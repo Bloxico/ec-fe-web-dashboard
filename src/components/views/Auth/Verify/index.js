@@ -39,6 +39,7 @@ export default compose(
     MSGEnterYourCode: formatMessage(messages.enterYourCode),
     MSGDidntReceiveEmail: formatMessage(messages.didntReceiveEmail),
     MSGResendCode: formatMessage(messages.resendCode),
+    MSGNewPassword: formatMessage(messages.newPassword),
   })),
   withProps(({ intl }) => ({
     requiredIntl: required({ intl }),
