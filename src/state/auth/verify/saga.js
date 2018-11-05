@@ -22,9 +22,7 @@ export function* verify$({
       yield put(push(LOGIN_PAGE));
     }
   } catch ({ response: { data } }) {
-    // eslint-disable-next-line
-    console.log(data);
-    // TODO display error in modal
+
     yield put(
       showModal({
         modalName: MODALS.ErrorMessage,

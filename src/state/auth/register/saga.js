@@ -23,36 +23,35 @@ export function* fetchRegions$(): Generator<*, *, *> {
 
 export function* register$({ payload }): Generator<*, *, *> {
   try {
-    // throw new Error({ response: { data: { message: 'Testing modal...' } } });
     yield http.post('user/registration', payload);
 
     yield put(push(`${VERIFY_PAGE}/${payload.email}`));
-  } catch ({ response }) {
-    // TODO@martins create a generic error handler
-    if (response.data) {
-      const { validationErrorMessages } = response.data;
+  } catch ({ response: { data } }) {
+    let errorMessage = data.message;
+    const { validationErrorMessages } = data;
 
-      // eslint-disable-next-line
-      console.log(validationErrorMessages);
-      yield put(
-        showModal({
-          modalName: MODALS.ErrorMessage,
-          align: 'center',
-          data: {
-            content: validationErrorMessages,
-          },
-        }),
-      );
+    if (validationErrorMessages) {
+      errorMessage = '';
+      Object.keys(validationErrorMessages).forEach((key) => {
+
+        errorMessage += `${key}: ${validationErrorMessages[key]} \n`;
+      });
     }
 
-    // TODO@martins show error modal
+    yield put(
+      showModal({
+        modalName: MODALS.ErrorMessage,
+        align: 'center',
+        data: {
+          content: errorMessage
+        },
+      }),
+    );
   }
-
-  // yield put(actions.clearRegisterState());
 }
 
 // $FlowIssue
-export default function*() {
+export default function* () {
   yield all([takeEvery(actions.REGISTER, register$)]);
   yield all([takeEvery(actions.FETCH_REGIONS, fetchRegions$)]);
 }
