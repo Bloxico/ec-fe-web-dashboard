@@ -35,15 +35,6 @@ export default compose(
   ),
   reduxForm({
     form: 'Register',
-    // TODO@martins remove
-    initialValues: {
-      city: 'string',
-      email: 'striawdng@wawd.cop',
-      matchPassword: 'AloBre123.awd',
-      name: 'string',
-      password: 'AloBre123.awd',
-      regionName: 'Serbia',
-    },
   }),
   withHandlers({
     // eslint-disable-next-line no-shadow
