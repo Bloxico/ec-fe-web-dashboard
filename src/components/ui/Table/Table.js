@@ -5,7 +5,9 @@ import ReactTable from 'react-table';
 import classNames from 'classnames';
 import Loader from '../Loader';
 
-const baseClass = 'enrg-table';
+import { THEME_PREFIX } from 'src/constants';
+
+const baseClass = `${THEME_PREFIX}-table`;
 
 type PropsT = any;
 

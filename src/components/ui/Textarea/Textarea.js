@@ -4,7 +4,9 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 
-const baseClass = 'enrg-textarea';
+import { THEME_PREFIX } from 'src/constants';
+
+const baseClass = `${THEME_PREFIX}-textarea`;
 
 type TextareaSizes = 'small' | 'large';
 
