@@ -32,8 +32,7 @@ export function* register$({ payload }): Generator<*, *, *> {
 
     if (validationErrorMessages) {
       errorMessage = '';
-      Object.keys(validationErrorMessages).forEach((key) => {
-
+      Object.keys(validationErrorMessages).forEach(key => {
         errorMessage += `${key}: ${validationErrorMessages[key]} \n`;
       });
     }
@@ -43,7 +42,7 @@ export function* register$({ payload }): Generator<*, *, *> {
         modalName: MODALS.ErrorMessage,
         align: 'center',
         data: {
-          content: errorMessage
+          content: errorMessage,
         },
       }),
     );
@@ -51,7 +50,7 @@ export function* register$({ payload }): Generator<*, *, *> {
 }
 
 // $FlowIssue
-export default function* () {
+export default function*() {
   yield all([takeEvery(actions.REGISTER, register$)]);
   yield all([takeEvery(actions.FETCH_REGIONS, fetchRegions$)]);
 }

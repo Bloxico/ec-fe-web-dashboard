@@ -22,7 +22,6 @@ export function* verify$({
       yield put(push(LOGIN_PAGE));
     }
   } catch ({ response: { data } }) {
-
     yield put(
       showModal({
         modalName: MODALS.ErrorMessage,
