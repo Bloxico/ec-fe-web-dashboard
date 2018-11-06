@@ -11,3 +11,6 @@ export const verify = createAction(VERIFY);
 export const verifySuccess = createAction(VERIFY_SUCCESS);
 export const verifyFail = createAction(VERIFY_FAIL);
 export const clearVerifyState = createAction(CLEAR_VERIFY_STATE);
+
+export const RESEND_TOKEN = '[RESEND_TOKEN]';
+export const resendToken = createAction(RESEND_TOKEN);
