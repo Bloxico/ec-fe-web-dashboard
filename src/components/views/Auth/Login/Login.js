@@ -21,7 +21,6 @@ type PropsT = {
   requiredIntl: Function,
   passwordIntl: Function,
   emailIntl: Function,
-  history: any,
 };
 
 const baseClass = `${THEME_PREFIX}-login`;
@@ -48,7 +47,6 @@ class Login extends Component<PropsT> {
       handleSubmit,
       handleLogin,
       isLoginInProgress,
-      history,
     } = this.props;
 
     const {
@@ -59,7 +57,7 @@ class Login extends Component<PropsT> {
 
     return (
       <div className={classes}>
-        <Header handleBack={history.goBack} title={MSGSignIn} />
+        <Header title={MSGSignIn} />
 
         <Form onSubmit={handleSubmit(handleLogin)}>
           <Field

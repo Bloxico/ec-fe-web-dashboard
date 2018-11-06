@@ -27,7 +27,6 @@ export type Props = {
   matchIntl: Function,
   regions: [],
   fetchRegions: Function,
-  history: any,
 };
 
 const baseClass = `${THEME_PREFIX}-register`;
@@ -81,7 +80,6 @@ class Register extends Component<Props> {
       isRegistrationInProgress,
       MSGContinue,
       regions,
-      history,
     } = this.props;
 
     const {
@@ -106,7 +104,7 @@ class Register extends Component<Props> {
 
     return (
       <div className={classes}>
-        <Header handleBack={history.goBack} title={MSGCreateAnAccount} />
+        <Header title={MSGCreateAnAccount} />
 
         <Form onSubmit={handleSubmit(handleRegistration)}>
           <Field

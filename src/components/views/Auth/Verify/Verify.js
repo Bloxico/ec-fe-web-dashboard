@@ -27,7 +27,6 @@ type Props = {
   passwordIntl: Function,
   verify: Function,
   match: Object,
-  history: any,
 };
 
 class Verify extends Component<Props> {
@@ -50,10 +49,7 @@ class Verify extends Component<Props> {
       },
     } = this.props;
 
-    let isForReset = false;
-    if (reset !== undefined) {
-      isForReset = true;
-    }
+    const isForReset = Boolean(reset);
 
     verify({ isForReset, data: { ...data, email } });
   };
@@ -69,7 +65,6 @@ class Verify extends Component<Props> {
       MSGNewPassword,
       verifyInProgress,
       handleSubmit,
-      history,
       match: {
         params: { reset },
       },
@@ -84,7 +79,7 @@ class Verify extends Component<Props> {
 
     return (
       <div className={classes}>
-        <Header handleBack={history.goBack} title={MSGVerifyAccount} />
+        <Header title={MSGVerifyAccount} />
 
         <p>{MSGEnterYourCode}</p>
 

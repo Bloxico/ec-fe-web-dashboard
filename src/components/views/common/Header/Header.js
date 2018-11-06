@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import Button from '@ui/Button';
 import iconBack from '@images/icon-back.svg';
@@ -8,15 +9,15 @@ const baseClass = `${THEME_PREFIX}-header`;
 
 export type PropsT = {
   title: string,
-  handleBack: Function,
+  history: any,
 };
 
-const Header = ({ title, handleBack }: PropsT) => (
+const Header = ({ title, history }: PropsT) => (
   <header className={baseClass}>
     <h4 className={`${baseClass}__title`}>{title}</h4>
     <Button
       icon={iconBack}
-      onClick={handleBack}
+      onClick={history.goBack}
       type="ghost"
       className={`${baseClass}__action`}
     >
@@ -25,4 +26,4 @@ const Header = ({ title, handleBack }: PropsT) => (
   </header>
 );
 
-export default Header;
+export default withRouter(Header);
