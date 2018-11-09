@@ -4,7 +4,7 @@ import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
 import { SUCCESS_PAGE, LOGIN_PAGE, MODALS } from 'src/constants';
-import { http } from 'src/services/http';
+import http from 'src/services/http';
 
 import { showModal } from 'src/state/actions';
 

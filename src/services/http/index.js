@@ -8,4 +8,4 @@ http.setConfig({
   baseURL: API_URL,
 });
 
-export { http };
+export default http;

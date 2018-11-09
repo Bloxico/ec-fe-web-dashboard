@@ -73,7 +73,7 @@ class Login extends Component<PropsT> {
             component={FormField}
             name="password"
             width="full"
-            validate={[requiredValidator, passwordValidator, emailValidator]}
+            validate={[requiredValidator, passwordValidator]}
           />
 
           <Button

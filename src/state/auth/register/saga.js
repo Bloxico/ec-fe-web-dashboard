@@ -3,7 +3,7 @@
 import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
-import { http } from 'src/services/http';
+import http from 'src/services/http';
 import { VERIFY_PAGE, MODALS } from 'src/constants';
 import { showModal } from 'src/state/actions';
 
