@@ -107,7 +107,9 @@ class InputGroup extends PureComponent<Props> {
 
     return (
       <div className={classes}>
-        {hint && <small className={`${THEME_PREFIX}-input__hint`}>{hint}</small>}
+        {hint && (
+          <small className={`${THEME_PREFIX}-input__hint`}>{hint}</small>
+        )}
 
         {prefix && (
           <span className={`${baseClass}__prefix`} ref={this.prefixRef}>
@@ -125,8 +127,11 @@ class InputGroup extends PureComponent<Props> {
           </span>
         )}
 
-        {error && <div className={`${THEME_PREFIX}-input__message`}>{error}</div>}
-        {help && !error && <div className={`${THEME_PREFIX}-input__help`}>{help}</div>}
+        {error && (
+          <div className={`${THEME_PREFIX}-input__message`}>{error}</div>
+        )}
+        {help &&
+          !error && <div className={`${THEME_PREFIX}-input__help`}>{help}</div>}
       </div>
     );
   }
