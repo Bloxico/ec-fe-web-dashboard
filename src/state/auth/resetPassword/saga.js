@@ -1,6 +1,5 @@
 // @flow
 
-import { delay } from 'redux-saga';
 import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
@@ -11,12 +10,9 @@ import { showModal } from 'src/state/actions';
 import * as actions from './actions';
 
 export function* resetPassword$({ payload }): Generator<*, *, *> {
-  // eslint-disable-next-line
-  // console.log(payload);
-  yield delay(500);
   try {
     yield http.post('user/passwordForgot', payload);
-    yield put(push(`${VERIFY_PAGE}/${payload.email}/1`));
+    yield put(push(`${VERIFY_PAGE}/${payload.email}?reset=true`));
   } catch ({ response }) {
     yield put(
       showModal({

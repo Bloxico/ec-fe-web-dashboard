@@ -28,7 +28,6 @@ const Auth = () => (
       <Route path={LOGIN_PAGE} component={Login} />
       <Route path={REGISTER_PAGE} component={Register} />
       <Route path={RESET_PASSWORD_PAGE} component={ResetPassword} />
-      <Route path={`${VERIFY_PAGE}/:email/:reset`} component={Verify} />
       <Route path={`${VERIFY_PAGE}/:email`} component={Verify} />
       <Route path={SUCCESS_PAGE} component={Success} />
       <Route path={AUTH_PAGE} component={Welcome} />
