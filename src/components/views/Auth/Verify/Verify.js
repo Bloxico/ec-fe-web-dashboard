@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 import classNames from 'classnames';
 
 import Header from '@partials/Header';
-import { Anchor, Form, FormField, Button } from '@ui';
+import { Form, FormField, Button } from '@ui';
 import { THEME_PREFIX } from 'src/constants';
 
 const baseClass = `${THEME_PREFIX}-verify`;
@@ -26,6 +26,7 @@ type Props = {
   codeLenIntl: Function,
   passwordIntl: Function,
   verify: Function,
+  resendToken: Function,
   match: Object,
   location: Object,
 };
@@ -61,6 +62,18 @@ class Verify extends Component<Props> {
     verify({ isForReset, data: { ...data, email } });
   };
 
+  handleResend = () => {
+    const {
+      resendToken,
+      match: {
+        params: { email, reset },
+      },
+    } = this.props;
+
+    const isForReset = Boolean(reset);
+
+    resendToken({ isForReset, data: { email } });
+  };
   render() {
     const {
       MSGVerifyAccount,
@@ -120,7 +133,10 @@ class Verify extends Component<Props> {
         </Form>
 
         <footer className={`${baseClass}__footer`}>
-          {MSGDidntReceiveEmail} <Anchor href="#">{MSGResendCode}</Anchor>
+          {MSGDidntReceiveEmail}{' '}
+          <Button type="link" onClick={this.handleResend}>
+            {MSGResendCode}
+          </Button>
         </footer>
       </div>
     );
