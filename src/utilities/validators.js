@@ -29,7 +29,11 @@ const messages = defineMessages({
   },
   validatorsPassword8Min: {
     id: 'validatorsPassword8Min',
-    defaultMessage: 'Minimum 8 symbols',
+    defaultMessage: 'Minimum 8 characters',
+  },
+  validatorsPasswordAtLeast: {
+    id: 'validatorsPasswordAtLeast',
+    defaultMessage: 'At least 1 uppercase, lowercase, digit and symbol.',
   },
   validatorsPasswordMatch: {
     id: 'validatorsPasswordMatch',
@@ -108,12 +112,14 @@ export const email = ({ intl: { formatMessage } }: ContextT) => (
 export const password = ({ intl: { formatMessage } }: ContextT) => (
   value?: string,
 ) => {
-  if (value && value.indexOf(' ') > -1) {
-    return formatMessage(messages.validatorsPasswordNoSpaces);
-  } else if (value && value.length < 8) {
+  if (value && value.length < 8) {
     return formatMessage(messages.validatorsPassword8Min);
+  } else if (
+    value &&
+    !/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/i.test(value)
+  ) {
+    return formatMessage(messages.validatorsPasswordAtLeast);
   }
-
   return undefined;
 };
 
