@@ -66,14 +66,14 @@ class Verify extends Component<Props> {
     const {
       resendToken,
       match: {
-        params: { email, reset },
+        params: { email },
       },
     } = this.props;
 
-    const isForReset = Boolean(reset);
-
+    const { isForReset } = this.isForReset;
     resendToken({ isForReset, data: { email } });
   };
+
   render() {
     const {
       MSGVerifyAccount,
