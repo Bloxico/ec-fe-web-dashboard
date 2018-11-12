@@ -30,7 +30,7 @@ export type Props = {
 const baseClass = `${THEME_PREFIX}-editProfile`;
 const classes = classNames(baseClass);
 
-class UserProfile extends Component<Props> {
+class EditProfile extends Component<Props> {
   constructor(props) {
     super(props);
 
@@ -147,4 +147,4 @@ class UserProfile extends Component<Props> {
   }
 }
 
-export default UserProfile;
+export default EditProfile;

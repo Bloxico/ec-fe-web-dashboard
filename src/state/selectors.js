@@ -1,2 +1,2 @@
 export * from './auth/selectors';
-export * from './userProfile/selectors';
+export * from './editProfile/selectors';

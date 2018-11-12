@@ -3,9 +3,9 @@
 import { all } from 'redux-saga/effects';
 
 import authSaga from './auth/saga';
-import userProfileSaga from './userProfile/saga';
+import editProfileSaga from './editProfile/saga';
 
 // $FlowIssue
 export default function*() {
-  yield all([authSaga(), userProfileSaga()]);
+  yield all([authSaga(), editProfileSaga()]);
 }

@@ -9,9 +9,9 @@ type StateT = {
 };
 
 const initialState: StateT = {
-    isUpdateProfileInProgress: false,
-    isProfileDataInProgress: false,
-    fail: false,
+  isUpdateProfileInProgress: false,
+  isProfileDataInProgress: false,
+  fail: false,
 };
 
 export default initialState;

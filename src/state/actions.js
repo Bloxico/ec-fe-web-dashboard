@@ -1,3 +1,3 @@
 export * from './auth/actions';
 export * from './modal/actions';
-export * from './userProfile/actions';
+export * from './editProfile/actions';

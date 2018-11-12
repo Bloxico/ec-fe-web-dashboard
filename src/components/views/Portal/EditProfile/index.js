@@ -10,7 +10,7 @@ import { getProfileData, getUserProfileRegions } from 'src/state/selectors';
 import { alphanumeric, email, required } from 'src/utilities/validators';
 
 import messages from './messages';
-import UserProfile from './UserProfile';
+import EditProfile from './EditProfile';
 
 const actions = {
   updateProfile,
@@ -49,4 +49,4 @@ export default compose(
     alphanumericIntl: alphanumeric({ intl }),
     emailIntl: email({ intl }),
   })),
-)(UserProfile);
+)(EditProfile);
