@@ -11,8 +11,6 @@ import * as actions from './actions';
 
 export function* login$({ payload }): Generator<*, *, *> {
   try {
-
-
     const { data } = yield http.post(
       'oauth/token',
       { grant_type: 'password', scope: 'access-profile', ...payload },
@@ -35,7 +33,10 @@ export function* login$({ payload }): Generator<*, *, *> {
     //     "scope": "access-profile"
     //   };
 
-    Cookie.setJSON(AUTH_COOKIE, { accessToken: data.access_token, refreshToken: data.refresh_token });
+    Cookie.setJSON(AUTH_COOKIE, {
+      accessToken: data.access_token,
+      refreshToken: data.refresh_token,
+    });
 
     yield put(push(PORTAL_PAGE));
     yield put(actions.clearLoginState());
