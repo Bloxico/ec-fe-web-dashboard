@@ -3,7 +3,8 @@
 import React, { PureComponent } from 'react';
 import ReactTable from 'react-table';
 import classNames from 'classnames';
-import Loader from '../Loader';
+
+import Loader from '@ui/Loader';
 
 import { THEME_PREFIX } from 'src/constants';
 

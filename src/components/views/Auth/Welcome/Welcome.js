@@ -13,7 +13,6 @@ import {
 } from 'src/constants';
 
 // TODO@all fix this logo like it is in gc-lite, and links for term of use and privacy policy should open a modal or redirect to external link
-
 export type Props = {
   MSGDashboard: string,
   MSGCreateAnAccount: string,

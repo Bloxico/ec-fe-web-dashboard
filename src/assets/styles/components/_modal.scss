@@ -22,7 +22,7 @@ $modal-background: (
   clip: padding-box,
 ) !default;
 $modal-shadow: 0 2px 6px 0 rgba(0,0,0, .3) !default;
-$modal-transition: transform .3s ease-out !default;
+$modal-transition: all .3s ease-out !default;
 
 $modal-header-height: rhythm(2.5) !default;
 $modal-header-padding: rhythm(1) nth($modal-padding, 2) 0 nth($modal-padding, 4) !default;
@@ -71,7 +71,7 @@ $modal-full-size: calc(100% - #{$modal-spacing}) !default;
 @mixin modal-transition() {
   &.fade {
     opacity: 0;
-    transition: opacity .15s linear;
+    transition: $modal-transition;
 
     &.in {
       opacity: 1;
