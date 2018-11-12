@@ -65,7 +65,7 @@ class Login extends Component<PropsT> {
             component={FormField}
             name="username"
             width="full"
-            validate={[requiredValidator, passwordValidator, emailValidator]}
+            validate={[requiredValidator, emailValidator]}
           />
           <Field
             placeholder={MSGPassword}

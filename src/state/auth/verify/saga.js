@@ -35,7 +35,22 @@ export function* verify$({
   yield put(actions.clearVerifyState());
 }
 
+export function* resendToken$({
+  payload: { isForReset, data },
+}): Generator<*, *, *> {
+  try {
+    if (isForReset) {
+      yield http.post('user/passwordTokenResend', data);
+    } else {
+      yield http.post('user/registrationTokenResend', data);
+    }
+  } catch ({ response }) {
+    // TODO@tolja error handle
+  }
+}
+
 // $FlowIssue
 export default function*() {
   yield all([takeEvery(actions.VERIFY, verify$)]);
+  yield all([takeEvery(actions.RESEND_TOKEN, resendToken$)]);
 }

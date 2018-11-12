@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 import classNames from 'classnames';
 
 import Header from '@partials/Header';
-import { Anchor, Form, FormField, Button } from '@ui';
+import { Form, FormField, Button } from '@ui';
 import { THEME_PREFIX } from 'src/constants';
 
 const baseClass = `${THEME_PREFIX}-verify`;
@@ -20,18 +20,28 @@ type Props = {
   MSGEnterYourCode: string,
   MSGDidntReceiveEmail: string,
   MSGResendCode: string,
+  MSGNewPassword: string,
   requiredIntl: Function,
   numberIntl: Function,
   codeLenIntl: Function,
   passwordIntl: Function,
   verify: Function,
+  resendToken: Function,
   match: Object,
+  location: Object,
 };
 
 class Verify extends Component<Props> {
   constructor(props) {
     super(props);
-    const { requiredIntl, numberIntl, codeLenIntl, passwordIntl } = props;
+    const {
+      requiredIntl,
+      numberIntl,
+      codeLenIntl,
+      passwordIntl,
+      location,
+    } = props;
+    this.isForReset = new URLSearchParams(location.search).get('reset');
     this.validators = {
       requiredValidator: requiredIntl,
       numberValidator: numberIntl,
@@ -48,7 +58,20 @@ class Verify extends Component<Props> {
       },
     } = this.props;
 
-    verify({ data: { ...data, email } });
+    const { isForReset } = this.isForReset;
+    verify({ isForReset, data: { ...data, email } });
+  };
+
+  handleResend = () => {
+    const {
+      resendToken,
+      match: {
+        params: { email },
+      },
+    } = this.props;
+
+    const { isForReset } = this.isForReset;
+    resendToken({ isForReset, data: { email } });
   };
 
   render() {
@@ -59,6 +82,7 @@ class Verify extends Component<Props> {
       MSG4DigitVerificationCode,
       MSGDidntReceiveEmail,
       MSGResendCode,
+      MSGNewPassword,
       verifyInProgress,
       handleSubmit,
     } = this.props;
@@ -67,6 +91,7 @@ class Verify extends Component<Props> {
       requiredValidator,
       numberValidator,
       codeLenValidator,
+      passwordValidator,
     } = this.validators;
 
     return (
@@ -86,6 +111,16 @@ class Verify extends Component<Props> {
             validate={[requiredValidator, numberValidator, codeLenValidator]}
             className={`${baseClass}__token`}
           />
+          {this.isForReset && (
+            <Field
+              type="password"
+              name="newPassword"
+              component={FormField}
+              placeholder={MSGNewPassword}
+              width="full"
+              validate={[requiredValidator, passwordValidator]}
+            />
+          )}
           <Button
             disabled={verifyInProgress}
             action="submit"
@@ -98,7 +133,10 @@ class Verify extends Component<Props> {
         </Form>
 
         <footer className={`${baseClass}__footer`}>
-          {MSGDidntReceiveEmail} <Anchor href="#">{MSGResendCode}</Anchor>
+          {MSGDidntReceiveEmail}{' '}
+          <Button type="link" onClick={this.handleResend}>
+            {MSGResendCode}
+          </Button>
         </footer>
       </div>
     );

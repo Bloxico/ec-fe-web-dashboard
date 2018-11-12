@@ -13,7 +13,7 @@ export function* resetPassword$({ payload }): Generator<*, *, *> {
 
   try {
     yield http.post('user/passwordForgot', payload);
-    yield put(push(VERIFY_PAGE));
+    yield put(push(`${VERIFY_PAGE}/${payload.email}?reset=true`));
   } catch ({ response }) {
 
     yield put(
