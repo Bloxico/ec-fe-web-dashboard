@@ -17,7 +17,7 @@ export interface Props {
   MSGDashboard: string;
   MSGCO2Prevented: string;
   MSGkWhSaved: string;
-};
+}
 
 // TODO:
 // - add headers
@@ -29,11 +29,7 @@ const baseClass = `${THEME_PREFIX}-dashboard`;
 // TODO@martins get actual colors from designers
 class Dashboard extends PureComponent<Props> {
   render() {
-    const {
-      MSGDashboard,
-      MSGCO2Prevented,
-      MSGkWhSaved
-    } = this.props;
+    const { MSGDashboard, MSGCO2Prevented, MSGkWhSaved } = this.props;
 
     return (
       <div className={baseClass}>

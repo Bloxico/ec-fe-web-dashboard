@@ -23,5 +23,5 @@ export default compose(
     MSGCO2Prevented: formatMessage(messages.CO2Prevented),
     MSGkWhSaved: formatMessage(messages.kWhSaved),
   })),
-  withConfigSizes
+  withConfigSizes,
 )(Dashboard);

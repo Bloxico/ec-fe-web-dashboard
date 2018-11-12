@@ -19,7 +19,7 @@ const actions = {
 export default compose(
   connect(
     mapStateToProps,
-    actions
+    actions,
   ),
-  withConfigSizes
+  withConfigSizes,
 )(Sidebar);

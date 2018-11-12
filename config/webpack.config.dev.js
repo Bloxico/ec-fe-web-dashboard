@@ -74,10 +74,7 @@ module.exports = {
     // We placed these paths second because we want `node_modules` to "win"
     // if there are any conflicts. This matches Node resolution mechanism.
     // https://github.com/facebookincubator/create-react-app/issues/253
-    modules: [
-      'node_modules',
-      paths.appNodeModules,
-    ].concat(
+    modules: ['node_modules', paths.appNodeModules].concat(
       // It is guaranteed to exist because we tweak it in `env.js`
       process.env.NODE_PATH.split(path.delimiter).filter(Boolean),
     ),
@@ -211,7 +208,7 @@ module.exports = {
                 options: {
                   name: 'static/css/[name].[hash:8].css',
                   emitFile: true,
-                }
+                },
               },
               {
                 loader: require.resolve('extract-loader'),
@@ -222,8 +219,8 @@ module.exports = {
                   sourceMap: true,
                   importLoaders: 3,
                   alias: {
-                    'images': path.join(paths.appSrc, 'assets/images'),
-                  }
+                    images: path.join(paths.appSrc, 'assets/images'),
+                  },
                 },
               },
               {
@@ -251,13 +248,13 @@ module.exports = {
                 loader: 'resolve-url-loader',
                 options: {
                   sourceMap: true,
-                }
+                },
               },
               {
                 loader: 'sass-loader',
                 options: {
                   sourceMap: true,
-                  sourceMapContents: false
+                  sourceMapContents: false,
                 },
               },
             ],

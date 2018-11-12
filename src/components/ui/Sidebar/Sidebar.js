@@ -17,7 +17,7 @@ type Props = {
   onHide?: Function,
   position?: SidebarPosition,
   show: boolean,
-  sticky?: boolean;
+  sticky?: boolean,
 };
 
 interface State {
@@ -58,17 +58,12 @@ class Sidebar extends PureComponent<Props, State> {
 
   handleHide = () => {
     this.setState({ isOpen: false });
-  }
+  };
 
   handleExited = () => this.props.onHide && this.props.onHide();
 
   render() {
-    const {
-      children,
-      className,
-      position,
-      sticky,
-    } = this.props;
+    const { children, className, position, sticky } = this.props;
 
     const classes = classNames(
       `${baseClass}__panel`,

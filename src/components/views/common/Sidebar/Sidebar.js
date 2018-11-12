@@ -16,17 +16,9 @@ export default (props: Props) => {
 
   return (
     <Sidebar show={isSidebarOpen} onHide={hideSidebar}>
-      <header className={`${baseClass}__header`}>
-        Avatar
-        Email
-        Location
-      </header>
-      <section className={`${baseClass}__content`}>
-        Body
-      </section>
-      <footer className={`${baseClass}__footer`}>
-        Sign out
-      </footer>
+      <header className={`${baseClass}__header`}>Avatar Email Location</header>
+      <section className={`${baseClass}__content`}>Body</section>
+      <footer className={`${baseClass}__footer`}>Sign out</footer>
     </Sidebar>
   );
 };

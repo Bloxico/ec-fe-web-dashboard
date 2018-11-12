@@ -10,8 +10,10 @@ interface Sizes {
 const computedStyle = getComputedStyle(document.body);
 
 const getVar = (name: string, fallback: number): number =>
-  parseInt(computedStyle.getPropertyValue(`--${THEME_PREFIX}-breakpoint--${name}`), 10) ||
-  fallback;
+  parseInt(
+    computedStyle.getPropertyValue(`--${THEME_PREFIX}-breakpoint--${name}`),
+    10,
+  ) || fallback;
 
 const isMobile = ({ width }: Sizes) =>
   width <= getVar('small--max-width', 767) &&
