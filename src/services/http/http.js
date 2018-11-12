@@ -10,7 +10,7 @@ type HttpOpts = {
 };
 
 const DEFAULT_CONFIG: HttpOpts = {
-  timeout: 3 * 1000, // 3s
+  timeout: 60 * 1000,
   responseType: 'json',
   retryRequests: true,
   cacheAge: 0,
