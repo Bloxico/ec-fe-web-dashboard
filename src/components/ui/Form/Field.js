@@ -171,69 +171,62 @@ class FormField extends PureComponent<PropsT> {
 
     return (
       <div className={classes}>
-        {!isTogglable &&
-          !isRadio &&
-          !isOutput && (
-            <Label {...this.props} id={id} text={label} disabled={disabled}>
-              <InputGroup
-                size={size}
-                prefix={prefix}
-                input={<InputField {...inputProps} />}
-                sufix={sufix}
-                hint={hint}
-                help={help}
-                error={error}
-              />
-            </Label>
-          )}
+        {!isTogglable && !isRadio && !isOutput && (
+          <Label {...this.props} id={id} text={label} disabled={disabled}>
+            <InputGroup
+              size={size}
+              prefix={prefix}
+              input={<InputField {...inputProps} />}
+              sufix={sufix}
+              hint={hint}
+              help={help}
+              error={error}
+            />
+          </Label>
+        )}
 
-        {!isTogglable &&
-          !isRadio &&
-          isOutput && (
-            <Label {...this.props} id={id} text={label} disabled={disabled}>
-              <Output
-                {...inputProps}
-                id={id}
-                name={input && input.name}
-                value={input && input.value}
-                format={format}
-                width={width}
-              />
-            </Label>
-          )}
-
-        {isTogglable &&
-          !isRadio && (
-            <Label {...this.props} id={id} text={label} disabled={disabled}>
-              <InputField {...inputProps} />
-              {hint && (
-                <div className={`${THEME_PREFIX}-input__hint`}>{hint}</div>
-              )}
-              {error && (
-                <div className={`${THEME_PREFIX}-input__message`}>{error}</div>
-              )}
-            </Label>
-          )}
-
-        {!isTogglable &&
-          isRadio && (
-            <RadioGroup
+        {!isTogglable && !isRadio && isOutput && (
+          <Label {...this.props} id={id} text={label} disabled={disabled}>
+            <Output
               {...inputProps}
-              // @ts-ignore
-              multiple={multiple}
-              selected={selected}
-              disabled={disabled}
-              inline={inline}
-            >
-              {hint &&
-                !error && (
-                  <div className={`${THEME_PREFIX}-input__hint`}>{hint}</div>
-                )}
-              {error && (
-                <div className={`${THEME_PREFIX}-input__message`}>{error}</div>
-              )}
-            </RadioGroup>
-          )}
+              id={id}
+              name={input && input.name}
+              value={input && input.value}
+              format={format}
+              width={width}
+            />
+          </Label>
+        )}
+
+        {isTogglable && !isRadio && (
+          <Label {...this.props} id={id} text={label} disabled={disabled}>
+            <InputField {...inputProps} />
+            {hint && (
+              <div className={`${THEME_PREFIX}-input__hint`}>{hint}</div>
+            )}
+            {error && (
+              <div className={`${THEME_PREFIX}-input__message`}>{error}</div>
+            )}
+          </Label>
+        )}
+
+        {!isTogglable && isRadio && (
+          <RadioGroup
+            {...inputProps}
+            // @ts-ignore
+            multiple={multiple}
+            selected={selected}
+            disabled={disabled}
+            inline={inline}
+          >
+            {hint && !error && (
+              <div className={`${THEME_PREFIX}-input__hint`}>{hint}</div>
+            )}
+            {error && (
+              <div className={`${THEME_PREFIX}-input__message`}>{error}</div>
+            )}
+          </RadioGroup>
+        )}
       </div>
     );
   }

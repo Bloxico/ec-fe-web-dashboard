@@ -3,16 +3,14 @@
 import { connect } from 'react-redux';
 import { compose, withProps } from 'recompose';
 import { injectIntl } from 'react-intl';
-
-import { State } from 'src/state/state';
+import withConfigSizes from '@wrappers/withConfigSizes';
 
 import messages from './messages';
 import Dashboard from './Dashboard';
 
 const actions = {};
 
-// eslint-disable-next-line
-const mapStateToProps = (state: State) => ({});
+const mapStateToProps = () => ({});
 
 export default compose(
   injectIntl,
@@ -25,4 +23,5 @@ export default compose(
     MSGCO2Prevented: formatMessage(messages.CO2Prevented),
     MSGkWhSaved: formatMessage(messages.kWhSaved),
   })),
+  withConfigSizes,
 )(Dashboard);

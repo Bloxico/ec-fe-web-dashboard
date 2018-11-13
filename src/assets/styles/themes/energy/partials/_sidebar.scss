@@ -1,0 +1,58 @@
+$sidebar-font-family: $ui-font-family;
+$sidebar-font-size: map-get($font-sizes, large);
+
+$sidebar-header-background: (
+  color: map-get($background-colors, control),
+);
+$sidebar-header-padding: rhythm(4) rhythm(1) rhythm(1) rhythm(1);
+
+
+.#{$namespace}-sidebar {
+  font-family: $sidebar-font-family;
+  font-size: $sidebar-font-size;
+
+
+  &__header {
+    @include set-background($sidebar-header-background);
+
+    padding: $sidebar-header-padding;
+  }
+
+
+  &__profile {
+    display: flex;
+    align-items: center;
+
+    &__group {
+
+    }
+
+    &__avatar {
+      flex: 0 0 auto;
+      margin: 0 rhythm(1) 0 0;
+    }
+
+    &__email {
+      @include ellipsis(220px);
+
+      margin: 0;
+      font-weight: 500;
+    }
+
+    &__location {
+      margin: 0;
+      font-family: $base-font-family;
+      font-size: map-get($font-sizes, small);
+      color: map-get($text-colors, dark);
+    }
+  }
+
+
+  &__content {
+    flex: 1 1 auto;
+  }
+
+  &__foooter {
+    padding: rhythm(1);
+  }
+}

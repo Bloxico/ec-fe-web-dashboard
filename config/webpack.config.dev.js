@@ -11,6 +11,8 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const WriteFilePlugin = require('write-file-webpack-plugin');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -88,6 +90,7 @@ module.exports = {
       '@views': path.join(paths.appSrc, 'components/views'),
       '@partials': path.join(paths.appSrc, 'components/views/common'),
       '@ui': path.join(paths.appSrc, 'components/ui'),
+      '@wrappers': path.join(paths.appSrc, 'components/wrappers'),
       '@images': path.join(paths.appSrc, 'assets/images'),
       '@styles': path.join(paths.appSrc, 'assets/styles'),
       '@abstract-styles': path.join(
@@ -171,10 +174,11 @@ module.exports = {
           // smaller than specified limit in bytes as data URLs to avoid requests.
           // A missing `test` is equivalent to a match.
           {
-            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+            // test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+            test: /\.(bmp|gif|jpe(e*)g|png)$/,
             loader: require.resolve('url-loader'),
             options: {
-              limit: 10000,
+              limit: 2048,
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
@@ -198,12 +202,25 @@ module.exports = {
           {
             test: /\.(scss|sass)$/,
             use: [
-              require.resolve('style-loader'),
+              require.resolve('style-loader/url'),
+              {
+                loader: require.resolve('file-loader'),
+                options: {
+                  name: 'static/css/[name].[hash:8].css',
+                  emitFile: true,
+                },
+              },
+              {
+                loader: require.resolve('extract-loader'),
+              },
               {
                 loader: require.resolve('css-loader'),
                 options: {
                   sourceMap: true,
-                  importLoaders: 2,
+                  importLoaders: 3,
+                  alias: {
+                    images: path.join(paths.appSrc, 'assets/images'),
+                  },
                 },
               },
               {
@@ -228,9 +245,16 @@ module.exports = {
                 },
               },
               {
+                loader: 'resolve-url-loader',
+                options: {
+                  sourceMap: true,
+                },
+              },
+              {
                 loader: 'sass-loader',
                 options: {
                   sourceMap: true,
+                  sourceMapContents: false,
                 },
               },
             ],
@@ -290,6 +314,15 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    // new WriteFilePlugin({
+    //     test: /\.svg$/,
+    //     useHashIndex: true
+    // }),
+    // new CopyWebpackPlugin([{
+    //   from: path.join(paths.appSrc, 'assets/images'),
+    //   to: 'static/media/[name].[hash:8].[ext]',
+    //   toType: 'template'
+    // }]),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

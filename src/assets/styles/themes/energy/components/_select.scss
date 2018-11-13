@@ -1,15 +1,18 @@
 $select-min-width: 115px;
 $select-max-width: 200px;
+$select-full-width: 100%;
 $select-height: rhythm(2);
 $select-margin: 0;
 $select-padding: 0.5 25px 0.5 10px;
-$select-font-weight: normal;
+$select-font-family: $ui-font-family;
+$select-font-size: map-get($font-sizes, small);
+$select-font-weight: 500;
 $select-color: map-get($text-colors, default);
 $select-placeholder-color: map-get($text-colors, dark);
 
 $select-background: (
   color: map-get($background-colors, control),
-  image: svg-url('<svg width="8" height="5" viewBox="0 0 8 5" fill="#{color('tertiary')}" xmlns="http://www.w3.org/2000/svg"><path d="M.938 0L4 3.101 7.063 0 8 .95 4 5 0 .95z"/></svg>'),
+  image: svg-url('<svg width="8" height="5" viewBox="0 0 8 5" fill="#{color('mint')}" xmlns="http://www.w3.org/2000/svg"><path d="M.938 0L4 3.101 7.063 0 8 .95 4 5 0 .95z"/></svg>'),
   repeat: no-repeat,
   position: right 10px center,
   size: 8px 5px

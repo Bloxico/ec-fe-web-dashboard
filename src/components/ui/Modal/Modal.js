@@ -11,28 +11,28 @@ const baseClass = `${THEME_PREFIX}-modal`;
 
 export type ModalTypes = 'compact';
 export type ModalSizes = 'small' | 'medium' | 'large' | 'full' | 'auto';
-export type ModalAlignment = 'left' | 'right' | 'center';
 export type ModalPosition = 'top' | 'bottom' | 'middle';
+export type ModalAlignment = 'left' | 'right' | 'center';
 
 interface Props {
-  id?: any;
+  align?: ModalAlignment;
+  autoFocus?: boolean;
   children: any;
-  header?: any;
-  headerAlign?: ModalAlignment;
-  title?: any;
+  className?: string;
+  enforceFocus?: boolean;
   footer?: any;
   footerAlign?: ModalAlignment;
   hasClose?: boolean;
+  header?: any;
+  headerAlign?: ModalAlignment;
+  id?: any;
+  onHide?: Function;
+  position?: ModalPosition;
+  restoreFocus?: boolean;
+  title?: any;
+  type?: ModalTypes;
   show: boolean;
   size?: ModalSizes;
-  align?: ModalAlignment;
-  position?: ModalPosition;
-  type?: ModalTypes;
-  autoFocus?: boolean;
-  restoreFocus?: boolean;
-  enforceFocus?: boolean;
-  onHide?: Function;
-  className?: string;
   sticky?: boolean;
 }
 
@@ -217,6 +217,7 @@ const Body = (props: any) => {
  */
 const Footer = (props: any) => {
   const { type, footerAlign, className, children } = props;
+
   const classes = classNames(
     `${baseClass}__footer`,
     type && `${baseClass}--${type}`,
@@ -274,10 +275,10 @@ class Modal extends React.PureComponent<Props, State> {
       type,
       title,
       header,
+      headerAlign,
       hasClose,
       footer,
       children,
-      headerAlign,
     } = this.props;
 
     return (
@@ -288,13 +289,11 @@ class Modal extends React.PureComponent<Props, State> {
       >
         {header}
         {!header && !title && hasClose && <Close onClick={this.handleClose} />}
-        {!header &&
-          title &&
-          hasClose && (
-            <Header headerAlign={headerAlign} hasClose={hasClose}>
-              <Title headerAlign={headerAlign}>{title}</Title>
-            </Header>
-          )}
+        {!header && title && hasClose && (
+          <Header headerAlign={headerAlign} hasClose={hasClose}>
+            <Title headerAlign={headerAlign}>{title}</Title>
+          </Header>
+        )}
         <Body type={type}>{children}</Body>
         {footer}
       </Wrapper>

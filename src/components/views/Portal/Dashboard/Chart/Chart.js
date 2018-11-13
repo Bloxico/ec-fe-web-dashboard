@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { LineChart } from '@ui';
+import { THEME_PREFIX } from 'src/constants';
 
 export type Props = {
   data: [],
@@ -10,11 +11,11 @@ export type Props = {
   title: string,
 };
 
-const baseClass = 'gc-chart';
+const baseClass = `${THEME_PREFIX}-chart`;
 
 const Chart = ({ data, lineColor, title }: Props) => (
   <div className={baseClass}>
-    <h2>{title}</h2>
+    <h4>{title}</h4>
     <LineChart data={data} colors={[lineColor]} />
   </div>
 );

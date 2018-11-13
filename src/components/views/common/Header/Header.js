@@ -1,29 +1,60 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 
 import Button from '@ui/Button';
+
 import iconBack from '@images/icon-back.svg';
+import iconMenu from '@images/icon-menu.svg';
+
 import { THEME_PREFIX } from 'src/constants';
 
 const baseClass = `${THEME_PREFIX}-header`;
 
-export type PropsT = {
-  title: string,
-  history: any,
-};
+type ActionType = 'menu' | 'back';
 
-const Header = ({ title, history }: PropsT) => (
-  <header className={baseClass}>
-    <h4 className={`${baseClass}__title`}>{title}</h4>
+export interface Props {
+  action: ActionType;
+  title: string;
+  history: any;
+  isSidebarOpen: boolean;
+  showSidebar: Function;
+  hideSidebar: Function;
+}
+
+const Action = (props: Props) => {
+  const {
+    action = 'back',
+    history: { goBack },
+    showSidebar,
+  } = props;
+
+  const getIcon = () => (action === 'menu' ? iconMenu : iconBack);
+
+  const getText = () => (action === 'menu' ? 'Menu' : 'Back');
+
+  const handleClick = () => (action === 'menu' ? showSidebar() : goBack());
+
+  return (
     <Button
-      icon={iconBack}
-      onClick={history.goBack}
       type="ghost"
+      icon={getIcon()}
+      title={getText()}
+      onClick={handleClick}
       className={`${baseClass}__action`}
     >
-      Back
+      {getText()}
     </Button>
-  </header>
-);
+  );
+};
 
-export default withRouter(Header);
+const Header = (props: Props) => {
+  const { title } = props;
+
+  return (
+    <header className={baseClass}>
+      <Action {...props} />
+      <h4 className={`${baseClass}__title`}>{title}</h4>
+    </header>
+  );
+};
+
+export default Header;

@@ -41,11 +41,13 @@ const Label = (props: PropsT) => {
   return (
     // eslint-disable-next-line
     <label className={classes} htmlFor={id} title={title} disabled={disabled}>
-      {!isTogglable &&
-        text && <span className={`${baseClass}__text`}>{text}</span>}
+      {!isTogglable && text && (
+        <span className={`${baseClass}__text`}>{text}</span>
+      )}
       {children}
-      {isTogglable &&
-        text && <span className={`${baseClass}__text`}>{text}</span>}
+      {isTogglable && text && (
+        <span className={`${baseClass}__text`}>{text}</span>
+      )}
     </label>
   );
 };

@@ -2,15 +2,15 @@
 
 import React from 'react';
 
-import Modal from 'src/components/ui/Modal';
-import { hideModal } from 'src/state/actions';
-import { MODALS } from 'src/constants';
-import {
+import Modal, {
   ModalTypes,
   ModalSizes,
   ModalPosition,
   ModalAlignment,
 } from '@ui/Modal';
+
+import { hideModal } from 'src/state/actions';
+import { MODALS } from 'src/constants';
 
 import ErrorMessage from './ErrorMessage';
 
