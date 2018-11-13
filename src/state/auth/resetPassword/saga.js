@@ -13,13 +13,13 @@ export function* resetPassword$({ payload }): Generator<*, *, *> {
   try {
     yield http.post('user/passwordForgot', payload);
     yield put(push(`${VERIFY_PAGE}/${payload.email}?reset=true`));
-  } catch ({ response }) {
+  } catch ({ response: { data } }) {
     yield put(
       showModal({
         modalName: MODALS.ErrorMessage,
         align: 'center',
         data: {
-          content: response && response.data.message,
+          content: data.errorCode,
         },
       }),
     );

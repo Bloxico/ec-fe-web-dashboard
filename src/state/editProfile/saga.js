@@ -1,21 +1,17 @@
 // @flow
 
 import { all, takeEvery, put } from 'redux-saga/effects';
-import { push } from 'react-router-redux';
 
 import http from 'src/services/http';
-import { VERIFY_PAGE, MODALS } from 'src/constants';
-import { showModal } from 'src/state/actions';
 
 import * as actions from './actions';
+import { MODALS } from '../../constants';
+import { showModal } from '../actions';
 
-export function* fetchRegions$(): Generator<*, *, *> {
+export function* profileData$(): Generator<*, *, *> {
   try {
-    const {
-      data: { regions },
-    } = yield http.get('user/registrationData');
-
-    yield put(actions.fetchRegionsSuccess({ regions }));
+    const { data } = yield http.get('user/myProfile');
+    yield put(actions.profileDataSuccess(data));
   } catch ({ response: { data } }) {
     yield put(
       showModal({
@@ -29,11 +25,9 @@ export function* fetchRegions$(): Generator<*, *, *> {
   }
 }
 
-export function* register$({ payload }): Generator<*, *, *> {
+export function* updateProfile$({ payload }): Generator<*, *, *> {
   try {
-    yield http.post('user/registration', payload);
-
-    yield put(push(`${VERIFY_PAGE}/${payload.email}`));
+    yield http.post('user/updateMyProfile', payload);
   } catch ({ response: { data } }) {
     yield put(
       showModal({
@@ -49,6 +43,6 @@ export function* register$({ payload }): Generator<*, *, *> {
 
 // $FlowIssue
 export default function*() {
-  yield all([takeEvery(actions.REGISTER, register$)]);
-  yield all([takeEvery(actions.FETCH_REGIONS, fetchRegions$)]);
+  yield all([takeEvery(actions.FETCH_PROFILE_DATA, profileData$)]);
+  yield all([takeEvery(actions.UPDATE_PROFILE, updateProfile$)]);
 }

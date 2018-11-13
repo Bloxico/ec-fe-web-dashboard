@@ -10,10 +10,12 @@ import {
   PORTAL_PAGE,
   DASHBOARD_PAGE,
   TRANSACTIONS_PAGE,
+  EDIT_PROFILE,
 } from 'src/constants';
 
 import Dashboard from './Dashboard';
 import Transactions from './Transactions';
+import EditProfile from './EditProfile';
 
 const baseClass = `${THEME_PREFIX}-portal`;
 
@@ -28,6 +30,7 @@ const Portal = () => (
       />
       <Route path={DASHBOARD_PAGE} component={Dashboard} />
       <Route path={TRANSACTIONS_PAGE} component={Transactions} />
+    <Route path={EDIT_PROFILE} component={EditProfile} />
     </Switch>
   </div>
 );

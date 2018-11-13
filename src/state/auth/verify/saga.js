@@ -27,7 +27,7 @@ export function* verify$({
         modalName: MODALS.ErrorMessage,
         align: 'center',
         data: {
-          content: data && data.message,
+          content: data.errorCode,
         },
       }),
     );
@@ -45,7 +45,15 @@ export function* resendToken$({
       yield http.post('user/registrationTokenResend', data);
     }
   } catch ({ response }) {
-    // TODO@tolja error handle
+    yield put(
+      showModal({
+        modalName: MODALS.ErrorMessage,
+        align: 'center',
+        data: {
+          content: data.errorCode,
+        },
+      }),
+    );
   }
 }
 
