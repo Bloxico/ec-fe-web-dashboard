@@ -10,7 +10,7 @@ import { showModal } from '../actions';
 
 export function* profileData$(): Generator<*, *, *> {
   try {
-    const { data } = yield http.get('user/myProfile',null, { withAuth: true });
+    const { data } = yield http.get('user/myProfile', null, { withAuth: true });
     yield put(actions.fetchProfileDataSuccess(data));
   } catch ({ response: { data } }) {
     yield put(

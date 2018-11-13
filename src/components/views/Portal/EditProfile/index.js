@@ -6,7 +6,12 @@ import { injectIntl } from 'react-intl';
 import { reduxForm } from 'redux-form';
 
 import { fetchProfileData, updateProfile } from 'src/state/actions';
-import { getProfileData, getUserProfileRegions, isUpdatePrileInProgress, isFetchProfileDataInProgress } from 'src/state/selectors';
+import {
+  getProfileData,
+  getUserProfileRegions,
+  isUpdatePrileInProgress,
+  isFetchProfileDataInProgress,
+} from 'src/state/selectors';
 import { alphanumeric, email, required } from 'src/utilities/validators';
 
 import messages from './messages';
@@ -21,7 +26,7 @@ const mapStateToProps = state => ({
   initialValues: getProfileData(state),
   regions: getUserProfileRegions(state),
   updateProfileInProgress: isUpdatePrileInProgress(state),
-  fetchProfileInProgress: isFetchProfileDataInProgress(state)
+  fetchProfileInProgress: isFetchProfileDataInProgress(state),
 });
 
 export default compose(

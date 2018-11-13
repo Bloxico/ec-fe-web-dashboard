@@ -9,10 +9,10 @@ http.setConfig({
   baseURL: API_URL,
 });
 
-http.interceptors('request', (config) => {
+http.interceptors('request', config => {
   const authCookie = Cookie.getJSON(AUTH_COOKIE);
 
-  if(!authCookie || !config.withAuth) {
+  if (!authCookie || !config.withAuth) {
     return config;
   }
 
