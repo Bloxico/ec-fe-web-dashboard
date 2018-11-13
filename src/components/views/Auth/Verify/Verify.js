@@ -41,7 +41,7 @@ class Verify extends Component<Props> {
       passwordIntl,
       location,
     } = props;
-    this.isForReset = new URLSearchParams(location.search).get('reset');
+    this.reset = new URLSearchParams(location.search).get('reset');
     this.validators = {
       requiredValidator: requiredIntl,
       numberValidator: numberIntl,
@@ -58,7 +58,7 @@ class Verify extends Component<Props> {
       },
     } = this.props;
 
-    const { isForReset } = this.isForReset;
+    const isForReset = Boolean(this.reset);
     verify({ isForReset, data: { ...data, email } });
   };
 
@@ -70,7 +70,7 @@ class Verify extends Component<Props> {
       },
     } = this.props;
 
-    const { isForReset } = this.isForReset;
+    const isForReset = Boolean(this.reset);
     resendToken({ isForReset, data: { email } });
   };
 
@@ -111,7 +111,7 @@ class Verify extends Component<Props> {
             validate={[requiredValidator, numberValidator, codeLenValidator]}
             className={`${baseClass}__token`}
           />
-          {this.isForReset && (
+          {this.reset && (
             <Field
               type="password"
               name="newPassword"

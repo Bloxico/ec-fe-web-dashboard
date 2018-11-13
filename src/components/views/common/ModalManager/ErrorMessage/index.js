@@ -27,6 +27,11 @@ export default compose(
     MSGServerError: formatMessage(messages.serverError),
     MSGDamnDevelopers: formatMessage(messages.damnDevelopers),
     MSGSomethingWentWrong: formatMessage(messages.somethingWentWrong),
+    MSGUserExists: formatMessage(messages.userExists),
+    MSGTokenNotFound: formatMessage(messages.tokenNotFound),
+    MSGInvalidLogin: formatMessage(messages.invalidLogin),
+    MSGTokenExpired: formatMessage(messages.tokenExpired),
+    MSGUserDoesNotExist: formatMessage(messages.userDoesNotExist),
   })),
   withHandlers({
     handleClick: ({ hideModal }) => () => {
