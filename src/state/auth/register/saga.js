@@ -13,11 +13,19 @@ export function* fetchRegions$(): Generator<*, *, *> {
   try {
     const {
       data: { regions },
-    } = yield http.get(`user/registrationData`);
+    } = yield http.get('user/registrationData');
 
     yield put(actions.fetchRegionsSuccess({ regions }));
-  } catch ({ response }) {
-    //    TODO@all handle the error with modal?
+  } catch ({ response: { data } }) {
+    yield put(
+      showModal({
+        modalName: MODALS.ErrorMessage,
+        align: 'center',
+        data: {
+          content: data.errorCode,
+        },
+      }),
+    );
   }
 }
 
@@ -27,22 +35,12 @@ export function* register$({ payload }): Generator<*, *, *> {
 
     yield put(push(`${VERIFY_PAGE}/${payload.email}`));
   } catch ({ response: { data } }) {
-    let errorMessage = data.message;
-    const { validationErrorMessages } = data;
-
-    if (validationErrorMessages) {
-      errorMessage = '';
-      Object.keys(validationErrorMessages).forEach(key => {
-        errorMessage += `${key}: ${validationErrorMessages[key]} \n`;
-      });
-    }
-
     yield put(
       showModal({
         modalName: MODALS.ErrorMessage,
         align: 'center',
         data: {
-          content: errorMessage,
+          content: data.errorCode,
         },
       }),
     );

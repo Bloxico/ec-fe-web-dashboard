@@ -63,7 +63,7 @@ class Register extends Component<Props> {
 
   defaultRegionOption = {
     text: 'Select',
-    value: null,
+    value: '',
   };
 
   render() {
