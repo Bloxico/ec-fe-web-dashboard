@@ -46,6 +46,7 @@ export default (props: Props) => {
             {
               icon: iconSignout,
               text: 'Sign out',
+              // eslint-disable-next-line
               onClick: (e: any) => console.log(e),
             },
           ]}
