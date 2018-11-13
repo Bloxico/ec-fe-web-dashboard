@@ -8,14 +8,14 @@ import initialState from './state';
 export default handleActions(
   new Map([
     [
-      actions.PROFILE_DATA,
+      actions.FETCH_PROFILE_DATA,
       state => ({
         ...state,
         isProfileDataInProgress: true,
       }),
     ],
     [
-      actions.PROFILE_DATA_SUCCESS,
+      actions.FETCH_PROFILE_DATA_SUCCESS,
       (state, { payload }) => ({
         ...state,
         data: payload.userProfile,
