@@ -8,3 +8,4 @@ export const SUCCESS_PAGE = `${AUTH_PAGE}/success`;
 export const PORTAL_PAGE = '/portal';
 export const DASHBOARD_PAGE = `${PORTAL_PAGE}/dashboard`;
 export const TRANSACTIONS_PAGE = `${PORTAL_PAGE}/transactions`;
+export const EDIT_PROFILE = `${PORTAL_PAGE}/edit-profile`;
