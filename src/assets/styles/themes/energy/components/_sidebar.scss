@@ -2,12 +2,12 @@ $sidebar-backdrop-background: (
   color: rgba(0, 0, 0, .5),
 );
 
-$sidebar-width: 320px;
+$sidebar-width: 340px;
 $sidebar-margin: 0;
 $sidebar-padding: rhythm(1);
 $sidebar-border: none;
 $sidebar-background: (
-  color: map-get($background-colors, control),
+  color: map-get($background-colors, body),
   clip: padding-box,
 );
 $sidebar-shadow: none;

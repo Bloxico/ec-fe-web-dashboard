@@ -140,8 +140,8 @@ class Button extends PureComponent<Props> {
         {!busy &&
           icon &&
           typeof icon !== 'boolean' &&
-          typeof busy !== 'boolean' && <Icon data={icon} />}
-        {busy && <Icon data={svgBusy} spacing="right" />}
+          typeof busy !== 'boolean' && <Icon src={icon} />}
+        {busy && <Icon src={svgBusy} spacing="right" />}
         {children}
       </button>
     );

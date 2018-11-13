@@ -1,4 +1,5 @@
 import Anchor from './Anchor';
+import Avatar from './Avatar';
 import Button from './Button';
 import Textarea from './Textarea';
 import { LineChart } from './Chart';
@@ -10,6 +11,7 @@ import Sidebar from './Sidebar';
 import { Container, Row, Col } from './Grid';
 
 export {
+  Avatar,
   Anchor,
   Button,
   Form,

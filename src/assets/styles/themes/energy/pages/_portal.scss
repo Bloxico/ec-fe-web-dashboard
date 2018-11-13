@@ -1,0 +1,21 @@
+$max-width: 100%;
+
+
+.#{$namespace}-portal {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: flex-start;
+
+  max-width: $max-width;
+  min-height: 100%;
+  padding: rhythm(1);
+}
+
+
+.#{$namespace}-dashboard {
+  width: 100%;
+  height: 100%;
+}

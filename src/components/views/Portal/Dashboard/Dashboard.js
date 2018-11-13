@@ -5,7 +5,6 @@ import React, { PureComponent } from 'react';
 import { mockChartData } from 'src/mocks/dashboard';
 import { THEME_PREFIX } from 'src/constants';
 
-import Sidebar from '@partials/Sidebar';
 import Header from '@partials/Header';
 
 import Chart from './Chart';
@@ -33,17 +32,19 @@ class Dashboard extends PureComponent<Props> {
 
     return (
       <div className={baseClass}>
-        <Header />
+        <Header action="menu" title={MSGDashboard} />
 
-        <h3>{MSGDashboard}</h3>
         <Chart
           data={mockChartData(6)}
           lineColor="green"
           title={MSGCO2Prevented}
         />
-        <Chart data={mockChartData(6)} lineColor="blue" title={MSGkWhSaved} />
 
-        <Sidebar />
+        <Chart
+          data={mockChartData(6)}
+          lineColor="blue"
+          title={MSGkWhSaved}
+        />
       </div>
     );
   }

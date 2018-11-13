@@ -32,7 +32,7 @@ const iconTypes = {
 };
 
 interface Props {
-  data: any;
+  src: any;
   type?: $Keys<typeof iconTypes>;
   size?: IconSizes;
   title?: string;
@@ -46,11 +46,9 @@ interface Props {
 const Icon = (props: Props) => {
   const { type, size, title, color, inline, spacing, align, className } = props;
 
-  const data = type ? iconTypes[type] : props.data;
-
-  const Svg = data;
-
-  const Img = (p: Props) => <img src={p.data} alt={p.title} />;
+  const src = type ? iconTypes[type] : props.src;
+  const Svg = src;
+  const Img = (p: Props) => <img src={p.src} alt={p.title} />;
 
   const classes = classNames(
     baseClass,
@@ -64,9 +62,9 @@ const Icon = (props: Props) => {
 
   return (
     <i className={classes} title={title} role="img" aria-hidden="true">
-      {data && typeof data === 'string' && <Img {...props} />}
-      {data &&
-        typeof data !== 'string' && (
+      {src && typeof src === 'string' && <Img {...props} />}
+      {src &&
+        typeof src !== 'string' && (
           <Svg title={title} style={color && { fill: color }} />
         )}
     </i>

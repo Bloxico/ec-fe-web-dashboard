@@ -108,8 +108,7 @@ body[style].modal-open {
   width: $sidebar-width;
   height: 100%;
   margin: $sidebar-margin;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   box-shadow: $sidebar-shadow;
   transition: $sidebar-transition;
   will-change: transform;
