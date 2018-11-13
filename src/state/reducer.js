@@ -6,6 +6,7 @@ import auth from './auth/reducer';
 import modal from './modal/reducer';
 import editProfile from './editProfile/reducer';
 import sidebar from './sidebar/reducer';
+import transactions from './transactions/reducer';
 
 export default combineReducers({
   auth,
@@ -13,4 +14,5 @@ export default combineReducers({
   modal,
   editProfile,
   sidebar,
+  transactions,
 });

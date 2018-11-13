@@ -1,16 +1,17 @@
 // @flow
 
-import React from 'react';
+import React, { Component } from 'react';
 import { FormattedDate } from 'react-intl';
 
 import { THEME_PREFIX } from 'src/constants';
 
 import { Table } from '@ui';
-
-import { mockTransactions } from 'src/mocks/transactions';
+import Header from '@partials/Header';
 
 export type Props = {
   MSGTransactions: string,
+  transactions: [],
+  fetchTransactions: Function,
 };
 
 const baseClass = `${THEME_PREFIX}-transactions`;
@@ -18,31 +19,41 @@ const baseClass = `${THEME_PREFIX}-transactions`;
 const columns = [
   {
     Header: 'Amount',
-    accessor: 'amount',
-    id: 'amount',
-    Cell: ({ value }: any) => <span>{value}</span>,
+    accessor: 'enrgAmount',
+    id: 'enrgAmount',
+    Cell: ({ value }: any) => <span>ENRG {value}</span>,
+    minWidth: 130,
   },
   {
     Header: 'Date',
-    accessor: 'date',
+    accessor: 'created',
     Cell: ({ value }: any) => <FormattedDate v value={value} />,
+    minWidth: 130,
   },
   {
     Header: 'Source',
     accessor: 'source',
-    Cell: ({ value }: any) => <span>{value}</span>,
+    Cell: () => <span>Ring-ring</span>,
+    minWidth: 130,
   },
 ];
 
-const Transactions = ({ MSGTransactions }: Props) => (
-  <div className={baseClass}>
-    <h3>{MSGTransactions}</h3>
-    <Table
-      showPagination={false}
-      data={mockTransactions(10)}
-      columns={columns}
-    />
-  </div>
-);
+class Transactions extends Component<Props> {
+  componentDidMount() {
+    const { fetchTransactions } = this.props;
+    fetchTransactions();
+  }
+  render() {
+    const { MSGTransactions, transactions } = this.props;
+    return (
+      <div className={baseClass}>
+        <Header action="menu" title={MSGTransactions} />
+        {transactions && (
+          <Table showPagination data={transactions} columns={columns} />
+        )}
+      </div>
+    );
+  }
+}
 
 export default Transactions;
