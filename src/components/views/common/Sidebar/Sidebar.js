@@ -26,8 +26,12 @@ export default (props: Props) => {
         <div className={`${baseClass}__profile`}>
           <Avatar className={`${baseClass}__profile__avatar`} />
           <div className={`${baseClass}__profile__group`}>
-            <h5 className={`${baseClass}__profile__email`}>joe.rogen@experience.com</h5>
-            <address className={`${baseClass}__profile__location`}>Amersfoort, NL</address>
+            <h5 className={`${baseClass}__profile__email`}>
+              joe.rogen@experience.com
+            </h5>
+            <address className={`${baseClass}__profile__location`}>
+              Amersfoort, NL
+            </address>
           </div>
         </div>
       </header>
@@ -37,11 +41,14 @@ export default (props: Props) => {
       </section>
 
       <footer className={`${baseClass}__footer`}>
-        <Navigation items={[{
-          icon: iconSignout,
-          text: 'Sign out',
-          onClick: (e: any) => console.log(e),
-        }]}
+        <Navigation
+          items={[
+            {
+              icon: iconSignout,
+              text: 'Sign out',
+              onClick: (e: any) => console.log(e),
+            },
+          ]}
         />
       </footer>
     </Sidebar>

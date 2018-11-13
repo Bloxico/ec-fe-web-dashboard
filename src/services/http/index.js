@@ -9,15 +9,15 @@ http.setConfig({
   baseURL: API_URL,
 });
 
-http.interceptors('request', (config) => {
+http.interceptors('request', config => {
   const { accessToken } = Cookie.getJSON(AUTH_COOKIE);
 
   return {
     ...config,
     headers: {
       ...config.headers,
-      'Authorization': `Bearer ${accessToken}`
-    }
+      Authorization: `Bearer ${accessToken}`,
+    },
   };
 });
 

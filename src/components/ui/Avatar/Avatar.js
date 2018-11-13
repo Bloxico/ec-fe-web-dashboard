@@ -8,7 +8,6 @@ type AvatarSizes = 'small' | 'medium' | 'large';
 
 const baseClass = `${THEME_PREFIX}-avatar`;
 
-
 interface Props {
   src?: string;
   size?: AvatarSizes;
@@ -22,7 +21,7 @@ const Avatar = (props: Props) => {
   const classes = classNames(
     baseClass,
     size && `${baseClass}--${size}`,
-    className
+    className,
   );
 
   return (

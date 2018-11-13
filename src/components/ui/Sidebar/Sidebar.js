@@ -18,7 +18,7 @@ type Props = {
   position?: SidebarPosition,
   show: boolean,
   sticky?: boolean,
-  className?: string;
+  className?: string,
 };
 
 interface State {

@@ -32,24 +32,20 @@ interface Props {
 
 const baseClass = `${THEME_PREFIX}-navigation`;
 
-const NavigationItem = ({
-  route,
-  icon,
-  text,
-  onClick = f => f
-}: Item) => (
+const NavigationItem = ({ route, icon, text, onClick = f => f }: Item) => (
   <React.Fragment>
-    {route &&
+    {route && (
       <Link to={route} className={`${baseClass}__item`}>
         <Icon src={icon} spacing="right" color />
         {text}
-      </Link>}
-    {!route &&
+      </Link>
+    )}
+    {!route && (
       <Anchor className={`${baseClass}__item`} onClick={onClick}>
         <Icon src={icon} spacing="right" color />
         {text}
       </Anchor>
-    }
+    )}
   </React.Fragment>
 );
 
@@ -58,10 +54,10 @@ const Navigation = (props: Props) => {
 
   return (
     <nav className={baseClass}>
-      {items && items.map((item: Item) =>
-        <NavigationItem key={item.text} {...item} />)}
+      {items &&
+        items.map((item: Item) => <NavigationItem key={item.text} {...item} />)}
 
-      {!items &&
+      {!items && (
         <React.Fragment>
           <NavigationItem
             route={DASHBOARD_PAGE}
@@ -78,18 +74,14 @@ const Navigation = (props: Props) => {
             icon={iconProfile}
             text="Profile"
           />
-          <NavigationItem
-            route={PORTAL_PAGE}
-            icon={iconHelp}
-            text="Help"
-          />
+          <NavigationItem route={PORTAL_PAGE} icon={iconHelp} text="Help" />
           <NavigationItem
             route={PORTAL_PAGE}
             icon={iconSettings}
             text="Settings"
           />
         </React.Fragment>
-      }
+      )}
     </nav>
   );
 };

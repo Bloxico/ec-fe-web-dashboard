@@ -40,11 +40,7 @@ class Dashboard extends PureComponent<Props> {
           title={MSGCO2Prevented}
         />
 
-        <Chart
-          data={mockChartData(6)}
-          lineColor="blue"
-          title={MSGkWhSaved}
-        />
+        <Chart data={mockChartData(6)} lineColor="blue" title={MSGkWhSaved} />
       </div>
     );
   }

@@ -18,23 +18,20 @@ export interface Props {
   isSidebarOpen: boolean;
   showSidebar: Function;
   hideSidebar: Function;
-};
+}
 
 const Action = (props: Props) => {
   const {
     action = 'back',
     history: { goBack },
-    showSidebar
+    showSidebar,
   } = props;
 
-  const getIcon = () =>
-    action === 'menu' ? iconMenu : iconBack;
+  const getIcon = () => (action === 'menu' ? iconMenu : iconBack);
 
-  const getText = () =>
-    action === 'menu' ? 'Menu' : 'Back';
+  const getText = () => (action === 'menu' ? 'Menu' : 'Back');
 
-  const handleClick = () =>
-    action === 'menu' ? showSidebar() : goBack();
+  const handleClick = () => (action === 'menu' ? showSidebar() : goBack());
 
   return (
     <Button
@@ -47,7 +44,7 @@ const Action = (props: Props) => {
       {getText()}
     </Button>
   );
-}
+};
 
 const Header = (props: Props) => {
   const { title } = props;

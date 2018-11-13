@@ -130,8 +130,9 @@ class InputGroup extends PureComponent<Props> {
         {error && (
           <div className={`${THEME_PREFIX}-input__message`}>{error}</div>
         )}
-        {help &&
-          !error && <div className={`${THEME_PREFIX}-input__help`}>{help}</div>}
+        {help && !error && (
+          <div className={`${THEME_PREFIX}-input__help`}>{help}</div>
+        )}
       </div>
     );
   }

@@ -289,13 +289,11 @@ class Modal extends React.PureComponent<Props, State> {
       >
         {header}
         {!header && !title && hasClose && <Close onClick={this.handleClose} />}
-        {!header &&
-          title &&
-          hasClose && (
-            <Header headerAlign={headerAlign} hasClose={hasClose}>
-              <Title headerAlign={headerAlign}>{title}</Title>
-            </Header>
-          )}
+        {!header && title && hasClose && (
+          <Header headerAlign={headerAlign} hasClose={hasClose}>
+            <Title headerAlign={headerAlign}>{title}</Title>
+          </Header>
+        )}
         <Body type={type}>{children}</Body>
         {footer}
       </Wrapper>

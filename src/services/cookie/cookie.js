@@ -3,10 +3,10 @@
 import * as Cookies from 'cookies-js';
 
 type CookieOptions = {
-  path?: string;
-  domain?: string | undefined;
-  expires?: number | Date | undefined;
-  secure?: boolean;
+  path?: string,
+  domain?: string | undefined,
+  expires?: number | Date | undefined,
+  secure?: boolean,
 };
 
 export default class Cookie {
