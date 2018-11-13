@@ -5,8 +5,8 @@ import { compose, withHandlers, withProps } from 'recompose';
 import { injectIntl } from 'react-intl';
 import { reduxForm } from 'redux-form';
 
-import { profileData, updateProfile } from 'src/state/actions';
-import { getProfileData, getUserProfileRegions } from 'src/state/selectors';
+import { fetchProfileData, updateProfile } from 'src/state/actions';
+import { getProfileData, getUserProfileRegions, isUpdatePrileInProgress, isFetchProfileDataInProgress } from 'src/state/selectors';
 import { alphanumeric, email, required } from 'src/utilities/validators';
 
 import messages from './messages';
@@ -14,12 +14,14 @@ import EditProfile from './EditProfile';
 
 const actions = {
   updateProfile,
-  profileData,
+  profileData: fetchProfileData,
 };
 
 const mapStateToProps = state => ({
   initialValues: getProfileData(state),
   regions: getUserProfileRegions(state),
+  updateProfileInProgress: isUpdatePrileInProgress(state),
+  fetchProfileInProgress: isFetchProfileDataInProgress(state)
 });
 
 export default compose(

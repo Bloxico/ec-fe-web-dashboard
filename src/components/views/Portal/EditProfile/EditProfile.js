@@ -67,6 +67,7 @@ class EditProfile extends Component<Props> {
       initialValues,
       pristine,
       submitting,
+      updateProfileInProgress,
     } = this.props;
 
     const {
@@ -137,7 +138,8 @@ class EditProfile extends Component<Props> {
             size="large"
             width="full"
             action="submit"
-            disabled={pristine || submitting}
+            busy={updateProfileInProgress}
+            disabled={pristine}
           >
             {MSGSave}
           </Button>

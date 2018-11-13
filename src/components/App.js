@@ -4,12 +4,12 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
 import IntlProvider from 'src/components/wrappers/IntlProvider';
-import { AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX } from 'src/constants';
+import { AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX } from 'src/constants/index';
 import { StateT } from 'src/state/state';
-import ModalManager from 'src/components/views/common/ModalManager';
+import ModalManager from 'src/components/views/common/ModalManager/index';
 
-import Auth from './Auth';
-import Portal from './Portal';
+import Auth from './views/Auth/index';
+import Portal from './views/Portal/index';
 
 const baseClass = `${THEME_PREFIX}-app`;
 

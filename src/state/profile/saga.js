@@ -10,8 +10,8 @@ import { showModal } from '../actions';
 
 export function* profileData$(): Generator<*, *, *> {
   try {
-    const { data } = yield http.get('user/myProfile');
-    yield put(actions.profileDataSuccess(data));
+    const { data } = yield http.get('user/myProfile',null, { withAuth: true });
+    yield put(actions.fetchProfileDataSuccess(data));
   } catch ({ response: { data } }) {
     yield put(
       showModal({
@@ -27,7 +27,8 @@ export function* profileData$(): Generator<*, *, *> {
 
 export function* updateProfile$({ payload }): Generator<*, *, *> {
   try {
-    yield http.post('user/updateMyProfile', payload);
+    yield http.post('user/updateMyProfile', payload, { withAuth: true });
+    yield put(actions.updateProfileSuccess());
   } catch ({ response: { data } }) {
     yield put(
       showModal({
