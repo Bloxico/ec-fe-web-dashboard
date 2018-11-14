@@ -4,7 +4,7 @@ export const getProfileData = ({ profile: { data } }) => data;
 
 export const getUserProfileRegions = ({ profile: { regions } }) => regions;
 
-export const isUpdatePrileInProgress = ({
+export const isUpdateProfileInProgress = ({
   profile: { updateProfileInProgress },
 }) => updateProfileInProgress;
 
