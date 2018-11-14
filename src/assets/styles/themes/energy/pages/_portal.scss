@@ -1,4 +1,4 @@
-$max-width: 100%;
+$max-width: 640px;
 
 
 .#{$namespace}-portal {
@@ -9,6 +9,7 @@ $max-width: 100%;
   justify-content: flex-start;
   align-self: flex-start;
 
+  width: 100%;
   max-width: $max-width;
   min-height: 100%;
   padding: rhythm(1);
@@ -18,4 +19,76 @@ $max-width: 100%;
 .#{$namespace}-dashboard {
   width: 100%;
   height: 100%;
+
+
+  &__info {
+    @include set-border((
+      side: bottom,
+      width: 1px,
+      style: solid,
+      color: map-get($border-colors, default),
+    ));
+
+    width: 100%;
+    margin: 0 0 rhythm(.5) 0;
+    padding: 0 0 rhythm(.5) 0;
+    font-family: $ui-font-family;
+  }
+
+  &__title {
+    margin: 0 0 rhythm(.5) 0;
+    font-weight: normal;
+    color: map-get($text-colors, dark);
+  }
+
+  &__total,
+  &__amount {
+    margin: rhythm(.5) 0;
+    font-size: $h5-font-size;
+    font-weight: 500;
+  }
+
+  &__total {
+    font-size: $h3-font-size;
+  }
+
+  &__note {
+    margin: 0;
+    font-family: $base-font-family;
+    font-size: map-get($font-sizes, small);
+    color: map-get($text-colors, dark);
+  }
+
+
+  &__group {
+    @include set-border((
+      side: bottom,
+      width: 1px,
+      style: solid,
+      color: map-get($border-colors, default),
+    ));
+
+    display: flex;
+    margin: 0 0 rhythm(1) 0;
+    padding: rhythm(.5);
+
+    .#{$namespace}-dashboard__info {
+      padding: 0 rhythm(1);
+      border: 0;
+    }
+  }
+
+  &__info + &__info {
+    @include set-border((
+      side: left,
+      width: 1px,
+      style: solid,
+      color: map-get($border-colors, default),
+    ));
+  }
+
+
+  &__chart {
+    margin: 0 0 rhythm(1) 0;
+  }
 }
