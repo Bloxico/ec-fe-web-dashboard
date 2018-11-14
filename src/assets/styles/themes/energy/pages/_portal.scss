@@ -70,10 +70,11 @@ $max-width: 640px;
 
     display: flex;
     margin: 0 0 rhythm(1) 0;
-    padding: rhythm(.5);
+    padding: rhythm(.5) 0;
 
     .#{$namespace}-dashboard__info {
-      padding: 0 rhythm(1);
+      width: 50%;
+      padding: 0 0 0 rhythm(.5);
       border: 0;
     }
   }
@@ -85,6 +86,8 @@ $max-width: 640px;
       style: solid,
       color: map-get($border-colors, default),
     ));
+
+    padding: 0 0 0 rhythm(1);
   }
 
 

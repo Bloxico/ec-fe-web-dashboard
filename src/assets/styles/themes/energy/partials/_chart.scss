@@ -14,6 +14,7 @@
   }
 
   &__graph {
+    height: rhythm(16);
     padding: rhythm(.5) 0;
     background-color: map-get($background-colors, control);
   }

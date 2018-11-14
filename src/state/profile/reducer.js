@@ -11,7 +11,7 @@ export default handleActions(
       actions.FETCH_PROFILE_DATA,
       state => ({
         ...state,
-        isProfileDataInProgress: true,
+        fetchProfileDataInProgress: true,
       }),
     ],
     [
@@ -20,23 +20,21 @@ export default handleActions(
         ...state,
         data: payload.userProfile,
         regions: payload.regions,
-        fail: false,
-        isProfileDataInProgress: false,
+        fetchProfileDataInProgress: false,
       }),
     ],
     [
       actions.UPDATE_PROFILE,
       state => ({
         ...state,
-        isUpdateProfileInProgress: true,
+        updateProfileInProgress: true,
       }),
     ],
     [
       actions.UPDATE_PROFILE_SUCCESS,
       state => ({
         ...state,
-        fail: false,
-        isUpdateProfileInProgress: false,
+        updateProfileInProgress: false,
       }),
     ],
     [
