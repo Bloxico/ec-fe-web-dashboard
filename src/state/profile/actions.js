@@ -2,7 +2,7 @@
 
 import { createAction } from 'redux-actions';
 
-export const FETCH_PROFILE_DATA = '[FETCH_PROFILE_DATA]';
+export const FETCH_PROFILE_DATA = '[PROFILE_DATA] Fetch';
 export const FETCH_PROFILE_DATA_SUCCESS = `${FETCH_PROFILE_DATA} success`;
 export const FETCH_PROFILE_DATA_FAIL = `${FETCH_PROFILE_DATA} fail`;
 export const UPDATE_PROFILE = `[UPDATE_PROFILE]`;
