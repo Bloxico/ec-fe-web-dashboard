@@ -8,8 +8,8 @@ import { AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX } from 'src/constants';
 import { StateT } from 'src/state/state';
 import ModalManager from 'src/components/views/common/ModalManager';
 
-import Auth from './Auth';
-import Portal from './Portal';
+import Auth from './views/Auth';
+import Portal from './views/Portal';
 
 const baseClass = `${THEME_PREFIX}-app`;
 

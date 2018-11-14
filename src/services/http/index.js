@@ -10,13 +10,17 @@ http.setConfig({
 });
 
 http.interceptors('request', config => {
-  const { accessToken } = Cookie.getJSON(AUTH_COOKIE);
+  const authCookie = Cookie.getJSON(AUTH_COOKIE);
+
+  if (!authCookie || !config.withAuth) {
+    return config;
+  }
 
   return {
     ...config,
     headers: {
       ...config.headers,
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${authCookie.accessToken}`,
     },
   };
 });

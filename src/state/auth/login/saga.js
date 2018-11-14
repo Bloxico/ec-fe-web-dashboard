@@ -10,10 +10,17 @@ import { AUTH_COOKIE, PORTAL_PAGE } from 'src/constants';
 import * as actions from './actions';
 
 export function* login$({ payload }): Generator<*, *, *> {
+  const params = {
+    grant_type: 'password',
+    scope: 'access-profile',
+    ...payload,
+  };
   try {
     const { data } = yield http.post(
       'oauth/token',
-      { grant_type: 'password', scope: 'access-profile', ...payload },
+      Object.keys(params)
+        .map(key => `${key}=${params[key]}`)
+        .join('&'),
       {
         auth: {
           username: 'clientapp',
