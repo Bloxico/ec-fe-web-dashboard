@@ -66,7 +66,6 @@ class EditProfile extends Component<Props> {
       regions,
       initialValues,
       pristine,
-      submitting,
       updateProfileInProgress,
     } = this.props;
 
