@@ -24,7 +24,7 @@ export type Props = {
   regions: [],
   initialValues: Object,
   pristine: boolean,
-  submitting: boolean,
+  updateProfileInProgress: boolean,
 };
 
 const baseClass = `${THEME_PREFIX}-editProfile`;
