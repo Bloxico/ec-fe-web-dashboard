@@ -1,15 +1,15 @@
 // @flow
 
 type StateT = {
-  isFetchTransactionsInProgress: boolean,
+  fetchTransactionsInProgress: boolean,
   fail: boolean,
-  data: Object,
+  transactions: Array<Object>,
 };
 
 const initialState: StateT = {
-  isFetchTransactionsInProgress: false,
-  isProfileDataInProgress: false,
+  fetchTransactionsInProgress: false,
   fail: false,
+  transactions: [],
 };
 
 export default initialState;

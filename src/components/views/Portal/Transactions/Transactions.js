@@ -22,19 +22,16 @@ const columns = [
     accessor: 'enrgAmount',
     id: 'enrgAmount',
     Cell: ({ value }: any) => <span>ENRG {value}</span>,
-    minWidth: 130,
   },
   {
     Header: 'Date',
     accessor: 'created',
     Cell: ({ value }: any) => <FormattedDate v value={value} />,
-    minWidth: 130,
   },
   {
     Header: 'Source',
     accessor: 'source',
     Cell: () => <span>Ring-ring</span>,
-    minWidth: 130,
   },
 ];
 

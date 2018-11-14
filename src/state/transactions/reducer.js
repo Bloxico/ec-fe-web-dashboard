@@ -11,16 +11,16 @@ export default handleActions(
       actions.FETCH_TRANSACTIONS,
       state => ({
         ...state,
-        isFetchTransactionsInProgress: true,
+        fetchTransactionsInProgress: true,
       }),
     ],
     [
       actions.FETCH_TRANSACTIONS_SUCCESS,
       (state, { payload }) => ({
         ...state,
-        data: payload,
+        transactions: payload.transactionDtos,
         fail: false,
-        isFetchTransactionsInProgress: false,
+        fetchTransactionsInProgress: false,
       }),
     ],
     [

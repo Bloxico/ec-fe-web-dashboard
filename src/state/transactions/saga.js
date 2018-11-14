@@ -11,7 +11,7 @@ import { showModal } from '../actions';
 export function* fetchTransactions$(): Generator<*, *, *> {
   try {
     const { data } = yield http.get('transaction/myTransactions');
-    yield put(actions.fetchTransactionsSuccess(data.transactionDtos));
+    yield put(actions.fetchTransactionsSuccess(data));
   } catch ({ response: { data } }) {
     yield put(
       showModal({
