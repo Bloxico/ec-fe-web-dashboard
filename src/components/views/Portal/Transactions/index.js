@@ -8,7 +8,7 @@ import { fetchTransactions } from 'src/state/actions';
 import { getTransactionsData } from 'src/state/selectors';
 
 import messages from './messages';
-import Dashboard from './Transactions';
+import Transactions from './Transactions';
 
 const actions = {
   fetchTransactions,
@@ -28,4 +28,4 @@ export default compose(
   withProps(({ intl: { formatMessage } }) => ({
     MSGTransactions: formatMessage(messages.transactions),
   })),
-)(Dashboard);
+)(Transactions);

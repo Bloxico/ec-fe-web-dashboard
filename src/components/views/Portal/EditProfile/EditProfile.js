@@ -20,7 +20,6 @@ export type Props = {
   requiredIntl: string,
   emailIntl: string,
   alphanumericIntl: string,
-  profileData: Function,
   regions: [],
   initialValues: Object,
   pristine: boolean,
@@ -41,11 +40,6 @@ class EditProfile extends Component<Props> {
       emailValidator: emailIntl,
       alphanumericValidator: alphanumericIntl,
     };
-  }
-
-  componentDidMount() {
-    const { profileData } = this.props;
-    profileData();
   }
 
   defaultRegionOption = {

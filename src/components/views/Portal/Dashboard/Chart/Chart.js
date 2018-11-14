@@ -16,7 +16,13 @@ const baseClass = `${THEME_PREFIX}-chart`;
 const Chart = ({ data, lineColor, title }: Props) => (
   <div className={baseClass}>
     <h4>{title}</h4>
-    <LineChart data={data} colors={[lineColor]} />
+    <LineChart
+      data={data}
+      showLines={false}
+      library="Chart.js"
+      curves={false}
+      colors={[lineColor]}
+    />
   </div>
 );
 

@@ -16,6 +16,7 @@ import {
   PORTAL_PAGE,
   DASHBOARD_PAGE,
   TRANSACTIONS_PAGE,
+  EDIT_PROFILE,
   THEME_PREFIX,
 } from 'src/constants';
 
@@ -70,7 +71,7 @@ const Navigation = (props: Props) => {
             text="Transactions"
           />
           <NavigationItem
-            route={PORTAL_PAGE}
+            route={EDIT_PROFILE}
             icon={iconProfile}
             text="Profile"
           />

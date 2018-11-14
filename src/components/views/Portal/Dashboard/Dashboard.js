@@ -1,8 +1,7 @@
 // @flow
 
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 
-import { mockChartData } from 'src/mocks/dashboard';
 import { THEME_PREFIX } from 'src/constants';
 
 import Header from '@partials/Header';
@@ -15,7 +14,7 @@ export interface Props {
   hideSidebar: Function;
   MSGDashboard: string;
   MSGCO2Prevented: string;
-  MSGkWhSaved: string;
+  data: Object;
 }
 
 // TODO:
@@ -26,21 +25,41 @@ export interface Props {
 const baseClass = `${THEME_PREFIX}-dashboard`;
 
 // TODO@martins get actual colors from designers
-class Dashboard extends PureComponent<Props> {
+class Dashboard extends Component<Props> {
+  componentDidMount() {
+    const { fetchTransactions } = this.props;
+    fetchTransactions();
+  }
+
   render() {
-    const { MSGDashboard, MSGCO2Prevented, MSGkWhSaved } = this.props;
+    const { MSGDashboard, MSGCO2Prevented, transactions } = this.props;
+    const data = {};
+    let balance = 0;
+    let totalVirtualCurrency = 0;
+    const date = new Date();
+    date.setMonth(date.getMonth() - 3);
+    if (transactions) {
+      transactions
+        .filter(o => new Date(o.created) >= date)
+        .forEach(item => {
+          data[new Date(item.created).toLocaleDateString()] = item.enrgAmount;
+        }, {});
+      transactions.forEach(e => {
+        balance += e.enrgAmount;
+        totalVirtualCurrency += e.virtualCurrencyAmmount;
+      });
+    }
 
     return (
       <div className={baseClass}>
         <Header action="menu" title={MSGDashboard} />
-
-        <Chart
-          data={mockChartData(6)}
-          lineColor="green"
-          title={MSGCO2Prevented}
-        />
-
-        <Chart data={mockChartData(6)} lineColor="blue" title={MSGkWhSaved} />
+        <h5 className={`${baseClass}-h5`}>Total accumulated</h5>
+        <h2 className={`${baseClass}-h2`}>ENRG {balance.toFixed(2)}</h2>
+        <div className={`${baseClass}-separator`} />
+        <h5 className={`${baseClass}-h5`}>Bicycle Bits</h5>
+        <h4 className={`${baseClass}-h4`}>{totalVirtualCurrency.toFixed(2)}</h4>
+        <div className={`${baseClass}-separator`} />
+        <Chart data={data} lineColor="#8bdd68" title={MSGCO2Prevented} />
       </div>
     );
   }
