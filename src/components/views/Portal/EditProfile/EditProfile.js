@@ -24,7 +24,7 @@ export type Props = {
   regions: [],
   initialValues: Object,
   pristine: boolean,
-  submitting: boolean,
+  updateProfileInProgress: boolean,
 };
 
 const baseClass = `${THEME_PREFIX}-editProfile`;
@@ -66,7 +66,7 @@ class EditProfile extends Component<Props> {
       regions,
       initialValues,
       pristine,
-      submitting,
+      updateProfileInProgress,
     } = this.props;
 
     const {
@@ -137,7 +137,8 @@ class EditProfile extends Component<Props> {
             size="large"
             width="full"
             action="submit"
-            disabled={pristine || submitting}
+            busy={updateProfileInProgress}
+            disabled={pristine}
           >
             {MSGSave}
           </Button>
