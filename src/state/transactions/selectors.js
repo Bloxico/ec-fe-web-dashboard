@@ -1,1 +1,2 @@
-export const getTransactionsData = ({ transactions: { data } }) => data;
+export const getTransactionsData = ({ transactions: { transactions } }) =>
+  transactions;

@@ -103,7 +103,7 @@ $table-loading-font-size: map-get($font-sizes, "normal") !default;
 $table-loading-color: map-get($text-colors, "normal") !default;
 $table-loading-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !default;
 
-$table-empty-background: color("white", "alpha", 80) !default;
+$table-empty-background: color("black") !default;
 $table-empty-transition: all 0.3s ease !default;
 $table-empty-color: map-get($text-colors, "normal") !default;
 
