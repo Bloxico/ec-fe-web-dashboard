@@ -18,7 +18,9 @@ const Chart = ({ data, lineColor, title, action }: Props) => (
   <div className={baseClass}>
     <header className={`${baseClass}__header`}>
       <h4 className={`${baseClass}__title`}>{title}</h4>
-      <Button type="link" className={`${baseClass}__action`}>{action}</Button>
+      <Button type="link" className={`${baseClass}__action`}>
+        {action}
+      </Button>
     </header>
     <div className={`${baseClass}__graph`}>
       <LineChart data={data} colors={[lineColor]} />

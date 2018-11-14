@@ -34,11 +34,11 @@ class Dashboard extends PureComponent<Props> {
       <div className={baseClass}>
         <Header action="menu" title={MSGDashboard} />
 
-          <dl className={`${baseClass}__info`}>
-            <dt className={`${baseClass}__title`}>Total accumulated</dt>
-            <dd className={`${baseClass}__total`}>ENRG 25,400</dd>
-            <dd className={`${baseClass}__note`}>1 ENRG = 1 EUR</dd>
-          </dl>
+        <dl className={`${baseClass}__info`}>
+          <dt className={`${baseClass}__title`}>Total accumulated</dt>
+          <dd className={`${baseClass}__total`}>ENRG 25,400</dd>
+          <dd className={`${baseClass}__note`}>1 ENRG = 1 EUR</dd>
+        </dl>
 
         <section className={`${baseClass}__group`}>
           <dl className={`${baseClass}__info`}>
