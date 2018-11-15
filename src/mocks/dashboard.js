@@ -7,7 +7,6 @@ export const mockChartData = (length: number) => {
       .between(new Date('03/03/2018'), new Date())
       .toLocaleDateString()]: faker.finance.amount(),
   }));
-
   mockArray
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .forEach(item => {
@@ -15,6 +14,5 @@ export const mockChartData = (length: number) => {
 
       data[key] = item[key];
     });
-
   return data;
 };

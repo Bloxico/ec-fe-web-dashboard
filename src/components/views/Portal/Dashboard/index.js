@@ -3,14 +3,22 @@
 import { connect } from 'react-redux';
 import { compose, withProps } from 'recompose';
 import { injectIntl } from 'react-intl';
+
 import withConfigSizes from '@wrappers/withConfigSizes';
+import { fetchTransactions } from 'src/state/actions';
+import { getTransactionsData } from 'src/state/selectors';
 
 import messages from './messages';
 import Dashboard from './Dashboard';
 
-const actions = {};
+const actions = {
+  fetchTransactions,
+};
 
-const mapStateToProps = () => ({});
+// eslint-disable-next-line
+const mapStateToProps = state => ({
+  transactions: getTransactionsData(state),
+});
 
 export default compose(
   injectIntl,

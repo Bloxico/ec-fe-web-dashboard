@@ -10,7 +10,9 @@ import { showModal } from '../actions';
 
 export function* fetchTransactions$(): Generator<*, *, *> {
   try {
-    const { data } = yield http.get('transaction/myTransactions');
+    const { data } = yield http.get('transaction/myTransactions', null, {
+      withAuth: true,
+    });
     yield put(actions.fetchTransactionsSuccess(data));
   } catch ({ response: { data } }) {
     yield put(

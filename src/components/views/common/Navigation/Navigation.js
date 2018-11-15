@@ -10,12 +10,11 @@ import iconDashboard from '@images/icon-dashboard.svg';
 import iconTransactions from '@images/icon-transactions.svg';
 import iconProfile from '@images/icon-profile.svg';
 import iconHelp from '@images/icon-help.svg';
-import iconSettings from '@images/icon-settings.svg';
 
 import {
-  PORTAL_PAGE,
   DASHBOARD_PAGE,
   TRANSACTIONS_PAGE,
+  EDIT_PROFILE,
   THEME_PREFIX,
 } from 'src/constants';
 
@@ -23,25 +22,40 @@ interface Item {
   icon: any;
   route?: string;
   text: string;
-  onClick?: Function;
+  href?: string;
+  target?: string;
+  onClick?: any;
 }
 
 interface Props {
   items?: Item[];
+  handleHide?: Function;
 }
 
 const baseClass = `${THEME_PREFIX}-navigation`;
 
-const NavigationItem = ({ route, icon, text, onClick = f => f }: Item) => (
+const NavigationItem = ({
+  route,
+  icon,
+  text,
+  onClick = f => f,
+  href,
+  target,
+}: Item) => (
   <React.Fragment>
     {route && (
-      <Link to={route} className={`${baseClass}__item`}>
+      <Link to={route} onClick={onClick} className={`${baseClass}__item`}>
         <Icon src={icon} spacing="right" color />
         {text}
       </Link>
     )}
     {!route && (
-      <Anchor className={`${baseClass}__item`} onClick={onClick}>
+      <Anchor
+        className={`${baseClass}__item`}
+        href={href}
+        target={target}
+        onClick={onClick}
+      >
         <Icon src={icon} spacing="right" color />
         {text}
       </Anchor>
@@ -50,7 +64,7 @@ const NavigationItem = ({ route, icon, text, onClick = f => f }: Item) => (
 );
 
 const Navigation = (props: Props) => {
-  const { items } = props;
+  const { items, handleHide } = props;
 
   return (
     <nav className={baseClass}>
@@ -63,22 +77,25 @@ const Navigation = (props: Props) => {
             route={DASHBOARD_PAGE}
             icon={iconDashboard}
             text="Dashboard"
+            onClick={handleHide}
           />
           <NavigationItem
             route={TRANSACTIONS_PAGE}
             icon={iconTransactions}
             text="Transactions"
+            onClick={handleHide}
           />
           <NavigationItem
-            route={PORTAL_PAGE}
+            route={EDIT_PROFILE}
             icon={iconProfile}
             text="Profile"
+            onClick={handleHide}
           />
-          <NavigationItem route={PORTAL_PAGE} icon={iconHelp} text="Help" />
           <NavigationItem
-            route={PORTAL_PAGE}
-            icon={iconSettings}
-            text="Settings"
+            href="http://bloxico.com/contact/"
+            target="_blank"
+            icon={iconHelp}
+            text="Help"
           />
         </React.Fragment>
       )}
