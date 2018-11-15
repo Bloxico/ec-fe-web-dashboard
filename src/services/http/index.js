@@ -1,9 +1,10 @@
 // @flow
 
+// @TODO@martins fix interceptors
 import { API_URL } from 'src/constants';
 import {
   setAuthHeaderInterceptor,
-  unauthorizedResponseInterceptor,
+  // unauthorizedResponseInterceptor,
 } from './interceptors';
 
 import http from './http';
@@ -13,10 +14,10 @@ http.setConfig({
 });
 
 http.interceptors('request', setAuthHeaderInterceptor);
-http.interceptors(
-  'response',
-  response => response,
-  unauthorizedResponseInterceptor,
-);
+// http.interceptors(
+//   'response',
+//   response => response,
+//   unauthorizedResponseInterceptor,
+// );
 
 export default http;
