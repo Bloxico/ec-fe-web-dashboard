@@ -13,6 +13,11 @@
     overflow: hidden;
     color: map-get($text-colors, normal);
 
+    // not pretty just overriding so that item as anchor has no box-shadow
+    &:hover {
+      box-shadow: none;
+    }
+
     .#{$namespace}-icon {
       margin-right: 1em;
     }

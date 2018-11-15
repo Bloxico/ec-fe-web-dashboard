@@ -7,11 +7,14 @@ import Sidebar from '@ui/Sidebar';
 import Navigation from '@partials/Navigation';
 import iconSignout from '@images/icon-signout.svg';
 
-import { LOGIN_PAGE, THEME_PREFIX } from 'src/constants';
+import { THEME_PREFIX } from 'src/constants';
+import { redirectToLogin } from 'src/services/http/utils';
 
 interface Props {
   isSidebarOpen: boolean;
   hideSidebar: Function;
+  fetchProfileData: Function;
+  profileData: any;
   children: any;
 }
 
@@ -47,18 +50,15 @@ class SidebarWrapper extends Component<Props> {
         </header>
 
         <section className={`${baseClass}__content`}>
-          <Navigation />
+          <Navigation handleHide={hideSidebar} />
         </section>
-
         <footer className={`${baseClass}__footer`}>
           <Navigation
             items={[
               {
                 icon: iconSignout,
                 text: 'Sign out',
-                route: { LOGIN_PAGE },
-                // eslint-disable-next-line
-                onClick: (e: any) => console.log(e),
+                onClick: () => redirectToLogin(),
               },
             ]}
           />

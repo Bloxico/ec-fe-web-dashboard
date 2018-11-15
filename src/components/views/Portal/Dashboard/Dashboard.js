@@ -14,6 +14,8 @@ export interface Props {
   hideSidebar: Function;
   MSGDashboard: string;
   MSGCO2Prevented: string;
+  fetchTransactions: Function;
+  transactions: [];
   data: Object;
 }
 
@@ -57,32 +59,21 @@ class Dashboard extends Component<Props> {
         <dl className={`${baseClass}__info`}>
           <dt className={`${baseClass}__title`}>Total accumulated</dt>
           <dd className={`${baseClass}__total`}>ENRG {balance.toFixed(2)}</dd>
-          <dd className={`${baseClass}__note`}>1 ENRG = 1 EUR</dd>
+          <dd className={`${baseClass}__note`}>1 ENRG = x EUR</dd>
         </dl>
 
         <section className={`${baseClass}__group`}>
           <dl className={`${baseClass}__info`}>
             <dt className={`${baseClass}__title`}>Bicycle Bits</dt>
-            <dd className={`${baseClass}__amount`}>{totalVirtualCurrency.toFixed(2)}</dd>
-            <dd className={`${baseClass}__note`}>1 BB = 0.x ENRG</dd>
-          </dl>
-
-          <dl className={`${baseClass}__info`}>
-            <dt className={`${baseClass}__title`}>M3 Euro Gas</dt>
-            <dd className={`${baseClass}__amount`}>4,800</dd>
-            <dd className={`${baseClass}__note`}>1 M3 = 0.x ENRG</dd>
+            <dd className={`${baseClass}__amount`}>
+              {totalVirtualCurrency.toFixed(2)}
+            </dd>
           </dl>
         </section>
 
         <section className={`${baseClass}__chart`}>
-          <Chart
-            data={data}
-            lineColor="#1be088"
-            title={MSGCO2Prevented}
-            action="Show BB"
-          />
+          <Chart data={data} lineColor="#1be088" title={MSGCO2Prevented} />
         </section>
-
       </div>
     );
   }
