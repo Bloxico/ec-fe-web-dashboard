@@ -53,13 +53,36 @@ class Dashboard extends Component<Props> {
     return (
       <div className={baseClass}>
         <Header action="menu" title={MSGDashboard} />
-        <h5 className={`${baseClass}-h5`}>Total accumulated</h5>
-        <h2 className={`${baseClass}-h2`}>ENRG {balance.toFixed(2)}</h2>
-        <div className={`${baseClass}-separator`} />
-        <h5 className={`${baseClass}-h5`}>Bicycle Bits</h5>
-        <h4 className={`${baseClass}-h4`}>{totalVirtualCurrency.toFixed(2)}</h4>
-        <div className={`${baseClass}-separator`} />
-        <Chart data={data} lineColor="#8bdd68" title={MSGCO2Prevented} />
+
+        <dl className={`${baseClass}__info`}>
+          <dt className={`${baseClass}__title`}>Total accumulated</dt>
+          <dd className={`${baseClass}__total`}>ENRG {balance.toFixed(2)}</dd>
+          <dd className={`${baseClass}__note`}>1 ENRG = 1 EUR</dd>
+        </dl>
+
+        <section className={`${baseClass}__group`}>
+          <dl className={`${baseClass}__info`}>
+            <dt className={`${baseClass}__title`}>Bicycle Bits</dt>
+            <dd className={`${baseClass}__amount`}>{totalVirtualCurrency.toFixed(2)}</dd>
+            <dd className={`${baseClass}__note`}>1 BB = 0.x ENRG</dd>
+          </dl>
+
+          <dl className={`${baseClass}__info`}>
+            <dt className={`${baseClass}__title`}>M3 Euro Gas</dt>
+            <dd className={`${baseClass}__amount`}>4,800</dd>
+            <dd className={`${baseClass}__note`}>1 M3 = 0.x ENRG</dd>
+          </dl>
+        </section>
+
+        <section className={`${baseClass}__chart`}>
+          <Chart
+            data={data}
+            lineColor="#1be088"
+            title={MSGCO2Prevented}
+            action="Show BB"
+          />
+        </section>
+
       </div>
     );
   }
