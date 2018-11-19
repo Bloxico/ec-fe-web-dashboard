@@ -36,12 +36,6 @@ export default compose(
   reduxForm({
     form: 'Register',
   }),
-  withHandlers({
-    // eslint-disable-next-line no-shadow
-    handleRegistration: ({ register }) => values => {
-      register(values);
-    },
-  }),
   withProps(({ intl: { formatMessage } }) => ({
     MSGCreateAnAccount: formatMessage(messages.createAnAccount),
     MSGEmail: formatMessage(messages.email),
