@@ -1,6 +1,6 @@
 // @flow
 import { connect } from 'react-redux';
-import { compose, withHandlers, withProps } from 'recompose';
+import { compose, withProps } from 'recompose';
 import { reduxForm } from 'redux-form';
 import { injectIntl } from 'react-intl';
 
