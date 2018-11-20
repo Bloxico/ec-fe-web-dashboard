@@ -42,7 +42,6 @@ export function* login$({ payload }): Generator<*, *, *> {
     yield put(push(PORTAL_PAGE));
     yield put(actions.clearLoginState());
   } catch ({ response: { data } }) {
-    console.log(data);
     yield put(
       showModal({
         modalName: MODALS.ErrorMessage,
