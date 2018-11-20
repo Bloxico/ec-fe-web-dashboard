@@ -4,7 +4,10 @@ $max-width: 400px;
   width: 100%;
   height: 100%;
   max-width: $max-width;
-  padding: 0 rhythm(1);
+
+  .enrg-form {
+    padding: 0 rhythm(1);
+  }
 
   &__footer {
     padding: rhythm(1) 0;
