@@ -16,7 +16,7 @@ $header-title-padding: rhythm(.25) rhythm(1.5) !default;
   &__action {
     position: absolute;
     top: 0;
-    left: 0;
+    left: rhythm(1);
     z-index: 1;
   }
 }

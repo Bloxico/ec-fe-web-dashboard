@@ -19,8 +19,7 @@ $table-header-filters-cell-border: (
 ) !default;
 $table-header-cell-padding: rhythm(0.75) rhythm(1) !default;
 $table-header-cell-align: left !default;
-$table-header-cell-font-size: map-get($font-sizes, "tiny") !default;
-$table-header-cell-text-transform: uppercase !default;
+$table-header-cell-font-size: map-get($font-sizes, normal) !default;
 $table-header-cell-color: map-get($text-colors, "dark") !default;
 $table-header-cell-border: (
   side: right,
@@ -205,7 +204,6 @@ $table-empty-color: map-get($text-colors, "normal") !default;
   .rt-tr {
     text-align: $table-header-cell-align;
     font-size: $table-header-cell-font-size;
-    text-transform: $table-header-cell-text-transform;
     color: $table-header-cell-color;
   }
 
@@ -338,6 +336,7 @@ $table-empty-color: map-get($text-colors, "normal") !default;
     overflow: hidden;
     transition: $table-body-row-cell-transition;
     transition-property: width, min-width, padding, opacity;
+    align-self: center;
 
     &.-hidden {
       width: 0 !important;

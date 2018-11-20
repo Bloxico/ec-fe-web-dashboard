@@ -32,6 +32,7 @@ export default compose(
     MSGInvalidLogin: formatMessage(messages.invalidLogin),
     MSGTokenExpired: formatMessage(messages.tokenExpired),
     MSGUserDoesNotExist: formatMessage(messages.userDoesNotExist),
+    MSGUserNotVerified: formatMessage(messages.userNotVerified),
   })),
   withHandlers({
     handleClick: ({ hideModal }) => () => {

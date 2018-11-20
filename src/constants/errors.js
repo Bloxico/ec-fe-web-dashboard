@@ -15,4 +15,7 @@ export const ERROR_CODES = {
   WALLET_NOT_FOUND: '30', // When provided wallet address cannot be found using address hash.
   WALLET_ADDRESS_ALREADY_EXISTS: '31', // When address hash already exists.
   WALLET_ADDRESS_LENGTH_IS_NOT_VALID: '32', // Address hash cannot have the size different than 32 characters
+
+  USER_NOT_VERIFIED: 'User disabled',
+  BAD_CREDENTIALS: 'Bad credentials',
 };

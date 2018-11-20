@@ -14,6 +14,10 @@ export interface Props {
   MSGSomethingWentWrong: string;
   MSGUserExists: string;
   MSGTokenNotFound: string;
+  MSGInvalidLogin: string;
+  MSGTokenExpired: string;
+  MSGUserDoesNotExist: string;
+  MSGUserNotVerified: string;
   handleClick: Function;
 }
 
@@ -32,6 +36,7 @@ const ErrorMessage = (props: Props) => {
     MSGInvalidLogin,
     MSGTokenExpired,
     MSGUserDoesNotExist,
+    MSGUserNotVerified,
     handleClick,
   } = props;
 
@@ -50,6 +55,12 @@ const ErrorMessage = (props: Props) => {
       break;
     case ERROR_CODES.USER_DOES_NOT_EXIST:
       content = MSGUserDoesNotExist;
+      break;
+    case ERROR_CODES.BAD_CREDENTIALS:
+      content = MSGInvalidLogin;
+      break;
+    case ERROR_CODES.USER_NOT_VERIFIED:
+      content = MSGUserNotVerified;
       break;
     default:
       content = undefined;

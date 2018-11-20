@@ -54,4 +54,8 @@ export default defineMessages({
     id: 'userDoesNotExist',
     defaultMessage: 'User does not exist.',
   },
+  userNotVerified: {
+    id: 'userNotVerified',
+    defaultMessage: 'User not verified.',
+  },
 });
