@@ -167,6 +167,8 @@ class Input extends PureComponent<PropsT, StateT> {
       className,
     );
 
+    const defaultLength = maxLength || 200;
+
     return (
       <input
         type={type}
@@ -179,7 +181,7 @@ class Input extends PureComponent<PropsT, StateT> {
         pattern={pattern}
         tabIndex={tabIndex}
         minLength={minLength}
-        maxLength={maxLength}
+        maxLength={defaultLength}
         min={min}
         max={max}
         disabled={disabled}

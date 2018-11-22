@@ -115,6 +115,8 @@ class Password extends React.PureComponent<Props, State> {
       className,
     );
 
+    const defaultLength = maxLength || 200;
+
     return (
       <span
         className={`${THEME_PREFIX}-password ${
@@ -132,7 +134,7 @@ class Password extends React.PureComponent<Props, State> {
           title={title}
           tabIndex={tabIndex}
           minLength={minLength}
-          maxLength={maxLength}
+          maxLength={defaultLength}
           disabled={disabled}
           readOnly={readOnly}
           hidden={hidden}
