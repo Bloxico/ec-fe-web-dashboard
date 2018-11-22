@@ -104,6 +104,8 @@ class Verify extends Component<Props> {
           <Field
             type="number"
             maxLength={4}
+            min={0}
+            pattern="\d*"
             name="tokenValue"
             component={FormField}
             width="full"
