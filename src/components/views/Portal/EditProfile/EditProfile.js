@@ -24,6 +24,7 @@ export type Props = {
   initialValues: Object,
   pristine: boolean,
   updateProfileInProgress: boolean,
+  fetchProfileInProgress: boolean,
   fetchProfileData: Function,
 };
 
