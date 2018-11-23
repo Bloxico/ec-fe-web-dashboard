@@ -8,9 +8,13 @@ import * as actions from './actions';
 import { MODALS } from '../../constants';
 import { showModal } from '../actions';
 
-export function* profileData$(): Generator<*, *, *> {
+export function* fetchProfileData$(): Generator<*, *, *> {
   try {
-    const { data } = yield http.get('user/myProfile', null, { withAuth: true });
+    const { data } = yield http.get('user/myProfile', null, {
+      withAuth: true,
+      cache: false,
+    });
+
     yield put(actions.fetchProfileDataSuccess(data));
   } catch ({ response: { data } }) {
     yield put(
@@ -28,7 +32,7 @@ export function* profileData$(): Generator<*, *, *> {
 export function* updateProfile$({ payload }): Generator<*, *, *> {
   try {
     yield http.post('user/updateMyProfile', payload, { withAuth: true });
-    yield put(actions.updateProfileSuccess());
+    yield put(actions.updateProfileSuccess(payload));
   } catch ({ response: { data } }) {
     yield put(
       showModal({
@@ -44,6 +48,6 @@ export function* updateProfile$({ payload }): Generator<*, *, *> {
 
 // $FlowIssue
 export default function*() {
-  yield all([takeEvery(actions.FETCH_PROFILE_DATA, profileData$)]);
+  yield all([takeEvery(actions.FETCH_PROFILE_DATA, fetchProfileData$)]);
   yield all([takeEvery(actions.UPDATE_PROFILE, updateProfile$)]);
 }
