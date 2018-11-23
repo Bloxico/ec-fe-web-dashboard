@@ -5,13 +5,14 @@ import { FormattedDate } from 'react-intl';
 
 import { THEME_PREFIX } from 'src/constants';
 
-import { Table } from '@ui';
+import { Table, Loader } from '@ui';
 import Header from '@partials/Header';
 
 export type Props = {
   MSGTransactions: string,
   transactions: [],
   fetchTransactions: Function,
+  fetchTransactionsInProgress: boolean,
 };
 
 const baseClass = `${THEME_PREFIX}-transactions`;
@@ -40,12 +41,19 @@ class Transactions extends Component<Props> {
     const { fetchTransactions } = this.props;
     fetchTransactions();
   }
+
   render() {
-    const { MSGTransactions, transactions } = this.props;
+    const {
+      MSGTransactions,
+      transactions,
+      fetchTransactionsInProgress,
+    } = this.props;
+
     return (
       <div className={baseClass}>
         <Header action="menu" title={MSGTransactions} />
-        {transactions && (
+        {fetchTransactionsInProgress && <Loader />}
+        {!fetchTransactionsInProgress && (
           <Table showPagination data={transactions} columns={columns} />
         )}
       </div>

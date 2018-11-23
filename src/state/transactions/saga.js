@@ -13,6 +13,7 @@ export function* fetchTransactions$(): Generator<*, *, *> {
     const { data } = yield http.get('transaction/myTransactions', null, {
       withAuth: true,
     });
+
     yield put(actions.fetchTransactionsSuccess(data));
   } catch ({ response: { data } }) {
     yield put(
