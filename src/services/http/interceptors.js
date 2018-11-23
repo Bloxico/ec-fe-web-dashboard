@@ -25,8 +25,9 @@ export const setAuthHeaderInterceptor = config => {
 
 export const unauthorizedResponseInterceptor = error => {
   if (error.response && error.response.status === 401) {
+    Cookie.remove(AUTH_COOKIE);
     redirectToLogin();
   }
 
-  Promise.reject(error);
+  return Promise.reject(error);
 };
