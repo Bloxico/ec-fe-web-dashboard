@@ -2,8 +2,7 @@
 
 import React, { Component } from 'react';
 
-import Avatar from '@ui/Avatar';
-import Sidebar from '@ui/Sidebar';
+import { Loader, Sidebar, Avatar } from '@ui';
 import Navigation from '@partials/Navigation';
 import iconSignout from '@images/icon-signout.svg';
 
@@ -14,7 +13,9 @@ interface Props {
   isSidebarOpen: boolean;
   hideSidebar: Function;
   fetchProfileData: Function;
-  profileData: any;
+  // TODO Add profile type
+  profile: any;
+  fetchProfileInProgress: boolean;
   children: any;
 }
 
@@ -26,28 +27,30 @@ class SidebarWrapper extends Component<Props> {
     fetchProfileData();
   }
   render() {
-    const { isSidebarOpen, hideSidebar, profileData } = this.props;
-    let profileEmail;
-    let profileCity;
-    let profileRegion;
-    if (profileData) {
-      profileEmail = profileData.email;
-      profileCity = profileData.city;
-      profileRegion = profileData.region;
-    }
+    const {
+      isSidebarOpen,
+      hideSidebar,
+      profile,
+      fetchProfileInProgress,
+    } = this.props;
     return (
       <Sidebar show={isSidebarOpen} onHide={hideSidebar}>
-        <header className={`${baseClass}__header`}>
-          <div className={`${baseClass}__profile`}>
-            <Avatar className={`${baseClass}__profile__avatar`} />
-            <div className={`${baseClass}__profile__group`}>
-              <h5 className={`${baseClass}__profile__email`}>{profileEmail}</h5>
-              <address className={`${baseClass}__profile__location`}>
-                {profileCity}, {profileRegion}
-              </address>
+        {fetchProfileInProgress && <Loader />}
+        {!fetchProfileInProgress && profile && (
+          <header className={`${baseClass}__header`}>
+            <div className={`${baseClass}__profile`}>
+              <Avatar className={`${baseClass}__profile__avatar`} />
+              <div className={`${baseClass}__profile__group`}>
+                <h5 className={`${baseClass}__profile__email`}>
+                  {profile.email}
+                </h5>
+                <address className={`${baseClass}__profile__location`}>
+                  {profile.city}, {profile.region}
+                </address>
+              </div>
             </div>
-          </div>
-        </header>
+          </header>
+        )}
 
         <section className={`${baseClass}__content`}>
           <Navigation handleHide={hideSidebar} />

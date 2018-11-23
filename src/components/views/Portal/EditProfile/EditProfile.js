@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 import Header from '@partials/Header';
 import { THEME_PREFIX } from 'src/constants';
-import { Form, FormField, Button } from '@ui';
+import { Form, FormField, Button, Loader } from '@ui';
 
 export type Props = {
   handleSubmit: Function,
@@ -24,6 +24,7 @@ export type Props = {
   initialValues: Object,
   pristine: boolean,
   updateProfileInProgress: boolean,
+  fetchProfileData: Function,
 };
 
 const baseClass = `${THEME_PREFIX}-editProfile`;
@@ -40,6 +41,12 @@ class EditProfile extends Component<Props> {
       emailValidator: emailIntl,
       alphanumericValidator: alphanumericIntl,
     };
+  }
+
+  componentDidMount() {
+    const { fetchProfileData } = this.props;
+
+    fetchProfileData();
   }
 
   defaultRegionOption = {
@@ -61,6 +68,7 @@ class EditProfile extends Component<Props> {
       initialValues,
       pristine,
       updateProfileInProgress,
+      fetchProfileInProgress,
     } = this.props;
 
     const {
@@ -84,6 +92,10 @@ class EditProfile extends Component<Props> {
     let regionSelected = 'Select';
     if (initialValues) {
       regionSelected = initialValues.region;
+    }
+
+    if (fetchProfileInProgress) {
+      return <Loader />;
     }
 
     return (

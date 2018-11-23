@@ -19,7 +19,7 @@ import EditProfile from './EditProfile';
 
 const actions = {
   updateProfile,
-  profileData: fetchProfileData,
+  fetchProfileData,
 };
 
 const mapStateToProps = state => ({
