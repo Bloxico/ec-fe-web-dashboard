@@ -32,7 +32,7 @@ export function* fetchProfileData$(): Generator<*, *, *> {
 export function* updateProfile$({ payload }): Generator<*, *, *> {
   try {
     yield http.post('user/updateMyProfile', payload, { withAuth: true });
-    yield put(actions.updateProfileSuccess());
+    yield put(actions.updateProfileSuccess(payload));
   } catch ({ response: { data } }) {
     yield put(
       showModal({

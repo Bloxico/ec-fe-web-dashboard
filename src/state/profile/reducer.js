@@ -32,8 +32,9 @@ export default handleActions(
     ],
     [
       actions.UPDATE_PROFILE_SUCCESS,
-      state => ({
+      (state, { payload }) => ({
         ...state,
+        data: payload,
         updateProfileInProgress: false,
       }),
     ],
