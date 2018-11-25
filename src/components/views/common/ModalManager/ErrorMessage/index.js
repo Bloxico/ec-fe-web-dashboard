@@ -33,6 +33,7 @@ export default compose(
     MSGTokenExpired: formatMessage(messages.tokenExpired),
     MSGUserDoesNotExist: formatMessage(messages.userDoesNotExist),
     MSGUserNotVerified: formatMessage(messages.userNotVerified),
+    MSGPartnerIdAlreadyExists: formatMessage(messages.partnerIdAlreadyExists),
   })),
   withHandlers({
     handleClick: ({ hideModal }) => () => {

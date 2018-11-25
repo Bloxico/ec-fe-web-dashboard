@@ -37,6 +37,7 @@ const ErrorMessage = (props: Props) => {
     MSGTokenExpired,
     MSGUserDoesNotExist,
     MSGUserNotVerified,
+    MSGPartnerIdAlreadyExists,
     handleClick,
   } = props;
 
@@ -61,6 +62,9 @@ const ErrorMessage = (props: Props) => {
       break;
     case ERROR_CODES.USER_NOT_VERIFIED:
       content = MSGUserNotVerified;
+      break;
+    case ERROR_CODES.PARTNER_USER_ID_ALREADY_EXISTS:
+      content = MSGPartnerIdAlreadyExists;
       break;
     default:
       content = undefined;

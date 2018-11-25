@@ -29,11 +29,16 @@ export function* fetchRegions$(): Generator<*, *, *> {
   }
 }
 
-export function* register$({ payload }): Generator<*, *, *> {
+export function* register$({
+  payload: { isExternal, data },
+}): Generator<*, *, *> {
   try {
-    yield http.post('user/registration', payload);
-
-    yield put(push(`${VERIFY_PAGE}/${payload.email}`));
+    if (isExternal) {
+      yield http.post('user/externalRegistration', data);
+    } else {
+      yield http.post('user/registration', data);
+    }
+    yield put(push(`${VERIFY_PAGE}/${data.email}`));
   } catch ({ response: { data } }) {
     yield put(
       showModal({

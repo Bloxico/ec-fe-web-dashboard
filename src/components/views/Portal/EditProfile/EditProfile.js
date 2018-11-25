@@ -28,7 +28,7 @@ export type Props = {
   fetchProfileData: Function,
 };
 
-const baseClass = `${THEME_PREFIX}-editProfile`;
+const baseClass = `${THEME_PREFIX}-edit-profile`;
 const classes = classNames(baseClass);
 
 class EditProfile extends Component<Props> {

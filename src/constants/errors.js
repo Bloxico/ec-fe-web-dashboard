@@ -18,4 +18,6 @@ export const ERROR_CODES = {
 
   USER_NOT_VERIFIED: 'User disabled',
   BAD_CREDENTIALS: 'Bad credentials',
+
+  PARTNER_USER_ID_ALREADY_EXISTS: '40', // The queryparam value that was provided from external registration point is already within database - somebody is already registered with this partner id.
 };
