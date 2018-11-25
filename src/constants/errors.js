@@ -15,4 +15,6 @@ export const ERROR_CODES = {
   WALLET_NOT_FOUND: '30', // When provided wallet address cannot be found using address hash.
   WALLET_ADDRESS_ALREADY_EXISTS: '31', // When address hash already exists.
   WALLET_ADDRESS_LENGTH_IS_NOT_VALID: '32', // Address hash cannot have the size different than 32 characters
+
+  PARTNER_USER_ID_ALREADY_EXISTS: '40', // The queryparam value that was provided from external registration point is already within database - somebody is already registered with this partner id.
 };

@@ -30,7 +30,9 @@ const btnClasses = classNames(
   `${THEME_PREFIX}-button--large`,
   `${THEME_PREFIX}-button--wide`,
 );
-
+const randomExternalId = Math.random()
+  .toString(36)
+  .substr(2, 6);
 const Welcome = ({
   MSGDashboard,
   MSGCreateAnAccount,
@@ -48,7 +50,7 @@ const Welcome = ({
 
     <section className={`${baseClass}__content`}>
       <Link
-        to={REGISTER_PAGE}
+        to={`${REGISTER_PAGE}?userId=${randomExternalId}`}
         className={`${btnClasses} ${THEME_PREFIX}-button--primary`}
       >
         {MSGCreateAnAccount}

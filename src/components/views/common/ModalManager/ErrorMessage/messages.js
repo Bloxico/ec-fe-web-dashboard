@@ -54,4 +54,8 @@ export default defineMessages({
     id: 'userDoesNotExist',
     defaultMessage: 'User does not exist.',
   },
+  partnerIdAlreadyExists: {
+    id: 'partnerIdAlreadyExists',
+    defaultMessage: 'Partner ID already used.',
+  },
 });

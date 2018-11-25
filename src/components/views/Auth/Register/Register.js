@@ -9,7 +9,6 @@ import { Form, FormField, Button } from '@ui';
 import { THEME_PREFIX } from 'src/constants';
 
 export type Props = {
-  handleRegistration: Function,
   handleSubmit: Function,
   isRegistrationInProgress: boolean,
   MSGCreateAnAccount: string,
@@ -27,6 +26,8 @@ export type Props = {
   matchIntl: Function,
   regions: [],
   fetchRegions: Function,
+  register: Function,
+  location: any,
 };
 
 const baseClass = `${THEME_PREFIX}-register`;
@@ -41,9 +42,11 @@ class Register extends Component<Props> {
       passwordIntl,
       emailIntl,
       matchIntl,
+      location,
     } = props;
 
     this.passwordField = React.createRef();
+    this.externalId = new URLSearchParams(location.search).get('userId');
 
     this.validators = {
       requiredValidator: requiredIntl,
@@ -66,11 +69,16 @@ class Register extends Component<Props> {
     value: '',
   };
 
+  handleRegistration = (data: any) => {
+    const { register } = this.props;
+    const isExternal = Boolean(this.externalId);
+    register({ isExternal, data: { ...data, partnerUserId: this.externalId } });
+  };
+
   render() {
     const {
       MSGCreateAnAccount,
       handleSubmit,
-      handleRegistration,
       MSGEmail,
       MSGRepeatPassword,
       MSGPassword,
@@ -106,7 +114,7 @@ class Register extends Component<Props> {
       <div className={classes}>
         <Header title={MSGCreateAnAccount} />
 
-        <Form onSubmit={handleSubmit(handleRegistration)}>
+        <Form onSubmit={handleSubmit(this.handleRegistration)}>
           <Field
             placeholder={MSGEmail}
             type="email"
