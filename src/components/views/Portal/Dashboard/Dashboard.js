@@ -35,20 +35,22 @@ class Dashboard extends Component<Props> {
 
   render() {
     const { MSGDashboard, MSGCO2Prevented, transactions } = this.props;
+    const date = new Date();
     const data = {};
+
     let balance = 0;
     let totalVirtualCurrency = 0;
-    const date = new Date();
+
     date.setMonth(date.getMonth() - 3);
+
     if (transactions) {
-      transactions
-        .filter(o => new Date(o.created) >= date)
-        .forEach(item => {
-          data[new Date(item.created).toLocaleDateString()] = item.enrgAmount;
-        }, {});
-      transactions.forEach(e => {
-        balance += e.enrgAmount;
-        totalVirtualCurrency += e.virtualCurrencyAmmount;
+      transactions.forEach(t => {
+        balance += t.enrgAmount;
+        totalVirtualCurrency += t.virtualCurrencyAmmount;
+
+        if (new Date(t.created) >= date) {
+          data[new Date(t.created).toLocaleDateString()] = t.enrgAmount;
+        }
       });
     }
 
