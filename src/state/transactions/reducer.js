@@ -16,9 +16,15 @@ export default handleActions(
     ],
     [
       actions.FETCH_TRANSACTIONS_SUCCESS,
-      (state, { payload }) => ({
+      (
+        state,
+        { payload: { data, chartData, balance, totalVirtualCurrency } },
+      ) => ({
         ...state,
-        transactions: payload.transactionDtos,
+        chartData,
+        balance,
+        totalVirtualCurrency,
+        transactions: data.transactionDtos,
         fail: false,
         fetchTransactionsInProgress: false,
       }),

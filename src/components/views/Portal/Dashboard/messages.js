@@ -15,4 +15,16 @@ export default defineMessages({
     defaultMessage: 'kWh Saved',
     id: 'kWhSaved',
   },
+  totalAccumulated: {
+    defaultMessage: 'Total accumulated',
+    id: 'totalAccumulated',
+  },
+  energyShort: {
+    defaultMessage: 'ENRG',
+    id: 'energyShort',
+  },
+  bicycleBits: {
+    defaultMessage: 'Bicycle Bits',
+    id: 'bicycleBits',
+  },
 });
