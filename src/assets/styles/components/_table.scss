@@ -20,7 +20,6 @@ $table-header-filters-cell-border: (
 $table-header-cell-padding: rhythm(0.75) rhythm(1) !default;
 $table-header-cell-align: left !default;
 $table-header-cell-font-size: map-get($font-sizes, "tiny") !default;
-$table-header-cell-text-transform: uppercase !default;
 $table-header-cell-color: map-get($text-colors, "dark") !default;
 $table-header-cell-border: (
   side: right,
@@ -206,7 +205,6 @@ $table-empty-color: map-get($text-colors, "normal") !default;
   .rt-tr {
     text-align: $table-header-cell-align;
     font-size: $table-header-cell-font-size;
-    text-transform: $table-header-cell-text-transform;
     color: $table-header-cell-color;
   }
 

@@ -8,6 +8,8 @@ import Cookie from 'src/services/cookie';
 import { AUTH_COOKIE, PORTAL_PAGE } from 'src/constants';
 
 import * as actions from './actions';
+import { showModal } from '../../actions';
+import { MODALS } from '../../../constants';
 
 export function* login$({ payload }): Generator<*, *, *> {
   const params = {
@@ -39,7 +41,16 @@ export function* login$({ payload }): Generator<*, *, *> {
 
     yield put(push(PORTAL_PAGE));
     yield put(actions.clearLoginState());
-  } catch (e) {
+  } catch ({ response: { data } }) {
+    yield put(
+      showModal({
+        modalName: MODALS.ErrorMessage,
+        align: 'center',
+        data: {
+          content: data.error_description,
+        },
+      }),
+    );
     yield put(actions.loginFail());
   }
 }

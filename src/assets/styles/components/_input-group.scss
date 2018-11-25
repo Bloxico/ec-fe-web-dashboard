@@ -36,7 +36,7 @@ $input-group-sufix-padding: rhythm(1.75) !default;
     }
 
     .#{$namespace}-button {
-      @extend .#{$namespace}-button--hover;
+      //@extend .#{$namespace}-button--hover;
     }
   }
 }

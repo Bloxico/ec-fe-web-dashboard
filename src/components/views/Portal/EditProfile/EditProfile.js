@@ -101,7 +101,7 @@ class EditProfile extends Component<Props> {
 
     return (
       <div className={classes}>
-        <Header title={MSGEditProfile} />
+        <Header action="menu" title={MSGEditProfile} />
         <Form onSubmit={handleSubmit(handleEditProfile)}>
           <Field
             placeholder={MSGEmail}

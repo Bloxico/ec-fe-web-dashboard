@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { THEME_PREFIX } from 'src/constants';
 
 import Header from '@partials/Header';
+import { Loader } from '@ui';
 
 import Chart from './Chart';
 
@@ -16,7 +17,13 @@ export interface Props {
   MSGCO2Prevented: string;
   fetchTransactions: Function;
   transactions: [];
-  data: Object;
+  chartData: any;
+  virtualBalance: number;
+  dashboardBalance: number;
+  fetchTransactionsInProgress: boolean;
+  MSGTotalAccumulated: string;
+  MSGEnergyShort: string;
+  MSGBicycleBits: string;
 }
 
 // TODO:
@@ -30,52 +37,56 @@ const baseClass = `${THEME_PREFIX}-dashboard`;
 class Dashboard extends Component<Props> {
   componentDidMount() {
     const { fetchTransactions } = this.props;
-    fetchTransactions();
+    fetchTransactions(3);
   }
 
   render() {
-    const { MSGDashboard, MSGCO2Prevented, transactions } = this.props;
-    const date = new Date();
-    const data = {};
-
-    let balance = 0;
-    let totalVirtualCurrency = 0;
-
-    date.setMonth(date.getMonth() - 3);
-
-    if (transactions) {
-      transactions.forEach(t => {
-        balance += t.enrgAmount;
-        totalVirtualCurrency += t.virtualCurrencyAmmount;
-
-        if (new Date(t.created) >= date) {
-          data[new Date(t.created).toLocaleDateString()] = t.enrgAmount;
-        }
-      });
-    }
+    const {
+      MSGDashboard,
+      MSGCO2Prevented,
+      MSGTotalAccumulated,
+      MSGEnergyShort,
+      MSGBicycleBits,
+      chartData,
+      virtualBalance,
+      dashboardBalance,
+      fetchTransactionsInProgress,
+    } = this.props;
 
     return (
       <div className={baseClass}>
-        <Header action="menu" title={MSGDashboard} />
+        {fetchTransactionsInProgress && <Loader />}
+        {!fetchTransactionsInProgress && (
+          <div>
+            <Header action="menu" title={MSGDashboard} />
+            <div className={`${baseClass}__wrapper`}>
+              <dl className={`${baseClass}__info`}>
+                <dt className={`${baseClass}__title`}>{MSGTotalAccumulated}</dt>
+                <dd className={`${baseClass}__total`}>
+                  {MSGEnergyShort}{' '}
+                  {dashboardBalance && dashboardBalance.toFixed(2)}
+                </dd>
+                {/*/!*<dd className={`${baseClass}__note`}>1 ENRG = x EUR</dd>*!/ TODO@all get the value of ENRG*/}
+              </dl>
 
-        <dl className={`${baseClass}__info`}>
-          <dt className={`${baseClass}__title`}>Total accumulated</dt>
-          <dd className={`${baseClass}__total`}>ENRG {balance.toFixed(2)}</dd>
-          <dd className={`${baseClass}__note`}>1 ENRG = x EUR</dd>
-        </dl>
-
-        <section className={`${baseClass}__group`}>
-          <dl className={`${baseClass}__info`}>
-            <dt className={`${baseClass}__title`}>Bicycle Bits</dt>
-            <dd className={`${baseClass}__amount`}>
-              {totalVirtualCurrency.toFixed(2)}
-            </dd>
-          </dl>
-        </section>
-
-        <section className={`${baseClass}__chart`}>
-          <Chart data={data} lineColor="#1be088" title={MSGCO2Prevented} />
-        </section>
+              <section className={`${baseClass}__group`}>
+                <dl className={`${baseClass}__info`}>
+                  <dt className={`${baseClass}__title`}>{MSGBicycleBits}</dt>
+                  <dd className={`${baseClass}__amount`}>
+                    {virtualBalance && virtualBalance.toFixed(2)}
+                  </dd>
+                </dl>
+              </section>
+            </div>
+            <section className={`${baseClass}__chart`}>
+              <Chart
+                data={chartData}
+                lineColor="#1be088"
+                title={MSGCO2Prevented}
+              />
+            </section>
+          </div>
+        )}
       </div>
     );
   }

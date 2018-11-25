@@ -44,6 +44,7 @@ interface Props {
 
 interface State {
   value: string;
+  type: string;
 }
 
 class Password extends React.PureComponent<Props, State> {
@@ -54,7 +55,7 @@ class Password extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    this.state = { value: this.props.value };
+    this.state = { value: this.props.value, type: 'password' };
   }
 
   componentWillReceiveProps(nextProps: Props) {
@@ -69,6 +70,14 @@ class Password extends React.PureComponent<Props, State> {
     this.setState({ value: e.currentTarget.value }, () => {
       onChange(this.state.value);
     });
+  };
+
+  handleViewPassword = () => {
+    if (this.state.type === 'password') {
+      this.setState({ type: 'text' });
+    } else {
+      this.setState({ type: 'password' });
+    }
   };
 
   render() {
@@ -89,7 +98,7 @@ class Password extends React.PureComponent<Props, State> {
       status,
       width,
       size,
-      toggle = false,
+      toggle = true,
       inputRef,
       className,
       onBlur,
@@ -106,6 +115,8 @@ class Password extends React.PureComponent<Props, State> {
       className,
     );
 
+    const defaultLength = maxLength || 200;
+
     return (
       <span
         className={`${THEME_PREFIX}-password ${
@@ -113,7 +124,7 @@ class Password extends React.PureComponent<Props, State> {
         }`}
       >
         <input
-          type="password"
+          type={this.state.type}
           autoComplete="off"
           id={id}
           name={name}
@@ -123,7 +134,7 @@ class Password extends React.PureComponent<Props, State> {
           title={title}
           tabIndex={tabIndex}
           minLength={minLength}
-          maxLength={maxLength}
+          maxLength={defaultLength}
           disabled={disabled}
           readOnly={readOnly}
           hidden={hidden}
@@ -138,7 +149,13 @@ class Password extends React.PureComponent<Props, State> {
           onFocus={onFocus}
         />
         {toggle && (
-          <Button size="small" tabIndex={-1} icon={IconEye}>
+          <Button
+            size="small"
+            type="ghost"
+            onClick={this.handleViewPassword}
+            tabIndex={-1}
+            icon={IconEye}
+          >
             Show password
           </Button>
         )}

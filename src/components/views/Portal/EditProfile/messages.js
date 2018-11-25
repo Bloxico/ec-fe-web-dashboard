@@ -12,7 +12,7 @@ export default defineMessages({
     id: 'email',
   },
   name: {
-    defaultMessage: 'Name (optional)',
+    defaultMessage: 'Nickname (optional)',
     id: 'name',
   },
   region: {

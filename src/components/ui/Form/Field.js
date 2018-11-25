@@ -7,6 +7,7 @@ import { THEME_PREFIX } from 'src/constants';
 
 import Label from '../Label';
 import Input from '../Input';
+import Password from '../Password';
 import Textarea from '../Textarea';
 import Select from '../Select';
 import Radio, { RadioGroup, RadioArray } from '../Radio';
@@ -24,7 +25,7 @@ type FieldWidths = 'auto' | 'wide' | 'full';
 const inputTypes = {
   text: Input,
   output: Output,
-  password: Input,
+  password: Password,
   number: Input,
   email: Input,
   select: Select,

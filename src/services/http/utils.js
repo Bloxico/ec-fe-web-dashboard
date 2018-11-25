@@ -1,9 +1,13 @@
 // @flow
 
-import { AUTH_COOKIE, LOGIN_PAGE } from 'src/constants';
+import { AUTH_COOKIE, AUTH_PAGE } from 'src/constants';
 import Cookie from 'src/services/cookie';
 
-export const redirectToLogin = () => {
+export const removeCookie = () => {
   Cookie.remove(AUTH_COOKIE);
-  window.location.pathname = `${LOGIN_PAGE}`;
+};
+
+export const redirectToLogin = () => {
+  removeCookie();
+  window.location.pathname = `${AUTH_PAGE}`;
 };

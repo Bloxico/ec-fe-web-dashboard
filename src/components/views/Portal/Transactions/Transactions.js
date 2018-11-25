@@ -16,23 +16,36 @@ export type Props = {
 };
 
 const baseClass = `${THEME_PREFIX}-transactions`;
-
 const columns = [
   {
     Header: 'Amount',
-    accessor: 'enrgAmount',
+    accessor: ({ enrgAmount, virtualCurrencyAmmount }) => ({
+      enrgAmount,
+      virtualCurrencyAmmount,
+    }),
     id: 'enrgAmount',
-    Cell: ({ value }: any) => <span>ENRG {value}</span>,
+    Cell: ({ value: { enrgAmount, virtualCurrencyAmmount } }: any) => (
+      <div>
+        <div className={`${baseClass}__virtual-amount`}>
+          BB {virtualCurrencyAmmount}
+        </div>
+        <div className={`${baseClass}__enrg-amount`}>ENRG {enrgAmount}</div>
+      </div>
+    ),
   },
   {
     Header: 'Date',
     accessor: 'created',
-    Cell: ({ value }: any) => <FormattedDate v value={value} />,
+    Cell: ({ value }: any) => (
+      <span className={`${baseClass}__date`}>
+        <FormattedDate v value={value} />
+      </span>
+    ),
   },
   {
     Header: 'Source',
     accessor: 'source',
-    Cell: () => <span>Ring-ring</span>,
+    Cell: () => <span className={`${baseClass}__source`}>Ring-ring</span>,
   },
 ];
 
