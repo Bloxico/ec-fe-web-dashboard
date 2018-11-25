@@ -83,8 +83,6 @@ class Input extends PureComponent<PropsT, StateT> {
         27, // esc
         13, // enter
         110, // decimal point
-        // 189, // minus
-        // 190, // period
       ];
 
       const clipboard = [
