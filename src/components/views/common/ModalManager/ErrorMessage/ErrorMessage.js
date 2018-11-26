@@ -74,9 +74,9 @@ const ErrorMessage = (props: Props) => {
   return (
     <div className={baseClass}>
       <header className={`${baseClass}__header`}>
-        <h3 className={`${baseClass}__title`}>
+        <h4 className={`${baseClass}__title`}>
           {content ? MSGTryAgain : MSGServerError}
-        </h3>
+        </h4>
       </header>
       <section className={`${baseClass}__content`}>
         <p className={`${baseClass}__message`}>
@@ -88,6 +88,7 @@ const ErrorMessage = (props: Props) => {
           type="secondary"
           width="full"
           size="large"
+          className={`${baseClass}__action`}
           onClick={handleClick}
         >
           {content ? MSGGotIt : MSGDamnDevelopers}
