@@ -21,7 +21,7 @@ export function* login$({ payload }): Generator<*, *, *> {
     const { data } = yield http.post(
       'oauth/token',
       Object.keys(params)
-        .map(key => `${key}=${params[key]}`)
+        .map(key => `${key}=${encodeURIComponent(params[key])}`)
         .join('&'),
       {
         auth: {
