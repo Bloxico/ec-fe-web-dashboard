@@ -73,7 +73,13 @@ const Icon = (props: Props) => {
   );
 
   return (
-    <i className={classes} title={title} role="img" aria-hidden="true" onClick={onClick}>
+    <i
+      className={classes}
+      title={title}
+      role="img"
+      aria-hidden="true"
+      onClick={onClick}
+    >
       {src && typeof src === 'string' && <Img {...props} />}
       {src && typeof src !== 'string' && (
         <Svg title={title} style={color && { fill: color }} />

@@ -74,9 +74,13 @@ class Password extends React.PureComponent<Props, State> {
     });
   };
 
-  handleViewPassword = () => this.setState({
-    type: this.state.type === 'password' ? 'text' : 'password'
-  }, () => this.inputRef.current.focus());
+  handleViewPassword = () =>
+    this.setState(
+      {
+        type: this.state.type === 'password' ? 'text' : 'password',
+      },
+      () => this.inputRef.current.focus(),
+    );
 
   render() {
     const {
