@@ -9,10 +9,13 @@
   }
 
   &__virtual-amount {
+    margin: 0;
     font-size: map-get($font-sizes, large);
+    font-weight: bold;
   }
 
-  &__date, &__source {
+  &__date,
+  &__source {
     font-size: map-get($font-sizes, small);
   }
 }

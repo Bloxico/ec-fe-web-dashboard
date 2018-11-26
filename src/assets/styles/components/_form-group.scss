@@ -20,6 +20,7 @@ $form-group-message-padding: 0 0 0 10px !default;
 $form-group-message-font-size: map-get($font-sizes, small) !default;
 $form-group-message-text-transform: none !default;
 $form-group-message-text-letter-spacing: 0 !default;
+$form-group-message-text-transition: opacity .5s ease-in-out .5s !default;
 
 $form-group-label-text-size: map-get($font-sizes, 'tiny') !default;
 $form-group-label-text-color: map-get($text-colors, 'normal') !default;
@@ -103,7 +104,7 @@ $form-group-label-text-letter-spacing: 1px !default;
 
 
 .#{$namespace}-input__message {
-  @include fade-in;
+  @include fade-in(.4s);
 
   position: absolute;
   padding: $form-group-message-padding;
@@ -113,6 +114,7 @@ $form-group-label-text-letter-spacing: 1px !default;
   letter-spacing: $form-group-message-text-letter-spacing;
   text-transform: $form-group-message-text-transform;
   opacity: 0;
+  will-change: opacity;
 }
 
 

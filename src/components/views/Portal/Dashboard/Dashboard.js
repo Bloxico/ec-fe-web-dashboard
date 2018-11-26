@@ -66,7 +66,7 @@ class Dashboard extends Component<Props> {
                   {MSGEnergyShort}{' '}
                   {dashboardBalance && dashboardBalance.toFixed(2)}
                 </dd>
-                {/*/!*<dd className={`${baseClass}__note`}>1 ENRG = x EUR</dd>*!/ TODO@all get the value of ENRG*/}
+                {/* /!*<dd className={`${baseClass}__note`}>1 ENRG = x EUR</dd>*!/ TODO@all get the value of ENRG */}
               </dl>
 
               <section className={`${baseClass}__group`}>

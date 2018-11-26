@@ -41,10 +41,21 @@ interface Props {
   spacing?: IconSpacing;
   align?: IconAlignment;
   className?: string;
+  onClick?: Function;
 }
 
 const Icon = (props: Props) => {
-  const { type, size, title, color, inline, spacing, align, className } = props;
+  const {
+    type,
+    size,
+    title,
+    color,
+    inline,
+    spacing,
+    align,
+    className,
+    onClick,
+  } = props;
 
   const src = type ? iconTypes[type] : props.src;
   const Svg = src;
@@ -57,11 +68,12 @@ const Icon = (props: Props) => {
     spacing && `${baseClass}--${spacing}`,
     align && `${baseClass}--${align}`,
     color && `${baseClass}--color`,
+    onClick && `${baseClass}--clickable`,
     className,
   );
 
   return (
-    <i className={classes} title={title} role="img" aria-hidden="true">
+    <i className={classes} title={title} role="img" aria-hidden="true" onClick={onClick}>
       {src && typeof src === 'string' && <Img {...props} />}
       {src && typeof src !== 'string' && (
         <Svg title={title} style={color && { fill: color }} />
