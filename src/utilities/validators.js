@@ -105,7 +105,7 @@ export const phone = ({ intl: { formatMessage } }: ContextT) => (
 export const email = ({ intl: { formatMessage } }: ContextT) => (
   value: string,
 ) =>
-  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+  value && !/^.+@.+\..+$/i.test(value)
     ? formatMessage(messages.validatorsEmail)
     : undefined;
 
@@ -116,7 +116,9 @@ export const password = ({ intl: { formatMessage } }: ContextT) => (
     return formatMessage(messages.validatorsPassword8Min);
   } else if (
     value &&
-    !/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/i.test(value)
+    !/^(?=.*\d)(?=.*[!@#$%^&*'~`{}()|?.,<>_+=])(?=.*[a-z])(?=.*[A-Z]).{8,}$/i.test(
+      value,
+    )
   ) {
     return formatMessage(messages.validatorsPasswordAtLeast);
   }
