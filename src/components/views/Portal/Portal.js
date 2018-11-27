@@ -31,6 +31,7 @@ const Portal = () => (
       <Route path={DASHBOARD_PAGE} component={Dashboard} />
       <Route path={TRANSACTIONS_PAGE} component={Transactions} />
       <Route path={EDIT_PROFILE} component={EditProfile} />
+      <Route path="*" component={() => <Redirect to={PORTAL_PAGE} />} />
     </Switch>
   </div>
 );
