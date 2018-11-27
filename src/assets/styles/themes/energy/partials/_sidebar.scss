@@ -4,7 +4,7 @@ $sidebar-font-size: map-get($font-sizes, large);
 $sidebar-header-background: (
   color: map-get($background-colors, control),
 );
-$sidebar-header-padding: rhythm(4) rhythm(1) rhythm(1) rhythm(1);
+$sidebar-header-padding: rhythm(2) rhythm(1) rhythm(2) rhythm(1);
 
 
 .#{$namespace}-sidebar {
@@ -52,7 +52,8 @@ $sidebar-header-padding: rhythm(4) rhythm(1) rhythm(1) rhythm(1);
     flex: 1 1 auto;
   }
 
-  &__foooter {
-    padding: rhythm(1);
+
+  &__footer {
+    padding: 0;
   }
 }

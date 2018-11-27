@@ -27,7 +27,9 @@ export default handleActions(
       actions.UPDATE_PROFILE,
       state => ({
         ...state,
+        fail: false,
         updateProfileInProgress: true,
+        message: '',
       }),
     ],
     [
@@ -36,6 +38,17 @@ export default handleActions(
         ...state,
         data: payload,
         updateProfileInProgress: false,
+        fail: false,
+        message: 'Profile updated successfuly',
+      }),
+    ],
+    [
+      actions.UPDATE_PROFILE_FAIL,
+      state => ({
+        ...state,
+        fail: true,
+        updateProfileInProgress: false,
+        message: 'Profile update failed',
       }),
     ],
     [

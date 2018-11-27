@@ -38,9 +38,9 @@ const columns = [
     Header: 'Date',
     accessor: 'created',
     Cell: ({ value }: any) => (
-      <span className={`${baseClass}__date`}>
-        <FormattedDate v value={value} />
-      </span>
+      <FormattedDate value={value}>
+        {(date: string) => <span className={`${baseClass}__date`}>{date}</span>}
+      </FormattedDate>
     ),
   },
   {

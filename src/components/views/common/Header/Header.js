@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from '@ui/Button';
+import { Button, Icon } from '@ui';
 
 import iconBack from '@images/icon-back.svg';
 import iconMenu from '@images/icon-menu.svg';
@@ -35,13 +35,14 @@ const Action = (props: Props) => {
 
   return (
     <Button
+      size="large"
       type="ghost"
-      icon={getIcon()}
       title={getText()}
+      tabIndex={-1}
       onClick={handleClick}
       className={`${baseClass}__action`}
     >
-      {getText()}
+      <Icon src={getIcon()} color />
     </Button>
   );
 };

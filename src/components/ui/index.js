@@ -10,6 +10,7 @@ import { LineChart } from './Chart';
 import Loader from './Loader';
 import Logo from './Logo';
 import Modal from './Modal';
+import Notification from './Notification';
 import Output from './Output';
 import Radio from './Radio';
 import Sidebar from './Sidebar';
@@ -33,6 +34,7 @@ export {
   Loader,
   Logo,
   Modal,
+  Notification,
   Output,
   Radio,
   Select,

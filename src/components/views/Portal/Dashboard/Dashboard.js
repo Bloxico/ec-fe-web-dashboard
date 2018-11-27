@@ -57,9 +57,10 @@ class Dashboard extends Component<Props> {
       <div className={baseClass}>
         {fetchTransactionsInProgress && <Loader />}
         {!fetchTransactionsInProgress && (
-          <div>
+          <React.Fragment>
             <Header action="menu" title={MSGDashboard} />
-            <div className={`${baseClass}__wrapper`}>
+
+            <section className={`${baseClass}__content`}>
               <dl className={`${baseClass}__info`}>
                 <dt className={`${baseClass}__title`}>{MSGTotalAccumulated}</dt>
                 <dd className={`${baseClass}__total`}>
@@ -69,15 +70,16 @@ class Dashboard extends Component<Props> {
                 {/* /!*<dd className={`${baseClass}__note`}>1 ENRG = x EUR</dd>*!/ TODO@all get the value of ENRG */}
               </dl>
 
-              <section className={`${baseClass}__group`}>
+              <div className={`${baseClass}__group`}>
                 <dl className={`${baseClass}__info`}>
                   <dt className={`${baseClass}__title`}>{MSGBicycleBits}</dt>
                   <dd className={`${baseClass}__amount`}>
                     {virtualBalance && virtualBalance.toFixed(2)}
                   </dd>
                 </dl>
-              </section>
-            </div>
+              </div>
+            </section>
+
             <section className={`${baseClass}__chart`}>
               <Chart
                 data={chartData}
@@ -85,7 +87,7 @@ class Dashboard extends Component<Props> {
                 title={MSGCO2Prevented}
               />
             </section>
-          </div>
+          </React.Fragment>
         )}
       </div>
     );

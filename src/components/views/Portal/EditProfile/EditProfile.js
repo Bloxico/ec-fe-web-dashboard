@@ -2,15 +2,12 @@
 
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
-import classNames from 'classnames';
 
 import Header from '@partials/Header';
 import { THEME_PREFIX } from 'src/constants';
-import { Form, FormField, Button, Loader } from '@ui';
+import { Button, Form, FormField, Loader, Notification } from '@ui';
 
 export type Props = {
-  handleSubmit: Function,
-  handleEditProfile: Function,
   MSGEditProfile: string,
   MSGEmail: string,
   MSGName: string,
@@ -23,16 +20,19 @@ export type Props = {
   regions: [],
   initialValues: Object,
   pristine: boolean,
+  updateProfileMessage: string,
   updateProfileInProgress: boolean,
+  hasUpdateFailed: boolean,
   fetchProfileInProgress: boolean,
   fetchProfileData: Function,
+  handleSubmit: Function,
+  handleEditProfile: Function,
 };
 
 const baseClass = `${THEME_PREFIX}-edit-profile`;
-const classes = classNames(baseClass);
 
 class EditProfile extends Component<Props> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     const { requiredIntl, emailIntl, alphanumericIntl } = props;
@@ -55,6 +55,8 @@ class EditProfile extends Component<Props> {
     value: '',
   };
 
+  validators: Object;
+
   render() {
     const {
       handleSubmit,
@@ -69,7 +71,9 @@ class EditProfile extends Component<Props> {
       initialValues,
       pristine,
       updateProfileInProgress,
+      hasUpdateFailed,
       fetchProfileInProgress,
+      updateProfileMessage,
     } = this.props;
 
     const {
@@ -95,61 +99,70 @@ class EditProfile extends Component<Props> {
       regionSelected = initialValues.region;
     }
 
-    if (fetchProfileInProgress) {
-      return <Loader />;
-    }
-
     return (
-      <div className={classes}>
+      <div className={baseClass}>
         <Header action="menu" title={MSGEditProfile} />
-        <Form onSubmit={handleSubmit(handleEditProfile)}>
-          <Field
-            placeholder={MSGEmail}
-            type="email"
-            component={FormField}
-            name="email"
-            width="full"
-            disabled
-            validate={[requiredValidator, emailValidator]}
-          />
-          <Field
-            placeholder={MSGName}
-            type="text"
-            component={FormField}
-            name="name"
-            width="full"
-            validate={[alphanumericValidator]}
-          />
-          <Field
-            placeholder={MSGCity}
-            type="text"
-            component={FormField}
-            name="city"
-            width="full"
-            validate={[requiredValidator]}
-          />
-          <Field
-            placeholder={MSGRegion}
-            type="select"
-            component={FormField}
-            name="region"
-            width="full"
-            options={regionOptions}
-            selected={regionSelected}
-            validate={[requiredValidator]}
-          />
+        {fetchProfileInProgress && <Loader />}
+        {!fetchProfileInProgress && (
+          <Form onSubmit={handleSubmit(handleEditProfile)}>
+            {!updateProfileInProgress && updateProfileMessage && (
+              <Notification
+                size="full"
+                timeout={5000}
+                type={hasUpdateFailed ? 'error' : 'success'}
+              >
+                {updateProfileMessage}
+              </Notification>
+            )}
 
-          <Button
-            type="primary"
-            size="large"
-            width="full"
-            action="submit"
-            busy={updateProfileInProgress}
-            disabled={pristine}
-          >
-            {MSGSave}
-          </Button>
-        </Form>
+            <Field
+              placeholder={MSGEmail}
+              type="email"
+              component={FormField}
+              name="email"
+              width="full"
+              disabled
+              validate={[requiredValidator, emailValidator]}
+            />
+            <Field
+              placeholder={MSGName}
+              type="text"
+              component={FormField}
+              name="name"
+              width="full"
+              validate={[alphanumericValidator]}
+            />
+            <Field
+              placeholder={MSGCity}
+              type="text"
+              component={FormField}
+              name="city"
+              width="full"
+              validate={[requiredValidator]}
+            />
+            <Field
+              placeholder={MSGRegion}
+              type="select"
+              component={FormField}
+              name="region"
+              width="full"
+              options={regionOptions}
+              selected={regionSelected}
+              validate={[requiredValidator]}
+            />
+
+            <Button
+              type="primary"
+              size="large"
+              width="full"
+              action="submit"
+              busy={updateProfileInProgress}
+              disabled={pristine}
+            >
+              {MSGSave}
+            </Button>
+          </Form>
+        )}
       </div>
     );
   }
