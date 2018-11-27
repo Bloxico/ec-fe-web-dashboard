@@ -98,7 +98,10 @@ class Verify extends Component<Props> {
       <div className={classes}>
         <Header title={MSGVerifyAccount} />
 
-        <Form onSubmit={handleSubmit(this.handleSubmit)} className={`${baseClass}__content`}>
+        <Form
+          onSubmit={handleSubmit(this.handleSubmit)}
+          className={`${baseClass}__content`}
+        >
           <p>{MSGEnterYourCode}</p>
           <Field
             type="number"

@@ -61,7 +61,10 @@ class Login extends Component<PropsT> {
       <div className={classes}>
         <Header title={MSGSignIn} />
 
-        <Form onSubmit={handleSubmit(handleLogin)} className={`${baseClass}__content`}>
+        <Form
+          onSubmit={handleSubmit(handleLogin)}
+          className={`${baseClass}__content`}
+        >
           <Field
             placeholder={MSGEmail}
             component={FormField}

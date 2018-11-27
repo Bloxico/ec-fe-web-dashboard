@@ -21,7 +21,7 @@ export default (initialState?: StateT) => {
   // const loggerMiddleware = createLogger({ level: 'info', collapsed: true });
 
   // apply middleware & compose enhancers
-  const middleware = [sagaMiddleware, routerMiddleware,/* loggerMiddleware */];
+  const middleware = [sagaMiddleware, routerMiddleware /* loggerMiddleware */];
 
   const enhancers = [];
   enhancers.push(applyMiddleware(...middleware));

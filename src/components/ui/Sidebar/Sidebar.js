@@ -62,8 +62,7 @@ class Sidebar extends PureComponent<Props, State> {
 
   handleExited = () => this.props.onHide && this.props.onHide();
 
-  handleSwiped = (e: any, deltaX: number) =>
-    deltaX > 0 && this.handleExited();
+  handleSwiped = (e: any, deltaX: number) => deltaX > 0 && this.handleExited();
 
   render() {
     const { children, className, position, sticky } = this.props;

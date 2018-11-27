@@ -50,10 +50,7 @@ class Notification extends PureComponent<Props, State> {
     const { id = Symbol('Notification'), onClose = f => f } = this.props;
 
     this.setState({ hidden: true }, () =>
-      setTimeout(
-        () => this.setState({ remove: true }, () => onClose(id)),
-        250
-      )
+      setTimeout(() => this.setState({ remove: true }, () => onClose(id)), 250),
     );
   };
 
@@ -64,7 +61,7 @@ class Notification extends PureComponent<Props, State> {
       baseClass,
       type && `${baseClass}--${type}`,
       size && `${baseClass}--${size}`,
-      className
+      className,
     );
 
     if (this.state.remove) {
