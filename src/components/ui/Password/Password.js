@@ -5,8 +5,8 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { THEME_PREFIX } from 'src/constants';
 
+import Icon from '@ui/Icon';
 import IconEye from '@images/icon-eye.svg';
-import Button from '../Button';
 
 const baseClass = `${THEME_PREFIX}-input`;
 
@@ -56,6 +56,8 @@ class Password extends React.PureComponent<Props, State> {
     super(props);
 
     this.state = { value: this.props.value, type: 'password' };
+
+    this.inputRef = this.props.inputRef || React.createRef();
   }
 
   componentWillReceiveProps(nextProps: Props) {
@@ -72,13 +74,13 @@ class Password extends React.PureComponent<Props, State> {
     });
   };
 
-  handleViewPassword = () => {
-    if (this.state.type === 'password') {
-      this.setState({ type: 'text' });
-    } else {
-      this.setState({ type: 'password' });
-    }
-  };
+  handleViewPassword = () =>
+    this.setState(
+      {
+        type: this.state.type === 'password' ? 'text' : 'password',
+      },
+      () => this.inputRef.current.focus(),
+    );
 
   render() {
     const {
@@ -99,7 +101,6 @@ class Password extends React.PureComponent<Props, State> {
       width,
       size,
       toggle = true,
-      inputRef,
       className,
       onBlur,
       onDragStart,
@@ -107,7 +108,17 @@ class Password extends React.PureComponent<Props, State> {
       onFocus,
     } = this.props;
 
+    const passClass = `${THEME_PREFIX}-password`;
+
     const classes = classNames(
+      passClass,
+      toggle && `${passClass}--toggle`,
+      width && `${passClass}--${width}`,
+      size && `${passClass}--${size}`,
+      className,
+    );
+
+    const inputClasses = classNames(
       baseClass,
       width && `${baseClass}--${width}`,
       size && `${baseClass}--${size}`,
@@ -118,11 +129,7 @@ class Password extends React.PureComponent<Props, State> {
     const defaultLength = maxLength || 200;
 
     return (
-      <span
-        className={`${THEME_PREFIX}-password ${
-          toggle ? `${THEME_PREFIX}-password--toggle` : ''
-        }`}
-      >
+      <span className={classes}>
         <input
           type={this.state.type}
           autoComplete="off"
@@ -140,8 +147,8 @@ class Password extends React.PureComponent<Props, State> {
           hidden={hidden}
           required={required}
           autoFocus={autoFocus}
-          ref={inputRef}
-          className={classes}
+          ref={this.inputRef}
+          className={inputClasses}
           onChange={this.handleChange}
           onBlur={onBlur}
           onDragStart={onDragStart}
@@ -149,15 +156,14 @@ class Password extends React.PureComponent<Props, State> {
           onFocus={onFocus}
         />
         {toggle && (
-          <Button
+          <Icon
+            src={IconEye}
             size="small"
-            type="ghost"
-            onClick={this.handleViewPassword}
             tabIndex={-1}
-            icon={IconEye}
+            onClick={this.handleViewPassword}
           >
             Show password
-          </Button>
+          </Icon>
         )}
       </span>
     );

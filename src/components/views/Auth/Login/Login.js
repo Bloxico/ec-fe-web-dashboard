@@ -29,7 +29,9 @@ const classes = classNames(baseClass);
 class Login extends Component<PropsT> {
   constructor(props: PropsT) {
     super(props);
+
     const { requiredIntl, passwordIntl, emailIntl } = props;
+
     this.validators = {
       requiredValidator: requiredIntl,
       passwordValidator: passwordIntl,

@@ -5,7 +5,7 @@ import { FormattedDate } from 'react-intl';
 
 import { THEME_PREFIX } from 'src/constants';
 
-import { Table, Loader } from '@ui';
+import { Amount, Table, Loader } from '@ui';
 import Header from '@partials/Header';
 
 export type Props = {
@@ -16,6 +16,7 @@ export type Props = {
 };
 
 const baseClass = `${THEME_PREFIX}-transactions`;
+
 const columns = [
   {
     Header: 'Amount',
@@ -25,12 +26,12 @@ const columns = [
     }),
     id: 'enrgAmount',
     Cell: ({ value: { enrgAmount, virtualCurrencyAmmount } }: any) => (
-      <div>
-        <div className={`${baseClass}__virtual-amount`}>
+      <React.Fragment>
+        <h5 className={`${baseClass}__virtual-amount`}>
           BB {virtualCurrencyAmmount}
-        </div>
-        <div className={`${baseClass}__enrg-amount`}>ENRG {enrgAmount}</div>
-      </div>
+        </h5>
+        <Amount value={enrgAmount} className={`${baseClass}__enrg-amount`} />
+      </React.Fragment>
     ),
   },
   {

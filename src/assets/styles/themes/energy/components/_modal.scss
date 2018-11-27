@@ -15,10 +15,10 @@ $modal-border: (
   width: 1px,
   style: solid,
   color: transparent,
-  radius: $default-border-radius
+  radius: 8px,
 );
 $modal-background: (
-  color: map-get($background-colors, 'body'),
+  color: color('grey'),
   clip: padding-box,
 );
 $modal-shadow: 0 2px 6px 0 rgba(0,0,0, .3);

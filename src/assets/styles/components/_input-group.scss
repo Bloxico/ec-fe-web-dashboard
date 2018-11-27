@@ -34,10 +34,6 @@ $input-group-sufix-padding: rhythm(1.75) !default;
     .#{$namespace}-input {
       @extend .#{$namespace}-input--hover;
     }
-
-    .#{$namespace}-button {
-      //@extend .#{$namespace}-button--hover;
-    }
   }
 }
 
