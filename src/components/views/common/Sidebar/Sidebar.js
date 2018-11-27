@@ -26,6 +26,7 @@ class SidebarWrapper extends Component<Props> {
     const { fetchProfileData } = this.props;
     fetchProfileData();
   }
+
   render() {
     const {
       isSidebarOpen,
@@ -33,9 +34,11 @@ class SidebarWrapper extends Component<Props> {
       profile,
       fetchProfileInProgress,
     } = this.props;
+
     return (
       <Sidebar show={isSidebarOpen} onHide={hideSidebar}>
         {fetchProfileInProgress && <Loader />}
+
         {!fetchProfileInProgress && profile && (
           <header className={`${baseClass}__header`}>
             <div className={`${baseClass}__profile`}>
@@ -55,6 +58,7 @@ class SidebarWrapper extends Component<Props> {
         <section className={`${baseClass}__content`}>
           <Navigation handleHide={hideSidebar} />
         </section>
+
         <footer className={`${baseClass}__footer`}>
           <Navigation
             items={[

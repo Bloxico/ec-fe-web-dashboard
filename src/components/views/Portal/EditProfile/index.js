@@ -9,8 +9,10 @@ import { fetchProfileData, updateProfile } from 'src/state/actions';
 import {
   getProfileData,
   getUserProfileRegions,
+  getProfileUpdateMessage,
   isUpdateProfileInProgress,
   isFetchProfileDataInProgress,
+  hasUpdateProfileFailed,
 } from 'src/state/selectors';
 import { alphanumeric, email, required } from 'src/utilities/validators';
 
@@ -26,6 +28,8 @@ const mapStateToProps = state => ({
   initialValues: getProfileData(state),
   regions: getUserProfileRegions(state),
   updateProfileInProgress: isUpdateProfileInProgress(state),
+  updateProfileMessage: getProfileUpdateMessage(state),
+  hasUpdateFailed: hasUpdateProfileFailed(state),
   fetchProfileInProgress: isFetchProfileDataInProgress(state),
 });
 

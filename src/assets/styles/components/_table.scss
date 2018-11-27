@@ -53,6 +53,7 @@ $table-header-resizer-border: (
 ) !default;
 
 $table-body-background: map-get($background-colors, 'window') !default;
+$table-body-row-group-min-height: unset !default;
 $table-body-row-group-border: none !default;
 $table-body-cell-border: (
   side: right,
@@ -67,13 +68,16 @@ $table-foot-shadow: none !default;
 $table-foot-cell-border: none !default;
 
 $table-pagination-height: rhythm(2.5) !default;
+$table-pagination-margin: 0 !default;
 $table-pagination-padding: rhythm(.5) 0 !default;
 $table-pagination-font-size: map-get($font-sizes, 'small') !default;
 $table-pagination-color: map-get($text-colors, 'normal') !default;
 $table-pagination-shadow: none !default;
 $table-pagination-border: none !default;
+$table-pagination-button-size: rhythm(1) !default;
 $table-pagination-prev-icon: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M16.67 3.87L14.9 2.1 5 12l9.9 9.9 1.77-1.77L8.54 12z"/></svg>') !default;
 $table-pagination-next-icon: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7.33 20.13L9.1 21.9 19 12 9.1 2.1 7.33 3.87 15.46 12z"/></svg>') !default;
+$table-pagination-page-info-width: 140px !default;
 $table-pagination-page-info-margin: 0 !default;
 $table-pagination-page-info-padding: 0 rhythm(1) !default;
 $table-pagination-page-size-margin: 0 !default;
@@ -308,6 +312,7 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    min-height: $table-body-row-group-min-height;
   }
 
   .rt-tr {
@@ -371,6 +376,7 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
   align-items: stretch;
   flex-wrap: wrap;
   height: $table-pagination-height;
+  margin: $table-pagination-margin;
   padding: $table-pagination-padding;
   box-shadow: $table-pagination-shadow;
   font-size: $table-pagination-font-size;
@@ -378,9 +384,12 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
 
   .-btn {
     @extend .#{$namespace}-button;
-    @extend .#{$namespace}-button--small;
     @extend .#{$namespace}-button--icon;
     @extend .#{$namespace}-button--ghost;
+
+    width: $table-pagination-button-size;
+    height: $table-pagination-button-size;
+    margin: 0;
 
     &[disabled] {
       background-color: transparent;
@@ -397,12 +406,7 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
 
   .-previous {
     .-btn {
-      @include icon(
-        $table-pagination-prev-icon,
-        (
-          pseudo: true
-        )
-      );
+      @include icon($table-pagination-prev-icon, (pseudo: true));
     }
 
     justify-content: flex-end;
@@ -410,12 +414,7 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
 
   .-next {
     .-btn {
-      @include icon(
-        $table-pagination-next-icon,
-        (
-          pseudo: true
-        )
-      );
+      @include icon($table-pagination-next-icon, (pseudo: true));
     }
 
     justify-content: flex-start;
@@ -434,6 +433,7 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
 
   .-pageInfo {
     display: inline-block;
+    width: $table-pagination-page-info-width;
     margin: $table-pagination-page-info-margin;
     padding: $table-pagination-page-info-padding;
     white-space: nowrap;

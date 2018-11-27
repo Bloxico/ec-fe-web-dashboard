@@ -5,7 +5,7 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   success: {
     id: 'success',
-    defaultMessage: 'Job well done!',
+    defaultMessage: 'New password set!',
   },
   signIn: {
     id: 'signIn',

@@ -48,8 +48,11 @@ class ResetPassword extends Component<Props> {
       <div className={classes}>
         <Header title={MSGResetPassword} />
 
-        <p>{MSGYourENRGEmail}</p>
-        <Form onSubmit={handleSubmit(handleResetPassword)}>
+        <Form
+          onSubmit={handleSubmit(handleResetPassword)}
+          className={`${baseClass}__content`}
+        >
+          <p>{MSGYourENRGEmail}</p>
           <Field
             type="email"
             name="email"

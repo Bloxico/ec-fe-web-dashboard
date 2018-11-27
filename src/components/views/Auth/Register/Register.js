@@ -114,7 +114,10 @@ class Register extends Component<Props> {
       <div className={classes}>
         <Header title={MSGCreateAnAccount} />
 
-        <Form onSubmit={handleSubmit(this.handleRegistration)}>
+        <Form
+          onSubmit={handleSubmit(this.handleRegistration)}
+          className={`${baseClass}__content`}
+        >
           <Field
             placeholder={MSGEmail}
             type="email"

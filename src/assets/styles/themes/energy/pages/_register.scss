@@ -1,0 +1,55 @@
+.#{$namespace}-register {
+  width: 100%;
+  height: 100%;
+
+  &__content {
+    padding: 0 rhythm(1);
+  }
+}
+
+
+.#{$namespace}-success {
+  margin: auto;
+  padding: rhythm(1);
+  text-align: center;
+
+  h4 {
+    font-weight: bold;
+  }
+
+  p {
+    text-align: justify;
+  }
+}
+
+
+.#{$namespace}-verify {
+  width: 100%;
+  height: 100%;
+
+  .#{$namespace}-input {
+    text-align: center;
+  }
+
+  &__content {
+    padding: 0 rhythm(1);
+  }
+
+  &__token {
+    //.#{$namespace}-input {
+      //height: rhythm(3.5);
+      //padding: rhythm(1);
+      //font-size: map-get($font-sizes, giant);
+      //text-align: center;
+      //text-indent: 30px;
+      //letter-spacing: rhythm(2);
+    //}
+  }
+
+  &__footer {
+    padding: rhythm(1) 0;
+    text-align: center;
+    font-size: map-get($font-sizes, small);
+    color: map-get($text-colors, dark);
+  }
+}

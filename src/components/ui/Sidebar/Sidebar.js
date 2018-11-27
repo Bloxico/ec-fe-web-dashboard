@@ -2,6 +2,7 @@
 /* eslint react/sort-comp: 0 */
 
 import React, { PureComponent } from 'react';
+import Swipeable from 'react-swipeable';
 import classNames from 'classnames';
 import { Modal as BootstrapModal } from 'react-bootstrap';
 
@@ -57,11 +58,11 @@ class Sidebar extends PureComponent<Props, State> {
     }
   }
 
-  handleHide = () => {
-    this.setState({ isOpen: false });
-  };
+  handleHide = () => this.setState({ isOpen: false });
 
   handleExited = () => this.props.onHide && this.props.onHide();
+
+  handleSwiped = (e: any, deltaX: number) => deltaX > 0 && this.handleExited();
 
   render() {
     const { children, className, position, sticky } = this.props;
@@ -82,10 +83,16 @@ class Sidebar extends PureComponent<Props, State> {
         backdropClassName={`${baseClass}__backdrop`}
         dialogComponentClass={Panel}
         dialogClassName={classes}
+        restoreFocus={false}
         className={className}
         onExited={this.handleExited}
       >
-        {children}
+        <Swipeable
+          onSwiped={this.handleSwiped}
+          className={`${baseClass}__swipeable`}
+        >
+          {children}
+        </Swipeable>
       </BootstrapModal>
     );
   }

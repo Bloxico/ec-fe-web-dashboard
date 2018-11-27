@@ -10,7 +10,7 @@ $max-width: 400px;
     padding: 0 rhythm(1);
   }
 
-  &__footer {
-    padding: rhythm(1) 0;
+  .#{$namespace}-notification {
+    margin: 0 0 rhythm(1) 0;
   }
 }
