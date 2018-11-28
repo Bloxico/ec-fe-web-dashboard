@@ -90,6 +90,18 @@ module.exports = {
     // for React Native Web.
     extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
+      src: paths.appSrc,
+      '@views': path.join(paths.appSrc, 'components/views'),
+      '@partials': path.join(paths.appSrc, 'components/views/common'),
+      '@ui': path.join(paths.appSrc, 'components/ui'),
+      '@wrappers': path.join(paths.appSrc, 'components/wrappers'),
+      '@images': path.join(paths.appSrc, 'assets/images'),
+      '@styles': path.join(paths.appSrc, 'assets/styles'),
+      '@abstract-styles': path.join(
+        paths.appSrc,
+        'assets/styles/abstracts/_index.scss',
+      ),
+
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -164,7 +176,8 @@ module.exports = {
           // "url" loader works just like "file" loader but it also embeds
           // assets smaller than specified size as data URLs to avoid requests.
           {
-            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+            // test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+            test: /\.(bmp|gif|jpe(e*)g|png)$/,
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,

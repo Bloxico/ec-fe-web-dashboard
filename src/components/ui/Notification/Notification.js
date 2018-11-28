@@ -73,8 +73,11 @@ class Notification extends PureComponent<Props, State> {
         <div className={`${baseClass}__message`}>{children}</div>
         {!stay && (
           <Button
-            className={`${baseClass}__close`}
+            icon
+            size="small"
+            type="ghost"
             tabIndex={-1}
+            className={`${baseClass}__close`}
             onClick={this.handleClose}
           >
             Close

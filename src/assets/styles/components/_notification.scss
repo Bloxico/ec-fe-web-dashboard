@@ -3,12 +3,9 @@ $notification-margin: 0 !default;
 $notification-padding: rhythm(1) !default;
 $notification-font-weight: 400 !default;
 $notification-color: map-get($text-colors, 'light') !default;
-$notification-system-color: map-get($text-colors, 'normal') !default;
 $notification-background: map-get($background-colors, 'body') !default;
-$notification-system-animation: working 5s linear infinite !default;
-$notification-shadow: 0 2px 10px 0 rgba(0,0,0,0.1) !default;
+$notification-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1) !default;
 $notification-transition: opacity .15s linear !default;
-
 $notification-border: none !default;
 
 $notification-icons: (
@@ -16,115 +13,35 @@ $notification-icons: (
   error: svg-url('<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm9.315 2.718a.993.993 0 0 0 1.403-1.403L9.41 8.007l1.308-1.309a.993.993 0 0 0-1.403-1.403L8.007 6.603 6.694 5.291a.991.991 0 1 0-1.403 1.403l1.312 1.312-1.312 1.313a.991.991 0 1 0 1.403 1.403L8.007 9.41l1.308 1.308z" fill="#22243B" fill-rule="evenodd"/></svg>'),
   success: svg-url('<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zm-.56 11.01l4.07-4.07a.999.999 0 1 0-1.414-1.415L6.732 8.89l-.829-.829A1 1 0 0 0 4.49 9.475l1.536 1.535a.999.999 0 0 0 1.414 0z" fill="#22243B" fill-rule="evenodd"/></svg>'),
   warning: svg-url('<svg width="14" height="11" xmlns="http://www.w3.org/2000/svg"><path d="M1.734 11H12.16a1 1 0 0 0 .866-1.501L7.813.495a1 1 0 0 0-1.731 0L.869 9.499A1 1 0 0 0 1.734 11zM7.58 9.105H6.316V7.842h1.263v1.263zm0-2.526H6.316V4.053h1.263v2.526z" fill="#22243B"/></svg>'),
-  system: svg-url('<svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M15.443 9.882c.036-.288.063-.576.063-.882 0-.306-.027-.594-.063-.882l1.9-1.485a.454.454 0 0 0 .107-.576l-1.8-3.114a.452.452 0 0 0-.549-.198l-2.24.9a6.575 6.575 0 0 0-1.522-.882L10.997.378a.439.439 0 0 0-.44-.378h-3.6a.439.439 0 0 0-.442.378l-.342 2.385a6.915 6.915 0 0 0-1.52.882l-2.242-.9a.439.439 0 0 0-.549.198l-1.8 3.114a.444.444 0 0 0 .108.576l1.9 1.485A7.138 7.138 0 0 0 2.005 9c0 .297.027.594.063.882L.17 11.367a.454.454 0 0 0-.108.576l1.8 3.114c.108.198.351.27.55.198l2.24-.9c.468.36.972.657 1.521.882l.342 2.385a.439.439 0 0 0 .441.378h3.6a.439.439 0 0 0 .441-.378l.342-2.385a6.915 6.915 0 0 0 1.521-.882l2.241.9a.44.44 0 0 0 .55-.198l1.8-3.114a.454.454 0 0 0-.109-.576l-1.899-1.485zM8.756 12.15A3.153 3.153 0 0 1 5.606 9a3.153 3.153 0 0 1 3.15-3.15A3.153 3.153 0 0 1 11.906 9a3.153 3.153 0 0 1-3.15 3.15z" fill="#FFF" opacity=".7" /></svg>'),
+  close: svg-url('<svg viewBox="0 0 10 10" width="10" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M8.993 0L5 3.993 1.007 0 0 1.007 3.993 5 0 8.993 1.007 10 5 6.007 8.993 10 10 8.993 6.007 5 10 1.007z" fill="#22243B" fill-rule="evenodd"/></svg>'),
 ) !default;
 
-$notification-close: (
-  size: 'small',
-  type: 'ghost',
-  icon: (
-    size: 'tiny',
-    default: svg-url('<svg viewBox="0 0 10 10" width="10" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M8.993 0L5 3.993 1.007 0 0 1.007 3.993 5 0 8.993 1.007 10 5 6.007 8.993 10 10 8.993 6.007 5 10 1.007z" fill="#22243B" fill-rule="evenodd"/></svg>'),
-    inverse: svg-url('<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M8.993 0L5 3.993 1.007 0 0 1.007 3.993 5 0 8.993 1.007 10 5 6.007 8.993 10 10 8.993 6.007 5 10 1.007z" fill="#FFF" opacity=".5" fill-rule="evenodd"/></svg>'),
-  )
+$notification-icon-configuration: (
+  pseudo: true,
+  cover: false,
+  size: normal,
+  margin: 1em,
+  side: left,
 ) !default;
 
-@mixin icon-notification($type: null, $icon: null) {
-  // toast notification
-  @if $type == null or $type == default {
-    // close icon
-    @if $icon == 'close' {
-      @include icon(map-get(map-get($notification-close, icon), inverse), (
-        pseudo: true,
-        size: map-get(map-get($notification-close, icon), 'size'),
-        cover: true,
-      ));
-    }
-  }
-
-  // system notification
-  @else if $type == system {
-    // close icon
-    @if $icon == 'close' {
-      @include icon(map-get(map-get($notification-close, icon), inverse), (
-        pseudo: true,
-        size: map-get(map-get($notification-close, icon), 'size'),
-        cover: true,
-      ));
-    }
-    // type icons
-    @else {
-      @if $notification-icons != () {
-        @include icon(map-get($notification-icons, $type), (
-          pseudo: true,
-          size: 'normal',
-          side: 'left',
-          margin: 1em,
-        ));
-
-        &::before {
-          animation: $notification-system-animation;
-        }
-      }
-    }
-  }
-
-  // coloured notification
-  @else {
-    // close icon
-    @if $icon == 'close' {
-      @include icon(map-get(map-get($notification-close, icon), default), (
-        pseudo: true,
-        size: map-get(map-get($notification-close, icon), 'size'),
-        cover: true,
-      ));
-    }
-    // type icons
-    @else {
-      @if $notification-icons != () {
-        @include icon(map-get($notification-icons, $type), (
-          pseudo: true,
-          size: 'normal',
-          side: 'left',
-          margin: 1em,
-        ));
-      }
-    }
-  }
-
-  &::before {
-    flex: 0 0 auto;
-  }
-}
+$notification-close-configuration: (
+  pseudo: true,
+  cover: true,
+  size: tiny,
+) !default;
 
 
 @mixin coloured-notification($type) {
-  @include icon-notification($type);
+  @include icon(map-get($notification-icons, $type), $notification-icon-configuration);
 
-  color: $notification-color;
-  background-color: map-get($background-colors, $type);
   border-color: map-get($border-colors, $type);
-
-  .#{$namespace}-notification__close {
-    @include icon-notification($type, 'close');
-
-    color: $notification-color;
-  }
-
-  // system notification
-  @if $type == system {
-    .#{$namespace}-notification__message {
-      color: $notification-system-color;
-    }
-  }
 }
 
 
 .#{$namespace}-notification {
-  @include component;
   @include set-border($notification-border, $notification-padding);
-  @include icon-notification();
 
+  position: relative;
   display: inline-flex;
   flex-direction: row;
   min-height: $notification-min-height;
@@ -134,17 +51,43 @@ $notification-close: (
   color: $notification-color;
   background-color: $notification-background;
   box-shadow: $notification-shadow;
-  //transition: $notification-transition;
   opacity: 0;
 
   &[aria-hidden='true'] {
     @include fade-out;
-    //opacity: 0;
   }
 
   &[aria-hidden='false'] {
     @include fade-in;
-    //opacity: 1;
+  }
+
+
+  // icon
+  &::before {
+    flex: 0 0 auto;
+  }
+
+
+  &__message {
+    flex: 1 1 auto;
+
+    .#{$namespace}-pill,
+    .#{$namespace}-button {
+      margin-left: 1em;
+      margin-right: 1em;
+    }
+
+    > p:only-child {
+      margin: 0;
+    }
+  }
+
+
+  &__close {
+    @include icon(map-get($notification-icons, close), $notification-close-configuration);
+
+    flex: 0 0 auto;
+    margin: 0 0 0 1em;
   }
 }
 
@@ -169,50 +112,4 @@ $notification-close: (
 
 .#{$namespace}-notification--info {
   @include coloured-notification('info');
-}
-
-.#{$namespace}-notification--system {
-  @include coloured-notification('system');
-}
-
-
-.#{$namespace}-notification__message {
-  flex: 1 1 auto;
-
-  .#{$namespace}-pill,
-  .#{$namespace}-button {
-    margin-left: 1em;
-    margin-right: 1em;
-  }
-
-  > p:only-child {
-    margin: 0;
-  }
-}
-
-
-.#{$namespace}-notification__close {
-  @extend .#{$namespace}-button--icon;
-
-  @if map-has-key($notification-close, type) {
-    @extend .#{$namespace}-button--#{map-get($notification-close, type)};
-  }
-
-  @if map-has-key($notification-close, size) {
-    @extend .#{$namespace}-button--#{map-get($notification-close, size)};
-  }
-
-  @include icon-notification(default, 'close');
-
-  flex: 0 0 auto;
-  margin: 0 0 0 1em;
-  color: $notification-color;
-
-  &:hover,
-  &:focus {
-    &:not([disabled]),
-    &:not([aria-disabled='true']) {
-      transition: none;
-    }
-  }
 }
