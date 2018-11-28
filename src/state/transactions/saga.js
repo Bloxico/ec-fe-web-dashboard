@@ -8,6 +8,32 @@ import * as actions from './actions';
 import { MODALS } from '../../constants';
 import { showModal } from '../actions';
 
+export function* fetchExchangeRate$(): Generator<*, *, *> {
+  try {
+    const { data } = yield http.get('transaction/exchangeRate', null, {
+      withAuth: true,
+      cache: false,
+    });
+    const {
+      exchangeRateDto: {
+        enrgExchangeRateDto: { enrgBtcValue, btcEurValue },
+      },
+    } = data;
+    const enrgEurValue = enrgBtcValue * btcEurValue || undefined;
+    yield put(actions.fetchExchangeRateSuccess({ enrgEurValue }));
+  } catch ({ response: { data } }) {
+    yield put(
+      showModal({
+        modalName: MODALS.ErrorMessage,
+        align: 'center',
+        data: {
+          content: data.errorCode,
+        },
+      }),
+    );
+  }
+}
+
 export function* fetchTransactions$({ payload }): Generator<*, *, *> {
   try {
     const { data } = yield http.get('transaction/myTransactions', null, {
@@ -64,4 +90,5 @@ export function* fetchTransactions$({ payload }): Generator<*, *, *> {
 // $FlowIssue
 export default function*() {
   yield all([takeEvery(actions.FETCH_TRANSACTIONS, fetchTransactions$)]);
+  yield all([takeEvery(actions.FETCH_EXCHANGE_RATE, fetchExchangeRate$)]);
 }

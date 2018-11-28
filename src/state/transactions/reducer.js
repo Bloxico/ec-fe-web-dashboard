@@ -30,6 +30,21 @@ export default handleActions(
       }),
     ],
     [
+      actions.FETCH_EXCHANGE_RATE,
+      state => ({
+        ...state,
+        fetchExchangeRateInProgress: true,
+      }),
+    ],
+    [
+      actions.FETCH_EXCHANGE_RATE_SUCCESS,
+      (state, { payload: { enrgEurValue } }) => ({
+        ...state,
+        enrgEurValue,
+        fetchExchangeRateInProgress: false,
+      }),
+    ],
+    [
       actions.CLEAR_TRANSACTIONS_STATE,
       () => ({
         ...initialState,

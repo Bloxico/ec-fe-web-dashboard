@@ -7,6 +7,7 @@ type StateT = {
   chartData: any,
   dashboardBalance: number,
   virtualBalance: number,
+  enrgEurValue: number,
 };
 
 const initialState: StateT = {
@@ -14,6 +15,7 @@ const initialState: StateT = {
   fail: false,
   transactions: [],
   chartData: undefined,
+  enrgEurValue: undefined,
 };
 
 export default initialState;
