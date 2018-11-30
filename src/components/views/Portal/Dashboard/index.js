@@ -5,13 +5,14 @@ import { compose, withProps } from 'recompose';
 import { injectIntl } from 'react-intl';
 
 import withConfigSizes from '@wrappers/withConfigSizes';
-import { fetchTransactions } from 'src/state/actions';
+import { fetchTransactions, fetchExchangeRate } from 'src/state/actions';
 import {
   getTransactionsData,
   getDashboardBalance,
   getVirtualBalance,
   getChartData,
   isFetchTransactionInProgress,
+  getEnergyEuroRate,
 } from 'src/state/selectors';
 
 import messages from './messages';
@@ -19,6 +20,7 @@ import Dashboard from './Dashboard';
 
 const actions = {
   fetchTransactions,
+  fetchExchangeRate,
 };
 
 // eslint-disable-next-line
@@ -28,6 +30,7 @@ const mapStateToProps = state => ({
   virtualBalance: getVirtualBalance(state),
   chartData: getChartData(state),
   fetchTransactionsInProgress: isFetchTransactionInProgress(state),
+  enrgEurValue: getEnergyEuroRate(state),
 });
 
 export default compose(

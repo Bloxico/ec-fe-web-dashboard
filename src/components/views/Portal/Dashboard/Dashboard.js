@@ -16,6 +16,7 @@ export interface Props {
   MSGDashboard: string;
   MSGCO2Prevented: string;
   fetchTransactions: Function;
+  fetchExchangeRate: Function;
   transactions: [];
   chartData: any;
   virtualBalance: number;
@@ -24,20 +25,17 @@ export interface Props {
   MSGTotalAccumulated: string;
   MSGEnergyShort: string;
   MSGBicycleBits: string;
+  enrgEurValue: number;
 }
-
-// TODO:
-// - add headers
-// - improve styles and markup
-// - integrate BE
 
 const baseClass = `${THEME_PREFIX}-dashboard`;
 
 // TODO@martins get actual colors from designers
 class Dashboard extends Component<Props> {
   componentDidMount() {
-    const { fetchTransactions } = this.props;
+    const { fetchTransactions, fetchExchangeRate } = this.props;
     fetchTransactions(3);
+    fetchExchangeRate();
   }
 
   render() {
@@ -51,6 +49,7 @@ class Dashboard extends Component<Props> {
       virtualBalance,
       dashboardBalance,
       fetchTransactionsInProgress,
+      enrgEurValue,
     } = this.props;
 
     return (
@@ -67,7 +66,11 @@ class Dashboard extends Component<Props> {
                   {MSGEnergyShort}{' '}
                   {dashboardBalance && dashboardBalance.toFixed(2)}
                 </dd>
-                {/* /!*<dd className={`${baseClass}__note`}>1 ENRG = x EUR</dd>*!/ TODO@all get the value of ENRG */}
+                {enrgEurValue && (
+                  <dd className={`${baseClass}__note`}>
+                    1 ENRG = {enrgEurValue.toFixed(4)} EUR
+                  </dd>
+                )}
               </dl>
 
               <div className={`${baseClass}__group`}>

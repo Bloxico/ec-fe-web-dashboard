@@ -4,11 +4,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
 import IntlProvider from 'src/components/wrappers/IntlProvider';
-import {
-  AUTH_PAGE,
-  PORTAL_PAGE,
-  THEME_PREFIX,
-} from 'src/constants';
+import { AUTH_PAGE, PORTAL_PAGE, THEME_PREFIX } from 'src/constants';
 import { StateT } from 'src/state/state';
 import ModalManager from 'src/components/views/common/ModalManager';
 
