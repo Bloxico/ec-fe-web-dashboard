@@ -116,7 +116,7 @@ export const password = ({ intl: { formatMessage } }: ContextT) => (
     return formatMessage(messages.validatorsPassword8Min);
   } else if (
     value &&
-    !/^(?=.*\d)(?=.*[!@#$%^&*'~`{}()|?.,<>_+=])(?=.*[a-z])(?=.*[A-Z]).{8,}$/i.test(
+    !/^(?=.*\d.*)(?=.*[!@#$%^&*'~`{}()|?.,<>_+=]*)(?=[a-z]+[A-Z]+|[A-Z]+[a-z]+)[a-zA-Z].{8,}$/i.test(
       value,
     )
   ) {
