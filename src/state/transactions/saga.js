@@ -45,15 +45,14 @@ export function* fetchTransactions$({ payload }): Generator<*, *, *> {
       let balance = 0;
       let totalVirtualCurrency = 0;
       date.setMonth(date.getMonth() - payload);
-
       const chartData = data.transactionDtos
         .filter(o => new Date(o.created) >= date)
         .reduce((obj, item) => {
           const newDate = new Date(item.created).toLocaleDateString();
           if (newDate in obj) {
-            obj[newDate] += item.enrgAmount;
+            obj[newDate] += item.envAmount * 250;
           } else {
-            obj[newDate] = item.enrgAmount;
+            obj[newDate] = item.envAmount * 250;
           }
           return obj;
         }, {});
