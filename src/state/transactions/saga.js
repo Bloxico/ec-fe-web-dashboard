@@ -8,6 +8,32 @@ import * as actions from './actions';
 import { MODALS } from '../../constants';
 import { showModal } from '../actions';
 
+export function* fetchExchangeRate$(): Generator<*, *, *> {
+  try {
+    const { data } = yield http.get('transaction/exchangeRate', null, {
+      withAuth: true,
+      cache: false,
+    });
+    const {
+      exchangeRateDto: {
+        enrgExchangeRateDto: { enrgBtcValue, btcEurValue },
+      },
+    } = data;
+    const enrgEurValue = enrgBtcValue * btcEurValue || undefined;
+    yield put(actions.fetchExchangeRateSuccess({ enrgEurValue }));
+  } catch ({ response: { data } }) {
+    yield put(
+      showModal({
+        modalName: MODALS.ErrorMessage,
+        align: 'center',
+        data: {
+          content: data.errorCode,
+        },
+      }),
+    );
+  }
+}
+
 export function* fetchTransactions$({ payload }): Generator<*, *, *> {
   try {
     const { data } = yield http.get('transaction/myTransactions', null, {
@@ -19,15 +45,14 @@ export function* fetchTransactions$({ payload }): Generator<*, *, *> {
       let balance = 0;
       let totalVirtualCurrency = 0;
       date.setMonth(date.getMonth() - payload);
-
       const chartData = data.transactionDtos
         .filter(o => new Date(o.created) >= date)
         .reduce((obj, item) => {
           const newDate = new Date(item.created).toLocaleDateString();
           if (newDate in obj) {
-            obj[newDate] += item.enrgAmount;
+            obj[newDate] += item.envAmount * 250;
           } else {
-            obj[newDate] = item.enrgAmount;
+            obj[newDate] = item.envAmount * 250;
           }
           return obj;
         }, {});
@@ -64,4 +89,5 @@ export function* fetchTransactions$({ payload }): Generator<*, *, *> {
 // $FlowIssue
 export default function*() {
   yield all([takeEvery(actions.FETCH_TRANSACTIONS, fetchTransactions$)]);
+  yield all([takeEvery(actions.FETCH_EXCHANGE_RATE, fetchExchangeRate$)]);
 }
