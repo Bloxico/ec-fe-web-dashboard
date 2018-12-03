@@ -165,7 +165,7 @@ class Register extends Component<Props> {
             placeholder={MSGNicknameOptional}
             type="text"
             component={FormField}
-            name="nickname"
+            name="name"
             width="full"
             validate={[alphanumericValidator]}
           />

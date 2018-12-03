@@ -108,7 +108,6 @@ export const email = ({ intl: { formatMessage } }: ContextT) => (
   value && !/^.+@.+\..+$/i.test(value)
     ? formatMessage(messages.validatorsEmail)
     : undefined;
-
 export const password = ({ intl: { formatMessage } }: ContextT) => (
   value?: string,
 ) => {
@@ -116,7 +115,7 @@ export const password = ({ intl: { formatMessage } }: ContextT) => (
     return formatMessage(messages.validatorsPassword8Min);
   } else if (
     value &&
-    !/^(?=.*\d.*)(?=.*[!@#$%^&*'~`{}()|?.,<>_+=]*)(?=[a-z]+[A-Z]+|[A-Z]+[a-z]+)[a-zA-Z].{8,}$/i.test(
+    !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*'~`{}()|?.,<>_+=])[0-9a-zA-Z!@#$%^&*'~`{}()|?.,<>_+=]{8,}$/.test(
       value,
     )
   ) {
