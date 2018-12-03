@@ -16,7 +16,7 @@ export const ERROR_CODES = {
   WALLET_ADDRESS_ALREADY_EXISTS: '31', // When address hash already exists.
   WALLET_ADDRESS_LENGTH_IS_NOT_VALID: '32', // Address hash cannot have the size different than 32 characters
 
-  USER_NOT_VERIFIED: 'User disabled',
+  USER_NOT_VERIFIED: 'User is disabled',
   BAD_CREDENTIALS: 'Bad credentials',
 
   PARTNER_USER_ID_ALREADY_EXISTS: '40', // The queryparam value that was provided from external registration point is already within database - somebody is already registered with this partner id.
