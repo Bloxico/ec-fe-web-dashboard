@@ -22,7 +22,7 @@ export function* fetchExchangeRate$(): Generator<*, *, *> {
     const enrgEurValue = enrgBtcValue * btcEurValue || undefined;
     yield put(actions.fetchExchangeRateSuccess({ enrgEurValue }));
   } catch ({ response }) {
-      //
+    // no error handle needed
   }
 }
 
