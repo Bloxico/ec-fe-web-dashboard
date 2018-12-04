@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import Header from '@partials/Header';
 import { Form, FormField, Button } from '@ui';
 import { RESET_PASSWORD_PAGE, THEME_PREFIX } from 'src/constants';
+import { removeCookie } from 'src/services/http/utils';
 
 type PropsT = {
   MSGSignIn: string,
@@ -37,6 +38,7 @@ class Login extends Component<PropsT> {
       passwordValidator: passwordIntl,
       emailValidator: emailIntl,
     };
+    removeCookie();
   }
 
   render() {

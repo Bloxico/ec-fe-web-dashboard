@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { cacheAdapterEnhancer, Cache } from 'axios-extensions';
 
+import { ERROR_CODES } from 'src/constants';
+
+import { redirectToLogin } from './utils';
+
 type HttpOpts = {
   baseURL?: string,
   retryRequests?: boolean,
@@ -80,6 +84,14 @@ class Http {
 
             return this.request(error.config);
           }
+        }
+        if (
+          error.response &&
+          error.response.status === 401 &&
+          error.response.data.error_description !==
+            ERROR_CODES.INVALID_CREDENTIALS
+        ) {
+          redirectToLogin();
         }
 
         return Promise.reject(error);

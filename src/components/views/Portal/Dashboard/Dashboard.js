@@ -25,6 +25,7 @@ export interface Props {
   MSGTotalAccumulated: string;
   MSGEnergyShort: string;
   MSGBicycleBits: string;
+  MSGExchangeRateFailed: string;
   enrgEurValue: number;
 }
 
@@ -45,6 +46,7 @@ class Dashboard extends Component<Props> {
       MSGTotalAccumulated,
       MSGEnergyShort,
       MSGBicycleBits,
+      MSGExchangeRateFailed,
       chartData,
       virtualBalance,
       dashboardBalance,
@@ -66,11 +68,12 @@ class Dashboard extends Component<Props> {
                   {MSGEnergyShort}{' '}
                   {dashboardBalance && dashboardBalance.toFixed(2)}
                 </dd>
-                {enrgEurValue && (
-                  <dd className={`${baseClass}__note`}>
-                    1 ENRG = {enrgEurValue.toFixed(4)} EUR
-                  </dd>
-                )}
+
+                <dd className={`${baseClass}__note`}>
+                  {(enrgEurValue &&
+                    `1 ENRG = ${enrgEurValue.toFixed(4)} EUR`) ||
+                    MSGExchangeRateFailed}
+                </dd>
               </dl>
 
               <div className={`${baseClass}__group`}>

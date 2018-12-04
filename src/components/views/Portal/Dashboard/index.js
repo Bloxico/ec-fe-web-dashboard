@@ -46,6 +46,7 @@ export default compose(
     MSGTotalAccumulated: formatMessage(messages.totalAccumulated),
     MSGEnergyShort: formatMessage(messages.energyShort),
     MSGBicycleBits: formatMessage(messages.bicycleBits),
+    MSGExchangeRateFailed: formatMessage(messages.exchangeRateFailed),
   })),
   withConfigSizes,
 )(Dashboard);
