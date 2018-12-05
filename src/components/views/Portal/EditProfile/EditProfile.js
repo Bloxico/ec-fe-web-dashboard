@@ -51,15 +51,15 @@ class EditProfile extends Component<Props> {
     fetchProfileData();
   }
 
-  defaultRegionOption = {
-    text: 'Select',
-    value: '',
-  };
-
   componentWillUnmount() {
     const { clearProfileState } = this.props;
     clearProfileState();
   }
+
+  defaultRegionOption = {
+    text: 'Select',
+    value: '',
+  };
 
   validators: Object;
 
