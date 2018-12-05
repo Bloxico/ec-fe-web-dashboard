@@ -27,6 +27,5 @@ export const unauthorizedResponseInterceptor = error => {
   if (error.response && error.response.status === 401) {
     redirectToLogin();
   }
-
   Promise.reject(error);
 };

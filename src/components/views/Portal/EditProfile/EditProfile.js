@@ -25,6 +25,7 @@ export type Props = {
   hasUpdateFailed: boolean,
   fetchProfileInProgress: boolean,
   fetchProfileData: Function,
+  clearProfileState: Function,
   handleSubmit: Function,
   handleEditProfile: Function,
 };
@@ -54,6 +55,11 @@ class EditProfile extends Component<Props> {
     text: 'Select',
     value: '',
   };
+
+  componentWillUnmount() {
+    const { clearProfileState } = this.props;
+    clearProfileState();
+  }
 
   validators: Object;
 

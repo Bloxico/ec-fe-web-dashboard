@@ -2,9 +2,7 @@
 
 // @TODO@martins fix interceptors
 import { API_URL } from 'src/constants';
-import {
-  setAuthHeaderInterceptor,
-} from './interceptors';
+import { setAuthHeaderInterceptor } from './interceptors';
 
 import http from './http';
 
