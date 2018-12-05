@@ -5,7 +5,11 @@ import { compose, withHandlers, withProps } from 'recompose';
 import { injectIntl } from 'react-intl';
 import { reduxForm } from 'redux-form';
 
-import { fetchProfileData, updateProfile } from 'src/state/actions';
+import {
+  fetchProfileData,
+  updateProfile,
+  clearProfileState,
+} from 'src/state/actions';
 import {
   getProfileData,
   getUserProfileRegions,
@@ -22,6 +26,7 @@ import EditProfile from './EditProfile';
 const actions = {
   updateProfile,
   fetchProfileData,
+  clearProfileState,
 };
 
 const mapStateToProps = state => ({

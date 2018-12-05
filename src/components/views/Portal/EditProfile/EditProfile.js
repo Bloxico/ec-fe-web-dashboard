@@ -25,6 +25,7 @@ export type Props = {
   hasUpdateFailed: boolean,
   fetchProfileInProgress: boolean,
   fetchProfileData: Function,
+  clearProfileState: Function,
   handleSubmit: Function,
   handleEditProfile: Function,
 };
@@ -48,6 +49,11 @@ class EditProfile extends Component<Props> {
     const { fetchProfileData } = this.props;
 
     fetchProfileData();
+  }
+
+  componentWillUnmount() {
+    const { clearProfileState } = this.props;
+    clearProfileState();
   }
 
   defaultRegionOption = {

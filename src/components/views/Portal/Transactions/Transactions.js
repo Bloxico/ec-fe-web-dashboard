@@ -20,13 +20,19 @@ const baseClass = `${THEME_PREFIX}-transactions`;
 const columns = [
   {
     Header: 'Amount',
-    accessor: ({ enrgAmount, virtualCurrencyAmmount, virtualCurrencyCode }) => ({
+    accessor: ({
+      enrgAmount,
+      virtualCurrencyAmmount,
+      virtualCurrencyCode,
+    }) => ({
       enrgAmount,
       virtualCurrencyAmmount,
       virtualCurrencyCode,
     }),
     id: 'enrgAmount',
-    Cell: ({ value: { enrgAmount, virtualCurrencyAmmount, virtualCurrencyCode } }: any) => (
+    Cell: ({
+      value: { enrgAmount, virtualCurrencyAmmount, virtualCurrencyCode },
+    }: any) => (
       <React.Fragment>
         <h5 className={`${baseClass}__virtual-amount`}>
           {virtualCurrencyCode} {virtualCurrencyAmmount}
@@ -47,7 +53,9 @@ const columns = [
   {
     Header: 'Source',
     accessor: 'source',
-    Cell: ({ value }: any) => <span className={`${baseClass}__source`}>{value}</span>,
+    Cell: ({ value }: any) => (
+      <span className={`${baseClass}__source`}>{value}</span>
+    ),
   },
 ];
 

@@ -27,4 +27,8 @@ export default defineMessages({
     defaultMessage: 'Bicycle Bits',
     id: 'bicycleBits',
   },
+  exchangeRateFailed: {
+    id: 'exchangeRateFailed',
+    defaultMessage: 'ENRG value failed to load.',
+  },
 });
