@@ -3,9 +3,9 @@
 import { all, takeEvery, put } from 'redux-saga/effects';
 
 import http from 'src/services/http';
+import { MODALS } from 'src/constants';
 
 import * as actions from './actions';
-import { MODALS } from '../../constants';
 import { showModal } from '../actions';
 
 export function* fetchExchangeRate$(): Generator<*, *, *> {
@@ -21,16 +21,8 @@ export function* fetchExchangeRate$(): Generator<*, *, *> {
     } = data;
     const enrgEurValue = enrgBtcValue * btcEurValue || undefined;
     yield put(actions.fetchExchangeRateSuccess({ enrgEurValue }));
-  } catch ({ response: { data } }) {
-    yield put(
-      showModal({
-        modalName: MODALS.ErrorMessage,
-        align: 'center',
-        data: {
-          content: data.errorCode,
-        },
-      }),
-    );
+  } catch ({ response }) {
+    // no error handle needed
   }
 }
 

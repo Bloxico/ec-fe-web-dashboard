@@ -53,7 +53,8 @@ export default handleActions(
     ],
     [
       actions.CLEAR_PROFILE_STATE,
-      () => ({
+      state => ({
+        ...state,
         ...initialState,
       }),
     ],
