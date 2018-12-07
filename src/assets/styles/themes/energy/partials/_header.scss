@@ -1,0 +1,41 @@
+$header-height: rhythm(3);
+$header-margin: 0 0 rhythm(1) 0;
+$header-title-padding: 0;
+
+$header-action-top: rhythm(.25);
+$header-action-left: rhythm(.5);
+$header-action-width: rhythm(2.5);
+$header-action-height: rhythm(2.5);
+$header-action-margin: 0;
+$header-action-opacity: .5;
+
+
+.#{$namespace}-header {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: $header-height;
+  margin: $header-margin;
+
+  &__title {
+    width: 100%;
+    margin: 0;
+    padding: $header-title-padding;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  &__action {
+    position: absolute;
+    top: $header-action-top;
+    left: $header-action-left;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: $header-action-width;
+    height: $header-action-height;
+    margin: $header-action-margin;
+    padding: 0;
+    z-index: 1;
+  }
+}

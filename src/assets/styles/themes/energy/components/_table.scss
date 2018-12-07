@@ -1,0 +1,95 @@
+$table-border: none;
+$table-background: transparent;
+$table-background-striped-odd: map-get($background-colors, 'control');
+$table-background-striped-even: map-get($background-colors, 'window');
+$table-background-highlight: map-get($background-colors, 'body');
+$table-resizing-border-color: map-get($border-colors, 'normal');
+
+$table-header-groups-background: none;
+$table-header-groups-border: none;
+$table-header-height: rhythm(2.5);
+$table-header-shadow: none;
+$table-header-filters-border: none;
+$table-header-filters-cell-border: (
+  side: right,
+  width: 1px,
+  style: solid,
+  color: black
+);
+$table-header-cell-padding: rhythm(.75) rhythm(1);
+$table-header-cell-align: left;
+$table-header-cell-font-size: map-get($font-sizes, normal);
+$table-header-cell-text-transform: none;
+$table-header-cell-color: map-get($text-colors, dark);
+$table-header-cell-border: (
+  side: right,
+  width: 1px,
+  style: dashed,
+  color: transparent
+);
+$table-header-cell-resizing-border-color: map-get($border-colors, light);
+$table-header-cell-transition: box-shadow .3s cubic-bezier(.25, .46, .45, .94);
+$table-header-cell-shadow: none;
+$table-header-cell-sort-asc-background: (
+  image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="#fff" opacity=".2" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>'),
+  color: transparent,
+  repeat: no-repeat,
+  position: right center,
+  size: 20px
+);
+$table-header-cell-sort-desc-background: (
+  image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="#fff" opacity=".2" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>'),
+  color: transparent,
+  repeat: no-repeat,
+  position: right center,
+  size: 20px
+);
+$table-header-resizer-width: 6px;
+$table-header-resizer-border: (
+  side: right,
+  width: 1px,
+  style: dashed,
+  color: map-get($border-colors, 'normal')
+);
+
+$table-body-background: map-get($background-colors, 'window');
+$table-body-row-group-min-height: rhythm(3);
+$table-body-row-group-border: none;
+$table-body-cell-border: (
+  side: right,
+  width: 1px,
+  style: dashed,
+  color: transparent
+);
+$table-body-row-cell-padding: rhythm(.5) rhythm(1);
+$table-body-row-cell-transition: .3s ease;
+
+$table-foot-shadow: none;
+$table-foot-cell-border: none;
+
+$table-pagination-height: rhythm(2);
+$table-pagination-margin: rhythm(.25) 0;
+$table-pagination-padding: 0;
+$table-pagination-font-size: map-get($font-sizes, 'small');
+$table-pagination-color: map-get($text-colors, 'normal');
+$table-pagination-shadow: none;
+$table-pagination-border: none;
+$table-pagination-button-size: rhythm(2);
+$table-pagination-prev-icon: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="#fff" opacity=".5" d="M16.67 3.87L14.9 2.1 5 12l9.9 9.9 1.77-1.77L8.54 12z"/></svg>');
+$table-pagination-next-icon: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="#fff" opacity=".5" d="M7.33 20.13L9.1 21.9 19 12 9.1 2.1 7.33 3.87 15.46 12z"/></svg>');
+
+$table-pagination-page-info-width: 140px;
+$table-pagination-page-info-margin: 0;
+$table-pagination-page-info-padding: 0;
+$table-pagination-page-size-margin: 0;
+$table-pagination-page-size-padding: 0;
+
+$table-loading-background: color('white', 'alpha', 80);
+$table-loading-transition: all .3s ease;
+$table-loading-font-size: map-get($font-sizes, 'normal');
+$table-loading-color: map-get($text-colors, 'normal');
+$table-loading-transition: all .3s cubic-bezier(.25, .46, .45, .94);
+
+$table-empty-background: color('black');
+$table-empty-transition: all .3s ease;
+$table-empty-color: map-get($text-colors, 'normal');

@@ -1,21 +1,61 @@
 // @flow
 
-import { delay } from 'redux-saga';
 import { all, takeEvery, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
-import { PORTAL_PAGE } from 'src/constants';
+import http from 'src/services/http';
+import Cookie from 'src/services/cookie';
+import { AUTH_COOKIE, PORTAL_PAGE } from 'src/constants';
 
-import * as actions from './actionCreators';
-import { LOGIN } from './actions';
+import * as actions from './actions';
+import { showModal } from '../../actions';
+import { MODALS } from '../../../constants';
 
-export function* login$(): Generator<*, *, *> {
-  yield delay(500);
-  yield put(push(PORTAL_PAGE));
-  yield put(actions.clearLoginState());
+export function* login$({ payload }): Generator<*, *, *> {
+  const params = {
+    grant_type: 'password',
+    scope: 'access-profile',
+    ...payload,
+  };
+  try {
+    const { data } = yield http.post(
+      'oauth/token',
+      Object.keys(params)
+        .map(key => `${key}=${encodeURIComponent(params[key])}`)
+        .join('&'),
+      {
+        auth: {
+          username: 'clientapp',
+          password: '123456',
+        },
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      },
+    );
+
+    Cookie.setJSON(AUTH_COOKIE, {
+      accessToken: data.access_token,
+      refreshToken: data.refresh_token,
+    });
+
+    yield put(push(PORTAL_PAGE));
+    yield put(actions.clearLoginState());
+  } catch ({ response: { data } }) {
+    yield put(
+      showModal({
+        modalName: MODALS.ErrorMessage,
+        align: 'center',
+        data: {
+          content: data.error_description,
+        },
+      }),
+    );
+    yield put(actions.loginFail());
+  }
 }
 
 // $FlowIssue
 export default function*() {
-  yield all([takeEvery(LOGIN, login$)]);
+  yield all([takeEvery(actions.LOGIN, login$)]);
 }

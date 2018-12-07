@@ -90,6 +90,18 @@ module.exports = {
     // for React Native Web.
     extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
+      src: paths.appSrc,
+      '@views': path.join(paths.appSrc, 'components/views'),
+      '@partials': path.join(paths.appSrc, 'components/views/common'),
+      '@ui': path.join(paths.appSrc, 'components/ui'),
+      '@wrappers': path.join(paths.appSrc, 'components/wrappers'),
+      '@images': path.join(paths.appSrc, 'assets/images'),
+      '@styles': path.join(paths.appSrc, 'assets/styles'),
+      '@abstract-styles': path.join(
+        paths.appSrc,
+        'assets/styles/abstracts/_index.scss',
+      ),
+
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -131,10 +143,41 @@ module.exports = {
         // match the requirements. When no loader matches it will fall
         // back to the "file" loader at the end of the loader list.
         oneOf: [
+          // SVG loader
+          {
+            test: /\.svg$/,
+            use: [
+              'babel-loader',
+              {
+                loader: 'react-svg-loader',
+                options: {
+                  svgo: {
+                    plugins: [
+                      { moveStyleElement: true },
+                      { removeTitle: true },
+                      { removeDesc: true },
+                      { removeUselessDefs: true },
+                      { removeDimensions: false },
+                      { removeViewBox: false },
+                      { removeRasterImages: true },
+                      { collapseGroups: true },
+                      { cleanupNumericValues: { floatPrecision: 1 } },
+                      { removeEmptyContainers: true },
+                      { removeEmptyAttrs: true },
+                      { cleanupAttrs: true },
+                      { cleanupIDs: false },
+                    ],
+                    floatPrecision: 2,
+                  },
+                },
+              },
+            ],
+          },
           // "url" loader works just like "file" loader but it also embeds
           // assets smaller than specified size as data URLs to avoid requests.
           {
-            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+            // test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+            test: /\.(bmp|gif|jpe(e*)g|png)$/,
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
@@ -163,7 +206,7 @@ module.exports = {
           // use the "style" loader inside the async code so CSS from them won't be
           // in the main CSS file.
           {
-            test: /\.css$/,
+            test: /\.(scss|sass)$/,
             loader: ExtractTextPlugin.extract(
               Object.assign(
                 {
@@ -171,6 +214,7 @@ module.exports = {
                     loader: require.resolve('style-loader'),
                     options: {
                       hmr: false,
+                      sourceMap: shouldUseSourceMap,
                     },
                   },
                   use: [
@@ -188,6 +232,7 @@ module.exports = {
                         // Necessary for external CSS imports to work
                         // https://github.com/facebookincubator/create-react-app/issues/2677
                         ident: 'postcss',
+                        sourceMap: shouldUseSourceMap,
                         plugins: () => [
                           require('postcss-flexbugs-fixes'),
                           autoprefixer({
@@ -200,6 +245,12 @@ module.exports = {
                             flexbox: 'no-2009',
                           }),
                         ],
+                      },
+                    },
+                    {
+                      loader: 'sass-loader',
+                      options: {
+                        sourceMap: shouldUseSourceMap,
                       },
                     },
                   ],

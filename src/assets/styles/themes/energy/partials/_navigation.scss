@@ -1,0 +1,25 @@
+.#{$namespace}-navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: $ui-font-family;
+
+  &__item {
+    height: rhythm(3);
+    padding: rhythm(1) rhythm(1);
+    text-decoration: none;
+    font-size: map-get($font-sizes, large);
+    font-weight: 500;
+    overflow: hidden;
+    color: map-get($text-colors, normal);
+
+    // not pretty just overriding so that item as anchor has no box-shadow
+    &:hover {
+      box-shadow: none;
+    }
+
+    .#{$namespace}-icon {
+      margin-right: 1em;
+    }
+  }
+}
