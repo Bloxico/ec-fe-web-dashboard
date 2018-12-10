@@ -26,8 +26,7 @@ export type Props = {
 
 const baseClass = `${THEME_PREFIX}-chart`;
 
-const Chart = (props: Props) => {
-  return (
+const Chart = (props: Props) => (
     <div className={baseClass}>
       <header className={`${baseClass}__header`}>
         <h4 className={`${baseClass}__title`}>{props.title}</h4>
@@ -78,7 +77,6 @@ const Chart = (props: Props) => {
         </ResponsiveContainer>
       </div>
     </div>
-  );
-};
+);
 
 export default Chart;
