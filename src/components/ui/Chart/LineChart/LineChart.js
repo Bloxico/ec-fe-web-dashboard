@@ -1,3 +1,21 @@
-import { LineChart } from 'react-chartkick';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  Brush,
+  ResponsiveContainer,
+} from 'recharts';
 
-export default LineChart;
+export {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  Brush,
+  ResponsiveContainer,
+};
