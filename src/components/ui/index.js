@@ -28,7 +28,6 @@ import Select from './Select';
 import Switch from './Switch';
 import Table from './Table';
 import Textarea from './Textarea';
-import { Container, Row, Col } from './Grid';
 
 export {
   Amount,
@@ -50,9 +49,6 @@ export {
   Select,
   Sidebar,
   Switch,
-  Container,
-  Row,
-  Col,
   LineChart,
   Line,
   XAxis,
