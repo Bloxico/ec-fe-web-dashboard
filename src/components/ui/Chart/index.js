@@ -1,9 +1,23 @@
-import ReactChartkick from 'react-chartkick';
-import Chart from 'chart.js';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  Brush,
+  ResponsiveContainer,
+} from './LineChart/LineChart';
+import CustomTooltip from './Tooltip/Tooltip';
 
-ReactChartkick.addAdapter(Chart);
-
-// eslint-disable-next-line
-import LineChart from './LineChart/LineChart';
-
-export { LineChart };
+export {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  Brush,
+  ResponsiveContainer,
+  CustomTooltip,
+};
