@@ -1,12 +1,45 @@
-import React from 'react';
+// @flow
 
-import { THEME_PREFIX } from 'src/constants/ui';
+import React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+
+import Sidebar from '@partials/Sidebar';
+
+import {
+  THEME_PREFIX,
+  PORTAL_PAGE,
+  DASHBOARD_PAGE,
+  TRANSACTIONS_PAGE,
+  EDIT_PROFILE,
+} from 'src/constants';
+
+import Dashboard from './Dashboard';
+import Transactions from './Transactions';
+import EditProfile from './EditProfile';
 
 const baseClass = `${THEME_PREFIX}-portal`;
 
+// fixing back button when logged out in safari or firefox
+window.onpageshow = function(event) {
+  if (event.persisted) {
+    window.location.reload();
+  }
+};
+
 const Portal = () => (
   <div className={baseClass}>
-    <h1>Portal page</h1>
+    <Sidebar />
+    <Switch>
+      <Route
+        exact
+        path={PORTAL_PAGE}
+        component={() => <Redirect to={DASHBOARD_PAGE} />}
+      />
+      <Route path={DASHBOARD_PAGE} component={Dashboard} />
+      <Route path={TRANSACTIONS_PAGE} component={Transactions} />
+      <Route path={EDIT_PROFILE} component={EditProfile} />
+      <Route path="*" component={() => <Redirect to={PORTAL_PAGE} />} />
+    </Switch>
   </div>
 );
 

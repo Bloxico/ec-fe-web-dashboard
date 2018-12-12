@@ -1,0 +1,21 @@
+.#{$namespace}-transactions {
+  width: 100%;
+  height: 100%;
+  font-family: $ui-font-family;
+
+  &__enrg-amount {
+    font-size: map-get($font-sizes, small);
+    color: map-get($text-colors, dark);
+  }
+
+  &__virtual-amount {
+    margin: 0;
+    font-size: map-get($font-sizes, large);
+    font-weight: 500;
+  }
+
+  &__date,
+  &__source {
+    font-size: map-get($font-sizes, small);
+  }
+}

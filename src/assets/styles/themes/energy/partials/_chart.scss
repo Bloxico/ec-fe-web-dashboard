@@ -1,0 +1,45 @@
+$tooltip-margin: 0 !default;
+$tooltip-padding: rhythm(.5) !default;
+$tooltip-font-weight: 400 !default;
+$tooltip-color: map-get($text-colors, 'light') !default;
+$tooltip-background: color('gray', alpha, 90) !default;
+$tooltip-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1) !default;
+$tooltip-transition: opacity .15s linear !default;
+$tooltip-border: none !default;
+$tooltip-border-radius: 8px !default;
+
+.#{$namespace}-chart {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-weight: bold;
+    margin: rhythm(.5) rhythm(1) rhythm(1);
+  }
+
+  &__action {
+    color: map-get($text-colors, dark);
+  }
+
+  &__graph {
+    height: rhythm(20);
+    padding: rhythm(.5) 0;
+    background-color: map-get($background-colors, control);
+  }
+
+  &__tooltip {
+    display: inline-flex;
+    flex-direction: column;
+    margin: $tooltip-margin;
+    text-align: left;
+    font-weight: $tooltip-font-weight;
+    color: $tooltip-color;
+    background-color: $tooltip-background;
+    box-shadow: $tooltip-shadow;
+    padding: $tooltip-padding;
+    border-radius: $tooltip-border-radius;
+  }
+}

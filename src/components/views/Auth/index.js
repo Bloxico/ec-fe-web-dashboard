@@ -1,28 +1,17 @@
-import { compose, withHandlers } from 'recompose';
+// @flow
+
+import { compose } from 'recompose';
 import { connect } from 'react-redux';
 
-import { login } from 'src/state/actionCreators';
+import Auth from './Auth';
 
-import Auth, { PropsT } from './Auth';
+const mapStateToProps = () => ({});
 
-const mapStateToProps = ({
-  auth: {
-    login: { inProgress },
-  },
-}) => ({ isLoginInProgress: inProgress });
-
-const actions = {
-  login,
-};
+const actions = {};
 
 export default compose(
   connect(
     mapStateToProps,
     actions,
   ),
-  withHandlers({
-    handleLoginClick: ({ login }: PropsT) => () => {
-      login();
-    },
-  }),
 )(Auth);
