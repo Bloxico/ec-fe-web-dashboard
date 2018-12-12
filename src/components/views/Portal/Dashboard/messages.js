@@ -31,4 +31,16 @@ export default defineMessages({
     id: 'exchangeRateFailed',
     defaultMessage: 'ENRG value failed to load.',
   },
+  prevented: {
+    id: 'prevented',
+    defaultMessage: 'Prevented',
+  },
+  time: {
+    id: 'time',
+    defaultMessage: 'Date',
+  },
+  ofCO2: {
+    id: 'ofCO2',
+    defaultMessage: 'of CO2',
+  },
 });

@@ -10,15 +10,11 @@ import { Loader } from '@ui';
 import Chart from './Chart';
 
 export interface Props {
-  isSidebarOpen: boolean;
-  showSidebar: Function;
-  hideSidebar: Function;
   MSGDashboard: string;
   MSGCO2Prevented: string;
   fetchTransactions: Function;
   fetchExchangeRate: Function;
-  transactions: [];
-  chartData: any;
+  chartData: [];
   virtualBalance: number;
   dashboardBalance: number;
   fetchTransactionsInProgress: boolean;
@@ -27,11 +23,13 @@ export interface Props {
   MSGBicycleBits: string;
   MSGExchangeRateFailed: string;
   enrgEurValue: number;
+  MSGPrevented: string;
+  MSGTime: string;
+  MSGOfCO2: string;
 }
 
 const baseClass = `${THEME_PREFIX}-dashboard`;
 
-// TODO@martins get actual colors from designers
 class Dashboard extends Component<Props> {
   componentDidMount() {
     const { fetchTransactions, fetchExchangeRate } = this.props;
@@ -47,6 +45,9 @@ class Dashboard extends Component<Props> {
       MSGEnergyShort,
       MSGBicycleBits,
       MSGExchangeRateFailed,
+      MSGTime,
+      MSGPrevented,
+      MSGOfCO2,
       chartData,
       virtualBalance,
       dashboardBalance,
@@ -89,7 +90,9 @@ class Dashboard extends Component<Props> {
             <section className={`${baseClass}__chart`}>
               <Chart
                 data={chartData}
-                lineColor="#1be088"
+                timeMSG={MSGTime}
+                preventedMSG={MSGPrevented}
+                ofCO2MSG={MSGOfCO2}
                 title={MSGCO2Prevented}
               />
             </section>
