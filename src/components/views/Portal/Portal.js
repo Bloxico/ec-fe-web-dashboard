@@ -19,7 +19,7 @@ import EditProfile from './EditProfile';
 
 const baseClass = `${THEME_PREFIX}-portal`;
 
-// fixing back button when logged out in safari or firefox
+// fixing back button when logged out in safari or firefox.
 window.onpageshow = function(event) {
   if (event.persisted) {
     window.location.reload();
