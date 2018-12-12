@@ -6,7 +6,17 @@ import Checkbox from './Checkbox';
 import Form, { FormField, InputGroup } from './Form';
 import Icon from './Icon';
 import Label from './Label';
-import { LineChart } from './Chart';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  Brush,
+  ResponsiveContainer,
+  CustomTooltip,
+} from './Chart';
 import Loader from './Loader';
 import Logo from './Logo';
 import Modal from './Modal';
@@ -18,7 +28,6 @@ import Select from './Select';
 import Switch from './Switch';
 import Table from './Table';
 import Textarea from './Textarea';
-import { Container, Row, Col } from './Grid';
 
 export {
   Amount,
@@ -40,10 +49,15 @@ export {
   Select,
   Sidebar,
   Switch,
-  Container,
-  Row,
-  Col,
   LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  Brush,
+  ResponsiveContainer,
+  CustomTooltip,
   Table,
   Textarea,
 };

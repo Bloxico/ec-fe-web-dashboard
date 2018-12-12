@@ -37,21 +37,32 @@ export function* fetchTransactions$({ payload }): Generator<*, *, *> {
       let balance = 0;
       let totalVirtualCurrency = 0;
       date.setMonth(date.getMonth() - payload);
-      const chartData = data.transactionDtos
-        .filter(o => new Date(o.created) >= date)
-        .reduce((obj, item) => {
-          const newDate = new Date(item.created).toLocaleDateString();
-          if (newDate in obj) {
-            obj[newDate] += item.envAmount * 250;
-          } else {
-            obj[newDate] = item.envAmount * 250;
-          }
-          return obj;
-        }, {});
 
+      // in future most of this will be done on BE
+      // filter from payload => reduce it to one object and see if there is more transactions on the same date and sum it => map that object in array for the chart
+      const chartData = Object.entries(
+        data.transactionDtos
+          .filter(o => new Date(o.created) >= date)
+          .reduce((obj, item) => {
+            const newDate = new Date(item.created).toLocaleDateString();
+            if (newDate in obj) {
+              obj[newDate] += item.envAmount * 250;
+            } else {
+              obj[newDate] = item.envAmount * 250;
+            }
+            return obj;
+          }, {}),
+      ).map(([date, CO2Prevented]) => {
+        const r = {};
+        r.date = date;
+        r['CO2 prevented'] = CO2Prevented;
+        return r;
+      });
+
+      // collect ENRG and BB balance
       data.transactionDtos.forEach(e => {
         balance += e.enrgAmount;
-        totalVirtualCurrency += e.virtualCurrencyAmmount;
+        totalVirtualCurrency += e.virtualCurrencyAmount;
       });
 
       yield put(

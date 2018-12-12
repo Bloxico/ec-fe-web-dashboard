@@ -47,6 +47,9 @@ export default compose(
     MSGEnergyShort: formatMessage(messages.energyShort),
     MSGBicycleBits: formatMessage(messages.bicycleBits),
     MSGExchangeRateFailed: formatMessage(messages.exchangeRateFailed),
+    MSGPrevented: formatMessage(messages.prevented),
+    MSGTime: formatMessage(messages.time),
+    MSGOfCO2: formatMessage(messages.ofCO2),
   })),
   withConfigSizes,
 )(Dashboard);
