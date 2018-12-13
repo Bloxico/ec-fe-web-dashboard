@@ -20,11 +20,7 @@ const baseClass = `${THEME_PREFIX}-transactions`;
 const columns = [
   {
     Header: 'Amount',
-    accessor: ({
-      enrgAmount,
-      virtualCurrencyAmount,
-      virtualCurrencyCode,
-    }) => ({
+    accessor: ({ enrgAmount, virtualCurrencyAmount, virtualCurrencyCode }) => ({
       enrgAmount,
       virtualCurrencyAmount,
       virtualCurrencyCode,
