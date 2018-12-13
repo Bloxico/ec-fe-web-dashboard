@@ -15,6 +15,7 @@ export interface Props {
   fetchTransactions: Function;
   fetchExchangeRate: Function;
   chartData: [];
+  transactions: [];
   virtualBalance: number;
   dashboardBalance: number;
   fetchTransactionsInProgress: boolean;
@@ -49,6 +50,7 @@ class Dashboard extends Component<Props> {
       MSGPrevented,
       MSGOfCO2,
       chartData,
+      transactions,
       virtualBalance,
       dashboardBalance,
       fetchTransactionsInProgress,
@@ -86,16 +88,17 @@ class Dashboard extends Component<Props> {
                 </dl>
               </div>
             </section>
-
-            <section className={`${baseClass}__chart`}>
-              <Chart
-                data={chartData}
-                timeMSG={MSGTime}
-                preventedMSG={MSGPrevented}
-                ofCO2MSG={MSGOfCO2}
-                title={MSGCO2Prevented}
-              />
-            </section>
+            {transactions.length > 0 && (
+              <section className={`${baseClass}__chart`}>
+                <Chart
+                  data={chartData}
+                  timeMSG={MSGTime}
+                  preventedMSG={MSGPrevented}
+                  ofCO2MSG={MSGOfCO2}
+                  title={MSGCO2Prevented}
+                />
+              </section>
+            )}
           </React.Fragment>
         )}
       </div>

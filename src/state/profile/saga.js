@@ -3,10 +3,10 @@
 import { all, takeEvery, put } from 'redux-saga/effects';
 
 import http from 'src/services/http';
+import { MODALS } from 'src/constants';
+import { showModal } from 'src/state/actions';
 
 import * as actions from './actions';
-import { MODALS } from '../../constants';
-import { showModal } from '../actions';
 
 export function* fetchProfileData$(): Generator<*, *, *> {
   try {
