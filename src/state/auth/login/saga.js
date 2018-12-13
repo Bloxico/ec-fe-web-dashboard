@@ -5,11 +5,16 @@ import { push } from 'react-router-redux';
 
 import http from 'src/services/http';
 import Cookie from 'src/services/cookie';
-import { AUTH_COOKIE, PORTAL_PAGE } from 'src/constants';
+import {
+  AUTH_COOKIE,
+  PORTAL_PAGE,
+  CLIENT_ID,
+  CLIENT_PASS,
+  MODALS,
+} from 'src/constants';
+import { showModal } from 'src/state/actions';
 
 import * as actions from './actions';
-import { showModal } from '../../actions';
-import { MODALS } from '../../../constants';
 
 export function* login$({ payload }): Generator<*, *, *> {
   const params = {
@@ -25,8 +30,8 @@ export function* login$({ payload }): Generator<*, *, *> {
         .join('&'),
       {
         auth: {
-          username: 'clientapp',
-          password: '123456',
+          username: `${CLIENT_ID}`,
+          password: `${CLIENT_PASS}`,
         },
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',

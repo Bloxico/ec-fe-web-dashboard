@@ -4,6 +4,10 @@ const APP_PREFIX = 'ENRG_';
 
 export const API_URL: string = env[`${APP_PREFIX}API_URL`];
 
+export const CLIENT_ID: string = env[`${APP_PREFIX}CLIENT_ID`];
+
+export const CLIENT_PASS: string = env[`${APP_PREFIX}CLIENT_PASS`];
+
 export const HTTP_RETRY_REQUESTS: boolean = Boolean(
   env[`${APP_PREFIX}HTTP_RETRY_REQUESTS`],
 );
