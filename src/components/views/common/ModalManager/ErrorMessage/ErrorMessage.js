@@ -1,6 +1,8 @@
 // @flow
 
 import * as React from 'react';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
 import Button from '@ui/Button';
 import { THEME_PREFIX, ERROR_CODES } from 'src/constants';
@@ -18,13 +20,23 @@ export interface Props {
   MSGTokenExpired: string;
   MSGUserDoesNotExist: string;
   MSGUserNotVerified: string;
+  MSGVerifyNow: string;
+  MSGPartnerIdAlreadyExists: string;
+  redirectPath: string;
   handleClick: Function;
 }
 
 const baseClass = `${THEME_PREFIX}-error-message`;
+const btnClasses = classNames(
+  `${THEME_PREFIX}-button`,
+  `${THEME_PREFIX}-button--large`,
+  `${THEME_PREFIX}-button--full`,
+  `${THEME_PREFIX}-button--secondary`,
+);
 
 const ErrorMessage = (props: Props) => {
   let { content } = props;
+  let linkText = '';
   const {
     MSGGotIt,
     MSGTryAgain,
@@ -37,8 +49,10 @@ const ErrorMessage = (props: Props) => {
     MSGTokenExpired,
     MSGUserDoesNotExist,
     MSGUserNotVerified,
+    MSGVerifyNow,
     MSGPartnerIdAlreadyExists,
     handleClick,
+    redirectPath,
   } = props;
 
   switch (content) {
@@ -62,6 +76,7 @@ const ErrorMessage = (props: Props) => {
       break;
     case ERROR_CODES.USER_NOT_VERIFIED:
       content = MSGUserNotVerified;
+      linkText = MSGVerifyNow;
       break;
     case ERROR_CODES.PARTNER_USER_ID_ALREADY_EXISTS:
       content = MSGPartnerIdAlreadyExists;
@@ -84,6 +99,16 @@ const ErrorMessage = (props: Props) => {
         </p>
       </section>
       <footer className={`${baseClass}__footer`}>
+        {redirectPath && (
+          <Link
+            onClick={handleClick}
+            className={`${btnClasses}`}
+            to={redirectPath}
+          >
+            {linkText}
+          </Link>
+        )}
+        <div />
         <Button
           type="secondary"
           width="full"

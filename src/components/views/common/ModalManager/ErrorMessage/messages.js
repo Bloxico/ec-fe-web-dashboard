@@ -58,6 +58,10 @@ export default defineMessages({
     id: 'userNotVerified',
     defaultMessage: 'User not verified.',
   },
+  userNotVerifiedLink: {
+    id: 'userNotVerifiedLink',
+    defaultMessage: 'Verify now!',
+  },
   partnerIdAlreadyExists: {
     id: 'partnerIdAlreadyExists',
     defaultMessage: 'Partner ID already used.',
