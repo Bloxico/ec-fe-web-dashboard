@@ -33,6 +33,7 @@ export default compose(
     MSGTokenExpired: formatMessage(messages.tokenExpired),
     MSGUserDoesNotExist: formatMessage(messages.userDoesNotExist),
     MSGUserNotVerified: formatMessage(messages.userNotVerified),
+    MSGVerifyNow: formatMessage(messages.userNotVerifiedLink),
     MSGPartnerIdAlreadyExists: formatMessage(messages.partnerIdAlreadyExists),
   })),
   withHandlers({

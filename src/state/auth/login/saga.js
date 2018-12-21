@@ -11,6 +11,8 @@ import {
   CLIENT_ID,
   CLIENT_PASS,
   MODALS,
+  VERIFY_PAGE,
+  ERROR_CODES,
 } from 'src/constants';
 import { showModal } from 'src/state/actions';
 
@@ -22,6 +24,7 @@ export function* login$({ payload }): Generator<*, *, *> {
     scope: 'access-profile',
     ...payload,
   };
+
   try {
     const { data } = yield http.post(
       'oauth/token',
@@ -47,12 +50,19 @@ export function* login$({ payload }): Generator<*, *, *> {
     yield put(push(PORTAL_PAGE));
     yield put(actions.clearLoginState());
   } catch ({ response: { data } }) {
+    let redirectPath = '';
+
+    if (data.error_description === ERROR_CODES.USER_NOT_VERIFIED) {
+      redirectPath = `${VERIFY_PAGE}/${payload.username}`;
+    }
+
     yield put(
       showModal({
         modalName: MODALS.ErrorMessage,
         align: 'center',
         data: {
           content: data.error_description,
+          redirectPath,
         },
       }),
     );
