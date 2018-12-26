@@ -46,9 +46,9 @@ export function* fetchTransactions$({ payload }): Generator<*, *, *> {
           .reduce((obj, item) => {
             const newDate = new Date(item.created).toLocaleDateString();
             if (newDate in obj) {
-              obj[newDate] += item.envAmount * 250;
+              obj[newDate] += item.envAmount * 150;
             } else {
-              obj[newDate] = item.envAmount * 250;
+              obj[newDate] = item.envAmount * 150;
             }
             return obj;
           }, {}),
