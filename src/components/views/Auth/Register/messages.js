@@ -35,4 +35,9 @@ export default defineMessages({
     id: 'continue',
     defaultMessage: 'Continue',
   },
+  emptyRegistration: {
+    id: 'emptyRegistration',
+    defaultMessage:
+      'Use one of the following portals for registration to start accumulating Energycoin in your account:',
+  },
 });

@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 import classNames from 'classnames';
 
 import Header from '@partials/Header';
-import { Form, FormField, Button } from '@ui';
+import { Form, FormField, Button, Anchor } from '@ui';
 import { THEME_PREFIX } from 'src/constants';
 
 export type Props = {
@@ -19,6 +19,7 @@ export type Props = {
   MSGCity: string,
   MSGNicknameOptional: string,
   MSGContinue: string,
+  MSGEmptyRegistration: string,
   requiredIntl: Function,
   alphanumericIntl: Function,
   passwordIntl: Function,
@@ -87,6 +88,7 @@ class Register extends Component<Props> {
       MSGNicknameOptional,
       isRegistrationInProgress,
       MSGContinue,
+      MSGEmptyRegistration,
       regions,
     } = this.props;
 
@@ -109,77 +111,89 @@ class Register extends Component<Props> {
         })),
       ];
     }
+    if (this.externalId)
+      return (
+        <div className={classes}>
+          <Header title={MSGCreateAnAccount} />
 
-    return (
-      <div className={classes}>
-        <Header title={MSGCreateAnAccount} />
-
-        <Form
-          onSubmit={handleSubmit(this.handleRegistration)}
-          className={`${baseClass}__content`}
-        >
-          <Field
-            placeholder={MSGEmail}
-            type="email"
-            component={FormField}
-            name="email"
-            width="full"
-            validate={[requiredValidator, emailValidator]}
-          />
-          <Field
-            placeholder={MSGPassword}
-            type="password"
-            component={FormField}
-            name="password"
-            width="full"
-            validate={[requiredValidator, passwordValidator]}
-            ref={this.passwordField}
-          />
-          <Field
-            placeholder={MSGRepeatPassword}
-            type="password"
-            component={FormField}
-            name="matchPassword"
-            width="full"
-            validate={[requiredValidator, passwordValidator, matchValidator]}
-          />
-          <Field
-            placeholder={MSGRegion}
-            type="select"
-            component={FormField}
-            name="regionName"
-            width="full"
-            options={regionOptions}
-            selected="Select"
-            validate={[requiredValidator]}
-          />
-          <Field
-            placeholder={MSGCity}
-            type="text"
-            component={FormField}
-            name="city"
-            width="full"
-            validate={[requiredValidator]}
-          />
-          <Field
-            placeholder={MSGNicknameOptional}
-            type="text"
-            component={FormField}
-            name="name"
-            width="full"
-            validate={[alphanumericValidator]}
-          />
-
-          <Button
-            type="primary"
-            size="large"
-            width="full"
-            action="submit"
-            disabled={isRegistrationInProgress}
+          <Form
+            onSubmit={handleSubmit(this.handleRegistration)}
+            className={`${baseClass}__content`}
           >
-            {MSGContinue}
-          </Button>
-        </Form>
+            <Field
+              placeholder={MSGEmail}
+              type="email"
+              component={FormField}
+              name="email"
+              width="full"
+              validate={[requiredValidator, emailValidator]}
+            />
+            <Field
+              placeholder={MSGPassword}
+              type="password"
+              component={FormField}
+              name="password"
+              width="full"
+              validate={[requiredValidator, passwordValidator]}
+              ref={this.passwordField}
+            />
+            <Field
+              placeholder={MSGRepeatPassword}
+              type="password"
+              component={FormField}
+              name="matchPassword"
+              width="full"
+              validate={[requiredValidator, passwordValidator, matchValidator]}
+            />
+            <Field
+              placeholder={MSGRegion}
+              type="select"
+              component={FormField}
+              name="regionName"
+              width="full"
+              options={regionOptions}
+              selected="Select"
+              validate={[requiredValidator]}
+            />
+            <Field
+              placeholder={MSGCity}
+              type="text"
+              component={FormField}
+              name="city"
+              width="full"
+              validate={[requiredValidator]}
+            />
+            <Field
+              placeholder={MSGNicknameOptional}
+              type="text"
+              component={FormField}
+              name="name"
+              width="full"
+              validate={[alphanumericValidator]}
+            />
+
+            <Button
+              type="primary"
+              size="large"
+              width="full"
+              action="submit"
+              disabled={isRegistrationInProgress}
+            >
+              {MSGContinue}
+            </Button>
+          </Form>
+        </div>
+      );
+    return (
+      <div className={baseClass}>
+        <Header title={MSGCreateAnAccount} />
+        <div className={`${baseClass}__content`}>
+          {MSGEmptyRegistration}
+          <hr />
+          <Anchor target="_blank" href="https://ring-ring.nu/">
+            Ring-ring
+          </Anchor>
+        </div>
       </div>
     );
   }
