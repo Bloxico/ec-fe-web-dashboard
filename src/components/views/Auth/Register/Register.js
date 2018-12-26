@@ -10,7 +10,7 @@ import { THEME_PREFIX } from 'src/constants';
 
 export type Props = {
   handleSubmit: Function,
-  isRegistrationInProgress: boolean,
+  registerInProgress: boolean,
   MSGCreateAnAccount: string,
   MSGEmail: string,
   MSGPassword: string,
@@ -86,7 +86,7 @@ class Register extends Component<Props> {
       MSGRegion,
       MSGCity,
       MSGNicknameOptional,
-      isRegistrationInProgress,
+      registerInProgress,
       MSGContinue,
       MSGEmptyRegistration,
       regions,
@@ -177,7 +177,7 @@ class Register extends Component<Props> {
               size="large"
               width="full"
               action="submit"
-              disabled={isRegistrationInProgress}
+              disabled={registerInProgress}
             >
               {MSGContinue}
             </Button>
