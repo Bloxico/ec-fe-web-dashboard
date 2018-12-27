@@ -45,6 +45,7 @@ export default compose(
     MSGCity: formatMessage(messages.city),
     MSGNicknameOptional: formatMessage(messages.nicknameOptional),
     MSGContinue: formatMessage(messages.continue),
+    MSGEmptyRegistration: formatMessage(messages.emptyRegistration),
   })),
   withProps(({ intl }) => ({
     requiredIntl: required({ intl }),
