@@ -29,6 +29,7 @@ export type Props = {
   fetchRegions: Function,
   register: Function,
   location: any,
+  partnerId: string,
 };
 
 const baseClass = `${THEME_PREFIX}-register`;
@@ -43,11 +44,9 @@ class Register extends Component<Props> {
       passwordIntl,
       emailIntl,
       matchIntl,
-      location,
     } = props;
 
     this.passwordField = React.createRef();
-    this.externalId = new URLSearchParams(location.search).get('userId');
 
     this.validators = {
       requiredValidator: requiredIntl,
@@ -61,7 +60,6 @@ class Register extends Component<Props> {
 
   componentDidMount() {
     const { fetchRegions } = this.props;
-
     fetchRegions();
   }
 
@@ -71,9 +69,9 @@ class Register extends Component<Props> {
   };
 
   handleRegistration = (data: any) => {
-    const { register } = this.props;
-    const isExternal = Boolean(this.externalId);
-    register({ isExternal, data: { ...data, partnerUserId: this.externalId } });
+    const { register, partnerId } = this.props;
+    const isExternal = Boolean(partnerId);
+    register({ isExternal, data: { ...data, partnerUserId: partnerId } });
   };
 
   render() {
@@ -90,6 +88,7 @@ class Register extends Component<Props> {
       MSGContinue,
       MSGEmptyRegistration,
       regions,
+      partnerId,
     } = this.props;
 
     const {
@@ -111,7 +110,7 @@ class Register extends Component<Props> {
         })),
       ];
     }
-    if (this.externalId)
+    if (partnerId)
       return (
         <div className={classes}>
           <Header title={MSGCreateAnAccount} />
