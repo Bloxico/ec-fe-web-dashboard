@@ -28,7 +28,6 @@ export type Props = {
   regions: [],
   fetchRegions: Function,
   register: Function,
-  location: any,
   partnerId: string,
 };
 
