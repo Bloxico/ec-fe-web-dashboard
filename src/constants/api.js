@@ -15,3 +15,5 @@ export const HTTP_RETRY_REQUESTS: boolean = Boolean(
 export const HTTP_TIMEOUT: number = Number(env[`${APP_PREFIX}HTTP_TIMEOUT`]);
 
 export const AUTH_COOKIE: string = '_ecAuthData';
+
+export const isProd = env.NODE_ENV === 'production';

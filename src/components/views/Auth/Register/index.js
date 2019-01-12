@@ -4,7 +4,11 @@ import { compose, withProps } from 'recompose';
 import { reduxForm } from 'redux-form';
 import { injectIntl } from 'react-intl';
 
-import { isRegisterInProgress, getRegions } from 'src/state/selectors';
+import {
+  isRegisterInProgress,
+  getRegions,
+  getPartnerId,
+} from 'src/state/selectors';
 import { register, fetchRegions } from 'src/state/actions';
 import {
   alphanumeric,
@@ -20,6 +24,7 @@ import messages from './messages';
 const mapStateToProps = state => ({
   registerInProgress: isRegisterInProgress(state),
   regions: getRegions(state),
+  ...getPartnerId(state),
 });
 
 const actions = {

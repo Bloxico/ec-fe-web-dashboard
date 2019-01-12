@@ -66,4 +66,9 @@ export default defineMessages({
     id: 'partnerIdAlreadyExists',
     defaultMessage: 'Partner ID already used.',
   },
+  partnerIdNotValid: {
+    id: 'partnerIdNotValid',
+    defaultMessage:
+      'Your referral link is not valid or our partner server is down. Please try later.',
+  },
 });
