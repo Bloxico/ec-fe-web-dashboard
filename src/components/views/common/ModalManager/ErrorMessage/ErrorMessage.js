@@ -51,6 +51,7 @@ const ErrorMessage = (props: Props) => {
     MSGUserNotVerified,
     MSGVerifyNow,
     MSGPartnerIdAlreadyExists,
+    MSGPartnerIdNotValid,
     handleClick,
     redirectPath,
   } = props;
@@ -80,6 +81,9 @@ const ErrorMessage = (props: Props) => {
       break;
     case ERROR_CODES.PARTNER_USER_ID_ALREADY_EXISTS:
       content = MSGPartnerIdAlreadyExists;
+      break;
+    case ERROR_CODES.PARTNER_USER_ID_NOT_VALID:
+      content = MSGPartnerIdNotValid;
       break;
     default:
       content = undefined;

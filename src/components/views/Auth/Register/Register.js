@@ -28,7 +28,10 @@ export type Props = {
   regions: [],
   fetchRegions: Function,
   register: Function,
+  partnerId: string,
+  pristine: boolean,
   location: any,
+  registerFailed: boolean,
 };
 
 const baseClass = `${THEME_PREFIX}-register`;
@@ -61,7 +64,6 @@ class Register extends Component<Props> {
 
   componentDidMount() {
     const { fetchRegions } = this.props;
-
     fetchRegions();
   }
 
@@ -71,9 +73,12 @@ class Register extends Component<Props> {
   };
 
   handleRegistration = (data: any) => {
-    const { register } = this.props;
-    const isExternal = Boolean(this.externalId);
-    register({ isExternal, data: { ...data, partnerUserId: this.externalId } });
+    const { register, partnerId } = this.props;
+    const isExternal = Boolean(partnerId || this.externalId);
+    register({
+      isExternal,
+      registerData: { ...data, partnerUserId: partnerId || this.externalId },
+    });
   };
 
   render() {
@@ -90,6 +95,9 @@ class Register extends Component<Props> {
       MSGContinue,
       MSGEmptyRegistration,
       regions,
+      partnerId,
+      pristine,
+      registerFailed,
     } = this.props;
 
     const {
@@ -111,7 +119,7 @@ class Register extends Component<Props> {
         })),
       ];
     }
-    if (this.externalId)
+    if (partnerId || this.externalId)
       return (
         <div className={classes}>
           <Header title={MSGCreateAnAccount} />
@@ -177,7 +185,7 @@ class Register extends Component<Props> {
               size="large"
               width="full"
               action="submit"
-              disabled={registerInProgress}
+              disabled={registerInProgress || (pristine && registerFailed)}
             >
               {MSGContinue}
             </Button>

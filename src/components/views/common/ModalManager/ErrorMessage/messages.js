@@ -66,4 +66,9 @@ export default defineMessages({
     id: 'partnerIdAlreadyExists',
     defaultMessage: 'Partner ID already used.',
   },
+  partnerIdNotValid: {
+    id: 'partnerIdNotValid',
+    defaultMessage:
+      'The partner ID that you received is invalid. Please contact the support of the partner where you registered to resolve the issue.',
+  },
 });
