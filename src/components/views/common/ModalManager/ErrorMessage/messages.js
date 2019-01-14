@@ -69,6 +69,6 @@ export default defineMessages({
   partnerIdNotValid: {
     id: 'partnerIdNotValid',
     defaultMessage:
-      'Your referral link is not valid or our partner server is down. Please try later.',
+      'The partner ID that you received is invalid. Please contact the support of the partner where you registered to resolve the issue.',
   },
 });
