@@ -30,8 +30,8 @@ export type Props = {
   register: Function,
   partnerId: string,
   pristine: boolean,
-  initialValues: any,
   location: any,
+  registerFailed: boolean,
 };
 
 const baseClass = `${THEME_PREFIX}-register`;
