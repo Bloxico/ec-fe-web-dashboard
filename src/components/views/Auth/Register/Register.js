@@ -29,6 +29,9 @@ export type Props = {
   fetchRegions: Function,
   register: Function,
   partnerId: string,
+  pristine: boolean,
+  location: any,
+  registerFailed: boolean,
 };
 
 const baseClass = `${THEME_PREFIX}-register`;
@@ -43,9 +46,11 @@ class Register extends Component<Props> {
       passwordIntl,
       emailIntl,
       matchIntl,
+      location,
     } = props;
 
     this.passwordField = React.createRef();
+    this.externalId = new URLSearchParams(location.search).get('userId');
 
     this.validators = {
       requiredValidator: requiredIntl,
@@ -69,8 +74,11 @@ class Register extends Component<Props> {
 
   handleRegistration = (data: any) => {
     const { register, partnerId } = this.props;
-    const isExternal = Boolean(partnerId);
-    register({ isExternal, data: { ...data, partnerUserId: partnerId } });
+    const isExternal = Boolean(partnerId || this.externalId);
+    register({
+      isExternal,
+      registerData: { ...data, partnerUserId: partnerId || this.externalId },
+    });
   };
 
   render() {
@@ -88,6 +96,8 @@ class Register extends Component<Props> {
       MSGEmptyRegistration,
       regions,
       partnerId,
+      pristine,
+      registerFailed,
     } = this.props;
 
     const {
@@ -109,7 +119,7 @@ class Register extends Component<Props> {
         })),
       ];
     }
-    if (partnerId)
+    if (partnerId || this.externalId)
       return (
         <div className={classes}>
           <Header title={MSGCreateAnAccount} />
@@ -175,7 +185,7 @@ class Register extends Component<Props> {
               size="large"
               width="full"
               action="submit"
-              disabled={registerInProgress}
+              disabled={registerInProgress || (pristine && registerFailed)}
             >
               {MSGContinue}
             </Button>

@@ -8,6 +8,8 @@ import {
   isRegisterInProgress,
   getRegions,
   getPartnerId,
+  getFailedData,
+  isFail,
 } from 'src/state/selectors';
 import { register, fetchRegions } from 'src/state/actions';
 import {
@@ -22,8 +24,10 @@ import Register from './Register';
 import messages from './messages';
 
 const mapStateToProps = state => ({
+  initialValues: getFailedData(state),
   registerInProgress: isRegisterInProgress(state),
   regions: getRegions(state),
+  registerFailed: isFail(state),
   ...getPartnerId(state),
 });
 

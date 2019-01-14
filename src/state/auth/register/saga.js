@@ -30,16 +30,18 @@ export function* fetchRegions$(): Generator<*, *, *> {
 }
 
 export function* register$({
-  payload: { isExternal, data },
+  payload: { isExternal, registerData },
 }): Generator<*, *, *> {
   try {
     if (isExternal) {
-      yield http.post('user/externalRegistration', data);
+      yield http.post('user/externalRegistration', registerData);
     } else {
-      yield http.post('user/registration', data);
+      yield http.post('user/registration', registerData);
     }
-    yield put(push(`${VERIFY_PAGE}/${data.email}`));
+
+    yield put(push(`${VERIFY_PAGE}/${registerData.email}`));
   } catch ({ response: { data } }) {
+    yield put(actions.registrationFail(registerData));
     yield put(
       showModal({
         modalName: MODALS.ErrorMessage,
