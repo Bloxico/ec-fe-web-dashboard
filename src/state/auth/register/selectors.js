@@ -19,7 +19,12 @@ export const getRegions = createSelector(
   ({ regions }) => regions,
 );
 
-export const getRegisterEmail = createSelector(
+export const getFailedData = createSelector(
   getRegister,
-  ({ email }) => email,
+  ({ data }) => data,
+);
+
+export const isFail = createSelector(
+  getRegister,
+  ({ fail }) => fail,
 );

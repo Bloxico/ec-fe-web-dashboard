@@ -35,6 +35,7 @@ export default compose(
     MSGUserNotVerified: formatMessage(messages.userNotVerified),
     MSGVerifyNow: formatMessage(messages.userNotVerifiedLink),
     MSGPartnerIdAlreadyExists: formatMessage(messages.partnerIdAlreadyExists),
+    MSGPartnerIdNotValid: formatMessage(messages.partnerIdNotValid),
   })),
   withHandlers({
     handleClick: ({ hideModal }) => () => {
