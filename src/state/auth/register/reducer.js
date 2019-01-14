@@ -34,9 +34,9 @@ export default handleActions(
       actions.REGISTRATION_FAIL,
       (state, { payload }) => ({
         ...state,
+        data: payload,
         inProgress: false,
         fail: true,
-        ...(payload && payload.message ? { error: payload.message } : {}),
       }),
     ],
     [

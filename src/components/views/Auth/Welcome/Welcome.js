@@ -70,7 +70,11 @@ class Welcome extends Component<Props> {
 
         <section className={`${baseClass}__content`}>
           <Link
-            to={REGISTER_PAGE}
+            to={
+              (this.externalId &&
+                `${REGISTER_PAGE}?userId=${this.externalId}`) ||
+              `${REGISTER_PAGE}`
+            }
             className={`${btnClasses} ${THEME_PREFIX}-button--primary`}
           >
             {MSGCreateAnAccount}
