@@ -18,6 +18,7 @@ const currencyIcons = {
 
 const currencyAbbrs = {
   energy: 'ENRG',
+  BB: 'BB',
 };
 
 const baseClass = `${THEME_PREFIX}-amount`;
@@ -55,7 +56,7 @@ const Amount = (props: Props) => {
   const {
     value,
     precision = 0,
-    currency = 'energy',
+    currency,
     showIcon = false,
     showCurrency = true,
     size,
@@ -74,7 +75,9 @@ const Amount = (props: Props) => {
     <span className={classes}>
       {showIcon && getIcon(currency, size)}
       {!showIcon && showCurrency && (
-        <span className={`${baseClass}__sign`}>{currencyAbbrs[currency]}</span>
+        <span className={`${baseClass}__sign`}>
+          {currencyAbbrs[currency || 'energy']}
+        </span>
       )}
       <Output
         value={`${value}`.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, $1 => `${$1} `)}

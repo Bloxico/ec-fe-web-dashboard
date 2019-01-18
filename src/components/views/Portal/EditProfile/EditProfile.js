@@ -131,6 +131,13 @@ class EditProfile extends Component<Props> {
               validate={[requiredValidator, emailValidator]}
             />
             <Field
+              placeholder={MSGEmail}
+              type="text"
+              component={FormField}
+              name="address"
+              width="full"
+            />
+            <Field
               placeholder={MSGName}
               type="text"
               component={FormField}
