@@ -5,7 +5,7 @@ import Moment from 'react-moment';
 
 import { THEME_PREFIX } from 'src/constants';
 
-import { Amount, Table, Loader, Anchor } from '@ui';
+import { Amount, Table, Loader, Anchor, Select } from '@ui';
 import Header from '@partials/Header';
 
 export type Props = {
@@ -20,7 +20,7 @@ const baseClass = `${THEME_PREFIX}-transactions`;
 
 const columns = [
   {
-    Header: 'Amount',
+    Header: 'Date',
     accessor: ({
       enrgAmount,
       virtualCurrencyAmount,
@@ -70,14 +70,33 @@ const columns = [
           />
           <span className={`${baseClass}__source`}>{source}</span>
         </div>
-        <Anchor
-          href="desposocule!"
-          target="_blank"
-          className={`${baseClass}__text--tx`}
-        >
-          0xculecava_eb82c905fcace80865576f82b64750bc8eebb0c12c367a527b90e71
-        </Anchor>
+        {false && (
+          <Anchor
+            href="desposocule!"
+            target="_blank"
+            className={`${baseClass}__text--tx`}
+          >
+            0xculecava_eb82c905fcace80865576f82b64750bc8eebb0c12c367a527b90e71
+          </Anchor>
+        )}
       </React.Fragment>
+    ),
+    filterMethod: (filter, row) => {
+      if (filter.value === 'all') {
+        return true;
+      }
+      if (filter.value === 'true') {
+        return row[filter.id].enrgAmount >= 1;
+      }
+      return row[filter.id].enrgAmount < 1;
+    },
+    Filter: ({ filter, onChange }) => (
+      <Select
+        onChange={onChange}
+        width="full"
+        selected={filter ? filter.value : 'all'}
+        options={{ all: 'Show All', true: 'Can Drink', false: `Can't Drink` }}
+      />
     ),
   },
 ];
@@ -100,7 +119,12 @@ class Transactions extends Component<Props> {
         <Header action="menu" title={MSGTransactions} />
         {fetchTransactionsInProgress && <Loader />}
         {!fetchTransactionsInProgress && (
-          <Table showPagination data={transactions} columns={columns} />
+          <Table
+            filterable
+            showPagination
+            data={transactions}
+            columns={columns}
+          />
         )}
       </div>
     );
