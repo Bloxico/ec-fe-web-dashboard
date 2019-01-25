@@ -32,7 +32,6 @@ export function* fetchTransactions$({ payload }): Generator<*, *, *> {
       withAuth: true,
       cache: false,
     });
-    console.log(data);
     if (payload) {
       const date = new Date();
       let balance = 0;
