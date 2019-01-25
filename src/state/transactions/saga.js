@@ -41,7 +41,7 @@ export function* fetchTransactions$({ payload }): Generator<*, *, *> {
       // in future most of this will be done on BE
       // filter from payload => reduce it to one object and see if there is more transactions on the same date and sum it => map that object in array for the chart
       const chartData = Object.entries(
-        data.transactionRequestDtos
+        data.transactionInfoDtos
           .filter(o => new Date(o.created) >= date)
           .reduce((obj, item) => {
             const newDate = new Date(item.created).toLocaleDateString();
@@ -60,7 +60,7 @@ export function* fetchTransactions$({ payload }): Generator<*, *, *> {
       });
 
       // collect ENRG and BB balance
-      data.transactionRequestDtos.forEach(e => {
+      data.transactionInfoDtos.forEach(e => {
         balance += e.enrgAmount;
         totalVirtualCurrency += e.virtualCurrencyAmount;
       });
