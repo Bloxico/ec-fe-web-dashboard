@@ -25,12 +25,14 @@ const columns = [
       enrgAmount,
       virtualCurrencyAmount,
       virtualCurrencyCode,
+      transactionStatus,
       created,
       source,
     }) => ({
       enrgAmount,
       virtualCurrencyAmount,
       virtualCurrencyCode,
+      transactionStatus,
       created,
       source,
     }),
@@ -40,6 +42,7 @@ const columns = [
         enrgAmount,
         virtualCurrencyAmount,
         virtualCurrencyCode,
+        transactionStatus,
         created,
         source,
       },
@@ -59,7 +62,9 @@ const columns = [
               </span>
             </h5>
           </div>
-          <span>Created</span>
+          <span className={`${baseClass}__status`}>
+            {transactionStatus && transactionStatus.toLowerCase()}
+          </span>
         </div>
         <div className={`${baseClass}__row--section`}>
           <Moment
@@ -85,17 +90,24 @@ const columns = [
       if (filter.value === 'all') {
         return true;
       }
-      if (filter.value === 'true') {
-        return row[filter.id].enrgAmount >= 1;
+      if (filter.value === 'CREATED') {
+        return row[filter.id].transactionStatus === filter.value;
       }
-      return row[filter.id].enrgAmount < 1;
+      return row[filter.id].transactionsStatus === filter.value;
     },
     Filter: ({ filter, onChange }) => (
       <Select
         onChange={onChange}
         width="full"
         selected={filter ? filter.value : 'all'}
-        options={{ all: 'Show All', true: 'Can Drink', false: `Can't Drink` }}
+        options={{
+          all: 'All types',
+          CREATED: 'Created',
+          PENDING: 'Pending',
+          CANCELLED: 'Cancelled',
+          CONFIRMED: 'Confirmed',
+          DISPUTED: 'Disputed',
+        }}
       />
     ),
   },

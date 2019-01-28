@@ -16,6 +16,10 @@ $transactions-sorting-border: (
     @extend %font-dark;
   }
 
+  &__status {
+    text-transform: capitalize;
+  }
+
   &__virtual-amount {
     margin-left: rhythm(.5);
   }
