@@ -22,6 +22,9 @@ export interface Props {
   MSGUserNotVerified: string;
   MSGVerifyNow: string;
   MSGPartnerIdAlreadyExists: string;
+  MSGPartnerIdNotValid: string;
+  MSGWalletAddressAlreadyExists: string;
+  MSGWalletAddressNotValid: string;
   redirectPath: string;
   handleClick: Function;
 }
@@ -52,6 +55,8 @@ const ErrorMessage = (props: Props) => {
     MSGVerifyNow,
     MSGPartnerIdAlreadyExists,
     MSGPartnerIdNotValid,
+    MSGWalletAddressAlreadyExists,
+    MSGWalletAddressNotValid,
     handleClick,
     redirectPath,
   } = props;
@@ -84,6 +89,12 @@ const ErrorMessage = (props: Props) => {
       break;
     case ERROR_CODES.PARTNER_USER_ID_NOT_VALID:
       content = MSGPartnerIdNotValid;
+      break;
+    case ERROR_CODES.WALLET_ADDRESS_ALREADY_EXISTS:
+      content = MSGWalletAddressAlreadyExists;
+      break;
+    case ERROR_CODES.WALLET_ADDRESS_LENGTH_IS_NOT_VALID:
+      content = MSGWalletAddressNotValid;
       break;
     default:
       content = undefined;
