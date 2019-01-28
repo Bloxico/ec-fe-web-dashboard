@@ -27,4 +27,8 @@ export default defineMessages({
     defaultMessage: 'Save',
     id: 'save',
   },
+  address: {
+    defaultMessage: 'Address',
+    id: 'address',
+  },
 });

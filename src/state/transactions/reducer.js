@@ -24,7 +24,7 @@ export default handleActions(
         chartData,
         balance,
         totalVirtualCurrency,
-        transactions: data.transactionDtos,
+        transactions: data.transactionInfoDtos,
         fail: false,
         fetchTransactionsInProgress: false,
       }),

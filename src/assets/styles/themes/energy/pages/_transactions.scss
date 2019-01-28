@@ -1,21 +1,88 @@
+$transactions-sorting-border: (
+        side: bottom,
+        width: 1px,
+        style: solid,
+        color: map-get($border-colors, light)
+);
+
 .#{$namespace}-transactions {
   width: 100%;
   height: 100%;
   font-family: $ui-font-family;
 
-  &__enrg-amount {
-    font-size: map-get($font-sizes, small);
-    color: map-get($text-colors, dark);
+  &__virtual-amount,
+  &__virtual-amount .#{$namespace}-amount {
+    @extend %font-small;
+    @extend %font-dark;
+  }
+
+  &__status {
+    text-transform: capitalize;
   }
 
   &__virtual-amount {
+    margin-left: rhythm(.5);
+  }
+
+  .-filters {
+    .#{$namespace}-select {
+      min-width: 100%;
+    }
+  }
+
+  .rt-resizable-header-content {
+    @include set-border($transactions-sorting-border);
+
+    font-size: map-get($font-sizes, small);
+    color: map-get($text-colors, default);
+    padding: rhythm(.5);
+  }
+
+  &__amount {
     margin: 0;
     font-size: map-get($font-sizes, large);
     font-weight: 500;
   }
 
-  &__date,
-  &__source {
-    font-size: map-get($font-sizes, small);
+  &__row--section {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: flex-start;
+    padding-bottom: rhythm(.5);
+
+    + .#{$namespace}-transactions__row--section {
+      padding-bottom: 0;
+    }
   }
+
+  &__column--first {
+    width: 100%;
+  }
+
+  time,
+  &__source,
+  &__text-tx {
+    @extend %font-dark;
+  }
+
+  &__text--tx {
+    @extend %font-small;
+    @extend %font-dark;
+    display: inline-block;
+  }
+
+  .rt-thead {
+    display: flex;
+  }
+
+}
+
+%font-small {
+  font-size: map-get($font-sizes, small);
+}
+
+%font-dark {
+  color: map-get($text-colors, dark);
 }
