@@ -67,12 +67,19 @@ const columns = [
           </span>
         </div>
         <div className={`${baseClass}__row--section`}>
-          <Moment
-            className={`${baseClass}__column--first`}
-            date={created}
-            format="MM/DD/YYYY"
-            fromNow={new Date() - created < ONE_HOUR}
-          />
+          {(new Date() - created < ONE_HOUR && (
+            <Moment
+              className={`${baseClass}__column--first`}
+              date={created}
+              fromNow={new Date() - created < ONE_HOUR}
+            />
+          )) || (
+            <Moment
+              className={`${baseClass}__column--first`}
+              date={created}
+              format="MM/DD/YYYY"
+            />
+          )}
           <span className={`${baseClass}__source`}>{source}</span>
         </div>
         {false && (
@@ -101,7 +108,7 @@ const columns = [
         width="full"
         selected={filter ? filter.value : 'all'}
         options={{
-          all: 'All types',
+          all: 'All statuses',
           CREATED: 'Created',
           PENDING: 'Pending',
           CANCELLED: 'Cancelled',
@@ -134,7 +141,7 @@ class Transactions extends Component<Props> {
           <Table
             filterable
             showPagination
-            data={transactions}
+            data={transactions.reverse()}
             columns={columns}
           />
         )}
