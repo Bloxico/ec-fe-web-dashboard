@@ -28,7 +28,7 @@ export default defineMessages({
     id: 'save',
   },
   address: {
-    defaultMessage: 'Address',
+    defaultMessage: 'ENRG Address',
     id: 'address',
   },
 });
