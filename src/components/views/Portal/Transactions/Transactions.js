@@ -15,7 +15,7 @@ export type Props = {
   fetchTransactionsInProgress: boolean,
 };
 
-const ONE_HOUR = 60 * 60 * 1000;
+const ONE_HOUR = 24 * 60 * 60 * 1000;
 const baseClass = `${THEME_PREFIX}-transactions`;
 
 const columns = [

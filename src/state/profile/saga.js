@@ -31,6 +31,7 @@ export function* fetchProfileData$(): Generator<*, *, *> {
 
 export function* updateProfile$({ payload }): Generator<*, *, *> {
   try {
+    if (payload.addressHash === '') payload.addressHash = null;
     yield http.post('user/updateMyProfile', payload, { withAuth: true });
     yield put(actions.updateProfileSuccess(payload));
   } catch ({ response: { data } }) {
