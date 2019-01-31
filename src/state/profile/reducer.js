@@ -54,7 +54,7 @@ export default handleActions(
         ...state,
         fail: true,
         updateProfileInProgress: false,
-        message: 'Profile update failed',
+        message: '',
       }),
     ],
     [
