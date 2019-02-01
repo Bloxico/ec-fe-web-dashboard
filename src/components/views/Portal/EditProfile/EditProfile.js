@@ -14,6 +14,7 @@ export type Props = {
   MSGRegion: string,
   MSGCity: string,
   MSGSave: string,
+  MSGAddress: string,
   requiredIntl: string,
   emailIntl: string,
   alphanumericIntl: string,
@@ -47,7 +48,6 @@ class EditProfile extends Component<Props> {
 
   componentDidMount() {
     const { fetchProfileData } = this.props;
-
     fetchProfileData();
   }
 
@@ -73,6 +73,7 @@ class EditProfile extends Component<Props> {
       MSGCity,
       MSGRegion,
       MSGSave,
+      MSGAddress,
       regions,
       initialValues,
       pristine,
@@ -129,6 +130,13 @@ class EditProfile extends Component<Props> {
               width="full"
               disabled
               validate={[requiredValidator, emailValidator]}
+            />
+            <Field
+              placeholder={MSGAddress}
+              type="text"
+              component={FormField}
+              name="addressHash"
+              width="full"
             />
             <Field
               placeholder={MSGName}

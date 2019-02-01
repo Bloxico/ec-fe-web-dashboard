@@ -139,12 +139,8 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
   .rt-table {
     @include set-background($table-background);
 
-    flex: auto 1;
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    border-collapse: collapse;
+    flex-wrap: wrap;
     overflow: auto;
 
     &.rt-resizing {
@@ -165,10 +161,10 @@ $table-empty-color: map-get($text-colors, 'normal') !default;
 ///
 ///
 .#{$namespace}-table .rt-thead {
+  width: 50%;
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
-  height: $table-header-height;
   user-select: none;
 
   &.-headerGroups {

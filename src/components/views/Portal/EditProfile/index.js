@@ -59,6 +59,7 @@ export default compose(
     MSGRegion: formatMessage(messages.region),
     MSGCity: formatMessage(messages.city),
     MSGSave: formatMessage(messages.save),
+    MSGAddress: formatMessage(messages.address),
   })),
   withProps(({ intl }) => ({
     requiredIntl: required({ intl }),

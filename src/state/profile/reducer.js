@@ -18,7 +18,13 @@ export default handleActions(
       actions.FETCH_PROFILE_DATA_SUCCESS,
       (state, { payload }) => ({
         ...state,
-        data: payload.userProfile,
+        data: {
+          ...payload.userProfile,
+          addressHash:
+            (payload.walletAddresses.length > 0 &&
+              payload.walletAddresses[0].addressHash) ||
+            '',
+        },
         regions: payload.regions,
         fetchProfileDataInProgress: false,
       }),
@@ -48,7 +54,7 @@ export default handleActions(
         ...state,
         fail: true,
         updateProfileInProgress: false,
-        message: 'Profile update failed',
+        message: '',
       }),
     ],
     [
