@@ -13,4 +13,15 @@ $max-width: 400px;
   .#{$namespace}-notification {
     margin: 0 0 rhythm(1) 0;
   }
+
+  &__address-link {
+    float: right;
+    margin: rhythm(-.75) 0 rhythm(.5) 0;
+  }
+
+  &__clear {
+    clear: both;
+    margin: 0;
+    height: 0;
+  }
 }
