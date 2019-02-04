@@ -1,23 +1,68 @@
 // @flow
 
-import React from 'react';
-import { IntlProvider } from 'react-intl';
+import React, { Component } from 'react';
+import { IntlProvider, addLocaleData } from 'react-intl';
+import localeEN from 'react-intl/locale-data/en';
+import localeNL from 'react-intl/locale-data/nl';
+import localeSR from 'react-intl/locale-data/sr';
 
-// TODO@martins: get locale from state and messages from json when more languages are added
+import messagesEN from 'src/translations/lib/i18n/lang/en.json';
+import messagesNL from 'src/translations/lib/i18n/lang/nl.json';
+import messagesSR from 'src/translations/lib/i18n/lang/sr-Latn.json';
 
-const locale = 'en';
+addLocaleData([...localeEN, ...localeNL, ...localeSR]);
 
-const IntlWrapper = ({ children }: any) => (
-  <IntlProvider locale={locale}>{children}</IntlProvider>
-);
+const { Provider, Consumer } = React.createContext();
 
-const intlProvider = new IntlProvider({
-  locale,
-  messages: {},
-});
+const messages = {
+  en: messagesEN,
+  nl: messagesNL,
+  'sr-Latn': messagesSR,
+};
 
-const { intl } = intlProvider.getChildContext();
+type Props = {
+  children: any,
+};
 
-export { intl as getIntl };
+type State = {
+  locale: string,
+  messages: any,
+  switchLanguage: Function,
+};
+class IntlProviderWrapper extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    // pass everything in state to avoid creating object inside render method (like explained in the documentation)
+    this.state = {
+      locale: 'en',
+      messages: messagesEN,
+      switchLanguage: this.switchLanguage, // eslint-disable-line
+    };
+  }
+  switchLanguage = (val: string) => {
+    this.setState({ locale: val, messages: messages[val] });
+  };
 
-export default IntlWrapper;
+  render() {
+    const { children } = this.props;
+    const { locale, messages } = this.state;
+    return (
+      <Provider
+        value={{
+          state: this.state,
+        }}
+      >
+        <IntlProvider
+          key={locale}
+          locale={locale}
+          messages={messages}
+          defaultLocale="en"
+        >
+          {children}
+        </IntlProvider>
+      </Provider>
+    );
+  }
+}
+
+export { IntlProviderWrapper as IntlProvider, Consumer as IntlConsumer };

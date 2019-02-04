@@ -12,6 +12,7 @@ import {
   THEME_PREFIX,
   isProd,
 } from 'src/constants';
+import LanguageChange from '@partials/LanguageChange';
 
 // TODO@all fix this logo like it is in gc-lite, and links for term of use and privacy policy should open a modal or redirect to external link
 export type Props = {
@@ -59,6 +60,7 @@ class Welcome extends Component<Props> {
       MSGTermsOfUse,
       MSGAnd,
       MSGPrivacyPolicy,
+      intl,
     } = this.props;
 
     return (
@@ -66,6 +68,7 @@ class Welcome extends Component<Props> {
         <header className={`${baseClass}__header`}>
           <Logo />
           <h1>{MSGDashboard}</h1>
+          <LanguageChange intl={intl} value="nl" />
         </header>
 
         <section className={`${baseClass}__content`}>
