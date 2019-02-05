@@ -26,26 +26,26 @@ Test name: ${testName}
 Saga state: ${JSON.stringify(state, null, 2)}
 Action payload: ${JSON.stringify(payload, null, 2)}
 ${
-    path.length
-      ? `Saga yield path:
+  path.length
+    ? `Saga yield path:
 ${path.map(val => `${JSON.stringify(val, null, 2)}`).join('\n')}`
-      : ''
-  }
+    : ''
+}
 ${
-    mocksOptObj && mocksOptObj.list.length
-      ? `Mocks opts:
+  mocksOptObj && mocksOptObj.list.length
+    ? `Mocks opts:
 ${_.flatten(
-          mocksOptObj.list.map(({ list, name }) =>
-            list.map(
-              ({ funcName, args }) =>
-                `${name}.${funcName}(${args
-                  .map(arg => JSON.stringify(arg, null, 2))
-                  .join(', ')})`,
-            ),
-          ),
-        ).join('\n')}`
-      : ''
-  }`,
+  mocksOptObj.list.map(({ list, name }) =>
+    list.map(
+      ({ funcName, args }) =>
+        `${name}.${funcName}(${args
+          .map(arg => JSON.stringify(arg, null, 2))
+          .join(', ')})`,
+    ),
+  ),
+).join('\n')}`
+    : ''
+}`,
 });
 
 export const testSaga = ({

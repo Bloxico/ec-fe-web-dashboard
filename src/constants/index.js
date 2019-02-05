@@ -3,3 +3,4 @@ export * from './routes';
 export * from './api';
 export * from './modals';
 export * from './errors';
+export * from './languages';
