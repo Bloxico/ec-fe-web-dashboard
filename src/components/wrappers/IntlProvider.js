@@ -9,15 +9,16 @@ import localeSR from 'react-intl/locale-data/sr';
 import messagesEN from 'src/translations/lib/i18n/lang/en.json';
 import messagesNL from 'src/translations/lib/i18n/lang/nl.json';
 import messagesSR from 'src/translations/lib/i18n/lang/sr-Latn.json';
+import { DUTCH_LANG, ENGLISH_LANG, SERBIAN_LANG } from 'src/constants';
 
 addLocaleData([...localeEN, ...localeNL, ...localeSR]);
 
 const { Provider, Consumer } = React.createContext();
 
 const messages = {
-  en: messagesEN,
-  nl: messagesNL,
-  'sr-Latn': messagesSR,
+  [ENGLISH_LANG]: messagesEN,
+  [DUTCH_LANG]: messagesNL,
+  [SERBIAN_LANG]: messagesSR,
 };
 
 type Props = {
@@ -34,7 +35,7 @@ class IntlProviderWrapper extends Component<Props, State> {
     super(props);
     // pass everything in state to avoid creating object inside render method (like explained in the documentation)
     this.state = {
-      locale: 'en',
+      locale: ENGLISH_LANG,
       messages: messagesEN,
       switchLanguage: this.switchLanguage, // eslint-disable-line
     };
@@ -56,7 +57,7 @@ class IntlProviderWrapper extends Component<Props, State> {
           key={locale}
           locale={locale}
           messages={messages}
-          defaultLocale="en"
+          defaultLocale={ENGLISH_LANG}
         >
           {children}
         </IntlProvider>

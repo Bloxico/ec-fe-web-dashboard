@@ -3,10 +3,19 @@ import { defineMessages } from 'react-intl';
 
 import { Button } from '@ui';
 import { IntlConsumer } from 'src/components/wrappers/IntlProvider';
-import { THEME_PREFIX } from 'src/constants';
+import {
+  THEME_PREFIX,
+  DUTCH_LANG,
+  ENGLISH_LANG,
+  SERBIAN_LANG,
+} from 'src/constants';
 
 const baseClass = `${THEME_PREFIX}-change-language`;
 const messages = defineMessages({
+  language: {
+    id: 'language',
+    defaultMessage: 'Language',
+  },
   english: {
     id: 'english',
     defaultMessage: 'English',
@@ -71,67 +80,76 @@ class LanguageChange extends Component<Props, State> {
     const {
       intl: { formatMessage },
     } = this.props;
+    const MSGDutch = formatMessage(messages.dutch);
+    const MSGSerbian = formatMessage(messages.serbian);
+    const MSGEnglish = formatMessage(messages.english);
+    const MSGLanguage = formatMessage(messages.language);
 
     let currentLang;
 
     switch (this.context.state.locale) {
-      case 'nl':
-        currentLang = formatMessage(messages.dutch);
+      case DUTCH_LANG:
+        currentLang = MSGDutch;
         break;
-      case 'sr-Latn':
-        currentLang = formatMessage(messages.serbian);
+      case SERBIAN_LANG:
+        currentLang = MSGSerbian;
         break;
       default:
-        currentLang = formatMessage(messages.english);
+        currentLang = MSGEnglish;
     }
     return (
       <IntlConsumer>
         {() => (
           <React.Fragment>
-            <div>
-              <h5 className={`${baseClass}`}>Language</h5>
-              <Button onClick={this.openLanguageSelect} type="ghost">
+            <div className={baseClass}>
+              <h5 className={`${baseClass}__h5`}>{MSGLanguage}</h5>
+              <Button
+                className={`${baseClass}__select`}
+                onClick={this.openLanguageSelect}
+                type="ghost"
+              >
                 {currentLang}
               </Button>
             </div>
-            <div className="mgo-change-language__wrapper">
+            <div className={`${baseClass}__menu`}>
               {this.state.changeLangOpen && (
-                <div ref={this.setWrapperRef} className="mgo-change-language">
+                <div
+                  ref={this.setWrapperRef}
+                  className={`${baseClass}__content`}
+                >
                   <Button
-                    value="nl"
+                    value={DUTCH_LANG}
                     onClick={this.switchLanguage}
                     type="ghost"
                     className={`${
-                      this.context.state.locale === 'nl' ? 'active' : ''
+                      this.context.state.locale === DUTCH_LANG ? 'active' : ''
                     }`}
                   >
-                    {formatMessage(messages.dutch)}
+                    {MSGDutch}
                   </Button>
                   <Button
-                    value="sr-Latn"
+                    value={SERBIAN_LANG}
                     onClick={this.switchLanguage}
-                    // icon={iconChina}
                     type="ghost"
                     className={`${
-                      this.context.state.locale === 'sr-Latn' ? 'active' : ''
+                      this.context.state.locale === SERBIAN_LANG ? 'active' : ''
                     }`}
                   >
-                    {formatMessage(messages.serbian)}
+                    {MSGSerbian}
                   </Button>
                   <Button
-                    value="en"
+                    value={ENGLISH_LANG}
                     onClick={this.switchLanguage}
-                    // icon={iconUsa}
                     type="ghost"
                     className={`${
-                      this.context.state.locale === 'en'
+                      this.context.state.locale === ENGLISH_LANG
                         ? 'active'
                         : this.context.state.locale === ''
                         ? 'active'
                         : ''
                     }`}
                   >
-                    {formatMessage(messages.english)}
+                    {MSGEnglish}
                   </Button>
                 </div>
               )}
