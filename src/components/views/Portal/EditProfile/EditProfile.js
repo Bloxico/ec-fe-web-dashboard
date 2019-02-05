@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 
 import Header from '@partials/Header';
 import { THEME_PREFIX } from 'src/constants';
-import { Button, Form, FormField, Loader, Notification } from '@ui';
+import { Button, Form, FormField, Loader, Notification, Anchor } from '@ui';
 
 export type Props = {
   MSGEditProfile: string,
@@ -15,6 +15,7 @@ export type Props = {
   MSGCity: string,
   MSGSave: string,
   MSGAddress: string,
+  MSGLinkToAddress: string,
   requiredIntl: string,
   emailIntl: string,
   alphanumericIntl: string,
@@ -74,6 +75,7 @@ class EditProfile extends Component<Props> {
       MSGRegion,
       MSGSave,
       MSGAddress,
+      MSGLinkToAddress,
       regions,
       initialValues,
       pristine,
@@ -138,6 +140,18 @@ class EditProfile extends Component<Props> {
               name="addressHash"
               width="full"
             />
+            {initialValues && initialValues.addressHash && (
+              <Anchor
+                className={`${baseClass}__address-link`}
+                href={`https://chainz.cryptoid.info/enrg/address.dws?${
+                  initialValues.addressHash
+                }`}
+                target="_blank"
+              >
+                {MSGLinkToAddress}
+              </Anchor>
+            )}
+            <div className={`${baseClass}__clear`} />
             <Field
               placeholder={MSGName}
               type="text"
