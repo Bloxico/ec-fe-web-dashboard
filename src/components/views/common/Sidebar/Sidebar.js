@@ -10,6 +10,7 @@ import { THEME_PREFIX } from 'src/constants';
 import { redirectToLogin } from 'src/services/http/utils';
 
 interface Props {
+  MSGSignOut: string;
   isSidebarOpen: boolean;
   hideSidebar: Function;
   fetchProfileData: Function;
@@ -29,6 +30,7 @@ class SidebarWrapper extends Component<Props> {
 
   render() {
     const {
+      MSGSignOut,
       isSidebarOpen,
       hideSidebar,
       profile,
@@ -64,7 +66,7 @@ class SidebarWrapper extends Component<Props> {
             items={[
               {
                 icon: iconSignout,
-                text: 'Sign out',
+                text: MSGSignOut,
                 onClick: () => redirectToLogin(),
               },
             ]}
