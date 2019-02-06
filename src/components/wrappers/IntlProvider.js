@@ -2,6 +2,9 @@
 
 import React, { Component } from 'react';
 import { IntlProvider, addLocaleData } from 'react-intl';
+import 'moment/locale/en-gb';
+import 'moment/locale/nl';
+import 'moment/locale/sr';
 import localeEN from 'react-intl/locale-data/en';
 import localeNL from 'react-intl/locale-data/nl';
 import localeSR from 'react-intl/locale-data/sr';

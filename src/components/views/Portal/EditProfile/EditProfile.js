@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Field } from 'redux-form';
 
 import Header from '@partials/Header';
-import { THEME_PREFIX } from 'src/constants';
+import { THEME_PREFIX, EXPLORER_ADDRESS } from 'src/constants';
 import { Button, Form, FormField, Loader, Notification, Anchor } from '@ui';
 
 export type Props = {
@@ -143,9 +143,7 @@ class EditProfile extends Component<Props> {
             {initialValues && initialValues.addressHash && (
               <Anchor
                 className={`${baseClass}__address-link`}
-                href={`https://chainz.cryptoid.info/enrg/address.dws?${
-                  initialValues.addressHash
-                }`}
+                href={`${EXPLORER_ADDRESS}${initialValues.addressHash}`}
                 target="_blank"
               >
                 {MSGLinkToAddress}

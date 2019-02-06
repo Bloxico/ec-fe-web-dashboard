@@ -10,27 +10,31 @@ import iconDashboard from '@images/icon-dashboard.svg';
 import iconTransactions from '@images/icon-transactions.svg';
 import iconProfile from '@images/icon-profile.svg';
 import iconHelp from '@images/icon-help.svg';
-
 import {
   DASHBOARD_PAGE,
   TRANSACTIONS_PAGE,
   EDIT_PROFILE,
   THEME_PREFIX,
+  BLOXICO_CONTACT,
 } from 'src/constants';
 
-interface Item {
-  icon: any;
-  route?: string;
-  text: string;
-  href?: string;
-  target?: string;
-  onClick?: any;
-}
+type Item = {
+  icon: any,
+  route?: string,
+  text: string,
+  href?: string,
+  target?: string,
+  onClick?: any,
+};
 
-interface Props {
-  items?: Item[];
-  handleHide?: Function;
-}
+type Props = {
+  MSGDashboard: string,
+  MSGTransactions: string,
+  MSGProfile: string,
+  MSGHelp: string,
+  items?: Item[],
+  handleHide?: Function,
+};
 
 const baseClass = `${THEME_PREFIX}-navigation`;
 
@@ -64,7 +68,14 @@ const NavigationItem = ({
 );
 
 const Navigation = (props: Props) => {
-  const { items, handleHide } = props;
+  const {
+    MSGDashboard,
+    MSGTransactions,
+    MSGProfile,
+    MSGHelp,
+    items,
+    handleHide,
+  } = props;
 
   return (
     <nav className={baseClass}>
@@ -76,26 +87,26 @@ const Navigation = (props: Props) => {
           <NavigationItem
             route={DASHBOARD_PAGE}
             icon={iconDashboard}
-            text="Dashboard"
+            text={MSGDashboard}
             onClick={handleHide}
           />
           <NavigationItem
             route={TRANSACTIONS_PAGE}
             icon={iconTransactions}
-            text="Transactions"
+            text={MSGTransactions}
             onClick={handleHide}
           />
           <NavigationItem
             route={EDIT_PROFILE}
             icon={iconProfile}
-            text="Profile"
+            text={MSGProfile}
             onClick={handleHide}
           />
           <NavigationItem
-            href="http://bloxico.com/contact/"
+            href={BLOXICO_CONTACT}
             target="_blank"
             icon={iconHelp}
-            text="Help"
+            text={MSGHelp}
           />
         </React.Fragment>
       )}
