@@ -25,6 +25,7 @@ export type Props = {
   MSGPrivacyPolicy: string,
   fetchPartner: Function,
   location: any,
+  intl: any,
 };
 
 const baseClass = `${THEME_PREFIX}-welcome`;

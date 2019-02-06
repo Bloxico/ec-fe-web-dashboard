@@ -15,7 +15,6 @@ export interface Props {
   fetchTransactions: Function;
   fetchExchangeRate: Function;
   chartData: [];
-  transactions: [];
   virtualBalance: number;
   dashboardBalance: number;
   fetchTransactionsInProgress: boolean;
@@ -50,7 +49,6 @@ class Dashboard extends Component<Props> {
       MSGPrevented,
       MSGOfCO2,
       chartData,
-      transactions,
       virtualBalance,
       dashboardBalance,
       fetchTransactionsInProgress,
@@ -88,7 +86,7 @@ class Dashboard extends Component<Props> {
                 </dl>
               </div>
             </section>
-            {transactions.length > 0 && (
+            {chartData && chartData.length > 0 && (
               <section className={`${baseClass}__chart`}>
                 <Chart
                   data={chartData}
