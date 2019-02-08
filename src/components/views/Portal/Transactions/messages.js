@@ -43,4 +43,12 @@ export default defineMessages({
     defaultMessage: 'Sort by date',
     id: 'date',
   },
+  page: {
+    defaultMessage: 'Page',
+    id: 'page',
+  },
+  of: {
+    defaultMessage: 'of',
+    id: 'of',
+  },
 });

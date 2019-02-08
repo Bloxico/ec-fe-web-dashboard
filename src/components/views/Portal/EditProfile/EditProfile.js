@@ -16,6 +16,7 @@ export type Props = {
   MSGSave: string,
   MSGAddress: string,
   MSGLinkToAddress: string,
+  MSGSelectCountry: string,
   requiredIntl: string,
   emailIntl: string,
   alphanumericIntl: string,
@@ -38,7 +39,17 @@ class EditProfile extends Component<Props> {
   constructor(props: Props) {
     super(props);
 
-    const { requiredIntl, emailIntl, alphanumericIntl } = props;
+    const {
+      MSGSelectCountry,
+      requiredIntl,
+      emailIntl,
+      alphanumericIntl,
+    } = props;
+
+    this.defaultRegionOption = {
+      text: MSGSelectCountry,
+      value: '',
+    };
 
     this.validators = {
       requiredValidator: requiredIntl,
@@ -57,12 +68,8 @@ class EditProfile extends Component<Props> {
     clearProfileState();
   }
 
-  defaultRegionOption = {
-    text: 'Select',
-    value: '',
-  };
-
-  validators: Object;
+  validators: any;
+  defaultRegionOption: any;
 
   render() {
     const {
