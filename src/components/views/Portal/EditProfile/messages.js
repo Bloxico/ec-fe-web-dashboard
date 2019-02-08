@@ -35,4 +35,8 @@ export default defineMessages({
     defaultMessage: 'Link to Address',
     id: 'linkToAddress',
   },
+  selectCountry: {
+    id: 'selectCountry',
+    defaultMessage: 'Select country',
+  },
 });

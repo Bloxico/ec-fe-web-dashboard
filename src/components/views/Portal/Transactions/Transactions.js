@@ -30,6 +30,8 @@ export type Props = {
   MSGDate: string,
   MSGNoData: string,
   MSGENRG: string,
+  MSGPage: string,
+  MSGOf: string,
   transactions: [],
   fetchTransactions: Function,
   fetchTransactionsInProgress: boolean,
@@ -91,6 +93,8 @@ class Transactions extends Component<Props> {
       MSGDate,
       MSGNoData,
       MSGENRG,
+      MSGPage,
+      MSGOf,
       transactions,
       fetchTransactionsInProgress,
       intl: { locale },
@@ -199,6 +203,8 @@ class Transactions extends Component<Props> {
             data={transactions.reverse()}
             columns={columns}
             noDataText={MSGNoData}
+            pageText={MSGPage}
+            ofText={MSGOf}
           />
         )}
       </div>
