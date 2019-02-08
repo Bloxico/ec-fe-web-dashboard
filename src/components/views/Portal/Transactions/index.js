@@ -40,5 +40,7 @@ export default compose(
     MSGNoData: formatMessage(messages.noData),
     MSGENRG: formatMessage(messages.energyShort),
     MSGDate: formatMessage(messages.date),
+    MSGPage: formatMessage(messages.page),
+    MSGOf: formatMessage(messages.of),
   })),
 )(Transactions);

@@ -40,4 +40,8 @@ export default defineMessages({
     defaultMessage:
       'Use one of the following portals for registration to start accumulating Energycoin in your account:',
   },
+  selectCountry: {
+    id: 'selectCountry',
+    defaultMessage: 'Select country',
+  },
 });

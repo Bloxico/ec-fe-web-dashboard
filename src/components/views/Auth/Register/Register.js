@@ -20,6 +20,7 @@ export type Props = {
   MSGNicknameOptional: string,
   MSGContinue: string,
   MSGEmptyRegistration: string,
+  MSGSelectCountry: string,
   requiredIntl: Function,
   alphanumericIntl: Function,
   passwordIntl: Function,
@@ -38,9 +39,10 @@ const baseClass = `${THEME_PREFIX}-register`;
 const classes = classNames(baseClass);
 
 class Register extends Component<Props> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     const {
+      MSGSelectCountry,
       requiredIntl,
       alphanumericIntl,
       passwordIntl,
@@ -51,6 +53,10 @@ class Register extends Component<Props> {
 
     this.passwordField = React.createRef();
     this.externalId = new URLSearchParams(location.search).get('userId');
+    this.defaultRegionOption = {
+      text: MSGSelectCountry,
+      value: '',
+    };
 
     this.validators = {
       requiredValidator: requiredIntl,
@@ -67,10 +73,10 @@ class Register extends Component<Props> {
     fetchRegions();
   }
 
-  defaultRegionOption = {
-    text: 'Select',
-    value: '',
-  };
+  defaultRegionOption: any;
+  validators: any;
+  externalId: any;
+  passwordField: any;
 
   handleRegistration = (data: any) => {
     const { register, partnerId } = this.props;
