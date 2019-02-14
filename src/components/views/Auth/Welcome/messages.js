@@ -31,4 +31,8 @@ export default defineMessages({
     id: 'privacyPolicy',
     defaultMessage: 'Privacy policy',
   },
+  version: {
+    id: 'version',
+    defaultMessage: 'Version',
+  },
 });

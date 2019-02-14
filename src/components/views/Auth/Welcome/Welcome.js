@@ -12,6 +12,7 @@ import {
   DASHBOARD_PAGE,
   THEME_PREFIX,
   AUTH_COOKIE,
+  APP_VERSION,
   isProd,
 } from 'src/constants';
 import LanguageChange from '@partials/LanguageChange';
@@ -26,6 +27,7 @@ export type Props = {
   MSGTermsOfUse: string,
   MSGAnd: string,
   MSGPrivacyPolicy: string,
+  MSGVersion: string,
   fetchPartner: Function,
   location: any,
   intl: any,
@@ -43,7 +45,7 @@ const randomExternalId = Math.random()
   .substr(2, 6);
 
 class Welcome extends Component<Props> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     const { location } = props;
     const catchUserId = new URLSearchParams(location.search).get('userId');
@@ -61,6 +63,8 @@ class Welcome extends Component<Props> {
     fetchPartner(this.externalId);
   }
 
+  externalId: any;
+
   render() {
     const {
       MSGDashboard,
@@ -70,6 +74,7 @@ class Welcome extends Component<Props> {
       MSGTermsOfUse,
       MSGAnd,
       MSGPrivacyPolicy,
+      MSGVersion,
       intl,
     } = this.props;
 
@@ -110,6 +115,10 @@ class Welcome extends Component<Props> {
             <Link to={AUTH_PAGE} className={`${THEME_PREFIX}-link`}>
               {MSGPrivacyPolicy}
             </Link>
+          </small>
+          <div />
+          <small className={`${THEME_PREFIX}-text--alt`}>
+            {MSGVersion}: {APP_VERSION}
           </small>
         </footer>
       </div>

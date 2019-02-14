@@ -26,6 +26,15 @@ export function* fetchExchangeRate$(): Generator<*, *, *> {
   }
 }
 
+export function* checkIfPassExists$(): Generator<*, *, *> {
+  try {
+    const { data } = yield http.get('user/hasPassword');
+    console.log(data);
+  } catch ({ response }) {
+    console.log(response);
+  }
+}
+
 export function* fetchTransactions$({ payload }): Generator<*, *, *> {
   try {
     const { data } = yield http.get('transaction/myTransactions', null, {
@@ -43,6 +52,7 @@ export function* fetchTransactions$({ payload }): Generator<*, *, *> {
       const chartData = Object.entries(
         data.transactionInfoDtos
           .filter(o => new Date(o.created) >= date)
+          .reverse()
           .reduce((obj, item) => {
             const newDate = new Date(item.created).toLocaleDateString();
             if (newDate in obj) {
