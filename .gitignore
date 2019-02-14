@@ -9,6 +9,9 @@
 # production
 /build
 
+# language extract
+src/translations/lib/i18n/messages/*
+
 # misc
 .DS_Store
 .env.local

@@ -31,4 +31,12 @@ export default defineMessages({
     defaultMessage: 'ENRG Address',
     id: 'address',
   },
+  linkToAddress: {
+    defaultMessage: 'Link to Address',
+    id: 'linkToAddress',
+  },
+  selectCountry: {
+    id: 'selectCountry',
+    defaultMessage: 'Select country',
+  },
 });

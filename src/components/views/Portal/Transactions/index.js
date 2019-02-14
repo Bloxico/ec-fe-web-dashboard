@@ -31,5 +31,16 @@ export default compose(
   ),
   withProps(({ intl: { formatMessage } }) => ({
     MSGTransactions: formatMessage(messages.transactions),
+    MSGAllStatuses: formatMessage(messages.allStatuses),
+    MSGCreated: formatMessage(messages.created),
+    MSGPending: formatMessage(messages.pending),
+    MSGCancelled: formatMessage(messages.cancelled),
+    MSGConfirmed: formatMessage(messages.confirmed),
+    MSGDisputed: formatMessage(messages.disputed),
+    MSGNoData: formatMessage(messages.noData),
+    MSGENRG: formatMessage(messages.energyShort),
+    MSGDate: formatMessage(messages.date),
+    MSGPage: formatMessage(messages.page),
+    MSGOf: formatMessage(messages.of),
   })),
 )(Transactions);

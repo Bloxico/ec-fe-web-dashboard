@@ -4,7 +4,7 @@ import { defineMessages } from 'react-intl';
 
 export default defineMessages({
   dashboard: {
-    id: 'dashboard',
+    id: 'logo.dashboard',
     defaultMessage: 'Dashboard',
   },
   createAnAccount: {
@@ -30,5 +30,9 @@ export default defineMessages({
   privacyPolicy: {
     id: 'privacyPolicy',
     defaultMessage: 'Privacy policy',
+  },
+  version: {
+    id: 'version',
+    defaultMessage: 'Version',
   },
 });

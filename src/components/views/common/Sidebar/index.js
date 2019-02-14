@@ -1,5 +1,6 @@
-import { compose } from 'recompose';
+import { compose, withProps } from 'recompose';
 import { connect } from 'react-redux';
+import { injectIntl } from 'react-intl';
 
 import {
   isSidebarOpen,
@@ -11,6 +12,7 @@ import { State } from 'src/state/state';
 import withConfigSizes from '@wrappers/withConfigSizes';
 
 import Sidebar from './Sidebar';
+import messages from './messages';
 
 const mapStateToProps = (state: State) => ({
   isSidebarOpen: isSidebarOpen(state),
@@ -24,9 +26,13 @@ const actions = {
 };
 
 export default compose(
+  injectIntl,
   connect(
     mapStateToProps,
     actions,
   ),
   withConfigSizes,
+  withProps(({ intl: { formatMessage } }) => ({
+    MSGSignOut: formatMessage(messages.signOut),
+  })),
 )(Sidebar);

@@ -1,0 +1,45 @@
+$change-language-font-size: map-get($font-sizes, normal) !default;
+$change-language-h5-color: color('gray', alpha, 80) !default;
+$change-language-background: (
+        color: map-get($background-colors, default) !important,
+        image: svg-url('<svg width="8" height="5" viewBox="0 0 8 5" fill="#{color('gray')}" xmlns="http://www.w3.org/2000/svg"><path d="M.938 0L4 3.101 7.063 0 8 .95 4 5 0 .95z"/></svg>'),
+        repeat: no-repeat,
+        position: right 10px center,
+        size: 8px 5px
+) !default;
+$change-language-color: color('gray') !default;
+$change-language-color-hover: map-get($text-colors, default) !default;
+
+.#{$namespace}-change-language {
+  display: flex;
+  align-items: center;
+
+  &__label {
+    font-size: $change-language-font-size;
+    color: $change-language-h5-color;
+    display: contents;
+    margin: 0;
+    font-family: $ui-font-family;
+  }
+
+  &__select {
+    @extend %select-background;
+    font-size: $change-language-font-size;
+    color: $change-language-color;
+    cursor: pointer;
+
+    &:hover {
+      @extend %select-background;
+      color: $change-language-color-hover;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+}
+
+%select-background {
+  @include set-background($change-language-background);
+}

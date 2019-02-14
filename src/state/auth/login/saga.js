@@ -21,7 +21,7 @@ import * as actions from './actions';
 export function* login$({ payload }): Generator<*, *, *> {
   const params = {
     grant_type: 'password',
-    scope: 'access-profile',
+    scope: 'access_profile',
     ...payload,
   };
 

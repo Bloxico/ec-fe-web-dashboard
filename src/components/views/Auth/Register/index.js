@@ -55,6 +55,7 @@ export default compose(
     MSGNicknameOptional: formatMessage(messages.nicknameOptional),
     MSGContinue: formatMessage(messages.continue),
     MSGEmptyRegistration: formatMessage(messages.emptyRegistration),
+    MSGSelectCountry: formatMessage(messages.selectCountry),
   })),
   withProps(({ intl }) => ({
     requiredIntl: required({ intl }),
