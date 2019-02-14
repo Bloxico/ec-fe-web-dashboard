@@ -16,4 +16,6 @@ export const HTTP_TIMEOUT: number = Number(env[`${APP_PREFIX}HTTP_TIMEOUT`]);
 
 export const AUTH_COOKIE: string = '_ecAuthData';
 
+export const APP_VERSION: string = env[`${APP_PREFIX}VERSION`];
+
 export const isProd = env.NODE_ENV === 'production';

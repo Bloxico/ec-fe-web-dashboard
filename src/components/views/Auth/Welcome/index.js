@@ -32,5 +32,6 @@ export default compose(
     MSGTermsOfUse: formatMessage(messages.termsOfUse),
     MSGAnd: formatMessage(messages.and),
     MSGPrivacyPolicy: formatMessage(messages.privacyPolicy),
+    MSGVersion: formatMessage(messages.version),
   })),
 )(Welcome);
