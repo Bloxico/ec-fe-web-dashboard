@@ -213,7 +213,7 @@ class Transactions extends Component<Props> {
           <Table
             filterable
             showPagination
-            data={transactions.reverse()}
+            data={transactions}
             columns={columns}
             noDataText={MSGNoData}
             pageText={MSGPage}

@@ -50,7 +50,12 @@ const NavigationItem = ({
 }: Item) => (
   <React.Fragment>
     {route && (
-      <Link id={id} to={route} onClick={onClick} className={`${baseClass}__item`}>
+      <Link
+        id={id}
+        to={route}
+        onClick={onClick}
+        className={`${baseClass}__item`}
+      >
         <Icon src={icon} spacing="right" color />
         {text}
       </Link>
