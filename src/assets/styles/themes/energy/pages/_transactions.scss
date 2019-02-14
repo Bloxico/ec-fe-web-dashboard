@@ -52,9 +52,10 @@ $transactions-sorting-border: (
     align-self: flex-start;
     padding-bottom: rhythm(.5);
 
-    + .#{$namespace}-transactions__row--section {
-      padding-bottom: 0;
-    }
+  }
+
+  &__text--tx.#{$namespace}-link {
+    box-shadow: none;
   }
 
   &__column--first {
@@ -62,8 +63,7 @@ $transactions-sorting-border: (
   }
 
   time,
-  &__source,
-  &__text-tx {
+  &__source {
     @extend %font-dark;
   }
 

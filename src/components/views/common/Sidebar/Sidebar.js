@@ -67,6 +67,7 @@ class SidebarWrapper extends Component<Props> {
               {
                 icon: iconSignout,
                 text: MSGSignOut,
+                id: 'nav_5',
                 onClick: () => redirectToLogin(),
               },
             ]}
