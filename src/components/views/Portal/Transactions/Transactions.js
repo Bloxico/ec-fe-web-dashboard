@@ -5,6 +5,7 @@ import Moment from 'react-moment';
 
 import {
   THEME_PREFIX,
+  EXPLORER_TX,
   TRANSACTION_CREATED,
   TRANSACTION_PENDING,
   TRANSACTION_CANCELLED,
@@ -16,7 +17,7 @@ import {
   ENGLISH_MOMENT_LANG,
 } from 'src/constants';
 
-import { Amount, Table, Loader, Select } from '@ui';
+import { Amount, Table, Loader, Select, Anchor } from '@ui';
 import Header from '@partials/Header';
 
 export type Props = {
@@ -104,6 +105,7 @@ class Transactions extends Component<Props> {
       {
         Header: MSGDate,
         accessor: ({
+          blockchainTxId,
           enrgAmount,
           virtualCurrencyAmount,
           virtualCurrencyCode,
@@ -111,6 +113,7 @@ class Transactions extends Component<Props> {
           created,
           source,
         }) => ({
+          blockchainTxId,
           enrgAmount,
           virtualCurrencyAmount,
           virtualCurrencyCode,
@@ -118,9 +121,10 @@ class Transactions extends Component<Props> {
           created,
           source,
         }),
-        id: 'enrgAmount',
+        id: 'id',
         Cell: ({
           value: {
+            blockchainTxId,
             enrgAmount,
             virtualCurrencyAmount,
             virtualCurrencyCode,
@@ -166,6 +170,15 @@ class Transactions extends Component<Props> {
               )}
               <span className={`${baseClass}__source`}>{source}</span>
             </div>
+            {blockchainTxId && (
+              <Anchor
+                href={`${EXPLORER_TX}${blockchainTxId}`}
+                target="_blank"
+                className={`${baseClass}__text--tx`}
+              >
+                {blockchainTxId}
+              </Anchor>
+            )}
           </React.Fragment>
         ),
         filterMethod: (filter, row) => {
@@ -200,11 +213,12 @@ class Transactions extends Component<Props> {
           <Table
             filterable
             showPagination
-            data={transactions.reverse()}
+            data={transactions}
             columns={columns}
             noDataText={MSGNoData}
             pageText={MSGPage}
             ofText={MSGOf}
+            sortable
           />
         )}
       </div>

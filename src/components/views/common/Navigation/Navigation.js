@@ -23,6 +23,7 @@ type Item = {
   route?: string,
   text: string,
   href?: string,
+  id?: string,
   target?: string,
   onClick?: any,
 };
@@ -45,10 +46,16 @@ const NavigationItem = ({
   onClick = f => f,
   href,
   target,
+  id,
 }: Item) => (
   <React.Fragment>
     {route && (
-      <Link to={route} onClick={onClick} className={`${baseClass}__item`}>
+      <Link
+        id={id}
+        to={route}
+        onClick={onClick}
+        className={`${baseClass}__item`}
+      >
         <Icon src={icon} spacing="right" color />
         {text}
       </Link>
@@ -57,6 +64,7 @@ const NavigationItem = ({
       <Anchor
         className={`${baseClass}__item`}
         href={href}
+        id={id}
         target={target}
         onClick={onClick}
       >
@@ -89,24 +97,28 @@ const Navigation = (props: Props) => {
             icon={iconDashboard}
             text={MSGDashboard}
             onClick={handleHide}
+            id="nav_1"
           />
           <NavigationItem
             route={TRANSACTIONS_PAGE}
             icon={iconTransactions}
             text={MSGTransactions}
             onClick={handleHide}
+            id="nav_2"
           />
           <NavigationItem
             route={EDIT_PROFILE}
             icon={iconProfile}
             text={MSGProfile}
             onClick={handleHide}
+            id="nav_3"
           />
           <NavigationItem
             href={BLOXICO_CONTACT}
             target="_blank"
             icon={iconHelp}
             text={MSGHelp}
+            id="nav_4"
           />
         </React.Fragment>
       )}
