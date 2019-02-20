@@ -13,3 +13,5 @@ export const isUpdateProfileInProgress = ({
 export const isFetchProfileDataInProgress = ({
   profile: { fetchProfileDataInProgress },
 }) => fetchProfileDataInProgress;
+
+export const hasUpdateProfileFailed = ({ profile: { fail } }) => fail;
