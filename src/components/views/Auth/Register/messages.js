@@ -44,4 +44,8 @@ export default defineMessages({
     id: 'selectCountry',
     defaultMessage: 'Select country',
   },
+  ringRing: {
+    id: 'ringRing',
+    defaultMessage: 'Ring-ring',
+  },
 });
