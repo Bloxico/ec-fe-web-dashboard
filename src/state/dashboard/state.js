@@ -2,7 +2,7 @@
 
 type StateT = {
   setPasswordInProgress: boolean,
-  setPasswordComplete: boolean,
+  setPasswordCompleted: boolean,
   fetchDashboardDataInProgress: boolean,
   fetchExchangeRateInProgress: boolean,
   chartData: any,
@@ -13,7 +13,7 @@ type StateT = {
 
 const initialState: StateT = {
   setPasswordInProgress: false,
-  setPasswordComplete: false,
+  setPasswordCompleted: false,
   fetchDashboardDataInProgress: false,
   fetchExchangeRateInProgress: false,
   chartData: undefined,
