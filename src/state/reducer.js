@@ -6,6 +6,7 @@ import profile from './profile/reducer';
 import sidebar from './sidebar/reducer';
 import transactions from './transactions/reducer';
 import welcome from './welcome/reducer';
+import dashboard from './dashboard/reducer';
 
 export default combineReducers({
   auth,
@@ -15,4 +16,5 @@ export default combineReducers({
   sidebar,
   transactions,
   welcome,
+  dashboard,
 });

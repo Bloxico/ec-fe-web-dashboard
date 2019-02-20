@@ -1,5 +1,10 @@
 $max-width: 100%;
-
+$dashboard-modal-background: map-get($background-colors, default);
+$dashboard-modal-border: (
+        width: 1px,
+        style: solid,
+        color: map-get($border-colors, light),
+) !default;
 
 .#{$namespace}-portal {
   flex: 1 1 auto;
@@ -19,6 +24,21 @@ $max-width: 100%;
 .#{$namespace}-dashboard {
   width: 100%;
   height: 100%;
+
+  &__modal {
+    max-width: 400px;
+
+    &--title {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .#{$namespace}-modal-content {
+      @include set-border($dashboard-modal-border);
+
+      background: $dashboard-modal-background;
+    }
+  }
 
   &__content {
     padding: 0 rhythm(1);

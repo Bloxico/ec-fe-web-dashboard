@@ -4,6 +4,7 @@ import SidebarState from './sidebar/initialState';
 import ProfileState from './profile/state';
 import TransactionsState from './transactions/state';
 import WelcomeState from './welcome/state';
+import DashboardState from './dashboard/state';
 
 export type StateT = {
   auth: AuthState,
@@ -12,4 +13,5 @@ export type StateT = {
   profile: ProfileState,
   transactions: TransactionsState,
   welcome: WelcomeState,
+  dashboard: DashboardState,
 };

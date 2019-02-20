@@ -16,32 +16,11 @@ export default handleActions(
     ],
     [
       actions.FETCH_TRANSACTIONS_SUCCESS,
-      (
-        state,
-        { payload: { data, chartData, balance, totalVirtualCurrency } },
-      ) => ({
+      (state, { payload: { data } }) => ({
         ...state,
-        chartData,
-        balance,
-        totalVirtualCurrency,
         transactions: data.transactionInfoDtos,
         fail: false,
         fetchTransactionsInProgress: false,
-      }),
-    ],
-    [
-      actions.FETCH_EXCHANGE_RATE,
-      state => ({
-        ...state,
-        fetchExchangeRateInProgress: true,
-      }),
-    ],
-    [
-      actions.FETCH_EXCHANGE_RATE_SUCCESS,
-      (state, { payload: { enrgEurValue } }) => ({
-        ...state,
-        enrgEurValue,
-        fetchExchangeRateInProgress: false,
       }),
     ],
     [

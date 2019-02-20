@@ -14,4 +14,4 @@ export const isFetchProfileDataInProgress = ({
   profile: { fetchProfileDataInProgress },
 }) => fetchProfileDataInProgress;
 
-export const hasUpdateProfileFailed = ({ profile: { fail } }) => fail;
+export const getHasPassword = ({ profile: { hasPassword } }) => hasPassword;

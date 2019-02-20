@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 import Header from '@partials/Header';
 import { Form, FormField, Button, Anchor } from '@ui';
-import { THEME_PREFIX } from 'src/constants';
+import { THEME_PREFIX, PARTNER_RING_RING_LINK } from 'src/constants';
 
 export type Props = {
   handleSubmit: Function,
@@ -21,6 +21,7 @@ export type Props = {
   MSGContinue: string,
   MSGEmptyRegistration: string,
   MSGSelectCountry: string,
+  MSGRingRing: string,
   requiredIntl: Function,
   alphanumericIntl: Function,
   passwordIntl: Function,
@@ -100,6 +101,7 @@ class Register extends Component<Props> {
       registerInProgress,
       MSGContinue,
       MSGEmptyRegistration,
+      MSGRingRing,
       regions,
       partnerId,
       pristine,
@@ -204,8 +206,8 @@ class Register extends Component<Props> {
         <div className={`${baseClass}__content`}>
           {MSGEmptyRegistration}
           <hr />
-          <Anchor target="_blank" href="https://ring-ring.nu/">
-            Ring-ring
+          <Anchor target="_blank" href={PARTNER_RING_RING_LINK}>
+            {MSGRingRing}
           </Anchor>
         </div>
       </div>
