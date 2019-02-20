@@ -1,36 +1,47 @@
 // @flow
 
 import { connect } from 'react-redux';
-import { compose, withProps } from 'recompose';
+import { compose, withHandlers, withProps } from 'recompose';
 import { injectIntl } from 'react-intl';
+import { reduxForm } from 'redux-form';
 
 import withConfigSizes from '@wrappers/withConfigSizes';
-import { fetchTransactions, fetchExchangeRate } from 'src/state/actions';
 import {
-  getTransactionsData,
+  fetchDashboardData,
+  fetchExchangeRate,
+  setPassword,
+} from 'src/state/actions';
+import {
   getDashboardBalance,
   getVirtualBalance,
   getChartData,
-  isFetchTransactionInProgress,
+  isDashboardDataInProgress,
   getEnergyEuroRate,
+  isSetPasswordInProgress,
+  isSetPasswordCompleted,
+  getHasPassword,
 } from 'src/state/selectors';
+import { match, password, required } from 'src/utilities/validators';
 
 import messages from './messages';
 import Dashboard from './Dashboard';
 
 const actions = {
-  fetchTransactions,
+  fetchDashboardData,
   fetchExchangeRate,
+  setPassword,
 };
 
 // eslint-disable-next-line
 const mapStateToProps = state => ({
-  transactions: getTransactionsData(state),
   dashboardBalance: getDashboardBalance(state),
   virtualBalance: getVirtualBalance(state),
   chartData: getChartData(state),
-  fetchTransactionsInProgress: isFetchTransactionInProgress(state),
+  fetchDashboardDataInProgress: isDashboardDataInProgress(state),
   enrgEurValue: getEnergyEuroRate(state),
+  setPasswordInProgress: isSetPasswordInProgress(state),
+  setPasswordCompleted: isSetPasswordCompleted(state),
+  hasPassword: getHasPassword(state),
 });
 
 export default compose(
@@ -39,6 +50,14 @@ export default compose(
     mapStateToProps,
     actions,
   ),
+  reduxForm({
+    form: 'SetPassword',
+  }),
+  withHandlers({
+    handleSetPassword: ({ setPassword }) => values => {
+      setPassword(values);
+    },
+  }),
   withProps(({ intl: { formatMessage } }) => ({
     MSGDashboard: formatMessage(messages.dashboard),
     MSGCO2Prevented: formatMessage(messages.CO2Prevented),
@@ -50,6 +69,16 @@ export default compose(
     MSGPrevented: formatMessage(messages.prevented),
     MSGTime: formatMessage(messages.time),
     MSGOfCO2: formatMessage(messages.ofCO2),
+    MSGContinue: formatMessage(messages.continue),
+    MSGSetYourPassword: formatMessage(messages.setYourPassword),
+    MSGPassword: formatMessage(messages.password),
+    MSGRepeatPassword: formatMessage(messages.repeatPassword),
+    MSGEuroShort: formatMessage(messages.euroShort),
+  })),
+  withProps(({ intl }) => ({
+    requiredIntl: required({ intl }),
+    passwordIntl: password({ intl }),
+    matchIntl: match({ intl }),
   })),
   withConfigSizes,
 )(Dashboard);
