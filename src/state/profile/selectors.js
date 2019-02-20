@@ -13,5 +13,3 @@ export const isUpdateProfileInProgress = ({
 export const isFetchProfileDataInProgress = ({
   profile: { fetchProfileDataInProgress },
 }) => fetchProfileDataInProgress;
-
-export const getHasPassword = ({ profile: { hasPassword } }) => hasPassword;

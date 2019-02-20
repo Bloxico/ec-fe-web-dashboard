@@ -19,7 +19,7 @@ import {
   getEnergyEuroRate,
   isSetPasswordInProgress,
   isSetPasswordCompleted,
-  getHasPassword,
+  getProfileData,
 } from 'src/state/selectors';
 import { match, password, required } from 'src/utilities/validators';
 
@@ -41,7 +41,7 @@ const mapStateToProps = state => ({
   enrgEurValue: getEnergyEuroRate(state),
   setPasswordInProgress: isSetPasswordInProgress(state),
   setPasswordCompleted: isSetPasswordCompleted(state),
-  hasPassword: getHasPassword(state),
+  profileData: getProfileData(state),
 });
 
 export default compose(
