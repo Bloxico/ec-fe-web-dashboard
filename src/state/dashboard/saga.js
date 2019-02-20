@@ -10,7 +10,7 @@ import * as actions from './actions';
 
 export function* setPassword$({ payload: { password } }): Generator<*, *, *> {
   try {
-    yield http.post('user/setPassword', { password }, { withAuth: true });
+    yield http.post('user/passwordSet', { password }, { withAuth: true });
     yield put(actions.setPasswordSuccess());
   } catch ({ response: { data } }) {
     yield put(actions.setPasswordFail());
