@@ -20,7 +20,7 @@ type Props = {
   fetchDashboardDataInProgress: boolean,
   setPasswordInProgress: boolean,
   setPasswordCompleted: boolean,
-  hasPassword: boolean,
+  profileData: any,
   MSGTotalAccumulated: string,
   MSGEnergyShort: string,
   MSGBicycleBits: string,
@@ -88,7 +88,7 @@ class Dashboard extends Component<Props> {
       fetchDashboardDataInProgress,
       setPasswordInProgress,
       setPasswordCompleted,
-      hasPassword,
+      profileData,
       enrgEurValue,
       handleSubmit,
       handleSetPassword,
@@ -106,53 +106,55 @@ class Dashboard extends Component<Props> {
         {!fetchDashboardDataInProgress && (
           <React.Fragment>
             <Header action="menu" title={MSGDashboard} />
-            <Modal
-              show={!hasPassword && !setPasswordCompleted}
-              hasClose={false}
-              className={`${baseClass}__modal`}
-            >
-              <div className={baseClass}>
-                <header>
-                  <h4 className={`${baseClass}__modal--title`}>
-                    {MSGSetYourPassword}
-                  </h4>
-                </header>
-                <section>
-                  <Form onSubmit={handleSubmit(handleSetPassword)}>
-                    <Field
-                      placeholder={MSGPassword}
-                      type="password"
-                      component={FormField}
-                      name="password"
-                      width="full"
-                      validate={[requiredValidator, passwordValidator]}
-                      ref={this.passwordField}
-                    />
-                    <Field
-                      placeholder={MSGRepeatPassword}
-                      type="password"
-                      component={FormField}
-                      name="matchPassword"
-                      width="full"
-                      validate={[
-                        requiredValidator,
-                        passwordValidator,
-                        matchValidator,
-                      ]}
-                    />
-                    <Button
-                      type="primary"
-                      size="large"
-                      width="full"
-                      action="submit"
-                      busy={setPasswordInProgress}
-                    >
-                      {MSGContinue}
-                    </Button>
-                  </Form>
-                </section>
-              </div>
-            </Modal>
+            {profileData && !profileData.hasPassword && !setPasswordCompleted && (
+              <Modal
+                show={!profileData.hasPassword && !setPasswordCompleted}
+                hasClose={false}
+                className={`${baseClass}__modal`}
+              >
+                <div className={baseClass}>
+                  <header>
+                    <h4 className={`${baseClass}__modal--title`}>
+                      {MSGSetYourPassword}
+                    </h4>
+                  </header>
+                  <section>
+                    <Form onSubmit={handleSubmit(handleSetPassword)}>
+                      <Field
+                        placeholder={MSGPassword}
+                        type="password"
+                        component={FormField}
+                        name="password"
+                        width="full"
+                        validate={[requiredValidator, passwordValidator]}
+                        ref={this.passwordField}
+                      />
+                      <Field
+                        placeholder={MSGRepeatPassword}
+                        type="password"
+                        component={FormField}
+                        name="matchPassword"
+                        width="full"
+                        validate={[
+                          requiredValidator,
+                          passwordValidator,
+                          matchValidator,
+                        ]}
+                      />
+                      <Button
+                        type="primary"
+                        size="large"
+                        width="full"
+                        action="submit"
+                        busy={setPasswordInProgress}
+                      >
+                        {MSGContinue}
+                      </Button>
+                    </Form>
+                  </section>
+                </div>
+              </Modal>
+            )}
             <section className={`${baseClass}__content`}>
               <dl className={`${baseClass}__info`}>
                 <dt className={`${baseClass}__title`}>{MSGTotalAccumulated}</dt>
