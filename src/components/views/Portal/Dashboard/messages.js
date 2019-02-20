@@ -43,4 +43,24 @@ export default defineMessages({
     id: 'ofCO2',
     defaultMessage: 'of CO2',
   },
+  euroShort: {
+    id: 'euroShort',
+    defaultMessage: 'EUR',
+  },
+  continue: {
+    id: 'continue',
+    defaultMessage: 'Continue',
+  },
+  repeatPassword: {
+    id: 'repeatPassword',
+    defaultMessage: 'Repeat password',
+  },
+  password: {
+    id: 'password',
+    defaultMessage: 'Password',
+  },
+  setYourPassword: {
+    id: 'setYourPassword',
+    defaultMessage: 'Set your password',
+  },
 });
