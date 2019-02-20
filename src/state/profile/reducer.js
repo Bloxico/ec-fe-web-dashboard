@@ -20,7 +20,7 @@ export default handleActions(
         ...state,
         data: {
           ...payload.userProfile,
-          ...payload.hasPassword,
+          hasPassword: payload.hasPassword,
           addressHash:
             (payload.walletAddresses.length > 0 &&
               payload.walletAddresses[0].addressHash) ||
