@@ -116,10 +116,7 @@ class Welcome extends Component<Props> {
               {MSGPrivacyPolicy}
             </Link>
           </small>
-          <div />
-          <small className={`${THEME_PREFIX}-text--alt`}>
-            {MSGVersion}: {APP_VERSION}
-          </small>
+          <input type="hidden" name={MSGVersion} value={APP_VERSION} />
         </footer>
       </div>
     );
