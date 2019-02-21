@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
-import IntlProvider from 'src/components/wrappers/IntlProvider';
+import { IntlProvider } from 'src/components/wrappers/IntlProvider';
 import {
   AUTH_PAGE,
   PORTAL_PAGE,
@@ -21,8 +21,8 @@ const baseClass = `${THEME_PREFIX}-app`;
 const authCookie = Cookie.getJSON(AUTH_COOKIE);
 
 const App = ({ store, history }: { store: StateT, history: Object }) => (
-  <IntlProvider>
-    <Provider store={store}>
+  <Provider store={store}>
+    <IntlProvider>
       <ConnectedRouter history={history}>
         <div className={baseClass}>
           <ModalManager />
@@ -47,7 +47,7 @@ const App = ({ store, history }: { store: StateT, history: Object }) => (
           </Switch>
         </div>
       </ConnectedRouter>
-    </Provider>
-  </IntlProvider>
+    </IntlProvider>
+  </Provider>
 );
 export default App;

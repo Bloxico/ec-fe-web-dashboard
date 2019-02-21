@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import { Field } from 'redux-form';
 
 import Header from '@partials/Header';
-import { THEME_PREFIX } from 'src/constants';
-import { Button, Form, FormField, Loader, Notification } from '@ui';
+import { THEME_PREFIX, EXPLORER_ADDRESS } from 'src/constants';
+import { Button, Form, FormField, Loader, Notification, Anchor } from '@ui';
 
 export type Props = {
   MSGEditProfile: string,
@@ -14,6 +14,9 @@ export type Props = {
   MSGRegion: string,
   MSGCity: string,
   MSGSave: string,
+  MSGAddress: string,
+  MSGLinkToAddress: string,
+  MSGSelectCountry: string,
   requiredIntl: string,
   emailIntl: string,
   alphanumericIntl: string,
@@ -36,7 +39,17 @@ class EditProfile extends Component<Props> {
   constructor(props: Props) {
     super(props);
 
-    const { requiredIntl, emailIntl, alphanumericIntl } = props;
+    const {
+      MSGSelectCountry,
+      requiredIntl,
+      emailIntl,
+      alphanumericIntl,
+    } = props;
+
+    this.defaultRegionOption = {
+      text: MSGSelectCountry,
+      value: '',
+    };
 
     this.validators = {
       requiredValidator: requiredIntl,
@@ -47,7 +60,6 @@ class EditProfile extends Component<Props> {
 
   componentDidMount() {
     const { fetchProfileData } = this.props;
-
     fetchProfileData();
   }
 
@@ -56,12 +68,8 @@ class EditProfile extends Component<Props> {
     clearProfileState();
   }
 
-  defaultRegionOption = {
-    text: 'Select',
-    value: '',
-  };
-
-  validators: Object;
+  validators: any;
+  defaultRegionOption: any;
 
   render() {
     const {
@@ -73,6 +81,8 @@ class EditProfile extends Component<Props> {
       MSGCity,
       MSGRegion,
       MSGSave,
+      MSGAddress,
+      MSGLinkToAddress,
       regions,
       initialValues,
       pristine,
@@ -130,6 +140,23 @@ class EditProfile extends Component<Props> {
               disabled
               validate={[requiredValidator, emailValidator]}
             />
+            <Field
+              placeholder={MSGAddress}
+              type="text"
+              component={FormField}
+              name="addressHash"
+              width="full"
+            />
+            {initialValues && initialValues.addressHash && (
+              <Anchor
+                className={`${baseClass}__address-link`}
+                href={`${EXPLORER_ADDRESS}${initialValues.addressHash}`}
+                target="_blank"
+              >
+                {MSGLinkToAddress}
+              </Anchor>
+            )}
+            <div className={`${baseClass}__clear`} />
             <Field
               placeholder={MSGName}
               type="text"

@@ -36,6 +36,8 @@ export default compose(
     MSGVerifyNow: formatMessage(messages.userNotVerifiedLink),
     MSGPartnerIdAlreadyExists: formatMessage(messages.partnerIdAlreadyExists),
     MSGPartnerIdNotValid: formatMessage(messages.partnerIdNotValid),
+    MSGWalletAddressAlreadyExists: formatMessage(messages.walletAddressExists),
+    MSGWalletAddressNotValid: formatMessage(messages.walletAddressNotValid),
   })),
   withHandlers({
     handleClick: ({ hideModal }) => () => {

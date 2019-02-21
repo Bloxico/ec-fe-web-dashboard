@@ -71,4 +71,12 @@ export default defineMessages({
     defaultMessage:
       'The partner ID that you received is invalid. Please contact the support of the partner where you registered to resolve the issue.',
   },
+  walletAddressExists: {
+    id: 'walletAddressExists',
+    defaultMessage: 'Address already used on another account.',
+  },
+  walletAddressNotValid: {
+    id: 'walletAddressNotValid',
+    defaultMessage: 'Address not valid.',
+  },
 });
