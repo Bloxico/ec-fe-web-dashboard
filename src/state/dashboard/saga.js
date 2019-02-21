@@ -51,8 +51,8 @@ export function* fetchDashboardData$({ payload }): Generator<*, *, *> {
       cache: false,
     });
     const date = new Date();
-    let balance = 0;
-    let totalVirtualCurrency = 0;
+    const balance = data.enrgBalance || 0;
+    const totalVirtualCurrency = data.virtualValuesSum.BB || 0;
     date.setMonth(date.getMonth() - payload);
 
     // in future most of this will be done on BE
@@ -75,12 +75,6 @@ export function* fetchDashboardData$({ payload }): Generator<*, *, *> {
       r.date = date;
       r['CO2 prevented'] = CO2Prevented;
       return r;
-    });
-
-    // collect ENRG and BB balance
-    data.transactionInfoDtos.forEach(e => {
-      balance += e.enrgAmount;
-      totalVirtualCurrency += e.virtualCurrencyAmount;
     });
 
     yield put(
