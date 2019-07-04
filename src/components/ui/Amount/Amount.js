@@ -16,17 +16,12 @@ const currencyIcons = {
   energy: IconEnergy,
 };
 
-const currencyAbbrs = {
-  energy: 'ENRG',
-  BB: 'BB',
-};
-
 const baseClass = `${THEME_PREFIX}-amount`;
 
 interface Props {
   value: number;
   precision?: number;
-  currency: AmountCurrency;
+  currency: string;
   showIcon?: boolean;
   showCurrency?: boolean;
   align?: AmountAlign;
@@ -75,13 +70,12 @@ const Amount = (props: Props) => {
     <span className={classes}>
       {showIcon && getIcon(currency, size)}
       {!showIcon && showCurrency && (
-        <span className={`${baseClass}__sign`}>
-          {currencyAbbrs[currency || 'energy']}
-        </span>
+        <span className={`${baseClass}__sign`}>{currency || 'ENRG'}</span>
       )}
       <Output
         value={`${value}`.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, $1 => `${$1} `)}
         precision={precision}
+        format={'float'}
         className={`${baseClass}__value`}
       />
     </span>

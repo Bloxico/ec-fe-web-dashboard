@@ -57,6 +57,7 @@ export default compose(
     MSGEmptyRegistration: formatMessage(messages.emptyRegistration),
     MSGSelectCountry: formatMessage(messages.selectCountry),
     MSGRingRing: formatMessage(messages.ringRing),
+    MSGGOGPlatform: formatMessage(messages.gogPlatform),
   })),
   withProps(({ intl }) => ({
     requiredIntl: required({ intl }),
