@@ -52,7 +52,7 @@ export function* fetchDashboardData$({ payload }): Generator<*, *, *> {
     });
     const date = new Date();
     const balance = data.enrgBalance || 0;
-    const totalVirtualCurrency = data.virtualValuesSum.BB || 0;
+    const totalVirtualCurrency = data.virtualValuesSum || {};
     date.setMonth(date.getMonth() - payload);
 
     // in future most of this will be done on BE
