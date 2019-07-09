@@ -15,7 +15,7 @@ type Props = {
   fetchDashboardData: Function,
   fetchExchangeRate: Function,
   chartData: [],
-  virtualBalance: number,
+  virtualBalance: any,
   dashboardBalance: number,
   fetchDashboardDataInProgress: boolean,
   setPasswordInProgress: boolean,
@@ -174,9 +174,21 @@ class Dashboard extends Component<Props> {
 
               <div className={`${baseClass}__group`}>
                 <dl className={`${baseClass}__info`}>
+                  <dt className={`${baseClass}__title`}>GOGs</dt>
+                  <dd className={`${baseClass}__amount`}>
+                    {(virtualBalance &&
+                      virtualBalance.GOG &&
+                      virtualBalance.GOG.toFixed(2)) ||
+                      0}
+                  </dd>
+                </dl>
+                <dl className={`${baseClass}__info`}>
                   <dt className={`${baseClass}__title`}>{MSGBicycleBits}</dt>
                   <dd className={`${baseClass}__amount`}>
-                    {virtualBalance && virtualBalance.toFixed(2)}
+                    {(virtualBalance &&
+                      virtualBalance.BB &&
+                      virtualBalance.BB.toFixed(2)) ||
+                      0}
                   </dd>
                 </dl>
               </div>

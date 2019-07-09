@@ -143,6 +143,7 @@ class Transactions extends Component<Props> {
                     <Amount
                       currency={virtualCurrencyCode}
                       value={virtualCurrencyAmount}
+                      precision={2}
                     />
                     )
                   </span>

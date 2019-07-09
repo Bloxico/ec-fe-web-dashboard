@@ -6,7 +6,11 @@ import classNames from 'classnames';
 
 import Header from '@partials/Header';
 import { Form, FormField, Button, Anchor } from '@ui';
-import { THEME_PREFIX, PARTNER_RING_RING_LINK } from 'src/constants';
+import {
+  THEME_PREFIX,
+  PARTNER_RING_RING_LINK,
+  PARTNER_GOG_PLATFORM_LINK,
+} from 'src/constants';
 
 export type Props = {
   handleSubmit: Function,
@@ -22,6 +26,7 @@ export type Props = {
   MSGEmptyRegistration: string,
   MSGSelectCountry: string,
   MSGRingRing: string,
+  MSGGOGPlatform: string,
   requiredIntl: Function,
   alphanumericIntl: Function,
   passwordIntl: Function,
@@ -98,6 +103,7 @@ class Register extends Component<Props> {
       MSGRegion,
       MSGCity,
       MSGNicknameOptional,
+      MSGGOGPlatform,
       registerInProgress,
       MSGContinue,
       MSGEmptyRegistration,
@@ -206,6 +212,14 @@ class Register extends Component<Props> {
         <div className={`${baseClass}__content`}>
           {MSGEmptyRegistration}
           <hr />
+          <Anchor
+            className={`${baseClass}__link`}
+            target="_blank"
+            href={PARTNER_GOG_PLATFORM_LINK}
+          >
+            {MSGGOGPlatform}
+          </Anchor>
+          <div className={`${baseClass}__separator`} />
           <Anchor target="_blank" href={PARTNER_RING_RING_LINK}>
             {MSGRingRing}
           </Anchor>

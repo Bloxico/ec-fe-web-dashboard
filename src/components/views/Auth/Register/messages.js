@@ -48,4 +48,8 @@ export default defineMessages({
     id: 'ringRing',
     defaultMessage: 'Ring-ring',
   },
+  gogPlatform: {
+    id: 'gogPlatform',
+    defaultMessage: 'GOG Platform',
+  },
 });
