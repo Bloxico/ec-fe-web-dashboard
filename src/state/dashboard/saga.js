@@ -3,7 +3,7 @@
 import { all, takeEvery, put } from 'redux-saga/effects';
 
 import http from 'src/services/http';
-import { MODALS, CO2_PREVENTED } from 'src/constants';
+import { MODALS } from 'src/constants';
 import { showModal } from 'src/state/actions';
 
 import * as actions from './actions';
@@ -64,9 +64,9 @@ export function* fetchDashboardData$({ payload }): Generator<*, *, *> {
         .reduce((obj, item) => {
           const newDate = new Date(item.created).toLocaleDateString();
           if (newDate in obj) {
-            obj[newDate] += item.envAmount * CO2_PREVENTED;
+            obj[newDate] += item.envAmount;
           } else {
-            obj[newDate] = item.envAmount * CO2_PREVENTED;
+            obj[newDate] = item.envAmount;
           }
           return obj;
         }, {}),
