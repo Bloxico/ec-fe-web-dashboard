@@ -64,9 +64,9 @@ export function* fetchDashboardData$({ payload }): Generator<*, *, *> {
         .reduce((obj, item) => {
           const newDate = new Date(item.created).toLocaleDateString();
           if (newDate in obj) {
-            obj[newDate] += item.envAmount * CO2_PREVENTED;
+            obj[newDate] += item.envAmount;
           } else {
-            obj[newDate] = item.envAmount * CO2_PREVENTED;
+            obj[newDate] = item.envAmount;
           }
           return obj;
         }, {}),

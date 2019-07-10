@@ -17,7 +17,7 @@ const CustomTooltip = (props: Props) => {
           {props.time} {props.payload[0].payload.date}
         </div>
         <div>
-          {props.prevented} {props.payload[0].payload['CO2 prevented']}g{' '}
+          {props.prevented} {props.payload[0].payload['CO2 prevented'].toFixed(2)}g{' '}
           {props.ofCO2}
         </div>
       </div>
