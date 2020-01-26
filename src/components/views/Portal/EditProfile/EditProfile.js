@@ -63,6 +63,8 @@ class EditProfile extends Component<Props, State> {
     this.state = {
       location: null,
     };
+
+    // $FlowIssue
     this.getInnerRef = this.getInnerRef.bind(this);
     this.getLocation = this.getLocation.bind(this);
   }
@@ -82,8 +84,9 @@ class EditProfile extends Component<Props, State> {
   }
 
   getLocation() {
-    this.innerRef && this.innerRef.getLocation();
+    if (this.innerRef) this.innerRef.getLocation();
   }
+
   validators: any;
   defaultRegionOption: any;
   innerRef: any;
@@ -108,6 +111,8 @@ class EditProfile extends Component<Props, State> {
       fetchProfileInProgress,
       updateProfileMessage,
     } = this.props;
+
+    const { getInnerRef, getLocation } = this;
 
     const {
       requiredValidator,
@@ -203,7 +208,7 @@ class EditProfile extends Component<Props, State> {
               />
             )}
             <Locator
-              ref={this.getInnerRef}
+              ref={getInnerRef}
               onChange={value =>
                 !this.state.location && this.setState({ location: value })
               }
@@ -212,7 +217,7 @@ class EditProfile extends Component<Props, State> {
               className={`${baseClass}__address-link`}
               onClick={e => {
                 e.preventDefault();
-                this.innerRef && this.innerRef.getLocation();
+                getLocation();
               }}
             >
               Detect Location

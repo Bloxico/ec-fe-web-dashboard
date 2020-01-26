@@ -75,7 +75,7 @@ const Amount = (props: Props) => {
       <Output
         value={`${value}`.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, $1 => `${$1} `)}
         precision={precision}
-        format={'float'}
+        format="float"
         className={`${baseClass}__value`}
       />
     </span>
