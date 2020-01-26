@@ -88,6 +88,7 @@
     "react-bootstrap": "^0.32.4",
     "react-dev-utils": "^5.0.2",
     "react-dom": "^16.5.0",
+    "react-geolocated": "^3.0.1",
     "react-intl": "^2.7.1",
     "react-moment": "^0.8.4",
     "react-redux": "^5.0.7",

@@ -6,6 +6,7 @@ import { Field } from 'redux-form';
 import Header from '@partials/Header';
 import { THEME_PREFIX, EXPLORER_ADDRESS } from 'src/constants';
 import { Button, Form, FormField, Loader, Notification, Anchor } from '@ui';
+import Locator from '../../../ui/Locator/Locator';
 
 export type Props = {
   MSGEditProfile: string,
@@ -34,8 +35,10 @@ export type Props = {
 };
 
 const baseClass = `${THEME_PREFIX}-edit-profile`;
-
-class EditProfile extends Component<Props> {
+type State = {
+  location: any,
+};
+class EditProfile extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -56,6 +59,12 @@ class EditProfile extends Component<Props> {
       emailValidator: emailIntl,
       alphanumericValidator: alphanumericIntl,
     };
+
+    this.state = {
+      location: null,
+    };
+    this.getInnerRef = this.getInnerRef.bind(this);
+    this.getLocation = this.getLocation.bind(this);
   }
 
   componentDidMount() {
@@ -68,8 +77,16 @@ class EditProfile extends Component<Props> {
     clearProfileState();
   }
 
+  getInnerRef(ref: any) {
+    this.innerRef = ref;
+  }
+
+  getLocation() {
+    this.innerRef && this.innerRef.getLocation();
+  }
   validators: any;
   defaultRegionOption: any;
+  innerRef: any;
 
   render() {
     const {
@@ -173,16 +190,33 @@ class EditProfile extends Component<Props> {
               width="full"
               validate={[requiredValidator]}
             />
-            <Field
-              placeholder={MSGRegion}
-              type="select"
-              component={FormField}
-              name="region"
-              width="full"
-              options={regionOptions}
-              selected={regionSelected}
-              validate={[requiredValidator]}
+            {this.state.location && (
+              <Field
+                placeholder={MSGRegion}
+                type="select"
+                component={FormField}
+                name="region"
+                width="full"
+                options={regionOptions}
+                selected={regionSelected}
+                validate={[requiredValidator]}
+              />
+            )}
+            <Locator
+              ref={this.getInnerRef}
+              onChange={value =>
+                !this.state.location && this.setState({ location: value })
+              }
             />
+            <Anchor
+              className={`${baseClass}__address-link`}
+              onClick={e => {
+                e.preventDefault();
+                this.innerRef && this.innerRef.getLocation();
+              }}
+            >
+              Detect Location
+            </Anchor>
 
             <Button
               type="primary"
